@@ -1,14 +1,15 @@
-# TEAM NAME
+# aTlas
 
 # WEB APPLICATION NAME
 
 # Team Overview
 
-* Team Member Name 1, Github Username 1
-* Team Member Name 2, Github Username 2
-* Team Member Name 3, Github Username 3
-* Team Member Name 4, Github Username 4
-* Team Member Name 5, Github Username 5
+* Tajour Cohen-Henry, Tajman
+* Quyen Tran, qtran09
+* Aristotel Fani, afani97
+* John Domenichelli, Scorch219
+* Ashley Tapulado, iFractalus
+* Brandon Curran, brandoncurran326
 
 # Innovative Idea
 
