@@ -1,6 +1,6 @@
 # aTlas
 
-# WEB APPLICATION NAME
+# UMarket
 
 # Team Overview
 
@@ -13,11 +13,15 @@
 
 # Innovative Idea
 
-Please describe your team's innovative idea for your project.
+UMass Amhest students often struggle to find certain products they need or sell them near or throughout the semester. To remedy this, our project, UMarket, aims to provide a platform for students to buy, sell, or exchange products with each other, without needing to travel far distances to any sketchy locations that websites like Craigslist may demand. Listings will be cleaner and more organized, and users will find it easier to navigate for specific items.
 
 # Important Data
 
-Please describe the important data that your application will be managing.
+* User data
+* Item info
+* Safe meetup spots/common areas
+* Item categories
+* Seller ratings/comments
 
 # User Interface
 
