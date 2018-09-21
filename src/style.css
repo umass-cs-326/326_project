@@ -1,24 +1,36 @@
 
 
 
-img{
-    
+body {
+    background-color:  burlywood;
+}
+
+/* .logo{
+    background: url("LOL-min.png");
+    width: 1000px;
+    height: 1000px;
+} */
+.logo {
+    float: left;
+    width: 16%;
 }
 
 .icon-bar {
     width: 100%; /* Full-width */
-    background-color: rgb(102, 102, 102); /* Dark-grey background */
+    background-color: rgb(134, 128, 128); /* Dark-grey background */
+    text-decoration: black;
     overflow: auto; /* Overflow due to float */
 }
 
 .icon-bar a {
     float: left; /* Float links side by side */
     text-align: center; /* Center-align text */
-    width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
+    width: 16.8%; /* Equal width (5 icons with 20% width each = 100%) */
     padding: 10px 0; /* Some top and bottom padding */
     transition: all 0.3s ease; /* Add transition for hover effects */
     color: white; /* White text color */
     font-size: 36px; /* Increased font size */
+    text-decoration: none;
 }
 
 .icon-bar a:hover {
