@@ -5,30 +5,47 @@ body {
     background-color:  burlywood;
 }
 
-/* .logo{
-    background: url("LOL-min.png");
-    width: 1000px;
-    height: 1000px;
-} */
+ul {
+    list-style-type: none;
+    margin: 20px;
+    padding: 0px;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
 .logo {
     float: left;
-    width: 16%;
+    width: 7%;
+    length: 7%;
+    padding: 5px;
 }
 
 .icon-bar {
     width: 100%; /* Full-width */
-    background-color: rgb(134, 128, 128); /* Dark-grey background */
-    text-decoration: black;
+    background-color: rgb(255, 255, 255); /* Dark-grey background */
     overflow: auto; /* Overflow due to float */
 }
 
 .icon-bar a {
     float: left; /* Float links side by side */
     text-align: center; /* Center-align text */
-    width: 16.8%; /* Equal width (5 icons with 20% width each = 100%) */
-    padding: 10px 0; /* Some top and bottom padding */
+    width: 16.85%; /* Equal width (5 icons with 20% width each = 100%) */
+    length: 18.7%;
+    padding: 10px; /* Some top and bottom padding */
     transition: all 0.3s ease; /* Add transition for hover effects */
-    color: white; /* White text color */
+    color: rgb(168, 41, 41); /* White text color */
     font-size: 36px; /* Increased font size */
     text-decoration: none;
 }
@@ -36,6 +53,7 @@ body {
 .icon-bar a:hover {
     background-color: #000; /* Add a hover color */
 }
+
 
 .active {
     background-color: #4CAF50; /* Add an active/current color */
