@@ -1,0 +1,177 @@
+<!DOCHTML>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name="description" content="UMarket Description">
+    <meta name="author" content="aTlas">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMarket - Browsing</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel= "stylesheet" href="css/browser.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        ul{
+            margin:auto;
+            width:80%;
+            padding:0;
+            text-align: center;
+            list-style-type:none;
+        }
+        li{
+            display:inline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">UMarket</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample01">
+        <ul class="navbar navbar-dark mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Category 1 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Category 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Category 3</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row">
+        <div class="col-2" style="border-right: 1px solid black; width:100%;">
+            <form class="container" style="margin:auto; margin-top:24px; text-align: center">
+                <input type="checkbox">Filter 1<br>
+                <input type="checkbox">Filter 2<br>
+                <input type="checkbox">Filter 3<br>
+                <label>Price Range</label><br>
+                <input type="text" placeholder="Min" style="width:30%"> to <input type="text" placeholder ="Max" style="width:30%">
+                <button type="submit">Apply Filter</button>
+            </form>
+        </div>
+        <div class="container col-9" style="margin-top:24px">
+        <form class="form-inline">
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search" style="min-width:50%; margin-right: 24px;">
+          <button type="submit" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-search"></span> Search  
+          </button>
+        </form>
+            <!--Use JS to populate this next div-->
+        <div class ="container" style="border:1px solid black; max-height: 90%; margin:2px; padding:0; overflow-y:auto">
+            <div class="fillInLater row" style="border-bottom:1px solid black; margin:0px; min-width: 768px;">
+                <div class="col-3"><img src="images/wet-dry-vacuum-cleaner.png" style="width:100%"></div>
+                <div class="col-6">
+                    <label>Product Title</label>
+                    <label style="float:right">Product price</label>
+                    <h6>Description: </h6>
+                    <p>
+                        This is a description of the product it cannot exceed some number of lines we will be able to set later how many lines this will not exceed.
+                    </p>
+                </div>
+                <div class="col-3" style="text-align: center">
+                    <button type="button">I'm interested!</button>
+                    <div style="bottom:0; position:absolute;">
+                    <h5>Seller Rating: </h5>
+                    <label>Some type of rating goes here</label>
+                        </div>
+                </div>
+            </div>  
+            <div class="fillInLater row" style="border-bottom:1px solid black; width:100%; margin:0px">
+                <div class="col-3"><img src="images/wet-dry-vacuum-cleaner.png" style="width:100%"></div>
+                <div class="col-6">
+                    <label>Product Title</label>
+                    <label style="float:right">Product price</label>
+                    <h6>Description: </h6>
+                    <p>
+                        This is a description of the product it cannot exceed some number of lines we will be able to set later how many lines this will not exceed.
+                    </p>
+                </div>
+                <div class="col-3" style="text-align: center">
+                    <button type="button">I'm interested!</button>
+                    <div style="bottom:0; position:absolute;">
+                    <h5>Seller Rating: </h5>
+                    <label>Some type of rating goes here</label>
+                        </div>
+                </div>
+            </div>
+            <div class="fillInLater row" style="border-bottom:1px solid black; width:100%; margin:0px">
+                <div class="col-3"><img src="images/wet-dry-vacuum-cleaner.png" style="width:100%"></div>
+                <div class="col-6">
+                    <label>Product Title</label>
+                    <label style="float:right">Product price</label>
+                    <h6>Description: </h6>
+                    <p>
+                        This is a description of the product it cannot exceed some number of lines we will be able to set later how many lines this will not exceed.
+                    </p>
+                </div>
+                <div class="col-3" style="text-align: center">
+                    <button type="button">I'm interested!</button>
+                    <div style="bottom:0; position:absolute;">
+                    <h5>Seller Rating: </h5>
+                    <label>Some type of rating goes here</label>
+                        </div>
+                </div>
+            </div>
+            <div class="fillInLater row" style="border-bottom:1px solid black; width:100%; margin:0px">
+                <div class="col-3"><img src="images/wet-dry-vacuum-cleaner.png" style="width:100%"></div>
+                <div class="col-6">
+                    <label>Product Title</label>
+                    <label style="float:right">Product price</label>
+                    <h6>Description: </h6>
+                    <p>
+                        This is a description of the product it cannot exceed some number of lines we will be able to set later how many lines this will not exceed.
+                    </p>
+                </div>
+                <div class="col-3" style="text-align: center">
+                    <button type="button">I'm interested!</button>
+                    <div style="bottom:0; position:absolute;">
+                    <h5>Seller Rating: </h5>
+                    <label>Some type of rating goes here</label>
+                        </div>
+                </div>
+            </div>
+            <div class="fillInLater row" style="border-bottom:1px solid black; width:100%; margin:0px">
+                <div class="col-3"><img src="images/wet-dry-vacuum-cleaner.png" style="width:100%"></div>
+                <div class="col-6">
+                    <label>Product Title</label>
+                    <label style="float:right">Product price</label>
+                    <h6>Description: </h6>
+                    <p>
+                        This is a description of the product it cannot exceed some number of lines we will be able to set later how many lines this will not exceed.
+                    </p>
+                </div>
+                <div class="col-3" style="text-align: center">
+                    <button type="button">I'm interested!</button>
+                    <div style="bottom:0; position:absolute;">
+                    <h5>Seller Rating: </h5>
+                    <label>Some type of rating goes here</label>
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <footer class="bg-dark" style="color:aliceblue; position:static; bottom:0; width:100%; height:36px">
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a>Link 2</a></li>
+            <li><a>Link 3</a></li>
+            <li><a>Link 4</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
