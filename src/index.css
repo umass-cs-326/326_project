@@ -23,6 +23,11 @@ body {
   font-size: 120px;
   padding: 30px 0px;
 }
+#searchbar {
+  width: 100%;
+  margin: 20px 0px;
+  height: auto;
+}
 .filter {
   border: 1px solid gray;
   border-radius: 5px;
