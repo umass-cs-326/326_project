@@ -27,7 +27,7 @@
                                     border: none;
                                     text-align: left;
                                     outline: none;
-                                    font-size: 15px;
+                                    font-size: 23px;
                                 }
                             
                             .active, .collapsible:hover {
@@ -63,16 +63,19 @@
                             .item19 { grid-area: pre-req; }
                             .item20 { grid-area: reviews; }
                              .item21 { grid-area: details; }
+                             .item22 { grid-area: days; }
+                             .item23 { grid-area: daysdata; }
+                             .item24 { grid-area: daysdata2; }
                             
                            
                             
                             .grid-container {
                                 display: grid;
                                 grid-template-areas:
-                                'section time room instructor capacity enrolled'
-                                'secdata timedata roomdata instdata capdata endata'
-                                'secdata2 timedata2 roomdata2 instdata2 capdata2 endata2'
-                                'pre-req pre-req reviews reviews details details';
+                                'section time days room instructor capacity enrolled'
+                                'secdata timedata daysdata roomdata instdata capdata endata'
+                                'secdata2 timedata2 daysdata2 roomdata2 instdata2 capdata2 endata2'
+                                'pre-req  reviews reviews reviews details details details';
                                 
                                 
                                 grid-gap: 5px;
@@ -83,7 +86,7 @@
                                 background-color: rgba(255, 255, 255, 0.8);
                                 text-align: center;
                                 padding: 10px 0;
-                                font-size: 10px;
+                                font-size: 16px;
                             }
                            
                            
@@ -167,18 +170,20 @@
                <button class="collapsible">CS 121 - Introduction to Problem Solving with Computers     (1 section)</button>
                 <div class="content">
                     <div class="grid-container">
-                        <div class="item1">Section</div>
-                        <div class="item2">time</div>
-                        <div class="item3">room</div>
-                        <div class="item4">instructor</div>
-                        <div class="item5">capacity</div>
-                        <div class="item6">enrolled</div>
+                        <div class="item1"><b>Section</b></div>
+                        <div class="item2"><b>Time</b></div>
+                        <div class="item3"><b>Room</b></div>
+                        <div class="item4"><b>Instructor</b></div>
+                        <div class="item5"><b>Capacity</b></div>
+                        <div class="item6"><b>Enrolled</b></div>
                         <div class="item7"> <input type="button" class="w3-btn w3-black" value="1"></div>
                         <div class="item8">11:00pm-11:50pm</div>
                         <div class="item9">ILC 111</div>
                         <div class="item10">Gordon Anderson</div>
                         <div class="item11">100</div>
                         <div class="item12">50</div>
+                        <div class="item 22"><b>Days</b></div>
+                        <div class="item 23">Mon, Wed, Fri</div>
                         <div class="item19"> <button class="collapsible">Pre-reqs</button>
                             <div class="content">
                                 <p>none</p>
@@ -208,18 +213,20 @@
                 <div class="content">
                    
                     <div class="grid-container">
-                        <div class="item1">Section</div>
-                        <div class="item2">Time</div>
-                        <div class="item3">Room</div>
-                        <div class="item4">Instructor</div>
-                        <div class="item5">Capacity</div>
-                        <div class="item6">Enrolled</div>
+                        <div class="item1"><b>Section</b></div>
+                        <div class="item2"><b>Time</b></div>
+                        <div class="item3"><b>Room</b></div>
+                        <div class="item4"><b>Instructor</b></div>
+                        <div class="item5"><b>Capacity</b></div>
+                        <div class="item6"><b>Enrolled</b></div>
                         <div class="item7"> <input type="button" class="w3-btn w3-black" value="1"></div>
                         <div class="item8">12:05pm-1:00pm</div>
                         <div class="item9">ILC 222</div>
                         <div class="item10">MR Professor</div>
                         <div class="item11">100</div>
                         <div class="item12">50</div>
+                        <div class="item 22"><b>Days</b></div>
+                        <div class="item 23">Mon, Wed, Fri</div>
                         <div class="item19"> <button class="collapsible">Pre-reqs</button>
                             <div class="content">
                                 <p>CS-121</p>
@@ -246,12 +253,12 @@
                 <button class="collapsible">CS 250 - Theory of Computation     (2 sections)</button>
                 <div class="content">
                     <div class="grid-container">
-                        <div class="item1">Section</div>
-                        <div class="item2">Time</div>
-                        <div class="item3">Room</div>
-                        <div class="item4">Instructor</div>
-                        <div class="item5">Capacity</div>
-                        <div class="item6">Enrolled</div>
+                        <div class="item1"><b>Section</b></div>
+                        <div class="item2"><b>Time</b></div>
+                        <div class="item3"><b>Room</b></div>
+                        <div class="item4"><b>Instructor</b></div>
+                        <div class="item5"><b>Capacity</b></div>
+                        <div class="item6"><b>Enrolled</b></div>
                         <div class="item7"> <input type="button" class="w3-btn w3-black" value="1"></div>
                         <div class="item8">11:00pm-11:50pm</div>
                         <div class="item9">ILC 333</div>
@@ -263,6 +270,9 @@
                         <div class="item15">DMB</div>
                         <div class="item16">110</div>
                         <div class="item17">99</div>
+                        <div class="item 22"><b>Days</b></div>
+                        <div class="item 23">Mon, Wed, Fri</div>
+                        <div class="item 24">Mon, Wed, Fri</div>
                         <div class="item18"> <input type="button" class="w3-btn w3-black" value="2"></div>
                         <div class="item19"> <button class="collapsible">Pre-reqs</button>
                         <div class="content">
