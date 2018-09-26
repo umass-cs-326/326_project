@@ -1,0 +1,54 @@
+body {
+  width: 100%;
+  height: auto;
+}
+.navbar {
+
+}
+.title {
+  text-align: center;
+  background-color: #F4F6F6;
+}
+.title a {
+  text-decoration: none;
+}
+.title a::after {
+  color: black;
+}
+.title a:hover {
+  color: black;
+}
+.title h1 {
+  color: black;
+  font-size: 120px;
+  padding: 30px 0px;
+}
+.filter {
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 20px 0px;
+  text-align: center;
+  position: relative;
+}
+.option {
+  text-align: left;
+}
+.search-btn {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  text-decoration: none !important;
+}
+.search-btn:hover {
+  color: white;
+}
+.search-btn::after {
+  color: white;
+}
+.poster {
+  width: 115.5px;
+  height: 165px;
+  margin-left: 20px;
+}
