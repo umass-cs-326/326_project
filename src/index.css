@@ -1,13 +1,13 @@
 body {
   width: 100%;
   height: auto;
+  background: black;
 }
 .navbar {
 
 }
 .title {
   text-align: center;
-  background-color: #F4F6F6;
 }
 .title a {
   text-decoration: none;
@@ -19,13 +19,13 @@ body {
   color: black;
 }
 .title h1 {
-  color: black;
+  color: red;
   font-size: 120px;
   padding: 30px 0px;
 }
 #searchbar {
   width: 100%;
-  margin: 20px 0px;
+  margin-bottom: 20px;
   height: auto;
 }
 .filter {
@@ -35,22 +35,29 @@ body {
   text-align: center;
   position: relative;
 }
+.filter h4 {
+  color: white;
+}
 .option {
   text-align: left;
+  color: white;
 }
 .search-btn {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 5px;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 10px;
   text-decoration: none !important;
 }
 .search-btn:hover {
-  color: white;
+  color: black;
 }
 .search-btn::after {
-  color: white;
+  color: black;
+}
+.list-group-item {
+  background-color: #E5E7E9;
 }
 .poster {
   width: 115.5px;
