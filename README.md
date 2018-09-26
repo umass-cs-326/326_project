@@ -5,12 +5,7 @@ Team Knock_Out
 Members: Kurtis Chau, Apoorva Karpurapu, Frick Shao, Long To, Kuhu Wadhwa, Damin Zhang
 
 
-
-This is the project repository template that your COMPSCI 326 team
-will `fork` and use to begin your semester project work. Please follow
-the instructions carefully in each of the project submission
-requirements for your team to be successful. This is the structure of
-this repository:
+Flick is an online movie matching website for Five College students. Currently there is an iOS application CINEMEET provides similar service as Flick does, but only limited to Apple users. With Flick, users can start a request or find a match anytime anywhere. All users will be verified by email ends by “.edu” for security. Flick also provides a useful tool for movie fans, a movie list where users can look up for casts or director information.  
 
 * `docs` - this folder is used to store all documents that are
   requested as part of the submission.
