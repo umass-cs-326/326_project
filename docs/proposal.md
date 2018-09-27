@@ -32,8 +32,8 @@ User’s first name, last name, gender, bio and student ID card picture. We use 
 5. The fifth one is an instant message box for users to communicate once they matched with each other.
 6. The sixth one is a user profile page where user can upload a profile picture, a bio, their movie ratings, and favortie movies.
 
-![Homepage/movie list](imgs/damin_mock.jpg)
-![filter/search page](imgs/kurtis_mock.jpg)
-![Match page](imgs/apoorva_mock.jpg)
-![Message page](imgs/long_mock.jpg)
-![user profile page](imgs/frick_mock.jpg)
+![Homepage/movie list](imgs/damin_mock.png)
+![filter/search page](imgs/kurtis_mock.png)
+![Match page](imgs/apoorva_mock.png)
+![Message page](imgs/long_mock.png)
+![user profile page](imgs/frick_mock.png)
