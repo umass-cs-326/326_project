@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example of Bootstrap 3 Responsive Tables</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="search.css"></head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+</style>
+</head>
+<body>
+	<div class="topnav">
+		 <a class="active" href="#Cart">Cart</a>
+		   <a href="#about">My Profile</a>
+				 <div class="bs-example">
+    			<div class="btn-group">
+        		<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Current Store: Target <span class="caret"></span></button>
+        			<ul class="dropdown-menu">
+            			<li><a href="#">Target</a></li>
+            			<li><a href="#">Stop & Shop</a></li>
+			            <li class="divider"></li>
+            			<li><a href="#">Walmart</a></li>
+        			</ul>
+    				</div>
+					</div>
+		       <input type="text" placeholder="Search..">
+  </div>
+<div class="bs-example">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Item Number</th>
+                    <th>Item Name</th>
+                    <th>Aisle Found</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>57</td>
+                    <td>Banana</td>
+                    <td>2</td>
+                    <td>$1000</td>
+                    <td>B-a-n-a-n-a-s</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>Mac & Cheese</td>
+                    <td>4</td>
+                    <td>$1,000,000</td>
+                    <td>Yum</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Ice Cream</td>
+                    <td>7</td>
+                    <td>$2</td>
+                    <td>Vanilla</td>
+                </tr>
+								<tr>
+										<td>11</td>
+										<td>Steak</td>
+										<td>5</td>
+										<td>$7</td>
+										<td>Lean</td>
+								</tr>
+								<tr>
+										<td>10</td>
+										<td>Fish</td>
+										<td>10</td>
+										<td>$0.01</td>
+										<td>Salmon</td>
+								</tr>
+								<tr>
+										<td>78</td>
+										<td>Sprinkles</td>
+										<td>1</td>
+										<td>$4</td>
+										<td>Rainbow</td>
+								</tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</body>
+</html>
