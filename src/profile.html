@@ -38,7 +38,7 @@
     			<a class="nav-link nav-item" href="myLists.html">My Lists</a>
   			</li>
 
-  			<li class="nav-item'>
+  			<li class="nav-item">
     			<a class="nav-link nav-item" href="profile.html">Profile</a>
   			</li>
 
@@ -115,12 +115,6 @@
 								<li class="list-group-item">Playlist 2</li>
 								<li class="list-group-item">Playlist 3</li>
 								<li class="list-group-item">Playlist 4</li>
-								<li class="list-group-item">Playlist 5</li>
-								<li class="list-group-item">Playlist 6</li>
-								<li class="list-group-item">Playlist 7</li>
-								<li class="list-group-item">Playlist 8</li>
-								<li class="list-group-item">Playlist 9</li>
-								<li class="list-group-item">Playlist 10</li>
 							</ul>
 						</body>
 					</div>
@@ -130,10 +124,36 @@
 					<div class="card-body">
 						<h1>User Settings</h1>
 						<body>	
-							<tr><td>Email Addresses:</tr></td>
 							<br>
-							<tr><td>Playlist Name: <input type="text" name="playlistname" style="width: 200px;"></tr></td>
-							<tr><td>Email Addresses:</tr></td>
+							<h4>Email Addresses:</h4>
+							<table class="table table-striped">
+        						<tr><td> Email 1</td><td>Remove</td></tr>
+        						<tr><td> Email 2</td><td>Remove</td></tr>
+							<br>
+							</table>
+							<tr><td>Add email address: <input type="text" name="email address" style="width: 200px;"></tr></td>
+							<button type="button" onclick="alert('Email added (need to add functionality).')" style="height:30px;width:120px">Add</button>
+							<br>
+							<h4>Change Password:</h4>
+							<br>
+								<tr><td>Current Password: <input type="text" name="current_pass" style="width: 200px;"></tr></td>
+								<br>
+								<tr><td>New Password: <input type="text" name="new_pass" style="width: 200px;"></tr></td>
+								<br>
+								<tr><td>Confirm New Password: <input type="text" name="confirm_pass" style="width: 200px;"></tr></td>
+								<br>
+								<button type="button" onclick="alert('Password Changed (need to do checking though).')" style="height:30px;width:120px">Change Password</button>
+							<br>
+							<h4>Default Privacy Settings: </h4>
+								<br>
+								<form>
+								<input type="radio" name="Access" value="public_priv" checked> Public
+								<br>
+								<input type="radio" name="Access" value="private_priv"> Private (only friends)
+								<br>
+								<input type="radio" name="Access" value="anon_priv"> Anonymous for all
+								<br>
+							</form>
 						</body>
 					</div>
 				</div>
