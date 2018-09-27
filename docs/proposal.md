@@ -34,9 +34,9 @@ HiveList will implement the following datasets:
 
 The Following pages will be created for the application:
 * Login/Create Account
-    ![Image1](img-templates/login_09_26)
+    ![Image1](img-templates/login_09_26.png)
 * Home Screen
-    ![Image2](img-templates/home_09_26)
+    ![Image2](img-templates/home_09_26.png)
 * Playlist Creation Home
 * Playlist Settings
 * Recommendations
