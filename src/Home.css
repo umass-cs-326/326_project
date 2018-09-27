@@ -1,0 +1,17 @@
+#HomePage_MainContent{
+    padding: 20%;
+}
+
+#HomePage_MainContent{
+    
+    /* The image used */
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/background.jpg');
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
