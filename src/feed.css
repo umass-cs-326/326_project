@@ -1,0 +1,75 @@
+body {
+    background: #F2f2f2;
+}
+
+.classCard {
+    float: left;
+    width: 100%;
+}
+
+#searchIcon {
+    color: #DDD;
+}
+
+.classContent {
+    display: block;
+    float: left;
+}
+
+.className {
+    top: 37%;
+    width: 100%;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 100%;
+    position: absolute;
+    text-align: center;
+    color: white;
+}
+
+.listClass {
+    margin-bottom: 30px;
+}
+
+#feedList {
+    margin: 0 auto;
+    list-style: none;
+    margin-top: 30px;
+    width: 70%
+}
+
+.featuredQuote {
+    font-size: 20px;
+    margin-left: 16px;
+}
+
+.featuredReview {
+    margin-top: 8px;
+    color: #888;
+    font-size: 15px;
+    margin-left: 16px;
+}
+
+.mdl-card--horizontal {
+    flex-direction: column;
+    /* 1 */
+    padding-left: 150px;
+    width: 100%;
+}
+
+.mdl-card__media {
+    height: 100%;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background: url("https://a.1stdibscdn.com/archivesE/upload/f_30733/f_88765331508868313940/Well_master.jpg?width=800");
+    overflow: hidden;
+    position: absolute;
+    width: 150px;
+}
+
+.mdl-card__supporting-text {
+    flex: 1 1 auto;
+    width: auto;
+}
