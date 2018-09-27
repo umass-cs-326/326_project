@@ -4,7 +4,7 @@
 
 # Team Overview
 
-* Bailey Boone, Github Username 1
+* Bailey Boone, baileyboone
 * Erica Zheng, pinebay
 * Justin Hui, jhui04
 * Parth Nagraj, pdnagraj
