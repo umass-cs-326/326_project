@@ -29,6 +29,7 @@ Home page: Navbar, search bar, information about the site and footer.
 Class: list of classes, rating, review, etc.
 Review page: rating(star), recommendation, grade, tags.
 Login: register and sign in.
+
 User Profile: username, profile image, quote.
 
 
