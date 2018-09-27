@@ -7,30 +7,165 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--All this js like jquery and moment are dependencies of fulcal and need to be imported before it tries to draw the cal -->
+
 	   <!-- FullCal css -->
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css">
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css">
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar-scheduler/1.9.4/scheduler.min.css">
     <!--Our CSS -->
     <link rel="stylesheet" href="css/main.css">
-  	<!--All this js like jquery and moment are dependencies of fulcal and need to be imported before it tries to draw the cal -->
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
+
     <!--FullCalendar loading -->
+
+      <title>Main view</title>
+    </head>
+  <body>
+    <!-- Modal -->
+    <div class="modal fade" id="classModal" tabindex="-1" role="dialog" aria-labelledby="classModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="classModalLabel">326: Web Programming</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Professor: Tim Richards</p>
+            <p>Description: The World Wide Web was proposed originally as a collection of static documents inter-connected by hyperlinks. Today, the web has grown into a rich platform, built on a variety of protocols, standards, and programming languages, that aims to replace many of the services traditionally provided by a desktop operating system. Topics will include: producing dynamic content using a server-based language, content serving databases and XML documents, session state management, multi-tier web-based architectures, web security, and core technologies including HTTP, HTML5, CSS, JavaScript, and SQL will be emphasized. This course will also study concepts and technologies including AJAX, social networking, mashups, JavaScript libraries (e.g., jQuery), and web security. This course is hands-on and project-based; students will construct a substantial dynamic web application based on the concepts, technologies, and techniques presented during lecture. This course satisfies the IE Requirement. Prerequisites: COMPSCI 220 or COMPSCI 230. 3 credits.
+            </p>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  	<div class="container-fluid">
+      <div class="row">
+  			<div class="col-3">
+          <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#classModal">
+          Class Detail Dialog
+        </button>
+
+
+        <div class="md-form pb-3">
+          <input class="form-control search-box" type="text" placeholder="3.. | 4.."  disabled aria-label="Search">
+        </div>
+        <div class="accordion" id="accordianSearch">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  CS311
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordianSearch">
+              <div class="card-body">
+                <p>Rating: 4.7</p>
+                <p>Instructor: Akshay Krishnamurthy</p>
+                <p>Prerequisites: 250</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  CS326
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordianSearch">
+              <div class="card-body">
+                <p>Rating: 3.8</p>
+                <p>Instructor: Akshay Krishnamurthy</p>
+                <p>Prerequisites: 250</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  CS377
+                </button>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordianSearch">
+              <div class="card-body">
+                <p>Rating: 5.0</p>
+                <p>Instructor: Akshay Krishnamurthy</p>
+                <p>Prerequisites: 250</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  CS383
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordianSearch">
+              <div class="card-body">
+              <p>Rating: 2.3</p>
+              <p>Instructor: Akshay Krishnamurthy</p>
+              <p>Prerequisites: 250</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header " id="headingFive">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  CS410
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordianSearch">
+              <div class="card-body">
+              <p>Rating: 2.3</p>
+              <p>Instructor: Akshay Krishnamurthy</p>
+              <p>Prerequisites: 250</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  			</div>
+  			<div class="col-9">
+				<div id='calendar'></div>
+  			</div>
+  		</div>
+  	</div>
+
+    <!-- Optional JavaScript -->
+    <!-- Moment, jQuery, fullCal, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar-scheduler/1.9.4/scheduler.min.js"></script>
-  	<script>
+
+    <script>
   		$(function() {
 
   		  $('#calendar').fullCalendar({
   			schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-  			height: parent,
   			weekends: false,
   			columnFormat: 'ddd',
+
   			defaultView: 'basicWeek',
-  			events: [
+        events: [
   			{
   			  title  : 'CS326',
   			  start: '1:25',
@@ -41,65 +176,26 @@
           title  : 'CS410',
           start: '14:30',
           end: '15:45',
+          dow: [ 1, 3, 5 ]
+        },
+        {
+          title  : 'CS311',
+          start: '11:30',
+          end: '12:45',
           dow: [ 2, 4 ]
         },
-  			{
-  			  title  : 'event3',
-  			  start  : '2010-01-09T12:30:00',
-  			  allDay : false // will make the time show
-  			}
+        {
+          title  : 'CS383',
+          start: '16:00',
+          end: '17:15',
+          dow: [ 1, 3, 5 ]
+        }
+
   			]
   		  })
 
   		});
   	</script>
-      <title>Main view</title>
-    </head>
-  <body>
-  	<div class="container-fluid">
-      <div class="row">
-  			<div class="col-3">
-          <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#classModal">
-          Class Detail Dialog
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="classModal" tabindex="-1" role="dialog" aria-labelledby="classModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="classModalLabel">326: Web Programming</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p>Professor: Tim Richards</p>
-                <p>Description: The World Wide Web was proposed originally as a collection of static documents inter-connected by hyperlinks. Today, the web has grown into a rich platform, built on a variety of protocols, standards, and programming languages, that aims to replace many of the services traditionally provided by a desktop operating system. Topics will include: producing dynamic content using a server-based language, content serving databases and XML documents, session state management, multi-tier web-based architectures, web security, and core technologies including HTTP, HTML5, CSS, JavaScript, and SQL will be emphasized. This course will also study concepts and technologies including AJAX, social networking, mashups, JavaScript libraries (e.g., jQuery), and web security. This course is hands-on and project-based; students will construct a substantial dynamic web application based on the concepts, technologies, and techniques presented during lecture. This course satisfies the IE Requirement. Prerequisites: COMPSCI 220 or COMPSCI 230. 3 credits.
-                </p>
-
-
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-              </div>
-            </div>
-          </div>
-        </div>
-          This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes! This is where the sidebar code goes!
-  			</div>
-  			<div class="col-9">
-				<div id='calendar'></div>
-  			</div>
-  		</div>
-  	</div>
-
-    <!-- Optional JavaScript -->
-    <!-- Moment, jQuery, fullCal, then Popper.js, then Bootstrap JS -->
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
