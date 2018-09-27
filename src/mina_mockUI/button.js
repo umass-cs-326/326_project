@@ -1,24 +1,5 @@
-// Completed Guessing Game - Version 2.0
-//  This version of the game demonstrates how to better organize a
-//  JavaScript application. Rather than create global variables that
-//  can accidentally (or maliciously) be tampered with we rely on two
-//  important techniques: objects and anonymous function.
-//
-//  We also add some debugging output to show how you can use some
-//  easy techniques to verify what we assume.
-//
 
-// This is equivalent to the "main" function of a traditional
-// programming language. This is *very* important, otherwise, we will
-// not have an entry point into the program and nothing will happen.
 window.addEventListener('load', init);
-
-
-//$(document).ready(function() {
-//       $(".dropdown-menu li a").click(function(){
-//         $(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
-//       });
-//});
 
 var x, i, j, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/
@@ -91,4 +72,4 @@ function closeAllSelect(elmnt) {
 }
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
-document.addEventListener("click", closeAllSelect); 
+document.addEventListener("click", closeAllSelect);
