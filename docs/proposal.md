@@ -30,7 +30,10 @@ User’s first name, last name, gender, bio and student ID card picture. We use 
 3. The third one is search bar for user directly look for a certain movie, or movie’s cast includes certain actor/actress.
 4. The fourth one is a two-tab block: match and request. Inside “match” tab, user can view all available requests of certain movie with user basic information, location and time. In “ request” tab, user can start a request of certain movie.
 5. The fifth one is an instant message box for users to communicate once they matched with each other.
+6. The sixth one is a user profile page where user can upload a profile picture, a bio, their movie ratings, and favortie movies.
 
-
-![example image](imgs/chick.jpg)
-
+![Homepage/movie list](imgs/damin_mock.jpg)
+![filter/search page](imgs/kurtis_mock.jpg)
+![Match page](imgs/apoorva_mock.jpg)
+![Message page](imgs/long_mock.jpg)
+![user profile page](imgs/frick_mock.jpg)
