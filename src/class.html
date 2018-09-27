@@ -8,7 +8,6 @@
     
     <!-- MDBootstrap Stuff -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/css/mdb.min.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/js/mdb.min.js"></script>
 
     <!-- Bootstrap Stuff -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -76,33 +75,50 @@
         <!--Title-->
         <h1 class="card-title h2-responsive mt-2 font-bold"><strong>LSC326: Under Water Basket Weaving</strong></h1>
         <!--Subtitle-->
-        <p class="mt-4"><strong>What students really think...</strong></p>
-        <h1>5/5</h1>
-
+        <p class="mt-4"><strong>Students think this class is...</strong></p>
+        <h1>4/5</h1>
+        <div><i>Good! - Recommended class!</i></div>
         <hr class="my-4 rgba-white-light">
 
         <button type="button" class="btn btn-outline-white">Review Class <i class="fa fa-diamond ml-1"></i></button>
-    
-        <!--Text-->
-        <!-- <div class="d-flex justify-content-center">
-            <p class="card-text my-2" style="max-width: 43rem;">
-            
-            </p>
-        </div> -->
+        <div class="review-block-rate">
+            <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                        <i class="material-icons">star</i>
+                    </button>
+            <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                        <i class="material-icons">star</i>
+                    </button>
+            <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                        <i class="material-icons">star</i>
+                    </button>
+            <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                        <i class="material-icons">star</i>
+                    </button>
+            <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                        <i class="material-icons">star</i>
+                    </button>
+        </div>
     </div>
     <!--Jumbotron-->
 
     <div class="container">
         <div class="row review-section">
-            <div class="col-md-2 user-profile-comment">
+            <div class="col-xs-2 col-sm-2 col-md-2 user-profile-comment">
                 <img class="user-profile-img" src="https://image.flaticon.com/icons/svg/163/163801.svg">
                 <div class="user-prifile-name">Thomas Jefferson</div>
                 <div class="user-profile-year">Junior</div>
                 <div class="user-profile-major">Architecture</div>
             </div>
             <div class="col-md-10">
-                I had to come back from the dead and take this class.  It's that amazing!
-                All the stars! 5/5
+                <div class="review">
+                    I had to come back from the dead and take this class.  It's that amazing!
+                    All the stars! 5/5
+                </div>
+                <div class="review-rating">
+                    <span class="vote upvote"><img src="https://image.flaticon.com/icons/svg/126/126473.svg"> </span>
+                    <span class="vote downvote"><img src="https://image.flaticon.com/icons/svg/126/126098.svg"></span>
+                    <span class="good-rating">+5</span>
+                </div>
             </div>
         </div>
         <div class="row review-section">
@@ -113,19 +129,33 @@
                 <div class="user-profile-major">Chemical Engineer</div>
             </div>
             <div class="col-md-10">
-                This class gave me hope.  The class was fun and exciting.  The homework was reasonable.  I learned a lot!
+                <div class="reivew">
+                        I enjoyed the class.  The assignments were very easy, but the exams were hard to study for.  Not sure what I expected.  I wasn't the best at being underwater.  
+                </div>
+                <div class="review-rating">
+                    <span class="vote upvote"><img src="https://image.flaticon.com/icons/svg/126/126473.svg"> </span>
+                    <span class="vote downvote"><img src="https://image.flaticon.com/icons/svg/126/126098.svg"></span>
+                    <span class="bad-rating">-3</span>
+                </div>
             </div>
         </div>
         <div class="row review-section">
             <div class="col-md-2 user-profile-comment">
-                <img class="user-profile-img" src="https://image.flaticon.com/icons/svg/163/163801.svg">
+                <img class="user-profile-img" src="https://image.flaticon.com/icons/svg/135/135633.svg">
                 <div class="user-prifile-name">ToasterBoi</div>
                 <div class="user-profile-year">Junior</div>
                 <div class="user-profile-major">Nursing</div>
             </div>
             <div class="col-md-10">
-                Literally the bestest class in all the world.  Never has a class been this amazing.
-                I never fell asleep.  NOT ONCE.  That's a miracle.  No books, no exams.  No crying.
+                <div class="reivew">
+                    Literally the bestest class in all the world.  Never has a class been this amazing.
+                    I never fell asleep.  NOT ONCE.  That's a miracle.  No books, no exams.  No crying.
+                </div>
+                <div class="review-rating">
+                    <span class="vote upvote"><img src="https://image.flaticon.com/icons/svg/126/126473.svg"> </span>
+                    <span class="vote downvote"><img src="https://image.flaticon.com/icons/svg/126/126098.svg"></span>
+                    <span class="good-rating">+15</span>
+                </div>
             </div>
         </div>
         <div class="row review-section">
@@ -136,7 +166,14 @@
                 <div class="user-profile-major">Computer Science</div>
             </div>
             <div class="col-md-10">
-                Don't worry about drowning! I was terrified of dying, but this class is super safe. The assignments are reasonable.  You have plenty of time to get them done and it's a blast! I made some great art while working on my breathing.  BEST CLASS EVER!
+                <div class="reivew">
+                    Don't worry about drowning! I was terrified of dying, but this class is super safe. The assignments are reasonable.  You have plenty of time to get them done and it's a blast! I made some great art while working on my breathing.  BEST CLASS EVER!
+                </div>
+                <div class="review-rating">
+                    <span class="vote upvote"><img src="https://image.flaticon.com/icons/svg/126/126473.svg"> </span>
+                    <span class="vote downvote"><img src="https://image.flaticon.com/icons/svg/126/126098.svg"></span>
+                    <span class="good-rating">+2</span>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -152,5 +189,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/js/mdb.min.js"></script>
 
 </html>

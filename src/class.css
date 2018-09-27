@@ -19,3 +19,37 @@
     border-color: black;
     border-radius: 5px;
 }
+
+.review {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.review-rating {
+    display: inline;
+    position: relative;
+}
+
+.upvote > img {
+    height: 25px;
+}
+
+.downvote > img{
+    height: 25px;
+}
+
+.vote {
+    margin: 5px;
+}
+
+.vote:hover {
+    cursor: pointer;
+}
+
+.good-rating {
+    color: green;
+}
+
+.bad-rating {
+    color: red;
+}
