@@ -20,11 +20,21 @@ Austra handles class sections as objects with static attributes (instructor, tim
 # User Interface
 
 Austra has a static landing page, which provides links to login and register. Then is has login and registration forms, and the registration form has a required field to upload an unofficial transcript from SPIRE.
+![main](imgs/3.png)
 
 The main view has two major components - the class search and the user class session schedule. 
 
-The class search is an accordian view that lists all eligible classes. When a class is selected in the accordian, it provides deeper information on the class session. The elements of the accordion are color-coded based on eligibility. There is a search bar on the top, which filters items from the accordion based on the query entered.
+![main](imgs/5.png)
 
+The class search is an accordian view that lists all eligible classes. When a class is selected in the accordian, it provides deeper information on the class session. The elements of the accordion are color-coded based on eligibility. There is a search bar on the top, which filters items from the accordion based on the query entered.
+![main](imgs/5.png)
 The user class session schedule is a weekly calendar populated with all selected candidate class sessions. When a block on the calendar is clicked a popover appears with all information on the class session. If multiple classes conflict, the calendar provides visual feedback.
+![main](imgs/5.png)
 
 Austra also supports a prerequisite tree view, which tracks a user’s progress through a degree that requires specific prerequisite requirements. The tree view is a graphical representation of the progress with each node being a required class. Nodes are colored to differentiate between required, suggested, taken, and unavailable classes. 
+![main](imgs/2.png)
+
+There is a page for users to see details about classes and create dynamic data relating to them such as comments and updooting / downdooting. 
+
+![main](imgs/1.png)
+
