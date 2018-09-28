@@ -20,7 +20,7 @@ Austra handles class sections as objects with static attributes (instructor, tim
 # User Interface
 
 Austra has a static landing page, which provides links to login and register. Then is has login and registration forms, and the registration form has a required field to upload an unofficial transcript from SPIRE.
-![main](imgs/3.png)
+![main](imgs/3.jpg)
 
 The main view has two major components - the class search and the user class session schedule. 
 
@@ -37,4 +37,8 @@ Austra also supports a prerequisite tree view, which tracks a user’s progress 
 There is a page for users to see details about classes and create dynamic data relating to them such as comments and updooting / downdooting. 
 
 ![main](imgs/1.png)
+
+There is a page for a user profile. This is where people will set up their friends, change password, and load in information from spire PDFs. 
+
+![main](imgs/4.png)
 
