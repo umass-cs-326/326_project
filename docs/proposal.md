@@ -35,5 +35,6 @@ User’s first name, last name, gender, bio and student ID card picture. We use 
 ![Homepage/movie list](imgs/damin_mock.png)
 ![filter/search page](imgs/kurtis_mock.png)
 ![Match page](imgs/apoorva_mock.png)
+![Request page](imgs/kuhu_mock.png)
 ![Message page](imgs/long_mock.png)
 ![user profile page](imgs/frick_mock.png)
