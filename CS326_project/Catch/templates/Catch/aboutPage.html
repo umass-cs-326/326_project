@@ -1,3 +1,9 @@
+{% extends 'Catch/navbar.html' %}
+{% block content %}
+
+{% load staticfiles %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,13 +25,13 @@
     </div>
 
     <div class = "col-sm-4" style = "background-color:white;">
-      <img src="dog.jpg" class="img-circle" alt="dog">
+      <img src="{% static 'Catch/dog.jpg' %}" class="img-circle" alt="dog">
     </div>
   </div>
 
   <div class="row">
     <div class = "col-sm-4" style = "background-color:white;">
-      <img src="cat.jpg" class="img-rounded" alt="cat">
+      <img src="{% static 'Catch/cat.jpg' %}" class="img-rounded" alt="cat">
     </div>
     <div class="col-sm-8" style="background-color:white;">
       <p>
@@ -35,3 +41,5 @@
 
 </body>
 </html>
+
+{% endblock %}
