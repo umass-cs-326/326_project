@@ -11,56 +11,85 @@
     <body>
         <div class="icon-bar">
             <img class="logo" src="logo.png" alt="Logo">
-<<<<<<< HEAD
             <a class="active" href="homePage.html"><i class="fa fa-home"></i></a> 
             <a href="events.html">Events</a> 
             <a>Profile</a>
             <a>Map</a> 
-=======
-            <a class="active" href="homePage.html"><i class="fa fa-home"></i></a>
-            <a>Events</a>
-            <a>Profile</a>
-            <a>Map</a>
->>>>>>> 916be4b67ef705359f65177eba31589d6631a83c
             <a>About</a>
           </div>
-          <ul>
-              <li><a href="default.asp">Hosting</a></li>
-              <li><a href="news.asp">Going</a></li>
-              <li><a href="contact.asp">Interested</a></li>
-              <li><a href="about.asp">Following</a></li>
-          </ul>
-          <div class="container">
-              <table class="table">
-                <tbody>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Hosting')" id="defaultOpen">Hosting</button>
+            <button class="tablinks" onclick="openCity(event, 'Going')">Going</button>
+            <button class="tablinks" onclick="openCity(event, 'Interested')">Interested</button>
+            <button class="tablinks" onclick="openCity(event, 'Following')">Following</button>
+          </div>
+          
+          <div id="Hosting" class="tabcontent">
+              <div class="container">
+                  <table class="table">
+                  <tbody>
                   <tr>
-
-                    <td><img src='dog.jpg'></td>
-                    <td>
-                      <div>Host: You</div>
-                      <div> Name: Dave's Dog Party!</div>
-                      <div>Address: 123 Street City, 01010</div>
-                      <div>Date: 11/11/2018</div>
-                      <div>Time: 1 pm </div>
-                      <div>Capacity: 5/10</div>
-                    </td>
+                  
+                  <td><img src='dog.jpg'></td>
+                  <td>
+                  <div>Host: You</div>
+                  <div> Name: Dave's Dog Party!</div>
+                  <div>Address: 123 Street City, 01010</div>
+                  <div>Date: 11/11/2018</div>
+                  <div>Time: 1 pm </div>
+                  <div>Capacity: 5/10</div>
+                  </td>
                   </tr>
+          </div>
 
+          <div id="Going" class="tabcontent">
+              <div class="container">
+                  <table class="table">
+                  <tbody>
                   <tr>
-                    <td><img src='cat.jpg'></td>
-                    <td>
-                      <div>Host: Cathy</div>
-                      <div> Name: Cathy's Cat Compendium!</div>
-                      <div>Address: 100 Street City, 02090</div>
-                      <div>Date: 10/10/2018</div>
-                      <div>Time: 10 am </div>
-                      <div>Capacity: 99/100</div>
-                    </td>
+                  
+                  <td><img src='cat .jpg'></td>
+                  <td>
+                  <div>Host: You</div>
+                  <div> Name: Dave's Dog Party!</div>
+                  <div>Address: 123 Street City, 01010</div>
+                  <div>Date: 11/11/2018</div>
+                  <div>Time: 1 pm </div>
+                  <div>Capacity: 5/10</div>
+                  </td>
                   </tr>
-                </tbody>
-              </table>
-            </div>
+          </div>
+
+          <div id="Interested" class="tabcontent">
+              <h3>Interested</h3>
+              <p>party</p> 
+          </div>
+
+          <div id="Following" class="tabcontent">
+              <h3>following</h3>
+              <p>party</p> 
+          </div>
 
 
+
+          <script>
+              function openCity(evt, cityName) {
+                  var i, tabcontent, tablinks;
+                  tabcontent = document.getElementsByClassName("tabcontent");
+                  for (i = 0; i < tabcontent.length; i++) {
+                      tabcontent[i].style.display = "none";
+                  }
+                  tablinks = document.getElementsByClassName("tablinks");
+                  for (i = 0; i < tablinks.length; i++) {
+                      tablinks[i].className = tablinks[i].className.replace(" active", "");
+                  }
+                  document.getElementById(cityName).style.display = "block";
+                  evt.currentTarget.className += " active";
+              }
+              
+              // Get the element with id="defaultOpen" and click on it
+              document.getElementById("defaultOpen").click();
+          </script>
     </body>
   </html>
