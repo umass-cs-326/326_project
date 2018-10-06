@@ -3,37 +3,33 @@
 
 {% load staticfiles %}
 
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <style>
-    body{
-      background-color: #EEDCFB;
-      }
-      *{
-	  box-sizing: border-box;
-      }
-      .column {
-	  float: left;
-	  padding: 15px;
-      }
-      #left{
-	  width: 30%;
-      }
-      #right{
-	  width: 70%;
-      }
-      h2{
-	  background-color: #FFFA9B;
-      }
-    </style>
-    <title>Events</title>
-  </head>
-  <body>
-
-    <div class = "row">
-      <div class="col-sm-4" style="background-color: #FCEDFF;">
+<!-- <html lang="en"> -->
+<!-- <head>
+  <style>
+  body{
+    background-color: #EEDCFB;
+  }
+  *{
+    box-sizing: border-box;
+  }
+  .column {
+    float: left;
+    padding: 15px;
+  }
+  #left{
+    width: 30%;
+  }
+  #right{
+    width: 70%;
+  }
+  h2{
+    background-color: #FFFA9B;
+  }
+</style>
+<title>Events</title>
+</head> -->
+  <div class = "row">
+    <div class="col-sm-4" style="background-color: #FCEDFF;">
       <form target="_self" method="POST">
         <h4>Event Type</h4>
         <label class="container">Past Events
@@ -103,7 +99,6 @@
 
 </div>
     <!-- </div> -->
-  </body>
 
-</html>
+<!-- </html> -->
 {% endblock %}
