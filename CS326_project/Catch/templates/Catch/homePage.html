@@ -1,60 +1,44 @@
-{% load static %}
+{% extends 'Catch/navbar.html' %}
+{% block content %}
 
-<!doctype html>
-<html lang="en">
-  <head>
-        <meta charset="utf-8">
-        <title>Home</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="{% static 'Catch/style.css' %}">
-        <meta name="author" content="COMPSCI 326">
-      </head>
-    <body>
-        <div class="icon-bar">
-            <img class="logo" src="{% static 'Catch/Logo.png' %}" alt="Logo">
-            <a class="active" href="homePage.html"><i class="fa fa-home"></i></a>
-            <a href="events.html">Events</a>
-            <a>Profile</a>
-            <a>Map</a>
-          </div>
-          <ul>
-              <li><a href="default.asp">Hosting</a></li>
-              <li><a href="news.asp">Going</a></li>
-              <li><a href="contact.asp">Interested</a></li>
-              <li><a href="about.asp">Following</a></li>
-          </ul>
-          <div class="container">
-              <table class="table">
-                <tbody>
-                  <tr>
+{% load staticfiles %}
 
-                    <td><img src="{% static 'Catch/dog.jpg' %}"></td>
-                    <td>
-                      <div>Host: You</div>
-                      <div> Name: Dave's Dog Party!</div>
-                      <div>Address: 123 Street City, 01010</div>
-                      <div>Date: 11/11/2018</div>
-                      <div>Time: 1 pm </div>
-                      <div>Capacity: 5/10</div>
-                    </td>
-                  </tr>
+<ul>
+    <li><a href="default.asp">Hosting</a></li>
+    <li><a href="news.asp">Going</a></li>
+    <li><a href="contact.asp">Interested</a></li>
+    <li><a href="about.asp">Following</a></li>
+</ul>
 
-                  <tr>
-                    <td><img src="{% static 'Catch/cat.jpg' %}"></td>
-                    <td>
-                      <div>Host: Cathy</div>
-                      <div> Name: Cathy's Cat Compendium!</div>
-                      <div>Address: 100 Street City, 02090</div>
-                      <div>Date: 10/10/2018</div>
-                      <div>Time: 10 am </div>
-                      <div>Capacity: 99/100</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+<div class="container">
+  <table class="table">
+    <tbody>
+      <tr>
 
+        <td><img src="{% static 'Catch/dog.jpg' %}"></td>
+        <td>
+          <div>Host: You</div>
+          <div> Name: Dave's Dog Party!</div>
+          <div>Address: 123 Street City, 01010</div>
+          <div>Date: 11/11/2018</div>
+          <div>Time: 1 pm </div>
+          <div>Capacity: 5/10</div>
+        </td>
+      </tr>
 
-    </body>
-  </html>
+      <tr>
+        <td><img src="{% static 'Catch/cat.jpg' %}"></td>
+        <td>
+          <div>Host: Cathy</div>
+          <div> Name: Cathy's Cat Compendium!</div>
+          <div>Address: 100 Street City, 02090</div>
+          <div>Date: 10/10/2018</div>
+          <div>Time: 10 am </div>
+          <div>Capacity: 99/100</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
