@@ -17,6 +17,9 @@ def events(request):
 def profile(request):
     return render(request, 'Catch/profilePage.html')
 
+def forum(request):
+    return render(request, 'Catch/Events_form.html')
+
 def map(request):
     return render(request, 'Catch/mapPage.html',)
 

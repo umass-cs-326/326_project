@@ -1,3 +1,10 @@
+
+
+{% extends 'Catch/navbar.html' %}
+{% block Events_active %}active{% endblock %}
+
+
+{% block body %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +14,31 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta name="author" content="COMPSCI 326">
   </head>
+
+
     <body>
+
+        <div class = "container-fluid">
+            <div class = "row">
+                <div class = "panel panel-body"></div>
+                    <div class = "col-sm-12 col-md-7">
+                            <div class = "panel-body">
+                                <form class ="form-horizontal" action ="" method = "post" encType = "multipart/form-data">
+                                    {% csrf_token %}
+                                    {% include 'Catch/form-template.html' %}
+                                    <div class = "form-group">
+                                            <div class = "col-offset-2 col-sm-10">
+                                            <button type="submit" class = "btn btn-success">Submit</button> 
+                                            </div>    
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <form>
             Name of Event?<br>
@@ -51,3 +82,5 @@
     </body>
 
 </html>
+
+{% endblock %}
