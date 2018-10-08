@@ -1,35 +1,11 @@
 {% extends 'Catch/navbar.html' %}
+
 {% block content %}
 
 {% load staticfiles %}
 
-<!-- <html lang="en"> -->
-<!-- <head>
-  <style>
-  body{
-    background-color: #EEDCFB;
-  }
-  *{
-    box-sizing: border-box;
-  }
-  .column {
-    float: left;
-    padding: 15px;
-  }
-  #left{
-    width: 30%;
-  }
-  #right{
-    width: 70%;
-  }
-  h2{
-    background-color: #FFFA9B;
-  }
-</style>
-<title>Events</title>
-</head> -->
   <div class = "row">
-    <div class="col-sm-4" style="background-color: #FCEDFF;">
+    <div class="col-sm-4">
       <form target="_self" method="POST">
         <h4>Event Type</h4>
         <label class="container">Past Events
@@ -77,28 +53,22 @@
 	</form>
       </div>
 
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'Catch/dog.jpg' %}" alt="Dave's Dog Party!">
-        <div class="card-body">
-          <h5 class="card-title">Dave's Dog Party!</h5>
-          <p class="card-text">Me and my dog Cardie love to party!</p>
-          <p>Date: 11/11/2018</p>
-          <a href="#" class="btn btn-primary">More details</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'Catch/cat.jpg' %}" alt="Cathy's Cat Compendium">
-        <div class="card-body">
-          <h5 class="card-title">Cathy's Cat Compendium</h5>
-          <p class="card-text">I'm trying to get my kitten to socialize with other kittens. Her name is Carrie.</p>
-          <p>Date: 10/10/2018</p>
-          <a href="#" class="btn btn-primary">More details</a>
-        </div>
-      </div>
+        {% if Events %}
+          {% for Event in Events %}
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{% static 'Catch/cat.jpg' %}" alt="Cathy's Cat Compendium">
+              <div class="card-body">
+                <h5 class="card-title">{{ Event.event_name }}</h5>
+                <p class="card-text">{{ Event.event_description }}</p>
+                <p class="card-text">Event Capacity: {{ Event.event_capacity }}</p>
+                <a href="#" class="btn btn-primary">More details</a>
+              </div>
+            </div>
+            {% endfor %}
+      {% else %}
+        <p>No Events are available.</p>
+      {% endif %}
 
 </div>
-    <!-- </div> -->
 
-<!-- </html> -->
 {% endblock %}

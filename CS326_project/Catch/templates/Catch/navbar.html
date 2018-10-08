@@ -1,27 +1,32 @@
 {% load static %}
 
-<!doctype html>
-<html lang="en">
-  <head>
-        <meta charset="utf-8">
-        <title>Catch</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-        <link rel="stylesheet" type="text/css" href="{% static 'Catch/style.css' %}">
-        <meta name="author" content="COMPSCI 326">
-      </head>
-      <!-- <h1 class="logo"></h1> -->
-        <div class="icon-bar" id = "header">
-            <img class="logo" src="{% static 'Catch/Logo.png' %}" alt="Logo">
-            <a href="homePage.html"><i class="fa fa-home"></i></a>
-            <a class="active" href="events.html">Events</a>
-            <a>Following</a>
-            <a>Map</a>
-            <a>About</a>
-          </div>
-    <body>
-      {% block content %}
-      {% endblock %}
-    </body>
-  </html>
+<!DOCTYPE HTML>
+<html lang="EN">
+<head>
+  <meta charset="utf-8">
+  <title>Catch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- https://getbootstrap.com/-->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'Catch/style.css' %}">
+  <meta name="author" content="COMPSCI 326">
+</head>
+
+<div class="icon-bar" id = "header">
+  <img class="logo" src="{% static 'Catch/Logo.png' %}" alt="Logo">
+  <a href="{% url 'homePage' %}">Home</a>
+  <a href="{% url 'eventsPage' %}">Events</a>
+  <a href="{% url 'profilePage' %}">Profile</a>
+  <a href="{% url 'mapPage' %}">Map</a>
+  <a href="{% url 'aboutPage' %}">About</a>
+</div>
+<body>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

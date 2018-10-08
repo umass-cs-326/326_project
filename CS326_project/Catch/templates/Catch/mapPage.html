@@ -2,104 +2,88 @@
 {% block content %}
 
 {% load staticfiles %}
+<style>
+#map {
+  height: 95%;
+}
+html, body {
+  height: 95%;
+  margin: 0;
+  padding: 0;
+}
+</style>
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Map</title>
-    <!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div id="map"></div>
+<script>
+  var map, infoWindow, infoWindow1;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 42.408387, lng: -72.539822},
+      zoom: 6
+    });
+    infoWindow = new google.maps.InfoWindow;
+    infoWindow1 = new google.maps.InfoWindow;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
 
-    <style>
-      #map {
-        height: 95%;
-      }
-      html, body {
-        height: 95%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
+      infoWindow.setPosition({lat: 44.934695, lng: -69.958306});
+      infoWindow.setContent("<div style='float:left'><img src='dog.jpg'><div style='float:right; padding: 10px;'><b>Dave's Dog Party!</b><br/>123 Street<br/> City, 01010</div>");
 
-  <body>
-    <div id="map"></div>
-    <script>
-      var map, infoWindow, infoWindow1;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 42.408387, lng: -72.539822},
-          zoom: 6
-        });
-        infoWindow = new google.maps.InfoWindow;
-        infoWindow1 = new google.maps.InfoWindow;
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
+      infoWindow1.setPosition({lat: 43.357197, lng: -74.959811});
+      infoWindow1.setContent("<div style='float:left'><img src='cat.jpg'><div style='float:right; padding: 10px;'><b>Cathy's Cat Compendium!</b><br/>100 Street<br/> City, 02090</div>");
 
-            infoWindow.setPosition({lat: 44.934695, lng: -69.958306});
-            infoWindow.setContent("<div style='float:left'><img src='dog.jpg'><div style='float:right; padding: 10px;'><b>Dave's Dog Party!</b><br/>123 Street<br/> City, 01010</div>");
+      var marker = new google.maps.Marker({position: pos, map: map});
 
-            infoWindow1.setPosition({lat: 43.357197, lng: -74.959811});
-            infoWindow1.setContent("<div style='float:left'><img src='cat.jpg'><div style='float:right; padding: 10px;'><b>Cathy's Cat Compendium!</b><br/>100 Street<br/> City, 02090</div>");
+      infoWindow.open(map);
+      infoWindow1.open(map);
+      map.setCenter(pos);
 
-            var marker = new google.maps.Marker({position: pos, map: map});
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
 
-            infoWindow.open(map);
-            infoWindow1.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-        console.log("test");
-      }
+    } else {
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+  }
 
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.open(map);
-      }
-    </script>
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.open(map);
+  }
+</script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY_HERE&callback=initMap"></script>
-    <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Event Name</th>
-            <th>Location</th>
-            <th>Occupants</th>
-            <th>Time Left</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY_HERE&callback=initMap"></script>
 
-            <td>Cathy's Cat Compendium!</td>
-            <td>100 Street City, 02090</td>
-            <td>5/10</td>
-            <td>3 hours</td>
-          </tr>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Location</th>
+        <th>Occupants</th>
+        <th>Time Left</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cathy's Cat Compendium!</td>
+        <td>100 Street City, 02090</td>
+        <td>5/10</td>
+        <td>3 hours</td>
+      </tr>
+      <tr>
+        <td>Dave's Dog Party!</td>
+        <td>123 Street City, 01010</td>
+        <td>99/100</td>
+        <td>54 minutes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-          <tr>
-
-            <td>Dave's Dog Party!</td>
-            <td>123 Street City, 01010</td>
-            <td>99/100</td>
-            <td>54 minutes</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </body>
-  </html>
 {% endblock %}
