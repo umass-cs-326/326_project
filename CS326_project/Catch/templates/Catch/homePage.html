@@ -4,7 +4,8 @@
 {% load staticfiles %}
 
 
-<button type="button" onclick="window.open('forumPage.html','_blank')">Create Event</button>
+<!-- <button type="button" onclick="window.open('forumPage.html','_blank')">Create Event</button> -->
+<a href="{% url 'Events-add' %}">Create Event</a>
 
 <ul>
     <li><a href="default.asp">Hosting</a></li>
