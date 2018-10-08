@@ -4,7 +4,6 @@
 
 {% load staticfiles %}
 
-  <div class = "row">
     <div class="col-sm-4">
       <form target="_self" method="POST">
         <h4>Event Type</h4>
@@ -53,22 +52,27 @@
 	</form>
       </div>
 
-        {% if Events %}
-          {% for Event in Events %}
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{% static 'Catch/cat.jpg' %}" alt="Cathy's Cat Compendium">
-              <div class="card-body">
-                <h5 class="card-title">{{ Event.event_name }}</h5>
-                <p class="card-text">{{ Event.event_description }}</p>
-                <p class="card-text">Event Capacity: {{ Event.event_capacity }}</p>
-                <a href="#" class="btn btn-primary">More details</a>
+      {% if Events %}
+        {% for Event in Events %}
+        <div class="card">
+          <div class="row ">
+            <div class="col-md-4">
+                <img src="{% static 'Catch/cat.jpg' %}" class="w-100">
+            </div>
+              <div class="col-md-8 px-3">
+                <div class="card-block px-3">
+                  <h4 class="card-title">{{ Event.event_name }}</h4>
+                  <p class="card-text">{{ Event.event_description }}</p>
+                  <p class="card-text">{{ Event.event_capacity }}</p>
+                  <a href="#" class="btn btn-primary">Read More</a>
+                </div>
               </div>
             </div>
-            {% endfor %}
-      {% else %}
-        <p>No Events are available.</p>
-      {% endif %}
+          </div>
+          {% endfor %}
+    {% else %}
+      <p>No Events are available.</p>
+    {% endif %}
 
-</div>
 
 {% endblock %}
