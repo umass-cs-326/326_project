@@ -13,7 +13,10 @@ class EventsCreate(CreateView):
 
 
 def home(request):
-    return render(request, 'Catch/homePage.html',)
+    eventList = Events.objects.all()
+    context = {'Events': eventList}
+    return render(request, 'Catch/homePage.html', context)
+
 
 def events(request):
     # list_events = Events.objects.filter(event_name__exact="Cathys Cat Emporium")
