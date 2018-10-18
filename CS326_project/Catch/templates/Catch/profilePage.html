@@ -16,6 +16,8 @@
   </div>
 </div>
 
+<a href="{% url 'Pet-add' %}">Add Pet</a>
+<!--
 <div class="container">
   <div class="row">
     <div class="col-sm-4" style="background-color:white;">
@@ -44,6 +46,29 @@
       </p>
     </div>
   </div>
-</div>
+</div> -->
+
+{% if Pets %}
+  {% for Pet in Pets %}
+  <div class="card">
+    <div class="row ">
+      <div class="col-md-4">
+          <img src="{% static 'Catch/cat.jpg' %}" class="w-100">
+      </div>
+        <div class="col-md-8 px-3">
+          <div class="card-block px-3">
+            <h4 class="card-title">{{ Pet.pet_name }}</h4>
+            <p class="card-text">{{ Pet.pet_age }}</p>
+            <p class="card-text">{{ Pet.pet_breed }}</p>
+            <p class="card-text">{{ Pet.pet_description }}</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+{% else %}
+<p>No Pets are available.</p>
+{% endif %}
 
 {% endblock %}

@@ -10,6 +10,7 @@ urlpatterns = [
     url('profilePage', views.profile, name = 'profilePage'),
     url('mapPage', views.map, name = 'mapPage'),
     url('aboutPage', views.about, name = 'aboutPage'),
-    url('add/$', views.EventsCreate.as_view(), name='Events-add')
+    url('add/$', views.EventsCreate.as_view(), name='Events-add'),
+    url('add/pet/$', views.PetCreate.as_view(), name = 'Pet-add')
     # url('navbar', views.navbar),
 ]
