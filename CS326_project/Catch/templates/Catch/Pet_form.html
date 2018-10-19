@@ -1,0 +1,26 @@
+{% extends 'Catch/navbar.html' %}
+{% block Pet_active %}active{% endblock %}
+
+
+{% block content %}
+
+<div class = "container-fluid">
+  <div class = "row">
+    <div class = "col-sm-12 col-md-7">
+      <div class = "panel panel-default">
+        <div class = "panel-body">
+          <form class ="form-horizontal" action ="" method = "post" encType = "multipart/form-data">
+            {% csrf_token %}
+            {% include 'Catch/form-template.html' %}
+            <div class = "form-group">
+              <div class = "col-sm-offset-2 col-sm-10">
+                <button type="submit" class = "btn btn-success">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

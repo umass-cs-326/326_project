@@ -1,0 +1,63 @@
+{% extends 'Catch/navbar.html' %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+    <div class="col-sm-4">
+      <form target="_self" method="POST">
+        <h4>Event</h4>
+        <select>
+          <option value="liveEvents">Live Events</option>
+          <option value="upcomingEvents">Upcoming Events</option>
+        </select>
+
+        <h3>Type of Pets</h3>
+        <select>
+          <option value="Dogs">Dogs</option>
+          <option value="Cats">Cats</option>
+          <option value="Hamsters">Hamsters</option>
+          <option value="Other">Other</option>
+        </select>
+  <h2>Location @ UMASS</h2>
+  
+  <div class="container">
+          <form>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" checked>ISB</label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio">ILC </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio">Tobin</label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio">Library</label>
+          </form>
+        </div>
+	  <center><input type="submit" value="Find Events"></center>
+	</form>
+ </div>
+
+      {% if Events %}
+        {% for Event in Events %}
+        <div class="card">
+          <div class="row ">
+            <div class="col-md-4">
+                <img src="{% static 'Catch/cat.jpg' %}" class="w-100">
+            </div>
+              <div class="col-md-8 px-3">
+                <div class="card-block px-3">
+                  <h4 class="card-title">{{ Event.event_name }}</h4>
+                  <p class="card-text">{{ Event.event_description }}</p>
+                  <p class="card-text">{{ Event.event_capacity }}</p>
+                  <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+    {% else %}
+      <p>No Events are available.</p>
+    {% endif %}
+
+
+{% endblock %}
