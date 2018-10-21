@@ -1,0 +1,149 @@
+{% extends "template-base.html" %}
+
+<!DOCHTML>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="description" content="UMarket Description">
+    <meta name="author" content="aTlas">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMarket - Browsing</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/browser.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        ul{
+            margin:auto;
+            width:80%;
+            padding:0;
+            text-align: center;
+            list-style-type:none;
+        }
+        li{
+            display:inline;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Dynamic product information-->
+    {% block product %}
+    <div class="row">
+        <div class="col-2" style="border-right: 1px solid black; width:100%;">
+            <form class="container" style="margin:auto; margin-top:24px; text-align: center">
+                <input type="checkbox">Filter 1<br>
+                <input type="checkbox">Filter 2<br>
+                <input type="checkbox">Filter 3<br>
+                <label>Price Range</label><br>
+                <input type="text" placeholder="Min" style="width:30%"> to <input type="text" placeholder="Max" style="width:30%">
+                <button type="submit">Apply Filter</button>
+            </form>
+        </div>
+        <div class="container col-9" style="margin-top:24px">
+            <form class="form-inline">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search" style="min-width:50%; margin-right: 24px;">
+                <button type="submit" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
+            </form>
+            <!--Use JS to populate this next div-->
+            <div class="container" style="border:1px solid black; max-height: 90%; margin:2px; padding:0; overflow-y:auto">
+                <div class="fillInLater row" style="border-bottom:1px solid black; margin:0px; min-width: 768px;">
+                    <div class="col-3"><img src="images/wet-dry-vacuum-cleaner.png" style="width:100%"></div>
+                    <div class="col-6">
+                        <label>{{ prod_name }}</label>
+                        <label style="float:right">{{ prod_price }}</label>
+                        <h6>Description: </h6>
+                        <p>
+                            {{ prod_desc }}
+                        </p>
+                    </div>
+                    <div class="col-3" style="text-align: center">
+                        <button type="button">I'm interested!</button>
+                        <div style="bottom:0; position:absolute;">
+                            <h5>Seller Rating: </h5>
+                            <label>{{ user_rating }}</label>
+                            <!--Would seller rating be different for user rating?-->
+                        </div>
+                    </div>
+                </div>
+                <div class="fillInLater row" style="border-bottom:1px solid black; width:100%; margin:0px">
+                    <div class="col-3"><img src="images/wet-dry-vacuum-cleaner.png" style="width:100%"></div>
+                    <div class="col-6">
+                        <label>{{ prod_name }}</label>
+                        <label style="float:right">{{ prod_price }}</label>
+                        <h6>Description: </h6>
+                        <p>
+                            {{ prod_desc }}
+                        </p>
+                    </div>
+                    <div class="col-3" style="text-align: center">
+                        <button type="button">I'm interested!</button>
+                        <div style="bottom:0; position:absolute;">
+                            <h5>Seller Rating: </h5>
+                            <label>{{ user_rating }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="fillInLater row" style="border-bottom:1px solid black; width:100%; margin:0px">
+                    <div class="col-3"><img src="images/wet-dry-vacuum-cleaner.png" style="width:100%"></div>
+                    <div class="col-6">
+                        <label>{{ prod_name }}</label>
+                        <label style="float:right">{{ prod_price }}</label>
+                        <h6>Description: </h6>
+                        <p>
+                            {{ prod_desc }}
+                        </p>
+                    </div>
+                    <div class="col-3" style="text-align: center">
+                        <button type="button">I'm interested!</button>
+                        <div style="bottom:0; position:absolute;">
+                            <h5>Seller Rating: </h5>
+                            <label>{{ user_rating }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="fillInLater row" style="border-bottom:1px solid black; width:100%; margin:0px">
+                    <div class="col-3"><img src="images/wet-dry-vacuum-cleaner.png" style="width:100%"></div>
+                    <div class="col-6">
+                        <label>{{ prod_name }}</label>
+                        <label style="float:right">{{ prod_price }}</label>
+                        <h6>Description: </h6>
+                        <p>
+                            {{ prod_desc }}
+                        </p>
+                    </div>
+                    <div class="col-3" style="text-align: center">
+                        <button type="button">I'm interested!</button>
+                        <div style="bottom:0; position:absolute;">
+                            <h5>Seller Rating: </h5>
+                            <label>{{ user_rating }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="fillInLater row" style="border-bottom:1px solid black; width:100%; margin:0px">
+                    <div class="col-3"><img src="images/wet-dry-vacuum-cleaner.png" style="width:100%"></div>
+                    <div class="col-6">
+                        <label>{{ prod_name }}</label>
+                        <label style="float:right">{{ prod_price }}</label>
+                        <h6>Description: </h6>
+                        <p>
+                            {{ prod_desc }}
+                        </p>
+                    </div>
+                    <div class="col-3" style="text-align: center">
+                        <button type="button">I'm interested!</button>
+                        <div style="bottom:0; position:absolute;">
+                            <h5>Seller Rating: </h5>
+                            <label>{{ user_rating }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
