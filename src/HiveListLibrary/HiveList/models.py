@@ -55,14 +55,24 @@ class Song(models.Model):
     """
     Model representing a Song
     """
-    pass
+    title = models.CharField(max_length=200)
+    artist = models.ForeignKey("Artist", on_delete=models.SET_NULL, null=True)
+    
+    """Not positive how we want to represent this ID"""
+    song_id = models.UUIDField(
+                               primary_key=True,
+                               default=uuid.uuid4,
+                               help_text="Unique ID for this particular book across whole library",
+                               )
+    
+    
 
     def __str__(self):
         """
         Description:
         :return:
         """
-        pass
+        return f'{self.title}, {self.artist}'
 
 
 class Genre(models.Model):
@@ -83,14 +93,16 @@ class SongInstance(models.Model):
     """
     Model representing a Song
     """
-    pass
+    song_id = models.ForeignKey('Song.song_id', on_delete=models.SET_NULL, null=True)
+    playlist_id = models.ForeignKey('Playlist.playlist_id', on_delete=models.SET_NULL, null=True)
+    contrib = models.ManyToManyField(Contributors, help_text="Select a genre for this book")
 
     def __str__(self):
         """
         Description:
         :return:
         """
-        pass
+            return f'{self.song_id}, {self.playist_id}'
 
 
 class VoteInstance(models.Model):
