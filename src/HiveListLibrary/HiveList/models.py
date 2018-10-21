@@ -9,6 +9,7 @@ class Playlist(models.Model):
     """
     playlist_id = models.IntegerField(max_length=100, primary_key=True)
     playlist_name = models.CharField(max_length=200, help_text="Enter a title for the playlist (e.g. Meat Bird Execution Playlist)")
+    playlist_creator_id = models.ForeignKey(User)
     playlist_creation_date = models.DateField()
     playlist_description = models.TextField(max_length=1000, help_text="Enter description for playlist")
 
