@@ -20,18 +20,20 @@ class Playlist(models.Model):
         return self.playlist_name
 
 
-class Contributor(models.Model):
+class Contributors(models.Model):
     """
-    Model representing a Contributor
+    Model representing all the contributors for a playlist. This will use a playlist ID as a key to the playlists table, and a user ID
+    that is a key to the users table
     """
-    pass
+    playlist_id = models.ForeignKey(playlist_id, ondelete=cascade)
+    contributor_id = contributor_id = models.ForeignKey(User, ondelete=models.cascade)
 
     def __str__(self):
         """
         Description:
         :return:
         """
-        pass
+        return self.contributor_id
 
 
 class Artist(models.Model):
@@ -92,16 +94,25 @@ class SongInstance(models.Model):
 
 class VoteInstance(models.Model):
     """
-    Model representing a Song
+    Model representing a vote
     """
-    pass
+    contributor_id = models.ForeignKey(User, ondelete=models.cascade)
+    song_id = models.ForeignKey('SongInstance', ondelete=models.cascade)
+
+    VOTE_STATUS = (
+    	('y', 'yes'),
+    	('n', 'no')
+    	)
+
+    vote = models.CharField(max_length=1, choices=VOTE_STATUS, blank=true)
+
 
     def __str__(self):
         """
         Description:
         :return:
         """
-        pass
+        return contributor_id
 
 
 
