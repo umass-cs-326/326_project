@@ -41,15 +41,15 @@ class Artist(models.Model):
     """
     Model representing a Song
     """
-    pass
+    artist_id = models.IntegerField(max_length=100, primary_key=True)
+    artist_name = models.CharField(max_length=200)
 
     def __str__(self):
         """
         Description:
         :return:
         """
-        pass
-
+        return f'{artist_id}, {artist_name}'
 
 class Song(models.Model):
     """
@@ -79,14 +79,18 @@ class Genre(models.Model):
     """
     Model representing a Song
     """
-    pass
+
+"not sure if that works for genre id"
+
+    genre_id = models.ForeignKey('Genre.genre_id', on_delete=models.SET_NULL, null=True)
+    genre_name = models.CharField(max_length=200, help_text="Enter a genre for the song (e.g. Swedish Heavy Metal)")
 
     def __str__(self):
         """
-        Description:
-        :return:
+        Description: 
+        :return: 
         """
-        pass
+        return genre_name;
 
 
 class SongInstance(models.Model):
