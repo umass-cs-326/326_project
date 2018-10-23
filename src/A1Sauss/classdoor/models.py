@@ -109,8 +109,8 @@ class User(models.Model):
 class Subject(models.Model):
    """Model representing a Subject."""
 
-   name = models.CharField(max_length=40, default="SUBJ")
-   abbreviation = models.CharField(max_length=4)
+   name = models.CharField(max_length=40)
+   abbreviation = models.CharField(max_length=4, default="SUBJ")
    universityName = models.ForeignKey('University',  on_delete=models.SET_NULL, null=True, related_name='+')
 
    class Meta:
