@@ -6,9 +6,7 @@ class ClassDesc(models.Model):
    #tags = models.models.ManyToManyField(Class, help_text="Select a preReq for this class")
    teacher = models.CharField(max_length=200)
    #modified review: one class can have many reviews while a review is for one class
-   reviews = models.ForeignKey('Review', max_length = 500, on_delete = models.SET_NULL, null = True, help_text="Review for this class")
-   #add date of the review
-   date_of_review = models.DateField(null = True, blank = True)
+   reviews = models.ManyToManyField('Review', blank=True, help_text="Review for this class")
    #added help_text for description
    description = models.CharField(max_length=200, help_text = "Description of the course")
    rating = models.DecimalField(default=0.0, max_digits=4, decimal_places=2)
