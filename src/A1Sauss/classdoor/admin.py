@@ -5,8 +5,8 @@ from classdoor.models import ClassDesc, Review, University, User, Subject
 
 @admin.register(ClassDesc)
 class ClassDescAdmin(admin.ModelAdmin):
-    list_display = ("name", "teacher", "description", "rating", "grade")
-    fields = ["name", "teacher", "description", "preReqs", ("rating", "grade"), "reviews", "subject", "universityName"]
+    list_display = ("name", "teacher", "description", "starRating", "averageGrade")
+    fields = ["name", "teacher", "description", "preReqs", ("starRating", "averageGrade"), "reviews", "subject", "universityName"]
 
 @admin.register(Review)
 class ClassDescAdmin(admin.ModelAdmin):

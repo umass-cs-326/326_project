@@ -9,9 +9,9 @@ class ClassDesc(models.Model):
    reviews = models.ManyToManyField('Review', blank=True, help_text="Review for this class")
    #added help_text for description
    description = models.CharField(max_length=200, help_text = "Description of the course")
-   rating = models.DecimalField(default=0.0, max_digits=4, decimal_places=2)
+   starRating = models.DecimalField(default=0.0, max_digits=10, decimal_places=2)
    #changed name from aveGrade to grade
-   grade = models.DecimalField(default=0.0, max_digits=4, decimal_places=2)
+   averageGrade = models.DecimalField(default=0.0, max_digits=10, decimal_places=2)
    #Changed help_text info
    preReqs = models.ManyToManyField('self', help_text="PreReqs for this class", blank=True)
    subject = models.ForeignKey('Subject', help_text="Select a subject for this class",  on_delete=models.SET_NULL, null=True)
@@ -36,8 +36,8 @@ class Review(models.Model):
    """Model representing a review page."""
    title = models.CharField(max_length=200)
    text = models.CharField(max_length=500)
-   starRating = models.DecimalField(max_digits=3, decimal_places=2)
-   gradeReceived = models.DecimalField(max_digits=3, decimal_places=2)
+   starRating = models.DecimalField(max_digits=10, decimal_places=2)
+   gradeReceived = models.DecimalField(max_digits=10, decimal_places=2)
    #added date of review
    date = models.DateField(null=True, blank=True)
    #tags = models.IntegerField(default=1)
@@ -67,7 +67,7 @@ class University(models.Model):
    name = models.CharField(max_length=200)
    location = models.CharField(max_length=500)
    classes = models.ManyToManyField('ClassDesc')
-   subjectsOffered = models.ManyToManyField('Subject', blank=True)   
+   subjects = models.ManyToManyField('Subject', blank=True)
 
    class Meta:
        ordering = ['name']
@@ -109,9 +109,10 @@ class User(models.Model):
 class Subject(models.Model):
    """Model representing a Subject."""
 
-   name = models.CharField(max_length=40)
+   name = models.CharField(max_length=40, default="SUBJ")
+   abbreviation = models.CharField(max_length=4)
    universityName = models.ForeignKey('University',  on_delete=models.SET_NULL, null=True, related_name='+')
-   
+
    class Meta:
        ordering = ['name']
 
