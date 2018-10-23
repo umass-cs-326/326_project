@@ -32,7 +32,7 @@ class Request(models.Model):
     location = models.CharField(max_length=300)
     # A date field for when the request happen.
     date = models.DateField(null=True, blank=True)
-    number_people = models.IntegerField(max_length=3)
+    number_people = models.IntegerField()
     movie = models.ForeignKey("Movie", on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
@@ -42,8 +42,7 @@ class Request(models.Model):
 class User(models.Model):
     username = models.CharField(max_length=300)
     gender = models.CharField(max_length=300)
-    password = models.CharField(max_lenght=300)
-    id = models.CharField(max_length=300)
+    password = models.CharField(max_length=300)
     bio = models.CharField(max_length=300)
     pic = models.ImageField(upload_to='picpath/', default = 'pic_folder/None/no-img.jpg', blank=True, null=True)
 
