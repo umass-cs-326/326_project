@@ -1,16 +1,92 @@
 <!doctype html>
 
 <html lang="en">
-  {% custom CSS %}
-       <!-- Local Stuff -->
+
+<head>
+    <title>Classdoor</title>
+    <meta name="description" content="Our 326 Project">
+    
+    <!-- MDBootstrap Stuff -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/css/mdb.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/js/mdb.min.js"></script>
+
+    <!-- Bootstrap Stuff -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Local Stuff -->
     <link rel="stylesheet" href="WriteReviewStyles.css">
-  {% end Custom CSS %}
 
-{% block content %}
+    <!--mdl.io Stuff-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
+
+
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#">Classdoor</a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="login.html">Login</a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="class.html">Class</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="WriteReview.html">Review</a>
+                    <span class="sr-only">(current)</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feed.html">Social Feed</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile</a>
+                </li>
+
+            
+
+            </ul>
+            <!-- Links -->
+
+            <form class="form-inline">
+                <div class="md-form my-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                </div>
+            </form>
+        </div>
+        <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
 <div id="body-elements">
 <!------ Star Rating ---------->
-<h2>{{class name}}</h2>
+<h2>CS326</h2>
 <h3>How would you rate this class?</h3>
 <div class="review-block-rate">
     <button type="button" class="btn btn-warning btn-xs star-btn" aria-label="Left Align">
@@ -29,6 +105,36 @@
         <i class="material-icons">star</i>
         </button>
 </div>
+
+<!--
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<div class="form-group" id="rating-ability-wrapper">
+        <label class="control-label" for="rating">
+        <span class="field-label-header">How would you rate this class?</span>
+        <span class="field-label-info"></span>
+        <input type="hidden" id="selected_rating" name="selected_rating" value="" required="required">
+        </label>
+        <h2 class="bold rating-header" style="">
+        <span class="selected-rating">0</span><small> / 5</small>
+        </h2>
+        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="1" id="rating-star-1">
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="2" id="rating-star-2">
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="3" id="rating-star-3">
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="4" id="rating-star-4">
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="5" id="rating-star-5">
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </button>
+    </div>
+-->
+<!-- Default textarea -->
 
 <div class="form-group">
     <label for="exampleFormControlSelect1">What grade did you recieve in this class?</label>
@@ -68,9 +174,10 @@
 
 </div>
 
+</body>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-{% endblock %}
 </html>
