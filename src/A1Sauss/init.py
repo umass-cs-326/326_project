@@ -1,11 +1,11 @@
-from classdoor.models import Subject, Class, University, Review
+from classdoor.models import Subject, ClassDesc, University, Review
 from faker import Faker
 from datetime import timedelta
 import textwrap
 
 fake = Faker()
 
-grades = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
+# grades = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
 
 # Create Subjects
 subjects = [
@@ -45,14 +45,14 @@ for i in range(1, 10):
     cName = subject.abbreviation + fake.random_int(100, 500)
     cTeacher = fake.name()
     cDesc = fake.text(1000)
-    cAvgGrade = grades[fake.random_int(0, len(grades) - 1)]
-    cStarRating = fake.random_int(0, 10)
+    cAvgGrade = fake.random_int(0, 100)
+    cStarRating = float(fake.random_int(0, 500)) / 100
 
-    c = Class(name=cName,
+    c = ClassDesc(name=cName,
               teacher=cTeacher,
               description=cDesc,
-              average_grade=cAvgGrade,
-              star_rating=cStarRating,
+              grade=cAvgGrade,
+              rating=cStarRating,
               subject=subject,
               university=uni)
 
@@ -68,8 +68,8 @@ for i in range(1, 10):
 reviews = []
 for i in range(0, len(classes) - 1):
     currClass = classes[i]
-    rGrade = grades[fake.random_int(0, len(grades) - 1)]
-    rStarRating = fake.random_int(0, 10)
+    rGrade = fake.random_int(0, 100)
+    rStarRating = float(fake.random_int(0, 500)) / 100
 
     for j in range(1, fake.random_int(3, 20)):
         rTitle = fake.text(10)
@@ -77,8 +77,8 @@ for i in range(0, len(classes) - 1):
 
         review = Review(title=rTitle,
                         text=rText,
-                        grade=rGrade,
-                        star_rating=rStarRating,
+                        gradeRecieved=rGrade,
+                        starRating=rStarRating,
                         for_class=currClass)
 
         review.save()
@@ -96,16 +96,12 @@ for u in University.objects.all():
     print(u)
 
 print('\nClasses:')
-for c in Class.objects.all():
+for c in ClassDesc.objects.all():
     print(c)
 
 print('\nReviews:')
 for i in Review.objects.all():
     print(i)
-
-# Retrieve a random book from model and print it.
-books_count = Book.objects.count()
-book = Book.objects.all()[fake.random_int(0, books_count - 1)]
 
 print('\nExample Book:')
 print(f'Title: {book.title}')
