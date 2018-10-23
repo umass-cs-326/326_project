@@ -6,7 +6,7 @@ class ClassDesc(models.Model):
    #tags = models.models.ManyToManyField(Class, help_text="Select a preReq for this class")
    teacher = models.CharField(max_length=200)
    #modified review: one class can have many reviews while a review is for one class
-   reviews = models.ForeighKey('Reviews', max_length = 500, on_delete = models.SET_NULL, null = True, help_text="Review for this class")
+   reviews = models.ForeignKey('Review', max_length = 500, on_delete = models.SET_NULL, null = True, help_text="Review for this class")
    #add date of the review
    date_of_review = models.DateField(null = True, blank = True)
    #added help_text for description
@@ -18,7 +18,7 @@ class ClassDesc(models.Model):
    preReqs = models.ManyToManyField('self', help_text="PreReqs for this class", blank=True)
    subject = models.ForeignKey('Subject', help_text="Select a subject for this class",  on_delete=models.SET_NULL, null=True)
    #Changed universityName to university
-   university = models.ForeignKey('University', max_length=200,  on_delete=models.SET_NULL, null=True)
+   universityName = models.ForeignKey('University', max_length=200,  on_delete=models.SET_NULL, null=True)
 
    class Meta:
        ordering = ['name']
