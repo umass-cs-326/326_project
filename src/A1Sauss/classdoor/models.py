@@ -64,7 +64,7 @@ class Review(models.Model):
 #-------------------part 2------------------------#
  
 class University(models.Model):
-   """Model representing an library event."""
+   """Model representing a University."""
 
    name = models.CharField(max_length=200)
    location = models.CharField(max_length=500)
@@ -86,7 +86,7 @@ class University(models.Model):
 #-------------------part 3------------------------#
  
 class User(models.Model):
-   """Model representing an library event."""
+   """Model representing a User."""
 
    username = models.CharField(max_length=15)
    email = models.CharField(max_length=30)
@@ -109,7 +109,7 @@ class User(models.Model):
 #-------------------part 4------------------------#
  
 class Subject(models.Model):
-   """Model representing an library event."""
+   """Model representing a Subject."""
 
    name = models.CharField(max_length=40)
    universityName = models.ForeignKey('University',  on_delete=models.SET_NULL, null=True, related_name='+')
