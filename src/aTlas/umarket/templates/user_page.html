@@ -1,0 +1,66 @@
+{% extends "template-base.html" %}
+
+  <!--User info displayed-->
+  {% block content %}
+  <h1>User page</h1>
+  <div class="media" style="border: 2px solid black;">
+    <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
+    <div class="media-body">
+      <h5 class="mt-0">Name: {{ user.name }}</h5>
+      <h5 class="mt-0">Email: {{ user.email }}</h5>
+      <h5 class="mt-0">Rating: {{ user.rating }}</h5>
+    </div>
+  </div>
+
+  <!--Products on sale from user-->
+  <!-- TODO: HERE WE NEED TO ADD A FORLOOP THAT POPULATES THE ROWS WITH THE DATA-->
+  <h3>Item Listing</h3>
+  <div class="row align-itmes-center">
+    <div class="container">
+      <div class="row justify-content-end">
+        <button type="button" class="btn btn-primary">Add+</button>
+      </div>
+    </div>
+    <div class="container" style="border: 2px solid black;">
+      <div class="col-4">
+        <div class="row justify-content-start">
+          <div class="media">
+            <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
+            <div class="media-body">
+              <h5 class="mt-0">Product Name: {{ product.name }}</h5>
+              <h5 class="mt-0">Sellers' Rating: {{ product.seller_rating }}</h5>
+              <!--Would we separate user/seller rating?-->
+              <h5 class="mt-0">Product Category: {{ product.category }}</h5>
+              <h5 class="mt-0">Product $$$: {{ product.price }}</h5>
+              <h5 class="mt-0">Description: {{ product.description }} </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Wishlist-->
+  <!-- TODO: HERE WE NEED TO ADD A FORLOOP THAT POPULATES THE ROWS WITH THE DATA-->
+  <h3>Wishlist</h3>
+  <div class="row align-itmes-end">
+    <div class="container" style="border: 2px solid black;">
+      <div class="col-4">
+        <div class="row justify-content-start">
+          <div class="media">
+            <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
+            <div class="media-body">
+              <h5 class="mt-0">Product Name: {{ prod_name }}</h5>
+              <h5 class="mt-0">Sellers' Rating: {{ user_rating }}</h5>
+              <h5 class="mt-0">Product Category: {{ prod_cat }}</h5>
+              <h5 class="mt-0">Product $$$: {{ prod_price }}</h5>
+              <h5 class="mt-0">Description: {{ prod_desc }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {% endblock %}

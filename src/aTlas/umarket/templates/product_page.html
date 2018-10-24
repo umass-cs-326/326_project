@@ -1,0 +1,30 @@
+{% extends "template-base.html" %}
+
+{% block content %}
+
+  <!-- Main Content -->
+  <h1 style="text-align:center;">Welcome to UMarket's Product Page!</h1>
+  <br>
+  <br>
+  <br>
+
+  <!--Dynamically adding in product information-->
+  <div id="product" style="margin: 20pt;">
+    <div class='page-header'>
+      <div class='btn-toolbar float-right'>
+        <div class='btn-group'>
+          <button type='button' class='btn btn-primary'>I'm Interested</button>
+        </div>
+      </div>
+    </div>
+    <img src="/imgs/chick.jpg" alt="Chickens" height="150pt" width="150pt" style="float: left; margin: 0px 15px 15px 0px;" />
+    <div id="product-details">
+      <p id="name" style="margin: 15px 15px 15px 15px;">{{ product.name }}</p>
+      <p id="seller-rating" style="margin: 15px 15px 15px 15px;" >{{ product.seller_rating }}</p>
+      <p id="category" style="margin: 15px 15px 15px 15px;" >{{ product.category }}</p>
+      <p id="price" style="margin: 15px 15px 15px 15px;" >{{ product.price }}</p>
+    </div>
+  </div>
+  <p>Product's Description:</p>
+  <p id="description" style="margin: 15px 15px 15px 15px;" > {{ product.description }} </p>
+{% endblock %}
