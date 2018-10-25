@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import timedelta
 
 # Create your models here.
 
@@ -10,37 +11,47 @@ class Image(models.Model):
 
 class PetUser(models.Model):
     username = models.CharField(max_length=30)
-    firstname = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
     email = models.EmailField(max_length=30)
-    location = models.FloatField(max_length=30)
-    description = models.CharField(max_length=3000)
-
-    def __str__(self):
-        return "Username: "+self.username 
+    location = models.CharField(max_length=100, blank=True, null=True,
+                                help_text="Your area of residence")
+                                description = models.CharField(max_length=3000, blank=True, null=True)
+                                
+                                def __str__(self):
+                                    return "Username: "+self.username
 
 class Pet(models.Model):
     name = models.CharField(max_length=30)
     pet_type = models.CharField(max_length=30)
-    breed = models.CharField(max_length=30)
-    description = models.TextField(max_length=3000)
-    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    breed = models.CharField(max_length=30, blank=True, null=True)
+    description = models.TextField(max_length=3000, blank=True, null=True)
+    image = models.ManyToManyField(Image)
     owner = models.ForeignKey(PetUser, on_delete=models.PROTECT)
-
+    
     def __str__(self):
         return "Pet name: "+self.name+" Owner: "+self.owner.username
 
 
 class Event(models.Model):
-    pet = models.ForeignKey(Pet, on_delete=models.PROTECT)
     pet_owner = models.ForeignKey(PetUser, on_delete=models.PROTECT)
-    location = models.CharField(max_length=30)
-    datetime = models.DateTimeField()
-    capacity = models.IntegerField()
-    description = models.TextField()
+    pet = models.ManyToManyField(Pet)
+    location = models.CharField(max_length=30, blank=True, null=True,
+                                help_text="Please be as specific as possible. Include the building and room number if applicable. A kind reminder, it is best to meet in public places.")
+                                datetime = models.DateTimeField()
+                                capacity = models.IntegerField()
+                                description = models.TextField(blank=True, null=True)
+                                image = models.ManyToManyField(Image)
+                                duration = models.DurationField(default = timedelta(minutes=60)) #format is now hr:min:sec -- write a method to reformat?
+                                
+                                def __str__(self):
+                                    return "Location: "+self.location +" Date/Time"+str(self.datetime)
 
-    def __str__(self):
-        return "Location: "+self.location +" Date/Time"+str(self.datetime)
+
+#get absolute url??
+
+
+
 
 
 
