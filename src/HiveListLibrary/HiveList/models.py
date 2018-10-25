@@ -80,7 +80,7 @@ class Genre(models.Model):
     Model representing a Song
     """
 
-"not sure if that works for genre id"
+	#not sure if that works for genre id 
 
     genre_id = models.ForeignKey('Genre.genre_id', on_delete=models.SET_NULL, null=True)
     genre_name = models.CharField(max_length=200, help_text="Enter a genre for the song (e.g. Swedish Heavy Metal)")
