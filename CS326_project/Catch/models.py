@@ -45,7 +45,7 @@ class Event(models.Model):
     duration = models.DurationField(default = timedelta(minutes=60)) #format is now hr:min:sec -- write a method to reformat?
                                 
     def __str__(self):
-        return "Location: "+self.location +" Date/Time"+str(self.datetime)
+        return "Location: "+str(self.location) +" Date/Time"+str(self.datetime)
 
 
 #get absolute url??
