@@ -2,14 +2,13 @@ from django.db import models
 
 # Create your models here.
 
-
 class Playlist(models.Model):
     """
     Model representing a playlist
     """
     playlist_id = models.IntegerField(max_length=100, primary_key=True)
     playlist_name = models.CharField(max_length=200, help_text="Enter a title for the playlist (e.g. Meat Bird Execution Playlist)")
-    playlist_creator_id = models.ForeignKey(User)
+    playlist_creator_id = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
     playlist_creation_date = models.DateField()
     playlist_description = models.TextField(max_length=1000, help_text="Enter description for playlist")
 
@@ -26,7 +25,7 @@ class Contributors(models.Model):
     Model representing all the contributors for a playlist. This will use a playlist ID as a key to the playlists table, and a user ID
     that is a key to the users table
     """
-    playlist_id = models.ForeignKey(playlist_id, ondelete=cascade)
+    playlist_id = models.ForeignKey(playlist_id, on_delete=models.SET_NULL, null=True)
     contributor_id = contributor_id = models.ForeignKey(User, ondelete=models.cascade)
 
     def __str__(self):
@@ -106,7 +105,7 @@ class SongInstance(models.Model):
         Description:
         :return:
         """
-            return f'{self.song_id}, {self.playist_id}'
+        return f'{self.song_id}, {self.playist_id}'
 
 
 class VoteInstance(models.Model):
