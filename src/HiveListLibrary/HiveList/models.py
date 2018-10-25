@@ -17,7 +17,7 @@ class Playlist(models.Model):
         Description: String for representing the model object (in Admin site etc.)
         :return: the playlist name
         """
-        return self.playlist_name
+        return self.playlist_id
 
 
 class Contributors(models.Model):
@@ -25,8 +25,8 @@ class Contributors(models.Model):
     Model representing all the contributors for a playlist. This will use a playlist ID as a key to the playlists table, and a user ID
     that is a key to the users table
     """
-    playlist_id = models.ForeignKey(playlist_id, on_delete=models.SET_NULL, null=True)
-    contributor_id = contributor_id = models.ForeignKey(User, ondelete=models.cascade)
+    playlist_id = models.ForeignKey('Playlist', on_delete=models.SET_NULL, null=True)
+    contributor_id = contributor_id = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         """
@@ -58,12 +58,13 @@ class Song(models.Model):
     artist = models.ForeignKey("Artist", on_delete=models.SET_NULL, null=True)
     
     """Not positive how we want to represent this ID"""
-    song_id = models.UUIDField(
+    song_id = models.IntegerField(max_length=100, primary_key=True)
+    """models.UUIDField(
                                primary_key=True,
                                default=uuid.uuid4,
                                help_text="Unique ID for this particular book across whole library",
                                )
-    
+    """
     
 
     def __str__(self):
@@ -112,15 +113,15 @@ class VoteInstance(models.Model):
     """
     Model representing a vote
     """
-    contributor_id = models.ForeignKey(User, ondelete=models.cascade)
-    song_id = models.ForeignKey('SongInstance', ondelete=models.cascade)
+    contributor_id = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    song_id = models.ForeignKey('SongInstance', on_delete=models.SET_NULL, null=True)
 
     VOTE_STATUS = (
     	('y', 'yes'),
     	('n', 'no')
     	)
 
-    vote = models.CharField(max_length=1, choices=VOTE_STATUS, blank=true)
+    vote = models.CharField(max_length=1, choices=VOTE_STATUS, blank=True)
 
 
     def __str__(self):
