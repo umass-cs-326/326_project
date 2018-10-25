@@ -1,215 +1,54 @@
-<!doctype html>
+{% extends "base_generic.html" %} 
 
-<html lang="en">
+{% block CSS %}
+<link rel="stylesheet" href="WriteReviewStyles.css"> 
+{% endblock %} 
 
-<head>
-    <title>Classdoor</title>
-    <meta name="description" content="Our 326 Project">
-
-    <!-- MDBootstrap Stuff -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/css/mdb.min.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/js/mdb.min.js"></script>
-
-    <!--mdl.io Stuff-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
-    <!-- Bootstrap Stuff -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="feed.css" />
-
-
-</head>
-
-<body>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-
-        <!-- Navbar brand -->
-        <a class="navbar-brand" href="#">Classdoor</a>
-
-        <!-- Collapse button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="basicExampleNav">
-
-            <!-- Links -->
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="class.html">Class</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="WriteReview.html">Review</a>                
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="feed.html">Social Feed</a>
-                    <span class="sr-only">(current)</span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="profile.html">Profile</a>
-                </li>
-
-            
-
-            </ul>
-            <!-- Links -->
-
-            <form class="form-inline">
-                <div class="md-form my-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+{% block content %}
+<ul id="feedList">
+    {% for class in class_list %}
+    <li class="listClass">
+        <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
+            <div class="mdl-card__media">
+                <h3 class="className">CS<br>326</h3>
+            </div>
+            <div class="mdl-card__title">
+                <div class="review-block-rate">
+                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <i class="material-icons">star</i>
+								</button>
+                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <i class="material-icons">star</i>
+								</button>
+                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <i class="material-icons">star</i>
+								</button>
+                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								 <i class="material-icons">star</i>
+								</button>
+                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								  <i class="material-icons">star</i>
+								</button>
                 </div>
-            </form>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Web development is a class where you learn the ins and outs of how to code on the web...
+            </div>
+
+            <div class="mdl-card__actions mdl-card--border">
+                <div class="featuredQuote">
+                    "Tim is awesome"
+                </div>
+
+                <div class="featuredReview">
+                    Best class, best teacher.
+                </div>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">See More</a>
+            </div>
         </div>
-        <!-- Collapsible content -->
-
-    </nav>
-    <!--/.Navbar-->
-
-    <ol id="feedList">
-        <li class="listClass">
-            <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
-                <div class="mdl-card__media">
-                    <h3 class="className">CS<br>326</h3>
-                </div>
-                <div class="mdl-card__title">
-                    <div class="review-block-rate">
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								 <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                    </div>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Web development is a class where you learn the ins and outs of how to code on the web...
-                </div>
-
-                <div class="mdl-card__actions mdl-card--border">
-                    <div class="featuredQuote">
-                        "Tim is awesome"
-                    </div>
-
-                    <div class="featuredReview">
-                        Best class, best teacher.
-                    </div>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">See More</a>
-                </div>
-            </div>
-        </li>
-
-        <li class="listClass">
-            <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
-                <div class="mdl-card__media">
-                    <h3 class="className">CS<br>326</h3>
-                </div>
-                <div class="mdl-card__title">
-                    <div class="review-block-rate">
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								 <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                    </div>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Web development is a class where you learn the ins and outs of how to code on the web...
-                </div>
-
-                <div class="mdl-card__actions mdl-card--border">
-                    <div class="featuredQuote">
-                        "Tim is awesome"
-                    </div>
-
-                    <div class="featuredReview">
-                        Best class, best teacher.
-                    </div>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">See More</a>
-                </div>
-            </div>
-        </li>
-
-        <li class="listClass">
-            <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
-                <div class="mdl-card__media">
-                    <h3 class="className">CS<br>326</h3>
-                </div>
-                <div class="mdl-card__title">
-                    <div class="review-block-rate">
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								 <i class="material-icons">star</i>
-								</button>
-                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                    </div>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Web development is a class where you learn the ins and outs of how to code on the web...
-                </div>
-
-                <div class="mdl-card__actions mdl-card--border">
-                    <div class="featuredQuote">
-                        "Tim is awesome"
-                    </div>
-
-                    <div class="featuredReview">
-                        Best class, best teacher.
-                    </div>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">See More</a>
-                </div>
-            </div>
-        </li>
-    </ol>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-</body>
-</html>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
