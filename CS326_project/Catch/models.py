@@ -16,10 +16,10 @@ class PetUser(models.Model):
     email = models.EmailField(max_length=30)
     location = models.CharField(max_length=100, blank=True, null=True,
                                 help_text="Your area of residence")
-                                description = models.CharField(max_length=3000, blank=True, null=True)
+    description = models.CharField(max_length=3000, blank=True, null=True)
                                 
-                                def __str__(self):
-                                    return "Username: "+self.username
+    def __str__(self):
+        return "Username: "+self.username
 
 class Pet(models.Model):
     name = models.CharField(max_length=30)
@@ -37,15 +37,15 @@ class Event(models.Model):
     pet_owner = models.ForeignKey(PetUser, on_delete=models.PROTECT)
     pet = models.ManyToManyField(Pet)
     location = models.CharField(max_length=30, blank=True, null=True,
-                                help_text="Please be as specific as possible. Include the building and room number if applicable. A kind reminder, it is best to meet in public places.")
-                                datetime = models.DateTimeField()
-                                capacity = models.IntegerField()
-                                description = models.TextField(blank=True, null=True)
-                                image = models.ManyToManyField(Image)
-                                duration = models.DurationField(default = timedelta(minutes=60)) #format is now hr:min:sec -- write a method to reformat?
+            help_text="Please be as specific as possible. Include the building and room number if applicable. A kind reminder, it is best to meet in public places.")
+    datetime = models.DateTimeField()
+    capacity = models.IntegerField()
+    description = models.TextField(blank=True, null=True)
+    image = models.ManyToManyField(Image)
+    duration = models.DurationField(default = timedelta(minutes=60)) #format is now hr:min:sec -- write a method to reformat?
                                 
-                                def __str__(self):
-                                    return "Location: "+self.location +" Date/Time"+str(self.datetime)
+    def __str__(self):
+        return "Location: "+self.location +" Date/Time"+str(self.datetime)
 
 
 #get absolute url??
