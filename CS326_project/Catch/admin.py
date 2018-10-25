@@ -1,7 +1,9 @@
 from django.contrib import admin
-# Register your models here.
-from .models import Events
-from .models import Pet
+from .models import Image, PetUser, Pet, Event
 
-admin.site.register(Events)
+# Register your models here.
+
+admin.site.register(Image)
+admin.site.register(PetUser)
 admin.site.register(Pet)
+admin.site.register(Event)

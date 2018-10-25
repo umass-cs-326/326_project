@@ -1,124 +1,60 @@
-{% extends 'Catch/navbar.html' %}
-{% block content %}
+{% load static %}
 
-{% load staticfiles %}
-<a href="{% url 'Events-add' %}">Create Event</a>
-
-<style>
-  * {box-sizing: border-box}
-  body {font-family: "Lato", sans-serif;}
-  
-  /* Style the tab */
-  .tab {
-      float: left;
-      border: 1px solid #ccc;
-      background-color: #f1f1f1;
-      width: 30%;
-      height: 300px;
-  }
-  
-  /* Style the buttons inside the tab */
-  .tab button {
-      display: block;
-      background-color: inherit;
-      color: black;
-      padding: 22px 16px;
-      width: 100%;
-      border: none;
-      outline: none;
-      text-align: left;
-      cursor: pointer;
-      transition: 0.3s;
-      font-size: 17px;
-  }
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
-      background-color: #ddd;
-  }
-  
-  /* Create an active/current "tab button" class */
-  .tab button.active {
-      background-color: #ccc;
-  }
-  
-  /* Style the tab content */
-  .tabcontent {
-      float: left;
-      padding: 0px 12px;
-      border: 1px solid #ccc;
-      width: 70%;
-      border-left: none;
-      height: 300px;
-  }
-  </style>
-
-<!-- <button type="button" onclick="window.open('forumPage.html','_blank')">Create Event</button> -->
-
-
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Hosting')" id="defaultOpen">Hosting</button>
-  <button class="tablinks" onclick="openTab(event, 'Going')">Going</button>
-  <button class="tablinks" onclick="openTab(event, 'Interested')">Interested</button>
-  <button class="tablinks" onclick="openTab(event, 'Following')">Following</button>
-</div>
-
-<div id="Hosting" class="tabcontent">
-  {% if Events %}
-        {% for Event in Events %}
-        <div class="card">
-          <div class="row ">
-            <div class="col-md-4">
-                <img src="{% static 'Catch/cat.jpg' %}" class="w-100">
-            </div>
-              <div class="col-md-8 px-3">
-                <div class="card-block px-3">
-                  <h4 class="card-title">{{ Event.event_name }}</h4>
-                  <p class="card-text">{{ Event.event_description }}</p>
-                  <p class="card-text">{{ Event.event_capacity }}</p>
-                  <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-              </div>
-            </div>
+<!doctype html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'Catch/style.css' %}">
+        <meta name="author" content="COMPSCI 326">
+      </head>
+    <body>
+        <div class="icon-bar">
+            <img class="logo" src="{% static 'Catch/Logo.png' %}" alt="Logo">
+            <a class="active" href="homePage.html"><i class="fa fa-home"></i></a>
+            <a href="events.html">Events</a>
+            <a>Profile</a>
+            <a>Map</a>
           </div>
-          {% endfor %}
-    {% else %}
-      <p>No Events are available.</p>
-    {% endif %}
-</div>
+          <ul>
+              <li><a href="default.asp">Hosting</a></li>
+              <li><a href="news.asp">Going</a></li>
+              <li><a href="contact.asp">Interested</a></li>
+              <li><a href="about.asp">Following</a></li>
+          </ul>
+          <div class="container">
+              <table class="table">
+                <tbody>
+                  <tr>
 
-<div id="Going" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
-</div>
+                    <td><img src="{% static 'Catch/dog.jpg' %}"></td>
+                    <td>
+                      <div>Host: You</div>
+                      <div> Name: Dave's Dog Party!</div>
+                      <div>Address: 123 Street City, 01010</div>
+                      <div>Date: 11/11/2018</div>
+                      <div>Time: 1 pm </div>
+                      <div>Capacity: 5/10</div>
+                    </td>
+                  </tr>
 
-<div id="Interested" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
-</div>
+                  <tr>
+                    <td><img src="{% static 'Catch/cat.jpg' %}"></td>
+                    <td>
+                      <div>Host: Cathy</div>
+                      <div> Name: Cathy's Cat Compendium!</div>
+                      <div>Address: 100 Street City, 02090</div>
+                      <div>Date: 10/10/2018</div>
+                      <div>Time: 10 am </div>
+                      <div>Capacity: 99/100</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-<div id="Following" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
-</div>
 
-<script>
-function openTab(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-
-{% endblock %}
+    </body>
+  </html>
