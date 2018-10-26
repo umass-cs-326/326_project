@@ -26,7 +26,8 @@ class Pet(models.Model):
     pet_type = models.CharField(max_length=30)
     breed = models.CharField(max_length=30, blank=True, null=True)
     description = models.TextField(max_length=3000, blank=True, null=True)
-    image = models.ManyToManyField(Image)
+    # image = models.ManyToManyField(Image)
+    #need to figure out how to generate images
     owner = models.ForeignKey(PetUser, on_delete=models.PROTECT)
 
     def __str__(self):
@@ -41,7 +42,8 @@ class Event(models.Model):
     datetime = models.DateTimeField()
     capacity = models.IntegerField()
     description = models.TextField(blank=True, null=True)
-    image = models.ManyToManyField(Image)
+    # image = models.ManyToManyField(Image)
+    #need to figure out how to generate images
     duration = models.DurationField(default = timedelta(minutes=60)) #format is now hr:min:sec -- write a method to reformat?
 
     def __str__(self):

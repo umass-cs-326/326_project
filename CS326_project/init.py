@@ -1,4 +1,5 @@
 import textwrap
+from datetime import datetime
 from datetime import timedelta
 
 # Create a super user to use the admin site.
@@ -9,84 +10,66 @@ from Catch.models import Pet, PetUser, Event
 # Author, Book, BookInstance, Genre
 fake = Faker()
 
-# # Create Genres
-# genres = [
-#     Genre(name="Science Fiction"),
-#     Genre(name="Satire"),
-#     Genre(name="Drama"),
-#     Genre(name="Adventure"),
-#     Genre(name="Romance"),
-#     Genre(name="Mystery"),
-# ]
-#
-# # Save the genres to the database
-# for genre in genres:
-#     genre.save()
 
 # Create Authors
 PetUsers = []
 for i in range(1, 10):
-    u_uname = "qweqwe"+ str(i)
+    u_uname = fake.word()
     # fake.first_name()
     u_fname = fake.first_name()
-    u_password = "qweqweqwe"
-    u_email = "johnsmith@gmail.com"
-    u_location = "qweqweqweqwe"
-    u_description = "qweqweqweqew"
+    u_password = fake.password()
+    u_email = fake.free_email()
+    u_location = fake.address()
+    u_description = fake.sentence(nb_words=20, variable_nb_words=True, ext_word_list=None)
     petUser = PetUser(
         username = u_uname, first_name=u_fname, password = u_password, email = u_email, location = u_location, description = u_description,
     )
     petUser.save()
     PetUsers.append(petUser)
 
-#
-# # Create Books
-# books = []
-# for i in range(1, 10):
-#     a_title = fake.text(50)
-#     a_author = authors[fake.random_int(0, len(authors)) - 1]
-#     a_summary = fake.text(1000)
-#     a_isbn = fake.isbn13()
-#     book = Book(title=a_title, author=a_author, summary=a_summary, isbn=a_isbn)
-#     book.save()
-#     book.genre.add(genres[fake.random_int(0, len(genres)) - 1])
-#     book.save()
-#     books.append(book)
-#
-# instances = []
-# for i in range(1, 400):
-#     a_book = books[fake.random_int(0, len(books)) - 1]
-#     a_imprint = fake.text(200)
-#     a_status = "a"
-#     instance = BookInstance(book=a_book, imprint=a_imprint, status=a_status)
-#     instance.save()
-#     instances.append(instance)
-#
-# print("Genre:")
-# for g in Genre.objects.all():
-#     print(g)
+#Create Pets
+Pets = []
+for i in range(1, 10):
+    p_name = fake.first_name()
+    p_pet_type = fake.word()
+    p_breed = fake.word()
+    p_description = fake.sentence(nb_words=20, variable_nb_words=True, ext_word_list=None)
+    p_owner = PetUsers[fake.random_int(0, len(PetUsers)) - 1]
+    pet = Pet(name=p_name, pet_type=p_pet_type, breed=p_breed, description=p_description, owner = p_owner)
+    pet.save()
+    Pets.append(pet)
+
+#Create Events
+# class datetime.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)
+x = datetime(1995, 12, 12)
+Events = []
+for i in range(1, 10):
+    e_pet_owner = PetUsers[fake.random_int(0, len(PetUsers)) - 1]
+    # e_pet = Pets[fake.random_int(0, len(Pets)) - 1]
+    # e_pet = Pets[0:3]
+    e_location = fake.address()
+    e_datetime = x
+    # e_datetime = fake.date_of_birth() + timedelta(days=365 * fake.random_int(65, 100))
+    # e_capacity = fake.random_number(digits=None, fix_len=False)
+    e_capacity = 5
+    e_description = fake.sentence(nb_words=20, variable_nb_words=True, ext_word_list=None)
+    # e_duration = fake.random_number(digits=None, fix_len=False)
+    e_duration = timedelta(1, 2, 3)
+    event = Event(pet_owner = e_pet_owner, location = e_location, datetime = e_datetime, capacity = e_capacity, description = e_description, duration = e_duration)
+    event.save()
+    event.pet.add(Pets[fake.random_int(0, len(Pets)) - 1])
+    event.save()
+    Events.append(event)
 
 print("\nPetUser:")
 for u in PetUser.objects.all():
     print(u)
 
-# print("\nBook:")
-# for b in Book.objects.all():
-#     print(b)
-#
-# print("\nBookInstance:")
-# for i in BookInstance.objects.all():
-#     print(i)
 
-# Retrieve a random book from model and print it.
-# books_count = Book.objects.count()
-# book = Book.objects.all()[fake.random_int(0, books_count - 1)]
-#
-# print("\nExample Book:")
-# print(f"Title: {book.title}")
-# print(f"Author: {book.author}")
-# print(f"ISBN: {book.isbn}")
-# print(f"Summary:\n{textwrap.fill(book.summary, 77)}")
+print("\nPets:")
+for u in Pet.objects.all():
+    print(u)
+
 
 
 username = "compsci326"
