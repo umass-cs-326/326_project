@@ -1,8 +1,11 @@
+#navbar h1{
+    margin:0px;
+}
 
-
-
-body {
+body{
+    margin:0;
     background-color:  burlywood;
+
 }
 
 ul {
@@ -41,7 +44,7 @@ li a:hover {
 .icon-bar a {
     float: left; /* Float links side by side */
     text-align: center; /* Center-align text */
-    width: 16.85%; /* Equal width (5 icons with 20% width each = 100%) */
+    width: 16.66%; /* Equal width (5 icons with 20% width each = 100%) */
     length: 18.7%;
     padding: 10px; /* Some top and bottom padding */
     transition: all 0.3s ease; /* Add transition for hover effects */

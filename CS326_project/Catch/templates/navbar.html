@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Catch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <meta name="author" content="COMPSCI 326">
+  </head>
+
+    <div id = "navbar" class="icon-bar">
+      <img class="logo" src="{% static 'Logo.png' %}" alt="Logo">
+      <a href="{% url 'homePage' %}">Home</a>
+      <a href="{% url 'eventsPage' %}">Events</a>
+      <a href="{% url 'mapPage' %}">Map</a>
+      <a href="{% url 'profilePage' %}">Profile</a>
+      <a href="{% url 'aboutPage' %}">About</a>
+    </div>
+  <body>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

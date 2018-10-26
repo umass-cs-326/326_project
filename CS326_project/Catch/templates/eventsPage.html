@@ -1,37 +1,8 @@
-{% extends 'Catch/navbar.html' %}
+{% extends "navbar.html" %}
+
+
 {% block content %}
-
 {% load staticfiles %}
-
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <style>
-    body{
-      background-color: #EEDCFB;
-      }
-      *{
-	  box-sizing: border-box;
-      }
-      .column {
-	  float: left;
-	  padding: 15px;
-      }
-      #left{
-	  width: 30%;
-      }
-      #right{
-	  width: 70%;
-      }
-      h2{
-	  background-color: #FFFA9B;
-      }
-    </style>
-    <title>Events</title>
-  </head>
-  <body>
-
     <div class = "row">
       <div class="col-sm-4" style="background-color: #FCEDFF;">
       <form target="_self" method="POST">
@@ -81,29 +52,23 @@
 	</form>
       </div>
 
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'Catch/dog.jpg' %}" alt="Dave's Dog Party!">
-        <div class="card-body">
-          <h5 class="card-title">Dave's Dog Party!</h5>
-          <p class="card-text">Me and my dog Cardie love to party!</p>
-          <p>Date: 11/11/2018</p>
-          <a href="#" class="btn btn-primary">More details</a>
-        </div>
+      <div class="container">
+        {% if events %}
+          {% for event in events %}
+            <div class="row">
+              <div class="col-sm-8">
+                <p>Name: {{ event.pet_owner}}</p>
+                <p>Breed: {{ event.pet}}</p>
+                <p>Location: {{ event.location }}</p>
+                <p>Date and Time: {{ event.datetime}}</p>
+                <p>Capacity: {{ event.capacity}}</p>
+                <p>Duration: {{ event.duration}}</p>
+              </div>
+          {% endfor %}
+        {% else %}
+        <p>There are no events available.</p>
+        {% endif %}
+            </div>
       </div>
 
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'Catch/cat.jpg' %}" alt="Cathy's Cat Compendium">
-        <div class="card-body">
-          <h5 class="card-title">Cathy's Cat Compendium</h5>
-          <p class="card-text">I'm trying to get my kitten to socialize with other kittens. Her name is Carrie.</p>
-          <p>Date: 10/10/2018</p>
-          <a href="#" class="btn btn-primary">More details</a>
-        </div>
-      </div>
-
-</div>
-    <!-- </div> -->
-  </body>
-
-</html>
 {% endblock %}

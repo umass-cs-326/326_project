@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'Catch',
     'Catch.apps.CatchConfig',
     'django.contrib.admin',
     'django.contrib.auth',

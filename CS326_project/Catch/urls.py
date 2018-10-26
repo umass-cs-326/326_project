@@ -1,13 +1,10 @@
-from django.conf.urls import url
-from django.views.generic.base import RedirectView
-from Catch import views
-
+from django.urls import path
+from . import views
 urlpatterns = [
-    url('homePage', views.home),
-    url('eventsPage', views.events),
-    url('mapPage', views.map),
-    url('profilePage', views.profile),
-    url('aboutPage', views.about),
-    url('navbar', views.navbar),
-
+    path('homePage', views.home, name = "homePage"),
+    path('eventsPage', views.events, name = "eventsPage"),
+    path('mapPage', views.map, name = "mapPage"),
+    path('profilePage', views.profile, name = "profilePage"),
+    path('aboutPage', views.about, name = "aboutPage"),
+    # path('navbar', views.navbar, name = "navbar"),
 ]

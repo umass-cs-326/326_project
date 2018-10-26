@@ -1,0 +1,48 @@
+
+{% extends "navbar.html" %}
+{% block content %}
+
+{% load staticfiles %}
+
+
+  <div class="container">
+    {% if owner %}
+      {% for user in owner %}
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="{% static 'profilepicture.jpg' %}" class="img-square" alt="profilepicture">
+      </div>
+      <div class="col-sm-8">
+        <p>Name: {{ user.first_name}}</p>
+        <p>Description: {{ user.descripion }}</p>
+        <p>Location: {{ user.location}}</p>
+
+      </div>
+    </div>
+    {% endfor %}
+{% else %}
+<p>There are no profiles available.</p>
+{% endif %}
+  </div>
+
+<div class="container">
+  {% if pets %}
+    {% for pet in pets %}
+      <div class="row">
+        <div class="col-sm-4" style="background-color:white;">
+          <img src="{% static 'blacklab.jpg' %}" alt="black lab">
+        </div>
+        <div class = "col-sm-8" style = "background-color:white;">
+          <p>Name: {{ pet.name}}</p>
+          <p>Breed: {{ pet.breed}}</p>
+          <p>Description: {{ pet.description}}</p>
+          <p>Owner: {{ pet.owner}}</p>
+        </div>
+      </div>
+      {% endfor %}
+  {% else %}
+  <p>There are no pets available.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

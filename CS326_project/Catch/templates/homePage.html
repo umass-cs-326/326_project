@@ -1,0 +1,33 @@
+{% extends "navbar.html" %}
+
+
+{% block content %}
+{% load staticfiles %}
+<ul>
+  <li><a href="default.asp">Hosting</a></li>
+  <li><a href="news.asp">Going</a></li>
+  <li><a href="contact.asp">Interested</a></li>
+  <li><a href="about.asp">Following</a></li>
+</ul>
+
+
+<div class="container">
+  {% if events %}
+    {% for event in events %}
+      <div class="row">
+        <div class="col-sm-8">
+          <p>Name: {{ event.pet_owner}}</p>
+          <p>Breed: {{ event.pet}}</p>
+          <p>Location: {{ event.location }}</p>
+          <p>Date and Time: {{ event.datetime}}</p>
+          <p>Capacity: {{ event.capacity}}</p>
+          <p>Duration: {{ event.duration}}</p>
+        </div>
+    {% endfor %}
+  {% else %}
+  <p>There are no events available.</p>
+  {% endif %}
+      </div>
+</div>
+
+{% endblock %}

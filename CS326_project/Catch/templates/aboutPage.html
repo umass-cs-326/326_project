@@ -1,4 +1,4 @@
-{% extends 'Catch/navbar.html' %}
+{% extends "navbar.html" %}
 {% block content %}
 
 {% load staticfiles %}
@@ -25,13 +25,13 @@
     </div>
 
     <div class = "col-sm-4" style = "background-color:white;">
-      <img src="{% static 'Catch/dog.jpg' %}" class="img-circle" alt="dog">
+      <img src="{% static 'dog.jpg' %}" class="img-circle" alt="dog">
     </div>
   </div>
 
   <div class="row">
     <div class = "col-sm-4" style = "background-color:white;">
-      <img src="{% static 'Catch/cat.jpg' %}" class="img-rounded" alt="cat">
+      <img src="{% static 'cat.jpg' %}" class="img-rounded" alt="cat">
     </div>
     <div class="col-sm-8" style="background-color:white;">
       <p>
