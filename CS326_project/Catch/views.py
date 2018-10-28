@@ -24,8 +24,8 @@ def map(request):
     return render(request, 'mapPage.html', context = context)
 
 def profile(request):
-    owner = PetUser.objects.filter(username = "ProfileUser")
     pets = Pet.objects.all()
+    owner = PetUser.objects.all()
     context = {
         "pets": pets,
         "owner" : owner,

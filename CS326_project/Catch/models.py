@@ -14,7 +14,8 @@ class PetUser(models.Model):
     first_name = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
     email = models.EmailField(max_length=30)
-    location = models.CharField(max_length=100, blank=True, null=True, help_text="Your area of residence")
+    location = models.CharField(max_length=100, blank=True, null=True,
+                                help_text="Your area of residence")
     description = models.CharField(max_length=3000, blank=True, null=True)
 
     def __str__(self):
@@ -30,11 +31,10 @@ class Pet(models.Model):
     owner = models.ForeignKey(PetUser, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.name
+        return "Pet name: "+self.name+" Owner: "+self.owner.username
 
 
 class Event(models.Model):
-    name = models.CharField(max_length=30)
     pet_owner = models.ForeignKey(PetUser, on_delete=models.PROTECT)
     pet = models.ManyToManyField(Pet)
     location = models.CharField(max_length=30, blank=True, null=True,
@@ -47,7 +47,7 @@ class Event(models.Model):
     duration = models.DurationField(default = timedelta(minutes=60)) #format is now hr:min:sec -- write a method to reformat?
 
     def __str__(self):
-        return self.name
+        return "Location: "+str(self.location) +" Date/Time"+str(self.datetime)
 
 
 #get absolute url??
