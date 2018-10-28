@@ -68,12 +68,14 @@ html, body {
     <tbody>
       {% if events %}
         {% for event in events %}
-          <td>{{ event.pet_owner}}</td>
-          <td>{{ event.pet}}</td>
+          <tr>
+          <td>{{ event.pet_owner }}</td>
+          <td>{{ event.pet }}</td>
           <td>{{ event.location }}</td>
-          <td>{{ event.datetime}}</td>
-          <td>{{ event.capacity}}</td>
-          <td>{{ event.duration}}</td>
+          <td>{{ event.datetime }}</td>
+          <td>{{ event.capacity }}</td>
+          <td>{{ event.duration }}</td>
+          </tr>
         {% endfor %}
       {% else %}
       <p>There are no events available.</p>

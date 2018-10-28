@@ -7,15 +7,13 @@ from django.contrib.auth.models import User
 from faker import Faker
 
 from Catch.models import Pet, PetUser, Event
-# Author, Book, BookInstance, Genre
 fake = Faker()
 
 
 # Create Authors
 PetUsers = []
-for i in range(1, 10):
-    u_uname = fake.word()
-    # fake.first_name()
+for i in range(1, 9):
+    u_uname = fake.profile()["username"]
     u_fname = fake.first_name()
     u_password = fake.password()
     u_email = fake.free_email()
@@ -26,6 +24,19 @@ for i in range(1, 10):
     )
     petUser.save()
     PetUsers.append(petUser)
+
+#One user to display in profiles
+u_uname = "ProfileUser"
+u_fname = fake.first_name()
+u_password = fake.password()
+u_email = fake.free_email()
+u_location = fake.address()
+u_description = fake.sentence(nb_words=20, variable_nb_words=True, ext_word_list=None)
+petUser = PetUser(
+    username = u_uname, first_name=u_fname, password = u_password, email = u_email, location = u_location, description = u_description,
+)
+petUser.save()
+PetUsers.append(petUser)
 
 #Create Pets
 Pets = []
@@ -40,22 +51,16 @@ for i in range(1, 10):
     Pets.append(pet)
 
 #Create Events
-# class datetime.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)
-x = datetime(1995, 12, 12)
 Events = []
 for i in range(1, 10):
+    e_name = fake.sentence(nb_words=3, variable_nb_words=True, ext_word_list=None)
     e_pet_owner = PetUsers[fake.random_int(0, len(PetUsers)) - 1]
-    # e_pet = Pets[fake.random_int(0, len(Pets)) - 1]
-    # e_pet = Pets[0:3]
     e_location = fake.address()
-    e_datetime = x
-    # e_datetime = fake.date_of_birth() + timedelta(days=365 * fake.random_int(65, 100))
-    # e_capacity = fake.random_number(digits=None, fix_len=False)
+    e_datetime = datetime(1995, 12, 12)
     e_capacity = 5
     e_description = fake.sentence(nb_words=20, variable_nb_words=True, ext_word_list=None)
-    # e_duration = fake.random_number(digits=None, fix_len=False)
     e_duration = timedelta(1, 2, 3)
-    event = Event(pet_owner = e_pet_owner, location = e_location, datetime = e_datetime, capacity = e_capacity, description = e_description, duration = e_duration)
+    event = Event(name = e_name, pet_owner = e_pet_owner, location = e_location, datetime = e_datetime, capacity = e_capacity, description = e_description, duration = e_duration)
     event.save()
     event.pet.add(Pets[fake.random_int(0, len(Pets)) - 1])
     event.save()
@@ -67,10 +72,12 @@ for u in PetUser.objects.all():
 
 
 print("\nPets:")
-for u in Pet.objects.all():
-    print(u)
+for p in Pet.objects.all():
+    print(p)
 
-
+# print("\nEvents:")
+# for e in Events.objects.all():
+#     print(e)
 
 username = "compsci326"
 password = "compsci326"
