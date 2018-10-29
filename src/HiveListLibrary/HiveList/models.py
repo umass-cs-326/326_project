@@ -1,4 +1,9 @@
+import uuid
 from django.db import models
+import datetime
+from django.core.validators import MaxValueValidator, MinValueValidator
+
+now = datetime.datetime.now()
 
 # Create your models here.
 
@@ -15,7 +20,7 @@ class Playlist(models.Model):
     playlist_creator_id = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
     playlist_creation_date = models.DateField(auto_now_add=True, blank=True)
     playlist_description = models.TextField(max_length=1000, help_text="Enter description for playlist")
-    playlist_vote_time = models.DateTimeField(default=datetime.now(), blank=True)
+    playlist_vote_time = models.DateTimeField(default=now.strftime("%Y-%m-%d %H:%M"), blank=True)
     playlist_ranking = models.IntegerField(default=0)
     playlist_votingthreshold = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
 
