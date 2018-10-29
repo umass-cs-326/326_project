@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 {% extends "base_generic.html" %}
 
 {% block content %}
@@ -11,8 +10,9 @@
 	 				<div class="card-body">
 	 					<h1>IP Playlists</h1>
 		 					<table class="table table-hover">
-		 						<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Closing Date</th></tr>
-		 						<!-- Insert info -->
+		 						{% for playlist in IP_playlists %}
+		 						<tr scope="row"><th>{{playlist.name}}</th><th>{{ playlist.creator }}</th><th>{{ playlist.votingTime }}</th></tr>
+		 						{% endfor %}
 							</table>
 
 
@@ -24,8 +24,9 @@
 	 				<div class="card-body">
 	 					<h1>Top 100</h1>
 		 					<table class="table table-striped">
-			 					<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Export</th></tr>
-								<!-- Insert info -->
+		 						{% for playlist in top_100 %}
+			 					<tr scope="row"><th>{{ playlist.name }}</th><th>{{ playlist.creator }}</th><th>{{ playlist.export }}</th></tr>
+			 					{% endfor %} <!-- todo: add 'view all' button and page-->
 		 					</table>
 
 
@@ -40,8 +41,10 @@
 	 				<div class="card-body">
 	 					<h1>Public Playlists</h1>
 	 						<table class="table table-striped">
-			 					<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Export</th></tr>
-			 					<!-- Insert info -->
+	 							{% for playlist in public_playlists %}
+			 					<tr scope="row"><th>{{ playlist.name }}</th><th>{{ playlist.creator }}</th><th>{{ playlist.export }}</th></tr>
+			 					<!-- todo: add 'view all' button and page-->
+			 					{% endfor %}
 		 					</table>
 
 
@@ -54,10 +57,7 @@
 	 			<div class="card gedf-card">
 	 				<div class="card-body">
 	 					<h1>Profile</h1>
-	 					<h2><img src="exampleProfile.png" width="50" height="50" class="logo"> BILLY</h2>
-	 					<p class="contrNum">16 Contributions</p> <!-- contrNum = # number of contributions -->
-
-
+	 						{{ profile_information }}
 	 				</div>
 	 			</div>
 
