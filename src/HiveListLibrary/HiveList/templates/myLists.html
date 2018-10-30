@@ -14,7 +14,7 @@
 	 					<table class="table table-hover">
 	 						<tr scope="row"><th>Playlist name</th><th>Owner</th><th>Closing Date</th></tr>
 	 						{% for playlist in My_IP_Playlists %}
-	 						<tr><td class="playlistName"><a href="currentPlaylist.html">{{ playlist.name }}</a></td><td>{{ playlist.creator }}</td><td class="vote">{{ playlist.voteTime }}</td></tr>
+	 						<tr><td class="playlistName"><a href="currentPlaylist.html">{{ playlist.playlist_name }}</a></td><td>{{ playlist.playlist_creator_id }}</td><td class="vote">{{ playlist.playlist_vote_time }}</td></tr>
 	 						{% endfor %}
 	 					</table>
 	 				</div>
@@ -30,7 +30,7 @@
 	 					<table class="table table-hover">
 	 						<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Export to Spotify</th></tr>
 	 						{% for playlist in My_Finished_Playlists %}
-	 						<tr><td class="playlistName"><a href="currentPlaylist.html">{{ playlist.name }}</a></td><td>{{ playlist.creator }}</td><td class="vote">{{ playlist.export }}</td></tr>
+	 						<tr><td class="playlistName"><a href="currentPlaylist.html">{{ playlist.playlist_name }}</a></td><td>{{ playlist.playlist_creator_id }}</td><td class="vote">{{ playlist_export }}</td></tr>
 	 						{% endfor %}
 	 					</table>
 	 				</div>
