@@ -14,7 +14,7 @@
 	 					<table class="table table-hover">
 	 						<tr scope="row"><th>Song Name</th><th>Artist</th><th>Vote</th></tr>
 	 						{% for song in current_playlist %}
-	 							<tr><td class= "songName">{{ song.name }}<td><td class= "artistName">{{ song.artist }}</td><td class="vote">{{ song.vote }}</td></tr>
+	 							<tr><td class= "songName">{{ song.title }}<td><td class= "artistName">{{ song.artist }}</td><td class="vote">{{ song_vote }}</td></tr>
 	 						{% endfor %}
 	 					</table>
 	 				</div>
@@ -38,7 +38,7 @@
         					</form>
         					<table class="table table-striped">
         						{% for song in song_suggestions %}
-        							<tr><td>{{ song.name }}</td><td>{{ song.artist }}<td>+</td></tr>
+        							<tr><td>{{ song.title }}</td><td>{{ song.artist }}<td>+</td></tr>
         						{% endfor %}
         					</table>
 	 				</div>
@@ -49,7 +49,7 @@
 	 					<h1>Contributors</h1>
 	 					<table class="table table-striped">
 	 						{% for user in contributors %}
-        						<tr><td>{{ user.name }}</td><td>{{ user.profile }}</td></tr>
+        						<tr><td>{{ user.username }}</td><td>{{ user_profile }}</td></tr>
         					{% endfor %}
         					</table>
 	 				</div>
