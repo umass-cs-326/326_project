@@ -44,5 +44,5 @@ class AuthorListView(generic.ListView):
     template_name = "author_list.html"
 
 class AuthorDetailView(generic.DetailView):
-    mdoel = Author
+    model = Author
     template_name = "author_detail.html"
