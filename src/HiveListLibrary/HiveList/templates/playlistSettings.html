@@ -22,7 +22,7 @@
 							</tr></td>
 							<tr><td><p>Playlist Description:</P>
 							<form>
-							<textarea name="playlist-description" rows="4" cols="40">{{ playlist.description }}</textarea>
+							<textarea name="playlist-description" rows="4" cols="40">{{ playlist.playlist_description }}</textarea>
 							</form>
 							</tr></td>
 							<tr><td><p>Playlist Access:</p>
@@ -53,7 +53,11 @@
 							<form>
 							<tr><td>Vote Period: {{ date_field }} </td></tr>
 							<tr><td>Vote Threshold: {{ threshold_field }}</td></tr>
-							</form>
+							</form> <!-- TODO: Edit this so that it displays the current vote period and current vote threshold prior to setting a new one. 
+										 Need to decide if we want to allow the period/threshold to change after the original values are set. -->
+
+
+										 <!-- TODO: Make a playlist creation page for playlists that don't already exist!!!!!!! -->
 							
 						</table>
 					</div>
