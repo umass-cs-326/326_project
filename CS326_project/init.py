@@ -1,9 +1,7 @@
 import textwrap
 from datetime import datetime
 from datetime import timedelta
-from PIL import Image as PImage #####################
-from django.db import models #################
-from django.core.files.uploadedfile import SimpleUploadedFile ###############
+from django.db import models 
 # Create a super user to use the admin site.
 from django.contrib.auth.models import User
 from faker import Faker
@@ -20,6 +18,7 @@ for i in range(0, 9):
     image_instance = Image()
     img = models.ImageField(default="dog_images/"+str(i)+".jpg")
     image_instance = Image(image="dog_images/"+str(i)+".jpg")
+
     image_instance.save()
     Images.append(image_instance)
 
