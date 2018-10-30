@@ -3,6 +3,6 @@ from carton.models import Class
 from django.views import generic
 
 # Create your views here.
-class ClassInstanceView(generic.DetailView):
-    model = ClassInstance
-    template_name = "main.html"
+class ClassSessionView(generic.DetailView):
+    model = ClassSession
+    template_name = "detail.html"
