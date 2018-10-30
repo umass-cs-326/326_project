@@ -24,6 +24,19 @@ def Explore(request):
 
 def Home(request):
 
+    IP_playlists = pass
+    top_100 = pass              #TODO: make the queries
+    public_playlists = pass
+    profile_information = pass
+    playlist_export = pass
+
+    context = {
+    "IP_playlists": IP_playlists
+    "top_100": top_100
+    "public_playlists": public_playlists
+    "profile_information": profile_information
+    "playlist_export": playlist_export
+    }
 
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "Home.html", context=context)
