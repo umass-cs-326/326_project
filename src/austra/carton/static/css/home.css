@@ -1,0 +1,15 @@
+.main-header {
+  background-image: url(../img/chickenreal.jpg);
+  background-repeat: no-repeat;
+}
+.red {
+  filter:   saturate(100) hue-rotate(110deg);
+}
+.img-thumbnail {
+  max-width:200px;
+
+}
+.carouesl {
+   max-height: 296px;
+   overflow: hidden;
+}
