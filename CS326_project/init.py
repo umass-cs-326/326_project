@@ -1,15 +1,31 @@
 import textwrap
 from datetime import datetime
 from datetime import timedelta
-
+from PIL import Image as PImage #####################
+from django.db import models #################
+from django.core.files.uploadedfile import SimpleUploadedFile ###############
 # Create a super user to use the admin site.
 from django.contrib.auth.models import User
 from faker import Faker
 
-from Catch.models import Pet, PetUser, Event
+from Catch.models import Pet, PetUser, Event, Image
 # Author, Book, BookInstance, Genre
 fake = Faker()
 
+
+
+# Create Images
+Images = []
+for i in range(0, 9):
+    image_instance = Image()
+    img = models.ImageField(default="dog_images/"+str(i)+".jpg")
+    image_instance = Image(image="dog_images/"+str(i)+".jpg")
+    image_instance.save()
+    Images.append(image_instance)
+
+print("\nImages:")
+for u in Image.objects.all():
+    print(u)
 
 # Create Authors
 PetUsers = []
@@ -37,6 +53,7 @@ for i in range(1, 10):
     p_owner = PetUsers[fake.random_int(0, len(PetUsers)) - 1]
     pet = Pet(name=p_name, pet_type=p_pet_type, breed=p_breed, description=p_description, owner = p_owner)
     pet.save()
+    #pet.image.add(Images[fake.random_int(0,len(Images))-1])
     Pets.append(pet)
 
 #Create Events
