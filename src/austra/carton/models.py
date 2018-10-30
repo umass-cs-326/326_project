@@ -10,6 +10,12 @@ class Class(models.Model) :
     def __str__(self) :
         return f"{self.code} {self.name}"
 
+class ClassInstance(models.Model) :
+    """Model representing a UMass class instance"""
+    Class = models.ForeignKey("Class", on_delete=models.SET_NULL, null=True)
+    profs = models.CharField(max_length=100, help="Enter professor(s) name")
+
+    def __str__(self) :
+        return f"{self.Class} {self.profs}"
     
 
-# Create your models here.
