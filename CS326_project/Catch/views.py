@@ -25,7 +25,7 @@ def map(request):
 
 def profile(request):
     pets = Pet.objects.all()
-    owner = PetUser.objects.all()
+    owner = PetUser.objects.filter(username = "ProfileUser")
     context = {
         "pets": pets,
         "owner" : owner,

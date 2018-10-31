@@ -10,11 +10,11 @@
       {% for user in owner %}
     <div class="row">
       <div class="col-sm-4">
-        <img src="{% static 'profilepicture.jpg' %}" class="img-square" alt="profilepicture">
+        <img src="{{ user.image.url }}" class="img-square" alt="profilepicture">
       </div>
       <div class="col-sm-8">
         <p>Name: {{ user.first_name}}</p>
-        <p>Description: {{ user.descripion }}</p>
+        <p>Description: {{ user.description }}</p>
         <p>Location: {{ user.location}}</p>
 
       </div>
@@ -30,7 +30,7 @@
     {% for pet in pets %}
       <div class="row">
         <div class="col-sm-4" style="background-color:white;">
-          <img src="{% static 'blacklab.jpg' %}" alt="black lab">
+          <img src="{{ pet.image.url }}" alt="black lab">
         </div>
         <div class = "col-sm-8" style = "background-color:white;">
           <p>Name: {{ pet.name}}</p>
