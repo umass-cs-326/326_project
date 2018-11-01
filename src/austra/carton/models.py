@@ -9,7 +9,7 @@ class Class(models.Model) :
     rating = models.IntegerField()
     prereqs = models.ManyToManyField("self", null=True)
     def __str__(self) :
-        return f"{code} {name}"
+        return f"{self.code} {self.name}"
 
 class Session(models.Model) :
     """Model representing a session"""
