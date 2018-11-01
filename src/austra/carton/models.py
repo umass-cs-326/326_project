@@ -16,8 +16,10 @@ class Session(models.Model) :
     cur_class = models.ForeignKey("Class", on_delete=models.CASCADE, null=True)
     instructor = models.ForeignKey("Instructor", on_delete=models.SET_NULL, null=True)
     max_seats = models.IntegerField()
-    rating = (self.cur_class.rating + self.instructor.rating) if instructor is not None else None
     
+    @property
+    def get_rating(self) :
+        return self.cur_class.rating + self.instructor.rating
     
     #TODO: verify this is proper usage of reverse(). Where is self.id declared?
     def get_absolute_url(self) :
