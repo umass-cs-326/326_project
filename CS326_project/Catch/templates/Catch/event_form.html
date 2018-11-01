@@ -1,5 +1,5 @@
-{% extends 'Catch/navbar.html' %}
-{% block Events_active %}active{% endblock %}
+{% extends "navbar.html" %}
+{% block Event_active %}active{% endblock %}
 
 
 {% block content %}
@@ -11,7 +11,7 @@
         <div class = "panel-body">
           <form class ="form-horizontal" action ="" method = "post" encType = "multipart/form-data">
             {% csrf_token %}
-            {% include 'Catch/form-template.html' %}
+            {% include 'form-template.html' %}
             <div class = "form-group">
               <div class = "col-sm-offset-2 col-sm-10">
                 <button type="submit" class = "btn btn-success">Submit</button>
