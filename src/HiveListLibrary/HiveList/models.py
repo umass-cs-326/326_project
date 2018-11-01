@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import User
 
 now = datetime.datetime.now()
 
@@ -23,6 +24,7 @@ class Playlist(models.Model):
     playlist_vote_time = models.DateTimeField(default=now.strftime("%Y-%m-%d %H:%M"), blank=True)
     playlist_ranking = models.IntegerField(default=0)
     playlist_votingthreshold = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    playlist_is_private = models.BooleanField(default=False)
 
     def __str__(self):
         """
@@ -72,7 +74,7 @@ class Song(models.Model):
     """
     title = models.CharField(max_length=200)
     artist = models.ForeignKey("Artist", on_delete=models.SET_NULL, null=True)
-    
+    genre = models.ForeignKey('Genre', on_delete=models.SET_NULL, null=True)
     song_id = models.UUIDField(
                                primary_key=True,
                                default=uuid.uuid4,
@@ -94,14 +96,7 @@ class Genre(models.Model):
     Model representing a Song
     """
 
-	#not sure if that works for genre id 
-
-    genre_id = models.UUIDField(
-                               primary_key=True,
-                               default=uuid.uuid4,
-                               help_text="Unique ID for this particular Genre across entire site",
-                               )
-    genre_name = models.CharField(max_length=200, help_text="Enter a genre for the song (e.g. Swedish Heavy Metal)")
+    genre_name = models.CharField(primary_key=True, max_length=200, help_text="Enter a genre for the song (e.g. Swedish Heavy Metal)")
 
     def __str__(self):
         """
@@ -115,7 +110,7 @@ class SongInstance(models.Model):
     """
     Model representing a Song
     """
-    song = models.ForeignKey('Song.song_id', on_delete=models.SET_NULL, null=True)
+    song_id = models.ForeignKey('Song.song_id', on_delete=models.SET_NULL, null=True)
     song_instance_id = models.UUIDField(
                                primary_key=True,
                                default=uuid.uuid4,
@@ -123,7 +118,6 @@ class SongInstance(models.Model):
                                )
     playlist_id = models.ForeignKey('Playlist.playlist_id', on_delete=models.SET_NULL, null=True)
     contributor_id = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
-    number_votes = models.IntegerField(default=0)
     number_yes_votes = models.IntegerField(default=0)
     number_no_votes = models.IntegerField(default=0)
 
@@ -141,7 +135,8 @@ class VoteInstance(models.Model):
     """
     contributor_id = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
     song_id = models.ForeignKey('SongInstance', on_delete=models.SET_NULL, null=True)
-
+    playlist_id = models.ForeignKey('Playlist', on_delete=models.SET_NULL, null=True)
+    vote_instance_id = models.IntegerField(primary_key=True)
     VOTE_STATUS = (
     	('y', 'yes'),
     	('n', 'no')
