@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from HiveList.models import Playlist, Contributor, Artist, Song, Genre, SongInstance, VoteInstance
+from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance, VoteInstance
 
 # Create your views here.
 def index(request):
@@ -58,3 +58,4 @@ def profile(request):
 
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "profile.html", context=context)
+

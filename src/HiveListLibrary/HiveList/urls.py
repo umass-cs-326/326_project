@@ -10,5 +10,5 @@ urlpatterns = [
     path("profile/", views.profile, name="profile"),
     path("currentPlaylist/", views.currentPlaylist, name="currentPlaylist"),
     path("playlistSettings/", views.playlistSettings, name="playlistSettings"),
-
 ]
+
