@@ -4,17 +4,18 @@ from django.urls import reverse
 class Class(models.Model) :
     """Model representing a UMass class"""
 
-    name = models.CharField(max_length=100, help="Enter class name")
-    code = models.CharField(max_length=15, help="Enter alphanumeric class code")
+    name = models.CharField(max_length=100, help_text="Enter class name")
+    code = models.CharField(max_length=15, help_text="Enter alphanumeric class code")
     rating = models.IntegerField()
-    
+    prereqs = models.ManyToManyField("self", null=True)
     def __str__(self) :
-        return f"{self.code} {self.name}"
+        return f"{code} {name}"
 
 class Session(models.Model) :
     """Model representing a session"""
     cur_class = models.ForeignKey("Class", on_delete=models.CASCADE, null=True)
     instructor = models.ForeignKey("Instructor", on_delete=models.SET_NULL, null=True)
+    max_seats = models.IntegerField()
     rating = (self.cur_class.rating + self.instructor.rating) if instructor is not None else None
     
     
