@@ -15,7 +15,7 @@ class Session(models.Model) :
     """Model representing a session"""
     cur_class = models.ForeignKey("Class", on_delete=models.CASCADE, null=True)
     instructor = models.ForeignKey("Instructor", on_delete=models.SET_NULL, null=True)
-    rating = (self.cur_class.rating + self.instructor.rating) if instructor is not None else None
+    rating = (cur_class.rating + instructor.rating) if instructor is not None else None
     
     
     #TODO: verify this is proper usage of reverse(). Where is self.id declared?
