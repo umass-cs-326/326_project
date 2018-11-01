@@ -1,5 +1,5 @@
 from django.urls import path
-from HiveList import views
+from . import views
 
 
 urlpatterns = [
@@ -10,5 +10,6 @@ urlpatterns = [
     path("profile/", views.profile, name="profile"),
     path("currentPlaylist/", views.currentPlaylist, name="currentPlaylist"),
     path("playlistSettings/", views.playlistSettings, name="playlistSettings"),
+    
 ]
 

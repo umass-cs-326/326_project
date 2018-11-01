@@ -3,6 +3,7 @@ from django.db import models
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 now = datetime.datetime.now()
 

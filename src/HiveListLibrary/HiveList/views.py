@@ -9,7 +9,7 @@ def index(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "index.html", context=context)
 
-
+"""
 def currentPlaylist(request):
 
 
@@ -58,4 +58,6 @@ def profile(request):
 
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "profile.html", context=context)
+    
+"""
 
