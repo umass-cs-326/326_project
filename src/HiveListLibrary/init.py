@@ -5,7 +5,7 @@ from datetime import timedelta
 from django.contrib.auth.models import User
 from faker import Faker
 
-from HiveList.models import Playlist, Contributors, Genre, Song, Artist, SongInstance, VoteInstance
+from HiveList.models import Genre#Playlist, Contributors, Genre, Song, Artist, SongInstance, VoteInstance
 
 fake = Faker()
 
@@ -37,7 +37,7 @@ genres = [
 # Save Genres
 for genre in genres:
     genre.save()
-
+"""
 # Create Artists
 artists = []
 a_id = 0
@@ -124,6 +124,7 @@ for i in range(1, 10000):
     vote_instance.save()
     vote_instances.append(vote_instance)
     vi_viid += 1
+"""
 
 #Create SuperUser
 username = "admin"

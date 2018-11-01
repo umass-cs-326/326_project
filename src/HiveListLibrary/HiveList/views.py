@@ -1,10 +1,14 @@
 from django.shortcuts import render
 
-from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance, VoteInstance
+from HiveList.models import Genre #Playlist, Contributors, Artist, Song, Genre, SongInstance, VoteInstance
 
 # Create your views here.
 def index(request):
 
+    context = {
+        "test": 5,
+        "test2": 13,
+    }
 
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "index.html", context=context)

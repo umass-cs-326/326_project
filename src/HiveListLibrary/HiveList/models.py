@@ -9,10 +9,9 @@ now = datetime.datetime.now()
 
 # Create your models here.
 
+"""
 class Playlist(models.Model):
-    """
-    Model representing a playlist
-    """
+
     playlist_id =models.UUIDField(
                                primary_key=True,
                                default=uuid.uuid4,
@@ -28,33 +27,19 @@ class Playlist(models.Model):
     playlist_is_private = models.BooleanField(default=False)
 
     def __str__(self):
-        """
-        Description: String for representing the model object (in Admin site etc.)
-        :return: the playlist name
-        """
         return self.playlist_id
 
 
 class Contributors(models.Model):
-    """
-    Model representing all the contributors for a playlist. This will use a playlist ID as a key to the playlists table, and a user ID
-    that is a key to the users table
-    """
     playlist_id = models.ForeignKey('Playlist', on_delete=models.SET_NULL, null=True)
     contributor_id= models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        """
-        Description:
-        :return:
-        """
         return self.playlist_id
 
 
 class Artist(models.Model):
-    """
-    Model representing a Song
-    """
+
     artist_id = models.UUIDField(
                                primary_key=True,
                                default=uuid.uuid4,
@@ -63,16 +48,11 @@ class Artist(models.Model):
     artist_name = models.CharField(max_length=200)
 
     def __str__(self):
-        """
-        Description:
-        :return:
-        """
+    
         return self.artist_id
 
 class Song(models.Model):
-    """
-    Model representing a Song
-    """
+
     title = models.CharField(max_length=200)
     artist = models.ForeignKey("Artist", on_delete=models.SET_NULL, null=True)
     genre = models.ForeignKey('Genre', on_delete=models.SET_NULL, null=True)
@@ -85,17 +65,12 @@ class Song(models.Model):
     
 
     def __str__(self):
-        """
-        Description:
-        :return:
-        """
+    
         return self.song_id
-
+"""
 
 class Genre(models.Model):
-    """
-    Model representing a Song
-    """
+    
 
     genre_name = models.CharField(primary_key=True, max_length=200, help_text="Enter a genre for the song (e.g. Swedish Heavy Metal)")
 
@@ -106,11 +81,9 @@ class Genre(models.Model):
         """
         return genre_name;
 
-
+"""
 class SongInstance(models.Model):
-    """
-    Model representing a Song
-    """
+
     song_id = models.ForeignKey('Song.song_id', on_delete=models.SET_NULL, null=True)
     song_instance_id = models.UUIDField(
                                primary_key=True,
@@ -123,17 +96,12 @@ class SongInstance(models.Model):
     number_no_votes = models.IntegerField(default=0)
 
     def __str__(self):
-        """
-        Description:
-        :return:
-        """
+    
         return f'{self.song_id}, {self.playist_id}'
 
 
 class VoteInstance(models.Model):
-    """
-    Model representing a vote
-    """
+
     contributor_id = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
     song_id = models.ForeignKey('SongInstance', on_delete=models.SET_NULL, null=True)
     playlist_id = models.ForeignKey('Playlist', on_delete=models.SET_NULL, null=True)
@@ -147,12 +115,9 @@ class VoteInstance(models.Model):
 
 
     def __str__(self):
-        """
-        Description:
-        :return:
-        """
+        
         return contributor_id
-
+"""
 
 
 
