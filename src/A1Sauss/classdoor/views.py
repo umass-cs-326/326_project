@@ -8,7 +8,8 @@ def classpage(request):
     return render(request, "class.html")
 
 def feed(request):
-    return render(request, "feed.html")
+    
+    return render(request, "feed.html", context=data)
 
 def login(request):
     return render(request, "login.html")

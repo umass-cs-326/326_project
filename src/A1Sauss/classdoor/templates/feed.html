@@ -8,48 +8,48 @@
 
 <ul id="feedList">
     {% for class in class_list %}
-    <li class="listClass">
-        <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
-            <div class="mdl-card__media">
-                <h3 class="className">CS<br>326</h3>
-            </div>
-            <div class="mdl-card__title">
-                <div class="review-block-rate">
-                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
-                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								 <i class="material-icons">star</i>
-								</button>
-                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <i class="material-icons">star</i>
-								</button>
+        <li class="listClass">
+            <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
+                <div class="mdl-card__media">
+                    <h3 class="className">{{class.subject}}<br>{{class.number}}</h3>
                 </div>
-            </div>
-            <div class="mdl-card__supporting-text">
-                Web development is a class where you learn the ins and outs of how to code on the web...
-            </div>
-
-            <div class="mdl-card__actions mdl-card--border">
-                <div class="featuredQuote">
-                    "Tim is awesome"
+                <div class="mdl-card__title">
+                    <div class="review-block-rate">
+                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                      <i class="material-icons">star</i>
+                                    </button>
+                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                      <i class="material-icons">star</i>
+                                    </button>
+                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                      <i class="material-icons">star</i>
+                                    </button>
+                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                                     <i class="material-icons">star</i>
+                                    </button>
+                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                                      <i class="material-icons">star</i>
+                                    </button>
+                    </div>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Web development is a class where you learn the ins and outs of how to code on the web...
                 </div>
 
-                <div class="featuredReview">
-                    Best class, best teacher.
+                <div class="mdl-card__actions mdl-card--border">
+                    <div class="featuredQuote">
+                        "Tim is awesome"
+                    </div>
+
+                    <div class="featuredReview">
+                        Best class, best teacher.
+                    </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">See More</a>
                 </div>
             </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">See More</a>
-            </div>
-        </div>
-    </li>
+        </li>
     {% endfor %}
 </ul>
 {% endblock %}
