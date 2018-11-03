@@ -52,7 +52,7 @@ for i in range(1, 10):
     cTeacher.save()
     cDesc = fake.text(1000)
     cAvgGrade = Decimal(1)
-    cStarRating = Decimal(3)
+    cStarRating = Decimal(fake.random_int(0, 500)) / 100
 
     c = Course(name=cName,
               teacher=cTeacher,
@@ -74,7 +74,7 @@ for i in range(0, len(courses) - 1):
     rStarRating = Decimal(1)
 
     for j in range(1, fake.random_int(3, 20)):
-        rTitle = fake.text(10)
+        rTitle = fake.text(25)
         rText = fake.text(200)
 
         review = Review(title=rTitle,

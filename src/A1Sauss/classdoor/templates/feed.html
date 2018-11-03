@@ -7,7 +7,7 @@
 {% block content %}
 
 <ul id="feedList">
-    {% for class in class_list %}
+    {% for class in course_data %}
         <li class="listClass">
             <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
                 <div class="mdl-card__media">
@@ -15,38 +15,42 @@
                 </div>
                 <div class="mdl-card__title">
                     <div class="review-block-rate">
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                        <button type="button" class="btn btn-warning btn-xs {% if class.star_rating < 1 %} btn-grey {% endif %}" aria-label="Left Align">
                                       <i class="material-icons">star</i>
                                     </button>
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                        <button type="button" class="btn btn-warning btn-xs {% if class.star_rating < 2 %} btn-grey {% endif %}" aria-label="Left Align">
                                       <i class="material-icons">star</i>
                                     </button>
-                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                        <button type="button" class="btn btn-warning btn-xs {% if class.star_rating < 3 %} btn-grey {% endif %}" aria-label="Left Align">
                                       <i class="material-icons">star</i>
                                     </button>
-                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-                                     <i class="material-icons">star</i>
-                                    </button>
-                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                        <button type="button" class="btn btn-warning btn-xs {% if class.star_rating < 4 %} btn-grey {% endif %}" aria-label="Left Align">
                                       <i class="material-icons">star</i>
                                     </button>
-                    </div>
+                        <button type="button" class="btn btn-default btn-xs {% if class.star_rating < 5 %} btn-grey {% endif %}" aria-label="Left Align">
+                                      <i class="material-icons">star</i>
+                                    </button>
+                    </div>    
                 </div>
                 <div class="mdl-card__supporting-text">
-                    Web development is a class where you learn the ins and outs of how to code on the web...
+                    {{class.description|truncatewords:30}}
                 </div>
 
+                {% if class.featured_title %}
                 <div class="mdl-card__actions mdl-card--border">
                     <div class="featuredQuote">
-                        "Tim is awesome"
+                        "{{ class.featured_title }}"
                     </div>
 
                     <div class="featuredReview">
-                        Best class, best teacher.
+                        {{ class.featured_text }}
                     </div>
                 </div>
+
+                {% endif %}
+
                 <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">See More</a>
+                    <a href="{{class.class.get_absolute_url}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">See More</a>
                 </div>
             </div>
         </li>
