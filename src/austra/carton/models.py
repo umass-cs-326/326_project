@@ -27,7 +27,7 @@ class Session(models.Model) :
 
 class Instructor(models.Model) :
     """Model representing an instructor"""
-    name = models.CharField(max_length=50, help="Enter instructor name")
+    name = models.CharField(max_length=50, help_text="Enter instructor name")
     rating = models.IntegerField()
 
     def __str__(self) :
