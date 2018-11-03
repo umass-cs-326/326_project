@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 #Version 1.4
 #Description: some modifications are added into the model, a new class teacher was created
