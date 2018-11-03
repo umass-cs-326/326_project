@@ -56,5 +56,6 @@ def review(request, id):
 
     context = {
         "course_name": course_name,
+        "this_course": course_object,
     }
     return render(request, "WriteReviewTemplate.html", context = context)
