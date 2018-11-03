@@ -7,7 +7,7 @@ from django.db import models
 
 #-------------------part 1------------------------#
 
-class Class(models.Model):
+class Course(models.Model):
    """Model representing a specific class"""
    name = models.CharField(max_length=200)
    #change teacher to foreign key
@@ -16,12 +16,12 @@ class Class(models.Model):
    description = models.TextField(max_length=500, help_text = "Description of the course")
    #chaged rating range
    #also needs a method to calculate average rating
-   rating = models.DecimalField(default=0.0, max_digits=2, decimal_places=1)
+   starRating = models.DecimalField(max_digits=2, decimal_places=1)
    #changed reviews back to manytomany field
-   review = models.ManyToManyField('Review', help_text="Select a review for this class")
+   reviews = models.ManyToManyField('Review', help_text="Select a review for this class")
    #changed grade range
    'Not sure if we need grade for the class since we have grade in review'
-   #grade = models.DecimalField(default=0.0, max_digits=2, decimal_places=1)
+   averageGrade = models.DecimalField(max_digits=2, decimal_places=1)
    #changed self to PreReq
    #also needs to be able to choose multiple preReqs
    'preReq needs to be fullfilled with other classes, requires more work to implement it'
@@ -69,6 +69,7 @@ class Review(models.Model):
    #changed charfield to textfield
    text = models.TextField(max_length=500, help_text='Enter your review for this class')
    #will figure out how to put a range on the rating
+   #decimal fields do not take a default
    starRating = models.DecimalField(max_digits=2, decimal_places=1)
    #not sure grade using numbers? will figure out how to properly present grade
    gradeReceived = models.DecimalField(max_digits=2, decimal_places=1)
@@ -98,7 +99,7 @@ class University(models.Model):
 
    name = models.CharField(max_length=200)
    location = models.CharField(max_length=500)
-   classes = models.ManyToManyField('Class')
+   courses = models.ManyToManyField('Course')
    subjectsOffered = models.ManyToManyField('Subject', blank=True)   
 
    class Meta:
@@ -140,7 +141,8 @@ class User(models.Model):
 class Subject(models.Model):
    """Model representing a Subject."""
 
-   name = models.CharField(max_length=40)
+   name = models.CharField(max_length=40, default="SUBJECT")
+   abbreviation = models.CharField(max_length=10, default="COURSE")
    #will figure out how to access the name in that class instead of the whole class
    universityName = models.ForeignKey('University',  on_delete=models.SET_NULL, null=True, related_name='+')
    

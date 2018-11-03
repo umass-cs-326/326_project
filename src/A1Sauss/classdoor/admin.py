@@ -1,5 +1,5 @@
 from django.contrib import admin
-from classdoor.models import Class, Teacher, Review, University, User, Subject
+from classdoor.models import Course, Teacher, Review, University, User, Subject
 
 #version 2
 #description: A different approach for registering models
@@ -8,10 +8,10 @@ from classdoor.models import Class, Teacher, Review, University, User, Subject
 
 # Register your models here.
 
-@admin.register(Class)
+@admin.register(Course)
 class ClassAdmin(admin.ModelAdmin):
-    list_display = ('name', 'teacher', 'rating', 'subject')
-    #field = ['name', 'teacher', 'description', 'rating', 'review'] 
+    list_display = ('name', 'teacher', 'starRating', 'subject', 'averageGrade')
+    #field = ['name', 'teacher', 'description', 'rating', 'review's] 
     #pass
 #admin.site.register(Class)
 
@@ -26,6 +26,7 @@ class ReviewAdmin(admin.ModelAdmin):
     #the default for field is vertical so it is good enough for displaying them
     #using a list filter to sort results
     list_filter = ('title','date')
+    list_display = ('title', 'starRating', 'date')
     #pass
 #admin.site.register(Review)
 
