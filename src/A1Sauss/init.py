@@ -1,7 +1,8 @@
-from classdoor.models import Subject, ClassDesc, University, Review
+from classdoor.models import Subject, Course, University, Review, Teacher
 from faker import Faker
 from django.contrib.auth.models import User
 from datetime import timedelta
+from decimal import *
 import textwrap
 
 fake = Faker()
@@ -32,24 +33,28 @@ for i in range(1, 3):
     uni.save()
 
     for subj in subjects:
-        uni.subjects.add(subj)
+        uni.subjectsOffered.add(subj)
 
     uni.save()
     unis.append(uni)
 
-# Create Classes
-classes = []
+# Create Courses
+courses = []
 for i in range(1, 10):
     subject = subjects[fake.random_int(0, len(subjects) - 1)]
+    subject.save()
     uni = unis[fake.random_int(0, len(unis) - 1)]
+    teachFirstName = fake.name().split()[0]
+    teachLastName = fake.name().split()[1]
 
     cName = subject.abbreviation + str(fake.random_int(100, 500))
-    cTeacher = fake.name()
+    cTeacher = Teacher(first_name=teachFirstName, last_name=teachLastName)
+    cTeacher.save()
     cDesc = fake.text(1000)
-    cAvgGrade = fake.random_int(0, 100)
-    cStarRating = float(fake.random_int(0, 500)) / 100.0
+    cAvgGrade = Decimal(1)
+    cStarRating = Decimal(3)
 
-    c = ClassDesc(name=cName,
+    c = Course(name=cName,
               teacher=cTeacher,
               description=cDesc,
               averageGrade=cAvgGrade,
@@ -58,19 +63,15 @@ for i in range(1, 10):
               university=uni)
 
     c.save()
-
-    uni.classes.add(c)
-    uni.save()
-
-    classes.append(c)
+    courses.append(c)
 
 
 # Create Reviews
 reviews = []
-for i in range(0, len(classes) - 1):
-    currClass = classes[i]
-    rGrade = fake.random_int(0, 100)
-    rStarRating = float(fake.random_int(0, 500)) / 100.0
+for i in range(0, len(courses) - 1):
+    currClass = courses[i]
+    rGrade = Decimal(3)
+    rStarRating = Decimal(1)
 
     for j in range(1, fake.random_int(3, 20)):
         rTitle = fake.text(10)
@@ -80,7 +81,7 @@ for i in range(0, len(classes) - 1):
                         text=rText,
                         gradeReceived=rGrade,
                         starRating=rStarRating,
-                        classDesc=currClass)
+                        course=currClass)
 
         review.save()
         reviews.append(review)
@@ -97,7 +98,7 @@ for u in University.objects.all():
     print(u)
 
 print('\nClasses:')
-for c in ClassDesc.objects.all():
+for c in Course.objects.all():
     print(c)
 
 print('\nReviews:')

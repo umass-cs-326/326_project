@@ -1,29 +1,49 @@
 from django.contrib import admin
-from classdoor.models import ClassDesc, Review, University, User, Subject
+from classdoor.models import Course, Teacher, Review, University, User, Subject
+
+#version 2
+#description: A different approach for registering models
+#Zihang
+#10/26/2018
 
 # Register your models here.
 
-@admin.register(ClassDesc)
-class ClassDescAdmin(admin.ModelAdmin):
-    list_display = ("name", "teacher", "description", "starRating", "averageGrade")
-    fields = ["name", "teacher", "description", "preReqs", ("starRating", "averageGrade"), "reviews", "subject", "universityName"]
+@admin.register(Course)
+class ClassAdmin(admin.ModelAdmin):
+    list_display = ('name', 'teacher', 'starRating', 'subject', 'averageGrade')
+    #field = ['name', 'teacher', 'description', 'rating', 'review's] 
+    #pass
+#admin.site.register(Class)
+
+@admin.register(Teacher)
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = ('last_name', 'first_name')
+    #pass
+#admin.site.register(Teacher, TeacherAdmin)
 
 @admin.register(Review)
-class ClassDescAdmin(admin.ModelAdmin):
-    list_display = ("title", "starRating")
-    fields = ["title", "text", "starRating", "gradeReceived", "classDesc", "author", "likes", "dislikes"]
+class ReviewAdmin(admin.ModelAdmin):
+    #the default for field is vertical so it is good enough for displaying them
+    #using a list filter to sort results
+    list_filter = ('title','date')
+    list_display = ('title', 'starRating', 'date')
+    #pass
+#admin.site.register(Review)
 
 @admin.register(University)
-class ClassDescAdmin(admin.ModelAdmin):
-    list_display = ("name", "location")
-    fields = ["name", "location", "classes", "subjectsOffered"]
+class UniversityAdmin(admin.ModelAdmin):
+    list_display = ('name', 'location')
+    #pass
+#admin.site.register(University)
 
 @admin.register(User)
-class ClassDescAdmin(admin.ModelAdmin):
-    list_display = ("username", "email")
-    fields = ["username", "email", "password", "major", "writtenReviews"]
+class UserAdmin(admin.ModelAdmin):
+    #default display
+    pass
+#admin.site.register(User)
 
 @admin.register(Subject)
-class ClassDescAdmin(admin.ModelAdmin):
-    list_display = ("name", "universityName")
-    fields = ["name", "universityName"]
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ('name', 'universityName')
+    #pass
+#admin.site.register(Subject)
