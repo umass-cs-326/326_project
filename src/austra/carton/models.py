@@ -4,10 +4,10 @@ from django.urls import reverse
 class Class(models.Model) :
     """Model representing a UMass class"""
 
-    name = models.CharField(max_length=100, help="Enter class name")
-    code = models.CharField(max_length=15, help="Enter alphanumeric class code")
+    name = models.CharField(max_length=100, help_text="Enter class name")
+    code = models.CharField(max_length=15, help_text="Enter alphanumeric class code")
     rating = models.IntegerField()
-    
+    prereqs = models.ManyToManyField("self", null=True)
     def __str__(self) :
         return f"{self.code} {self.name}"
 
@@ -15,8 +15,11 @@ class Session(models.Model) :
     """Model representing a session"""
     cur_class = models.ForeignKey("Class", on_delete=models.CASCADE, null=True)
     instructor = models.ForeignKey("Instructor", on_delete=models.SET_NULL, null=True)
-    rating = (cur_class.rating + instructor.rating) if instructor is not None else None
+    max_seats = models.IntegerField()
     
+    @property
+    def get_rating(self) :
+        return self.cur_class.rating + self.instructor.rating
     
     #TODO: verify this is proper usage of reverse(). Where is self.id declared?
     def get_absolute_url(self) :
