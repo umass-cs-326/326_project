@@ -1,7 +1,7 @@
 import re
 
 from django.shortcuts import render
-from classdoor.models import Course, Review
+from classdoor.models import Course, Teacher, Review, University, User, Subject
 
 # Create your views here.
 def index(request):
@@ -43,11 +43,14 @@ def login(request):
     return render(request, "login.html")
 
 def profile(request):
-	courses = Course.objects.all()[:3]
-	reviews = Review.objects.all()[:3]
-	
-	context = {"reviews": reviews, "courses": courses}
-	return render(request, "profile.html", context=context)
+    return render(request, "profile.html")
 
-def review(request):
-    return render(request, "WriteReviewTemplate.html")
+def review(request, id):
+
+    course_object = Course.objects.get(pk=id)
+    course_name = course_object.name
+
+    context = {
+        "course_name": course_name,
+    }
+    return render(request, "WriteReviewTemplate.html", context = context)
