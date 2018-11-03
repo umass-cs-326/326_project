@@ -69,13 +69,14 @@
     <!--Recommended Classes-->
     <div class="recommend-classes" height="300px">
         <h2 class="recommend-title">Recommended Classes</h2>
+        {% for course in courses %}
         <!-- Class Card -->
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-                <h3 class="flip-card-title">CS326</h3> 
+                <h3 class="flip-card-title">{{course.name}}</h3> 
                 <p class="course-name-text">Intro to Web-Programming</p> 
-                <p class="instructor-text">Instructor: Tim Richards</p>
+                <p class="instructor-text">{{course.teacher.first_name}} {{course.teacher.last_name}}</p>
                 {% load static %}
                 <img src="{% static "images/star-gold.gif" %}" class="stars">
                 {% load static %}
@@ -90,127 +91,38 @@
             </div>
             <div class="flip-card-back">
               <h3 class="flip-card-title">Description</h3> 
-              <p class="desc-text">The World Wide Web was proposed originally as a collection of static documents inter-connected by hyperlinks. Today, the web has grown into a rich platform, built on a variety of protocols, standards...</p> 
+              <p class="desc-text">{{course.description|truncatewords:25}}</p> 
               <a class="btn btn-primary see-more-btn" href="profile_edit.html" role="button">See more</a>
             </div>
           </div>
         </div>
         <!--End Class Card-->
-        <!-- Class Card -->
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <h3 class="flip-card-title">CS230</h3> 
-                <p class="course-name-text">Computer Systems</p> 
-                <p class="instructor-text">Instructor: Tim Richards</p>
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-                <p class="hover-inst">Hover for description</p>
-            </div>
-            <div class="flip-card-back">
-              <h3 class="flip-card-title">Description</h3> 
-              <p class="desc-text">The World Wide Web was proposed originally as a collection of static documents inter-connected by hyperlinks. Today, the web has grown into a rich platform, built on a variety of protocols, standards...</p> 
-              <a class="btn btn-primary see-more-btn" href="profile_edit.html" role="button">See more</a>
-            </div>
-          </div>
-        </div>
-        <!--End Class Card-->
-
-        <!-- Class Card -->
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <h3 class="flip-card-title">CS460</h3> 
-                <p class="course-name-text">Intro to Security</p> 
-                <p class="instructor-text">Instructor: Amir Houmansadr</p>
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-                <p class="hover-inst">Hover for description</p>
-            </div>
-            <div class="flip-card-back">
-              <h3 class="flip-card-title">Description</h3> 
-              <p class="desc-text">The World Wide Web was proposed originally as a collection of static documents inter-connected by hyperlinks. Today, the web has grown into a rich platform, built on a variety of protocols, standards...</p> 
-              <a class="btn btn-primary see-more-btn" href="profile_edit.html" role="button">See more</a>
-            </div>
-          </div>
-        </div>
-        <!--End Class Card-->
+        {% endfor %}
     </div>
     <!--End Recommended Classes-->
 
     <div class="written-reviews">
         <h3> My Reviews</h3>
-    <!-- Review Card -->
-    <div class="review-card">
-      <div class="review-card-inner">
-        <h4>OIM451</h4>
-        {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-        <p class="review-text"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets..</p>
-      </div>
-    </div>
-    <!--End Review Card-->
-    <!-- Review Card -->
-    <div class="review-card">
-      <div class="review-card-inner">
-        <h4>CS250</h4>
-        {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-        <p class="review-text"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets..</p>
-      </div>
-    </div>
-    <!--End Review Card-->
-
-    <!-- Review Card -->
-    <div class="review-card">
-      <div class="review-card-inner">
-        <h4>Anthro269</h4>
-        {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-open.gif" %}" class="stars">
-        <p class="review-text"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets..</p>
-      </div>
-    </div>
-    <!--End Review Card-->
+        {% for review in reviews %}
+        <!-- Review Card -->
+        <div class="review-card">
+          <div class="review-card-inner">
+            <h4>{{review.title}}</h4>
+            {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                    {% load static %}
+                    <img src="{% static "images/star-open.gif" %}" class="stars">
+            <p class="review-text"> {{review.text}}</p>
+          </div>
+        </div>
+        <!--End Review Card-->
+        {% endfor %}
     </div>
     </div>
 
