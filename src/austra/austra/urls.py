@@ -18,4 +18,13 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+]
+
+urlpatterns += [
+    path('carton/', include('carton.urls')),
+]
+
+urlpatterns += [
+    path('', RedirectView.as_view(url='/carton/')),
 ]
