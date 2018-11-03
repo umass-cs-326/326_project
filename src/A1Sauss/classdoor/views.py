@@ -43,7 +43,11 @@ def login(request):
     return render(request, "login.html")
 
 def profile(request):
-    return render(request, "profile.html")
+	courses = Course.objects.all()[:3]
+	reviews = Review.objects.all()[:3]
+	
+	context = {"reviews": reviews, "courses": courses}
+	return render(request, "profile.html", context=context)
 
 def review(request, id):
 
