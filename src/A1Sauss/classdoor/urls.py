@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import RedirectView
 from . import views
 
 urlpatterns = [
@@ -7,5 +8,6 @@ urlpatterns = [
     path("feed/", views.feed, name="feed"),
     path("login/", views.login, name="login"),
     path("profile/", views.profile, name="profile"),
-    path("review/", views.review, name="review"),
+    path("review/", RedirectView.as_view(url='/feed/', permanent = True)),
+    path("review/<int:id>", views.review, name="course-review"),
 ]

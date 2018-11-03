@@ -156,6 +156,3 @@ class Subject(models.Model):
    def __str__(self):
        """String for representing the Model object."""
        return f'{self.name}'
-
-
-
