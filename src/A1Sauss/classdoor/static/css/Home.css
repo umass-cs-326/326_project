@@ -15,3 +15,21 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#navbarTitle {
+    font-size: 25px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+    top: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 100000 !important;
+}
+
+#content {
+    position: relative;
+    top: 60px;
+}
