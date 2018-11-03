@@ -19,63 +19,63 @@
 <!------ Star Rating ---------->
 <h2>{{course_name}}</h2>
 <h3>How would you rate this class?</h3>
-<div class="review-block-rate">
-    <button type="button" class="btn btn-warning btn-xs star-btn" aria-label="Left Align">
-        <i class="material-icons">star</i>
-        </button>
-        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-        <i class="material-icons">star</i>
-        </button>
-        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-        <i class="material-icons">star</i>
-        </button>
-        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-        <i class="material-icons">star</i>
-        </button>
-        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-        <i class="material-icons">star</i>
-        </button>
-</div>
-
-<div class="form-group">
-    <label for="exampleFormControlSelect1">What grade did you recieve in this class?</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>A</option>
-      <option>A-</option>
-      <option>B+</option>
-      <option>B</option>
-      <option>B-</option>
-      <option>C+</option>
-      <option>C</option>
-      <option>C-</option>
-      <option>D+</option>
-      <option>D</option>
-      <option>D-</option>
-      <option>F</option>
-    </select>
+  <div class="review-block-rate">
+      <button type="button" class="btn btn-warning btn-xs star-btn" aria-label="Left Align">
+          <i class="material-icons">star</i>
+          </button>
+          <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+          <i class="material-icons">star</i>
+          </button>
+          <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+          <i class="material-icons">star</i>
+          </button>
+          <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+          <i class="material-icons">star</i>
+          </button>
+          <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+          <i class="material-icons">star</i>
+          </button>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlInput1">Review Title</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="An awesome title for this review!">
+      <label for="exampleFormControlSelect1">What grade did you recieve in this class?</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option>A</option>
+        <option>A-</option>
+        <option>B+</option>
+        <option>B</option>
+        <option>B-</option>
+        <option>C+</option>
+        <option>C</option>
+        <option>C-</option>
+        <option>D+</option>
+        <option>D</option>
+        <option>D-</option>
+        <option>F</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Review Title</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="An awesome title for this review!">
+    </div>
+
+  <div class="form-group">
+      <label for="exampleFormControlTextarea1">Write a Review</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tell us about your experience in this class..."></textarea>
   </div>
 
-<div class="form-group">
-    <label for="exampleFormControlTextarea1">Write a Review</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tell us about your experience in this class..."></textarea>
-</div>
+  <a class="btn btn-outline-primary" href="#" role="button">Easy</a>
+  <a class="btn btn-outline-primary" href="#" role="button">Hard</a>
+  <a class="btn btn-outline-primary" href="#" role="button">Interesting</a>
+  <a class="btn btn-outline-primary" href="#" role="button">Attendence Not Mandatory</a>
+  <a class="btn btn-outline-primary" href="#" role="button">Gen-Ed</a>
+  <a class="btn btn-outline-primary" href="#" role="button">Great Professsor</a>
+  <a class="btn btn-outline-primary" href="#" role="button">Boring</a>
+  <a class="btn btn-outline-primary" href="#" role="button">Lots of Homework</a>
+  <a class="btn btn-outline-primary" href="#" role="button">Exam-heavy</a>
 
-<a class="btn btn-outline-primary" href="#" role="button">Easy</a>
-<a class="btn btn-outline-primary" href="#" role="button">Hard</a>
-<a class="btn btn-outline-primary" href="#" role="button">Interesting</a>
-<a class="btn btn-outline-primary" href="#" role="button">Attendence Not Mandatory</a>
-<a class="btn btn-outline-primary" href="#" role="button">Gen-Ed</a>
-<a class="btn btn-outline-primary" href="#" role="button">Great Professsor</a>
-<a class="btn btn-outline-primary" href="#" role="button">Boring</a>
-<a class="btn btn-outline-primary" href="#" role="button">Lots of Homework</a>
-<a class="btn btn-outline-primary" href="#" role="button">Exam-heavy</a>
-
-<a href = "{{this_course.get_absolute_url}}" type="button" class="btn btn-primary btn-lg btn-block" id="submit-btn">Submit Review</a>
+  <a href = "{{this_course.get_absolute_url}}" type="button" class="btn btn-primary btn-lg btn-block" id="submit-btn">Submit Review</a>
  <!--How to link this data during Submit so it writes to the database?-->
 
 </div>
