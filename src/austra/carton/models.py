@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-class Class(models.Model) :
+class Course(models.Model) :
     """Model representing a UMass class"""
 
     name = models.CharField(max_length=100, help="Enter class name")

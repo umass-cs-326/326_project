@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from faker import Faker
 import random
 
-from carton.models import Class, Instructor, Session
+from carton.models import Course, Instructor, Session
 
 fake = Faker()
 
@@ -37,10 +37,10 @@ class_names = [
 # Set the starting rating to a random one between 1-5
 classes = [
     # Keep in mind this is mock data for the ratings
-    Class(name=name, code=next(word for word in name.split(" ") if word.isdigit()), rating=random.uniform(1, 5))
+    Course(name=name, code=next(word for word in name.split(" ") if word.isdigit()), rating=random.uniform(1, 5))
     for name in
     class_names
-]
+    ]
 
 # Save the classes to the database
 for c in classes:
@@ -65,7 +65,7 @@ for c in classes:
         mock_sessions[-1].save()
 
 print("Classes:")
-for c in Class.objects.all():
+for c in Course.objects.all():
     print(c)
 
 print("\nInstructors:")

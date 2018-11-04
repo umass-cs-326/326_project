@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from carton.models import Class
+from carton.models import Course
 from django.views import generic
 
 # Create your views here.
