@@ -5,7 +5,7 @@ import datetime
 from django.contrib.auth.models import User
 from faker import Faker
 
-from HiveList.models import Genre, Song, Artist, Playlist, Contributor, SongInstance, VoteInstance
+from HiveList.models import Genre, Song, Artist, Playlist, Contributors, SongInstance
 
 fake = Faker()
 
@@ -59,20 +59,10 @@ for i in range(1, 500):
     song.save()
     songs.append(song)
 
-# Create Contributors
-contributors = []
-for i in range(1, 200):
-    #playlist_id = playlists[fake.random_int(0, len(playlists)) - 1]
-    c_id = fake.uuid4()
-    contributor = Contributor(contributor_id = c_id)
-    contributor.save()
-    contributors.append(contributor)
-
 # Create Playlists
 playlists = []
 for i in range(1, 200):
     p_name = fake.text(20)
-    p_creator = contributors[fake.random_int(0, len(contributors)) - 1]
     p_private = fake.boolean()
     p_creation_date = fake.date()
     p_description = fake.text(1000)
@@ -80,23 +70,19 @@ for i in range(1, 200):
     p_ranking = fake.random_int(0, 100000)
     p_voting_threshold = fake.random_int(1, 101)
     p_id = fake.uuid4()
-    playlist = Playlist(playlist_id = p_id, playlist_name = p_name, playlist_creator_id = p_creator, playlist_creation_date = p_creation_date, playlist_description = p_description, playlist_is_private = p_private, playlist_ranking = p_ranking, playlist_votingthreshold = p_voting_threshold)
+    playlist = Playlist(playlist_id = p_id, playlist_name = p_name, playlist_creation_date = p_creation_date, playlist_description = p_description, playlist_is_private = p_private, playlist_ranking = p_ranking, playlist_votingthreshold = p_voting_threshold)
     playlist.save()
     playlists.append(playlist)
-    
-# add playlists to contributors
-"""
+ 
+# Create Contributors
 contributors = []
-for i in precontributors:
-    for j in playlists:
-        if i.contributor_id is j.playlist_creator_id:
-            updatedContrib = i.playlist_id.add(j.playlist_id)
-            updatedContrib.save()
-            contributors.append(updatedContrib)
-        else:
-            if i not in contributors:
-                contributors.append(i)
-"""
+for i in range(1, 200):
+    playlist_id = playlists[fake.random_int(0, len(playlists)) - 1]
+    contributor = Contributors(playlist_id = playlist_id)
+    contributor.save()
+    contributors.append(contributor)
+
+   
 
 # Create SongInstances
 song_instances = []
@@ -105,12 +91,11 @@ for i in range(1, 100):
     si_playlist_id = playlists[fake.random_int(0, len(playlists)) - 1]
     si_number_yes_votes = fake.random_int(0, 500)
     si_number_no_votes = fake.random_int(0, 500)
-    si_cid = contributors[fake.random_int(0, len(contributors)) - 1]
     si_siid = fake.uuid4()
-    song_instance = SongInstance(song_instance_id = si_siid, contributor_id = si_cid, song_id = si_id, playlist_id = si_playlist_id, number_yes_votes = si_number_yes_votes, number_no_votes = si_number_no_votes)
+    song_instance = SongInstance(song_instance_id = si_siid, song_id = si_id, playlist_id = si_playlist_id, number_yes_votes = si_number_yes_votes, number_no_votes = si_number_no_votes)
     song_instance.save()
     song_instances.append(song_instance)
-
+"""
 # Create VoteInstances
 vote_instances = []
 for i in range(1, 100):
@@ -122,7 +107,7 @@ for i in range(1, 100):
     vote_instance = VoteInstance(vote_instance_id = vi_viid, playlist_id = vi_pid, song_id = vi_song_id, contributor_id = vi_contributor_id, vote = vi_vote)
     vote_instance.save()
     vote_instances.append(vote_instance)
-
+"""
 
 #Create SuperUser
 username = "admin"
