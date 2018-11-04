@@ -24,14 +24,14 @@
         crossorigin="anonymous"></script>
 
 	<!-- hivelist logo -->
-	<link rel="shortcut icon" type="image/png" href="/Logo.png"/>
+	<link rel="shortcut icon" href="{% static 'images/Logo.png' %}"/>
 
 </head>
 
 <body>
 	{% block navbar %}
 	<nav class="navbar navbar-light ">
-        <a href="index.html" class="navbar-brand"><h1><img src="Logo.png" width="50" height="50" class="logo">HiveList</h2></a>
+        <a href="index.html" class="navbar-brand"><h1><img src="../static/images/Logo.png" width="50" height="50" class="logo">HiveList</h2></a>
 
         <ul class="nav justify-content-center">
 
