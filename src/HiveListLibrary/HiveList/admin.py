@@ -1,46 +1,46 @@
 from django.contrib import admin
 
-from HiveList.models import Genre #Playlist, Contributors, Artist, Song, Genre, SongInstance, VoteInstance
+from HiveList.models import Genre, Playlist, Contributor, Artist, Song, Genre, SongInstance, VoteInstance
 
 # Register your models here.
-"""
+
 @admin.register(Playlist)
 class PlaylistAdmin(admin.ModelAdmin):
-    #displays
-    pass
+    list_display = ("playlist_id", "playlist_name", "playlist_creator_id")
+    
 
 
-@admin.register(Contributors)
+@admin.register(Contributor)
 class ContributorAdmin(admin.ModelAdmin):
-    #displays
-    pass
+    list_display = ("playlist_id","contributor_id")
+    
 
 
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
-    #displays
-    pass
+    list_display = ("artist_id","artist_name")
+    
 
 
 @admin.register(Song)
 class SongAdmin(admin.ModelAdmin):
-    #displays
-    pass
-"""
+    list_display = ("title","artist","genre")
+    
+
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     list_display = ("genre_name", "genre_name")
 
-"""
+
 @admin.register(SongInstance)
 class SongInstanceAdmin(admin.ModelAdmin):
-    #displays
-    pass
+    list_display = ("song_id","number_yes_votes","number_no_votes")
+    
 
 
 @admin.register(VoteInstance)
 class VoteInstanceAdmin(admin.ModelAdmin):
-    #displays
-    pass
-"""
+    list_display = ("contributor_id","vote")
+
+
