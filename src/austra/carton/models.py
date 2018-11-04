@@ -7,23 +7,33 @@ class Course(models.Model) :
     name = models.CharField(max_length=100, help_text="Enter class name")
     code = models.CharField(max_length=15, help_text="Enter alphanumeric class code")
     rating = models.IntegerField()
-    prereqs = models.ManyToManyField("self", null=True)
+    prereqs = models.ManyToManyField("self", blank=True)
     def __str__(self) :
         return f"{self.code} {self.name}"
 
+    def display_prereqs(self) :
+        return ", ".join(prereqs.code for prereqs in self.prereqs.all())
+
 class Session(models.Model) :
     """Model representing a session"""
-    cur_class = models.ForeignKey("Class", on_delete=models.CASCADE, null=True)
+    course = models.ForeignKey("Course", on_delete=models.CASCADE, null=True)
     instructor = models.ForeignKey("Instructor", on_delete=models.SET_NULL, null=True)
     max_seats = models.IntegerField()
+    # TODO:
+    # Start/End TIMES
+    # MTWRF
     
     @property
     def get_rating(self) :
-        return self.cur_class.rating + self.instructor.rating
+        #TODO check if null! This will fail if course or instructor is null
+        return self.course.rating + self.instructor.rating
     
     #TODO: verify this is proper usage of reverse(). Where is self.id declared?
     def get_absolute_url(self) :
         return reverse("session-detail", args=[str(self.id)])
+
+    def __str__(self) :
+        return f"{self.course} with {self.instructor}"
 
 class Instructor(models.Model) :
     """Model representing an instructor"""
