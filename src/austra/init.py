@@ -8,6 +8,7 @@ import random
 
 from carton.models import Course, Instructor, Session
 
+
 fake = Faker()
 
 # Create Classes
@@ -35,6 +36,13 @@ class_names = [
 # Construct the Class objects
 # Extrapolate the class number from the class
 # Set the starting rating to a random one between 1-5
+
+# classes = [
+#     # Keep in mind this is mock data for the ratings
+#     Course(name=name, code=next(word for word in name.split(" ") if word.isdigit()).strip(), rating=random.randint(1, 5))
+#     for name in
+#     class_names
+# ]
 classes = [
     # Keep in mind this is mock data for the ratings
     # dummy courses:
@@ -54,11 +62,6 @@ for course in classes :
         course.prereqs.add(candidate_prereq)
         course.save()
 
-
-# Save the classes to the database
-#for c in classes:
-#    c.save()
-
 # Create Instructors
 mock_instructors = []
 for _ in range(10):
@@ -76,7 +79,6 @@ for c in classes:
     for _ in range(random.randint(1, 3)):
         mock_sessions.append(Session(course=c, instructor=random.choice(mock_instructors), max_seats=fake.random_int(10, 50)))
         mock_sessions[-1].save()
-
 
 print("Classes:")
 for c in Course.objects.all():
@@ -100,6 +102,7 @@ print(f"Session class prereqs: {random_session.course.display_prereqs()}")
 print(f"Session instructor: {random_session.instructor.name}")
 print(f"Session rating: {random_session.get_rating}")
 print(f"Session class rating: {random_session.course.rating}")
+
 print(f"Session instructor rating: {random_session.instructor.rating}")
 
 
