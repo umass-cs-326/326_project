@@ -13,9 +13,7 @@
 						<a href="playlistSettings.html">Playlist Settings</a> 
 	 					<table class="table table-hover">
 	 						<tr scope="row"><th>Song Name</th><th>Artist</th><th>Vote</th></tr>
-	 						{% for song in current_playlist %}
-	 							<tr><td class= "songName">{{ song.title }}<td><td class= "artistName">{{ song.artist }}</td><td class="vote">{{ song_vote }}</td></tr>
-	 						{% endfor %}
+							<p>{{ test }}</p>
 	 					</table>
 	 				</div>
 	 			</div>
@@ -37,9 +35,6 @@
             					</div>
         					</form>
         					<table class="table table-striped">
-        						{% for song in song_suggestions %}
-        							<tr><td>{{ song.title }}</td><td>{{ song.artist }}<td>+</td></tr>
-        						{% endfor %}
         					</table>
 	 				</div>
 	 			</div>
@@ -48,9 +43,6 @@
 	 				<div class="card-body">
 	 					<h1>Contributors</h1>
 	 					<table class="table table-striped">
-	 						{% for user in contributors %}
-        						<tr><td>{{ user.username }}</td><td>{{ user_profile }}</td></tr>
-        					{% endfor %}
         					</table>
 	 				</div>
 	 			</div>

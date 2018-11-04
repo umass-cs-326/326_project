@@ -25,11 +25,7 @@ class Playlist(models.Model):
     playlist_votingthreshold = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
     playlist_is_private = models.BooleanField(default=False)
 
-    """
-    def get_absolute_url(self):
-        return reverse("playlist-info", args=[str(self.id)])
-    """
-
+    
     def __str__(self):
         return self.playlist_name
 
@@ -39,10 +35,6 @@ class Contributors(models.Model):
     #need to users to be implemented first before foreignKey to user can be used
     #contributor_id= models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
     
-    """
-    def get_absolute_url(self):
-        return reverse("contributor-info", args=[str(self.id)])
-    """
 
     def __str__(self):
         return self.contributor_id
@@ -56,11 +48,6 @@ class Artist(models.Model):
                                help_text="Unique ID for this particular Song across entire site",
                                )
     artist_name = models.CharField(max_length=200)
-    
-    """
-    def get_absolute_url(self):
-        return reverse("artist-info", args=[str(self.id)])
-    """
     
     def __str__(self):
         return self.artist_name
@@ -83,12 +70,7 @@ class Song(models.Model):
                                primary_key=True,
                                default=uuid.uuid4,
                                help_text="Unique ID for this particular Song across entire site",
-                               )
-    
-    """
-    def get_absolute_url(self):
-        return reverse("song-info", args=[str(self.id)])
-    """
+                               ) 
 
     def __str__(self):
         return self.song_id
@@ -108,11 +90,6 @@ class SongInstance(models.Model):
     
     #need user first
     #contributor_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-
-    """
-    def get_absolute_url(self):
-        return reverse("song-instance-info", args=[str(self.id)])
-    """
 
     def __str__(self):    
         return self.song_instance_id
