@@ -6,13 +6,13 @@ from HiveList.models import Genre, Playlist, Contributor, Artist, Song, Genre, S
 
 @admin.register(Playlist)
 class PlaylistAdmin(admin.ModelAdmin):
-    list_display = ("playlist_id", "playlist_name", "playlist_creator_id")
+    list_display = ("playlist_id", "playlist_id")
     
 
 
 @admin.register(Contributor)
 class ContributorAdmin(admin.ModelAdmin):
-    list_display = ("playlist_id","contributor_id")
+    list_display = ("contributor_id", "contributor_id")
     
 
 

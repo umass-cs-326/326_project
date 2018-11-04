@@ -9,29 +9,8 @@ now = datetime.datetime.now()
 
 # Create your models here.
 
-
-class Playlist(models.Model):
-
-    playlist_id =models.UUIDField(
-                               primary_key=True,
-                               default=uuid.uuid4,
-                               help_text="Unique ID for this particular Playlist across entire site",
-                               )
-    playlist_name = models.CharField(max_length=200, help_text="Enter a title for the playlist (e.g. Meat Bird Execution Playlist)")
-    playlist_creator_id = models.ForeignKey('Contributor', on_delete=models.SET_NULL, null=True)
-    playlist_creation_date = models.DateField(auto_now_add=True, blank=True)
-    playlist_description = models.TextField(max_length=1000, help_text="Enter description for playlist")
-    #playlist_vote_time = models.DateTimeField(null=True, blank=True)
-    playlist_ranking = models.IntegerField(default=0)
-    playlist_votingthreshold = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
-    playlist_is_private = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.playlist_id
-
-
 class Contributor(models.Model):
-    playlist_id = models.ForeignKey('Playlist', on_delete=models.SET_NULL, null=True)
+    #playlist_id = models.ForeignKey('Playlist', on_delete=models.SET_NULL, null=True)
     #need to figure out users and how to connect to contributor
     #contributor_id= models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
     #for time being, use uuid for contributor_id
@@ -43,6 +22,27 @@ class Contributor(models.Model):
 
     def __str__(self):
         return self.contributor_id
+
+class Playlist(models.Model):
+
+    playlist_id =models.UUIDField(
+                               primary_key=True,
+                               default=uuid.uuid4,
+                               help_text="Unique ID for this particular Playlist across entire site",
+                               )
+    playlist_name = models.CharField(max_length=200, help_text="Enter a title for the playlist (e.g. Meat Bird Execution Playlist)")
+    playlist_creator_id = models.ForeignKey(Contributor, on_delete=models.SET_NULL, null=True)
+    playlist_creation_date = models.DateField(auto_now_add=True, blank=True)
+    playlist_description = models.TextField(max_length=1000, help_text="Enter description for playlist")
+    #playlist_vote_time = models.DateTimeField(null=True, blank=True)
+    playlist_ranking = models.IntegerField(default=0)
+    playlist_votingthreshold = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    playlist_is_private = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.playlist_id
+
+
         
 
 class Artist(models.Model):

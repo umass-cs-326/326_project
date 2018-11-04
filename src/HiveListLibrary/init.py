@@ -60,19 +60,19 @@ for i in range(1, 500):
     songs.append(song)
 
 # Create Contributors
-precontributors = []
+contributors = []
 for i in range(1, 200):
     #playlist_id = playlists[fake.random_int(0, len(playlists)) - 1]
     c_id = fake.uuid4()
     contributor = Contributor(contributor_id = c_id)
     contributor.save()
-    precontributors.append(contributor)
+    contributors.append(contributor)
 
 # Create Playlists
 playlists = []
 for i in range(1, 200):
     p_name = fake.text(20)
-    p_creator = precontributors[fake.random_int(0, len(precontributors)) - 1]
+    p_creator = contributors[fake.random_int(0, len(contributors)) - 1]
     p_private = fake.boolean()
     p_creation_date = fake.date()
     p_description = fake.text(1000)
@@ -85,6 +85,7 @@ for i in range(1, 200):
     playlists.append(playlist)
     
 # add playlists to contributors
+"""
 contributors = []
 for i in precontributors:
     for j in playlists:
@@ -95,7 +96,7 @@ for i in precontributors:
         else:
             if i not in contributors:
                 contributors.append(i)
-
+"""
 
 # Create SongInstances
 song_instances = []
