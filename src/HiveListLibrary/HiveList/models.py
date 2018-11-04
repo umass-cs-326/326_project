@@ -9,7 +9,6 @@ now = datetime.datetime.now()
 
 # Create your models here.
 
-
 class Playlist(models.Model):
     playlist_id =models.UUIDField(
                                primary_key=True,
@@ -26,7 +25,8 @@ class Playlist(models.Model):
     playlist_votingthreshold = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
     playlist_is_private = models.BooleanField(default=False)
 
-    """def get_absolute_url(self):
+    """
+    def get_absolute_url(self):
         return reverse("playlist-info", args=[str(self.id)])
     """
 
@@ -38,6 +38,7 @@ class Contributors(models.Model):
     playlist_id = models.ForeignKey(Playlist, on_delete=models.SET_NULL, null=True)
     #need to users to be implemented first before foreignKey to user can be used
     #contributor_id= models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    
     """
     def get_absolute_url(self):
         return reverse("contributor-info", args=[str(self.id)])
@@ -55,22 +56,22 @@ class Artist(models.Model):
                                help_text="Unique ID for this particular Song across entire site",
                                )
     artist_name = models.CharField(max_length=200)
+    
     """
     def get_absolute_url(self):
         return reverse("artist-info", args=[str(self.id)])
     """
-    def __str__(self):
     
+    def __str__(self):
         return self.artist_name
+
 
 class Genre(models.Model):
     
-
     genre_name = models.CharField(primary_key=True, max_length=200, help_text="Enter a genre for the song (e.g. Swedish Heavy Metal)")
 
     def __str__(self):
         return genre_name
-
 
 
 class Song(models.Model):
@@ -83,15 +84,14 @@ class Song(models.Model):
                                default=uuid.uuid4,
                                help_text="Unique ID for this particular Song across entire site",
                                )
+    
     """
     def get_absolute_url(self):
         return reverse("song-info", args=[str(self.id)])
     """
 
     def __str__(self):
-    
         return self.song_id
-
 
 
 class SongInstance(models.Model):
@@ -103,18 +103,18 @@ class SongInstance(models.Model):
                                help_text="Unique ID for this particular Song Instance",
                                )
     playlist_id = models.ForeignKey(Playlist, on_delete=models.SET_NULL, null=True)
-    #need user first
-    #contributor_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     number_yes_votes = models.IntegerField(default=0)
     number_no_votes = models.IntegerField(default=0)
+    
+    #need user first
+    #contributor_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     """
     def get_absolute_url(self):
         return reverse("song-instance-info", args=[str(self.id)])
     """
 
-    def __str__(self):
-    
+    def __str__(self):    
         return self.song_instance_id
 
 """
@@ -127,6 +127,7 @@ class VoteInstance(models.Model):
                                         default=uuid.uuid4,
                                         help_text="unique ID for this particular Song Instance"
                                         )
+    
     VOTE_STATUS = (
       ('y', 'yes'),
       ('n', 'no')
@@ -134,11 +135,7 @@ class VoteInstance(models.Model):
 
     vote = models.CharField(max_length=1, choices=VOTE_STATUS, blank=True)
 
-
-    def __str__(self):
-        
+    def __str__(self):        
         return self.vote_instance_id
-
 """
-
 
