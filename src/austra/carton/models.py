@@ -13,7 +13,7 @@ class Course(models.Model) :
 
 class Session(models.Model) :
     """Model representing a session"""
-    cur_class = models.ForeignKey("Class", on_delete=models.CASCADE, null=True)
+    cur_class = models.ForeignKey("Course", on_delete=models.CASCADE, null=True)
     instructor = models.ForeignKey("Instructor", on_delete=models.SET_NULL, null=True)
     max_seats = models.IntegerField()
     

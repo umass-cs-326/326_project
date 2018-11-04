@@ -8,6 +8,7 @@ import random
 
 from carton.models import Course, Instructor, Session
 
+
 fake = Faker()
 
 # Create Classes
@@ -35,12 +36,17 @@ class_names = [
 # Construct the Class objects
 # Extrapolate the class number from the class
 # Set the starting rating to a random one between 1-5
+
+# classes = [
+#     # Keep in mind this is mock data for the ratings
+#     Course(name=name, code=next(word for word in name.split(" ") if word.isdigit()).strip(), rating=random.randint(1, 5))
+#     for name in
+#     class_names
+# ]
 classes = [
-    # Keep in mind this is mock data for the ratings
-    Course(name=name, code=next(word for word in name.split(" ") if word.isdigit()), rating=random.uniform(1, 5))
-    for name in
-    class_names
-    ]
+    Course(name="test", code="123", rating=1),
+    Course(name="test2", code="456", rating=2)
+]
 
 # Save the classes to the database
 for c in classes:
@@ -61,8 +67,10 @@ mock_sessions = []
 for c in classes:
     # Add up to 3 sessions of the same class
     for _ in range(random.randint(1, 3)):
-        mock_sessions.append(Session(cur_class=c, instructor=random.choice(mock_instructors)))
+        mock_sessions.append(Session(cur_class=c, instructor=random.choice(mock_instructors), max_seats=random.randint(10, 90)))
         mock_sessions[-1].save()
+
+# Huge comment starts here:
 
 print("Classes:")
 for c in Course.objects.all():
@@ -83,7 +91,7 @@ random_session = random.choice(Session.objects.all())
 print("\nExample Session:")
 print(f"Session class name: {random_session.cur_class.name}")
 print(f"Session instructor: {random_session.instructor.name}")
-print(f"Session rating: {random_session.rating}")
+# print(f"Session rating: {random_session.get_rating()}")
 print(f"Session class rating: {random_session.cur_class.rating}")
 print(f"Session instructor rating: {random_session.instructor.rating}")
 
