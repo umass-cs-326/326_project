@@ -21,7 +21,7 @@ def currentPlaylist(request):
     all_songs = Song.objects.filter(song_id__in=all_songInstances)
     # Render the HTML tmeplate index.html with the data in the context variable
     context = {
-            "songs" : all_songs,
+            "songs" : all_songs
             }
     return render(request, "currentPlaylist.html", context=context)
 """
