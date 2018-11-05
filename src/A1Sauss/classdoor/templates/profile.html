@@ -75,16 +75,41 @@
                 <h3 class="flip-card-title">{{course.name}}</h3> 
                 <p class="course-name-text">Intro to Web-Programming</p> 
                 <p class="instructor-text">{{course.teacher.first_name}} {{course.teacher.last_name}}</p>
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
-                {% load static %}
-                <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% if course.starRating < 1 %}
+                    {% load static %}
+                    <img src="{% static "images/star-open.gif" %}" class="stars">
+                {% else %}
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% endif %}
+                {% if course.starRating < 2 %}
+                    {% load static %}
+                    <img src="{% static "images/star-open.gif" %}" class="stars">
+                {% else %}
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% endif %}
+                {% if course.starRating < 3 %}
+                    {% load static %}
+                    <img src="{% static "images/star-open.gif" %}" class="stars">
+                {% else %}
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% endif %}
+                {% if course.starRating < 4 %}
+                    {% load static %}
+                    <img src="{% static "images/star-open.gif" %}" class="stars">
+                {% else %}
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% endif %}
+                {% if course.starRating < 5 %}
+                    {% load static %}
+                    <img src="{% static "images/star-open.gif" %}" class="stars">
+                {% else %}
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% endif %}
                 <p class="hover-inst">Hover for description</p>
             </div>
             <div class="flip-card-back">
@@ -106,16 +131,41 @@
         <div class="review-card">
           <div class="review-card-inner">
             <h4>{{review.title}}</h4>
-            {% load static %}
-                    <img src="{% static "images/star-gold.gif" %}" class="stars">
-                    {% load static %}
-                    <img src="{% static "images/star-gold.gif" %}" class="stars">
-                    {% load static %}
-                    <img src="{% static "images/star-gold.gif" %}" class="stars">
-                    {% load static %}
-                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% if review.starRating < 1 %}
                     {% load static %}
                     <img src="{% static "images/star-open.gif" %}" class="stars">
+                {% else %}
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% endif %}
+                {% if review.starRating < 2 %}
+                    {% load static %}
+                    <img src="{% static "images/star-open.gif" %}" class="stars">
+                {% else %}
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% endif %}
+                {% if review.starRating < 3 %}
+                    {% load static %}
+                    <img src="{% static "images/star-open.gif" %}" class="stars">
+                {% else %}
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% endif %}
+                {% if review.starRating < 4 %}
+                    {% load static %}
+                    <img src="{% static "images/star-open.gif" %}" class="stars">
+                {% else %}
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% endif %}
+                {% if review.starRating < 5 %}
+                    {% load static %}
+                    <img src="{% static "images/star-open.gif" %}" class="stars">
+                {% else %}
+                    {% load static %}
+                    <img src="{% static "images/star-gold.gif" %}" class="stars">
+                {% endif %}
             <p class="review-text"> {{review.text}}</p>
           </div>
         </div>

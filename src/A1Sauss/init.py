@@ -70,8 +70,8 @@ for i in range(1, 10):
 reviews = []
 for i in range(0, len(courses) - 1):
     currClass = courses[i]
-    rGrade = Decimal(3)
-    rStarRating = Decimal(1)
+    rGrade = Decimal(1)
+    rStarRating = Decimal(fake.random_int(0, 500)) / 100
 
     for j in range(1, fake.random_int(3, 20)):
         rTitle = fake.text(25)
