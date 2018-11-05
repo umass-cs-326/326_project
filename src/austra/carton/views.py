@@ -5,6 +5,7 @@ from django.template import Context
 from django.template.loader import get_template
 from django.http import HttpResponse
 from .models import Session
+from random import choice
 
 # Create your views here.
 #class ClassSessionView(generic.DetailView):
@@ -13,18 +14,16 @@ from .models import Session
 
 
 def calendar(request):
-    
-    # template = get_template('main.html')
-    # context = {
-    # }
+    # sessions describes all of the class sessions that will be displayed by the calendar
+    # Expected to store the items as a list with the format:
+    # [course name, start time, end time, days of the week] for each session
     sessions = [
-        [session.course.name, '{0}:00'.format(i+1), '{0}:00'.format(i+2), [1,3,5]]
+        [session.course.name, '{0}:00'.format(i+8), '{0}:00'.format(i+9), choice([[1,3,5],[2,4]])]
         for (i, session)
         in enumerate(Session.objects.all())
     ]
     return render(request, 'main.html', {"sessions": sessions})
-    # return HttpResponse(template.render(context, request))
-    
+
 def index(request):
     
     template = get_template('index.html')
