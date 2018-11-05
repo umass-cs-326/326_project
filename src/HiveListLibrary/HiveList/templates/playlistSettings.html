@@ -17,10 +17,10 @@
 							
 							<table class="table table-striped">
 							<form>
-							<tr><td>Playlist Name: <input type="text" name="playlistname" style="width: 200px;">
+								<tr><td>Playlist Name: {{ playlist_name }} <input type="text" name="playlistname" style="width: 200px;">
 							</form>
 							</tr></td>
-							<tr><td><p>Playlist Description:</P>
+							<tr><td><p>Song Count: {{ song_count }}</P>
 							<form>
 							<textarea name="playlist-description" rows="4" cols="40">{{ playlist.playlist_description }}</textarea>
 							</form>
@@ -51,8 +51,8 @@
 						
 						<table class="table table-striped">
 							<form>
-							<tr><td>Vote Period: {{ date_field }} </td></tr>
-							<tr><td>Vote Threshold: {{ threshold_field }}</td></tr>
+							<tr><td>Creation Date: {{ playlist.playlist_creation_date }} </td></tr>
+							<tr><td>Vote Threshold: {{ playlist.voting_threshold }}</td></tr>
 							</form> <!-- TODO: Edit this so that it displays the current vote period and current vote threshold prior to setting a new one. 
 										 Need to decide if we want to allow the period/threshold to change after the original values are set. -->
 

@@ -68,13 +68,19 @@ def myLists(request):
             }
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "myLists.html", context=context)
-"""
+
 def playlistSettings(request):
+    playlist = Playlist.objects.order_by("?").first()
+    all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).count()
 
-
+    context = {
+            "song_count" : all_songInstances,
+            "playlist" : playlist,
+            }
+    
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "playlistSettings.html", context=context)
-
+"""
 def profile(request):
 
 
