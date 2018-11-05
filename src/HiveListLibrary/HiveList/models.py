@@ -58,7 +58,7 @@ class Genre(models.Model):
     genre_name = models.CharField(primary_key=True, max_length=200, help_text="Enter a genre for the song (e.g. Swedish Heavy Metal)")
 
     def __str__(self):
-        return genre_name
+        return self.genre_name
 
 
 class Song(models.Model):
