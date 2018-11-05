@@ -59,7 +59,7 @@
             <hr>
             <p class="pro-info">Email: mcdahl@umass.edu</p>
             <p class="pro-info">Password: ********</p>
-            <a class="btn btn-primary" href="profile_edit.html" role="button">Edit</a>
+            <!--<a class="btn btn-primary" href="profile_edit.html" role="button">Edit</a>-->
       </div>
     </div>
     <!--End Profile Card-->
@@ -113,8 +113,8 @@
                 <p class="hover-inst">Hover for description</p>
             </div>
             <div class="flip-card-back">
-              <h3 class="flip-card-title">Description</h3> 
-              <p class="desc-text">{{course.description|truncatewords:25}}</p> 
+              <h3 class="flip-card-title">{{course.name}}</h3> 
+              <p class="desc-text">{{course.description|truncatewords:15}}</p> 
               <a class="btn btn-primary see-more-btn" href="{{course.get_absolute_url}}" role="button">See more</a>
             </div>
           </div>
