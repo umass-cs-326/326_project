@@ -61,7 +61,7 @@ for i in range(1, 500):
 
 # Create Playlists
 playlists = []
-for i in range(1, 20):
+for i in range(1, 200):
     p_name = fake.text(20)
     p_private = fake.boolean()
     p_creation_date = fake.date()

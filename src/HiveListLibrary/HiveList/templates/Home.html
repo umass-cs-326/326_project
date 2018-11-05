@@ -25,7 +25,7 @@
 	 					<h1>Top 100</h1>
 		 					<table class="table table-striped">
 		 						{% for playlist in top_100 %}
-			 					<tr scope="row"><th>{{ playlist.playlist_name }}</th><th>{{ playlist.playlist_creator_id }}</th><th>{{ playlist_export }}</th></tr>
+			 					<tr scope="row"><th>{{ playlist.playlist_name }}</th><th>{{ playlist.playlist_creation_date }}</th><th>{{ playlist.playlist_description }}</th></tr>
 			 					{% endfor %} <!-- todo: add 'view all' button and page-->
 		 					</table>
 
@@ -42,7 +42,7 @@
 	 					<h1>Public Playlists</h1>
 	 						<table class="table table-striped">
 	 							{% for playlist in public_playlists %}
-			 					<tr scope="row"><th>{{ playlist.playlist_name }}</th><th>{{ playlist.playlist_creator_id }}</th><th>{{ playlist_export }}</th></tr>
+			 					<tr scope="row"><th>{{ playlist.playlist_name }}</th><th>{{ playlist.playlist_creation_date }}</th><th>{{ playlist.playlist_description }}</th></tr>
 			 					<!-- todo: add 'view all' button and page-->
 			 					{% endfor %}
 		 					</table>
