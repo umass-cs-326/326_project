@@ -1,6 +1,10 @@
 from django.urls import path
-from django.conf.urls import include
+from django.conf.urls import include, url
 from carton import views
+from django.views.generic import TemplateView
+
 urlpatterns = [
-    # path('carton/', views.index, name='index'),
+    path('', views.index),
+    path('calendar/', views.calendar)
+
 ]
