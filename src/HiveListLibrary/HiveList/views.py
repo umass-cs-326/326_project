@@ -25,13 +25,16 @@ def currentPlaylist(request):
             "current_playlist" : playlist
             }
     return render(request, "currentPlaylist.html", context=context)
-"""
+
 def Explore(request):
 
-
+    playlists = Playlist.objects.all()[:10]
+    context = {
+            "popular_playlists" : playlists,
+            }
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "Explore.html", context=context)
-
+"""
 def Home(request):
 
     IP_playlists = pass

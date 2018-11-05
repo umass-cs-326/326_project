@@ -8,9 +8,9 @@
 						<div class="card-body">
 							<h1>Popular Playlists</h1>
 								<table class="table table-striped">
-									<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Listeners</th></tr>
+									<tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Private or Public</th></tr>
 									{% for playlist in popular_playlists %}
-									<tr><td class="playlistName">{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creator_id }}</td><td>{{ playlist_listeners }}</td></tr>
+									<tr><td class="playlistName">{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creation_date }}</td><td>{{ playlist_is_private }}</td></tr>
 									{% endfor %}
 									<!-- note: we can decide listeners by # of exports 
 										playlist_listeners should query number of exports
