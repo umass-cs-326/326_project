@@ -61,7 +61,7 @@ for i in range(1, 500):
 
 # Create Playlists
 playlists = []
-for i in range(1, 200):
+for i in range(1, 20):
     p_name = fake.text(20)
     p_private = fake.boolean()
     p_creation_date = fake.date()
@@ -85,7 +85,7 @@ for i in range(1, 200):
 
 # Create SongInstances
 song_instances = []
-for i in range(1, 100):
+for i in range(1, 1000):
     si_id = songs[fake.random_int(0, len(songs)) - 1]
     si_playlist_id = playlists[fake.random_int(0, len(playlists)) - 1]
     si_number_yes_votes = fake.random_int(0, 500)
