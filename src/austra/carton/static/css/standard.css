@@ -15,3 +15,10 @@ span.block {
 	border: 1px solid #000;
 	padding: 10px;
 }
+.navbar-default {
+	background-color: #d33046;
+	border-color: #E7E7E7;
+  }
+  a{
+	  color: #99cccc;
+  }
