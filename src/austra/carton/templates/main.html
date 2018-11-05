@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
+
 {% load static %}
 {% block title %} main / calendar {% endblock title %}
     {% block custom_css %}
-	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css">
-	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar-scheduler/1.9.4/scheduler.min.css">
-    
+	  <link rel="stylesheet" href="{% static "css/fullcalendar.min.css" %}">
+	  <link rel="stylesheet" href="{% static "css/fullcalendar.print.css" %}">    
     <!--Our CSS -->
     <link rel="stylesheet" href="{% static "css/main.css" %}">
     {% endblock custom_css %}
@@ -143,10 +142,10 @@
   	</div>
     {% endblock content %}
     {% block custom_js %}
-    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
-    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
-    <script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
-    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+    <script src="{% static "js/moment.min.js" %}"></script>
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/fullcalendar.min.js" %}"></script>
 
     <script>
   		$(function() {
@@ -154,14 +153,16 @@
   		  $('#calendar').fullCalendar({
   			schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
   			weekends: false,
+        minTime: "08:00:00",
+        maxTime: "21:00:00",
   			columnFormat: 'ddd',
-
+        allDaySlot: false,
   			defaultView: 'agendaWeek',
 		
 		events: [
   			{
   			  title  : 'CS326',
-  			  start: '1:25',
+  			  start: '13:25',
   			  end: '14:15',
 			  allDay : false,
   			  dow: [ 2, 4 ]
