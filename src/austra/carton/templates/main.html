@@ -159,31 +159,39 @@
   			defaultView: 'agendaWeek',
 		
 		events: [
-  			{
-  			  title  : 'CS326',
-  			  start: '1:25',
-  			  end: '14:15',
-			  allDay : false,
-  			  dow: [ 2, 4 ]
-  			},
-        {
-          title  : 'CS410',
-          start: '14:30',
-          end: '15:45',
-          dow: [ 1, 3, 5 ]
-        },
-        {
-          title  : 'CS311',
-          start: '11:30',
-          end: '12:45',
-          dow: [ 2, 4 ]
-        },
-        {
-          title  : 'CS383',
-          start: '16:00',
-          end: '17:15',
-          dow: [ 1, 3, 5 ]
-        }
+        {% for session in sessions %}
+            {
+                title: '{{ session.0 }}',
+                start: '{{ session.1 }}',
+                end: '{{ session.2 }}',
+                dow: '{{ session.3 }}'
+            },
+        {% endfor %}
+  			<!--{-->
+  			  <!--title  : 'CS326',-->
+  			  <!--start: '1:25',-->
+  			  <!--end: '14:15',-->
+			  <!--allDay : false,-->
+  			  <!--dow: [ 2, 4 ]-->
+  			<!--},-->
+        <!--{-->
+          <!--title  : 'CS410',-->
+          <!--start: '14:30',-->
+          <!--end: '15:45',-->
+          <!--dow: [ 1, 3, 5 ]-->
+        <!--},-->
+        <!--{-->
+          <!--title  : 'CS311',-->
+          <!--start: '11:30',-->
+          <!--end: '12:45',-->
+          <!--dow: [ 2, 4 ]-->
+        <!--},-->
+        <!--{-->
+          <!--title  : 'CS383',-->
+          <!--start: '16:00',-->
+          <!--end: '17:15',-->
+          <!--dow: [ 1, 3, 5 ]-->
+        <!--}-->
 
   			]
   		  })
