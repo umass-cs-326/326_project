@@ -5,6 +5,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('', views.index, name = "index"),
-    path('calendar/', views.calendar, name = "calendar")
-
+    path('calendar/', views.calendar, name = "calendar"),
+    path('instructors/', views.InstructorListView.as_view(), name="instructors")
 ]

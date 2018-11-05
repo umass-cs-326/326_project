@@ -1,14 +1,9 @@
 from django.shortcuts import render
-from carton.models import Course
+from carton.models import Course, Instructor, Session
 from django.views import generic
 from django.template import Context
 from django.template.loader import get_template
 from django.http import HttpResponse
-
-# Create your views here.
-#class ClassSessionView(generic.DetailView):
-#    model = ClassSession
-#    template_name = "detail.html"
 
 
 def calendar(request):
@@ -24,3 +19,7 @@ def index(request):
     context = {
     }
     return HttpResponse(template.render(context, request))
+
+class InstructorListView(generic.ListView):
+    model = Instructor
+    template_name = "instructor_list.html"
