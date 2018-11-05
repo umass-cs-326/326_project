@@ -23,3 +23,7 @@ def index(request):
 class InstructorListView(generic.ListView):
     model = Instructor
     template_name = "instructor_list.html"
+
+class InstructorDetailView(generic.DetailView):
+    model = Instructor
+    template_name = "instructor_detail.html"
