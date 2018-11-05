@@ -35,7 +35,7 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(SongInstance)
 class SongInstanceAdmin(admin.ModelAdmin):
-    list_display = ("song_instance_id", "song_id", "number_yes_votes", "number_no_votes")
+    list_display = ("song_instance_id", "song_id", "playlist_id", "number_yes_votes", "number_no_votes")
     
 
 """

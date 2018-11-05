@@ -10,11 +10,12 @@ now = datetime.datetime.now()
 # Create your models here.
 
 class Playlist(models.Model):
-    playlist_id =models.UUIDField(
-                               primary_key=True,
-                               default=uuid.uuid4,
-                               help_text="Unique ID for this particular Playlist across entire site",
-                               )
+    playlist_id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+        help_text="Unique ID for this particular Playlist across entire site"
+    )
     playlist_name = models.CharField(max_length=200, help_text="Enter a title for the playlist (e.g. Meat Bird Execution Playlist)")
     #User needs to be implemented before foreignKey to user can be used
     #playlist_creator_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -43,10 +44,12 @@ class Contributors(models.Model):
 class Artist(models.Model):
 
     artist_id = models.UUIDField(
-                               primary_key=True,
-                               default=uuid.uuid4,
-                               help_text="Unique ID for this particular Song across entire site",
-                               )
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+        help_text="Unique ID for this particular Song across entire site"
+    )
+
     artist_name = models.CharField(max_length=200)
     
     def __str__(self):
@@ -67,23 +70,24 @@ class Song(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.SET_NULL, null=True)
     genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True)
     song_id = models.UUIDField(
-                               primary_key=True,
-                               default=uuid.uuid4,
-                               help_text="Unique ID for this particular Song across entire site",
-                               ) 
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+        help_text="Unique ID for this particular Song across entire site"
+    )
 
     def __str__(self):
-        return self.song_id
+        return str(self.song_id)
 
 
 class SongInstance(models.Model):
-    song_id = models.ForeignKey(Song, on_delete=models.SET_NULL, null=True)
     song_instance_id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
         editable=False,
-        help_text="Unique ID for this particular Song Instance",
+        help_text="Unique ID for this particular Song Instance"
     )
+    song_id = models.ForeignKey(Song, on_delete=models.SET_NULL, null=True)
     playlist_id = models.ForeignKey(Playlist, on_delete=models.SET_NULL, null=True)
     number_yes_votes = models.IntegerField(default=0)
     number_no_votes = models.IntegerField(default=0)
@@ -91,8 +95,8 @@ class SongInstance(models.Model):
     #need user first
     #contributor_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
-    def __str__(self):    
-        return self.song_instance_id
+    def __str__(self):
+        return str(self.song_instance_id)
 
 """
 class VoteInstance(models.Model):
