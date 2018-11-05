@@ -4,7 +4,7 @@ from carton import views
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', views.index),
-    path('calendar/', views.calendar)
+    path('', views.index, name = "index"),
+    path('calendar/', views.calendar, name = "calendar")
 
 ]
