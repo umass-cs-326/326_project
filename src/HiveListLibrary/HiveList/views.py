@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from HiveList.models import Genre, Playlist #Playlist, Contributors, Artist, Song, Genre, SongInstance, VoteInstance
+from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance
 
 # Create your views here.
 def index(request):
@@ -16,10 +16,12 @@ def index(request):
 
 def currentPlaylist(request):
 
-    all_playlists = Playlist.objects.all().count()
+    playlist = Playlist.objects.order_by("?").first()
+    all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
+    all_songs = Song.objects.filter(song_id__in=all_songInstances)
     # Render the HTML tmeplate index.html with the data in the context variable
     context = {
-            "test" : all_playlists,
+            "songs" : all_songs,
             }
     return render(request, "currentPlaylist.html", context=context)
 """
