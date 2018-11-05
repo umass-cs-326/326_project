@@ -24,16 +24,16 @@
         <a href="home" class="navbar-brand"><h1><img src="{% static 'images/Logo.png' %}" width=" 50" height="50" class="logo">HiveList</h1></a>
         <ul class="nav justify-content-center">
   			<li class="nav-item">
-				<a class="nav-link nav-item" href="home">Home</a>
+				<a class="nav-link nav-item" href={% url 'home' %}>Home</a>
   			</li>
   			<li class="nav-item">
-				<a class="nav-link nav-item" href="explore">Explore</a>
+				<a class="nav-link nav-item" href={% url 'explore' %}>Explore</a>
   			</li>
   			<li class="nav-item">
-				<a class="nav-link nav-item" href="myLists">My Lists</a>
+				<a class="nav-link nav-item" href={% url 'mylists' %}>My Lists</a>
   			</li>
   			<li class="nav-item">
-				<a class="nav-link nav-item" href="profile">Profile</a>
+				<a class="nav-link nav-item" href={% url 'profile' %}>Profile</a>
   			</li>
 		</ul>
     </nav>
