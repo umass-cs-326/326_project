@@ -3,8 +3,8 @@ from classdoor.models import Course, Teacher, Review, University, User, Subject
 
 #version 2
 #description: A different approach for registering models
-#Zihang
-#10/26/2018
+#Zihang, Matt
+#10/26/2018, 11/5/2018
 
 # Register your models here.
 
