@@ -57,13 +57,18 @@ def Home(request):
 
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "Home.html", context=context)
-"""
+
 def myLists(request):
+    IP_playlists = Playlist.objects.all()[:10]
+    My_playlists = Playlist.objects.all()[11:21]
 
-
+    context = {
+            "My_IP_Playlists" : IP_playlists,
+            "My_Finished_Playlists" : My_playlists,
+            }
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "myLists.html", context=context)
-
+"""
 def playlistSettings(request):
 
 

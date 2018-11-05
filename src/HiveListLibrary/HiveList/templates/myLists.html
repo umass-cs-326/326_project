@@ -12,9 +12,9 @@
 	 					<h1>In Progress Playlists</h1>
 						<!-- Link to playlist settings -->
 	 					<table class="table table-hover">
-	 						<tr scope="row"><th>Playlist name</th><th>Owner</th><th>Closing Date</th></tr>
+	 						<tr scope="row"><th>Playlist name</th><th>Creation Date</th><th>Ranking</th></tr>
 	 						{% for playlist in My_IP_Playlists %}
-	 						<tr><td class="playlistName"><a href="currentPlaylist.html">{{ playlist.playlist_name }}</a></td><td>{{ playlist.playlist_creator_id }}</td><td class="vote">{{ playlist.playlist_vote_time }}</td></tr>
+	 						<tr><td class="playlistName"><a href="currentPlaylist.html">{{ playlist.playlist_name }}</a></td><td>{{ playlist.playlist_creation_date }}</td><td class="vote">{{ playlist.playlist_ranking }}</td></tr>
 	 						{% endfor %}
 	 					</table>
 	 				</div>
@@ -28,9 +28,9 @@
 	 					<h1>Finished playlists</h1>
 						<!-- Link to playlist settings -->
 	 					<table class="table table-hover">
-	 						<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Export to Spotify</th></tr>
+	 						<tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Ranking</th></tr>
 	 						{% for playlist in My_Finished_Playlists %}
-	 						<tr><td class="playlistName"><a href="currentPlaylist.html">{{ playlist.playlist_name }}</a></td><td>{{ playlist.playlist_creator_id }}</td><td class="vote">{{ playlist_export }}</td></tr>
+	 						<tr><td class="playlistName"><a href="currentPlaylist.html">{{ playlist.playlist_name }}</a></td><td>{{ playlist.playlist_creation_date }}</td><td class="vote">{{ playlist.playlist_ranking }}</td></tr>
 	 						{% endfor %}
 	 					</table>
 	 				</div>
