@@ -136,14 +136,14 @@
 .stars{
 	width: 30px;
 	height: 30px;
-	margin-top: -10px;
+	margin-top: 0px;
 }
 
 .starsR{
 	align: left;
 	width: 20px;
 	height: 20px;
-	margin-top: -8px;
+	margin-top: 0px;
 }
 
 .instructor-text{
@@ -189,7 +189,9 @@
 }
 
 .review-text{
-	font-size: 0.75em;
+  padding-top: 15px;
+  maring-top: 30px;
+	font-size: 1.0em;
 }
 
 .table-header{

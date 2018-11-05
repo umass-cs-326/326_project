@@ -81,7 +81,7 @@ for i in range(0, len(courses) - 1):
                         text=rText,
                         gradeReceived=rGrade,
                         starRating=rStarRating,
-                        course=currClass)
+                        courseOfReview=currClass)
 
         review.save()
         reviews.append(review)

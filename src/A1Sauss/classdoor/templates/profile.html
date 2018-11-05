@@ -115,7 +115,7 @@
             <div class="flip-card-back">
               <h3 class="flip-card-title">Description</h3> 
               <p class="desc-text">{{course.description|truncatewords:25}}</p> 
-              <a class="btn btn-primary see-more-btn" href="profile_edit.html" role="button">See more</a>
+              <a class="btn btn-primary see-more-btn" href="{{course.get_absolute_url}}" role="button">See more</a>
             </div>
           </div>
         </div>
@@ -129,8 +129,9 @@
         {% for review in reviews %}
         <!-- Review Card -->
         <div class="review-card">
+            <a href="{{review.courseOfReview.get_absolute_url}}" style="text-decoration:none; color:#000;">
           <div class="review-card-inner">
-            <h4>{{review.title}}</h4>
+            <h4>{{review.courseOfReview}} - {{review.title}}</h4>
                 {% if review.starRating < 1 %}
                     {% load static %}
                     <img src="{% static "images/star-open.gif" %}" class="stars">
@@ -166,7 +167,7 @@
                     {% load static %}
                     <img src="{% static "images/star-gold.gif" %}" class="stars">
                 {% endif %}
-            <p class="review-text"> {{review.text}}</p>
+            <h6 class="review-text"> {{review.text}}</h6>
           </div>
         </div>
         <!--End Review Card-->

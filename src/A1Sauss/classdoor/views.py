@@ -81,8 +81,8 @@ def login(request):
     return render(request, "login.html")
 
 def profile(request):
-	courses = Course.objects.all()[:3]
-	reviews = Review.objects.all()[:3]
+	courses = Course.objects.all()[2:5]
+	reviews = Review.objects.all()[2:5]
 	
 	context = {"reviews": reviews, "courses": courses}
 	return render(request, "profile.html", context=context)

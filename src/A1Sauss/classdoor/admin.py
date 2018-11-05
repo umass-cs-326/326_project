@@ -25,8 +25,8 @@ class TeacherAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     #the default for field is vertical so it is good enough for displaying them
     #using a list filter to sort results
-    list_filter = ('title','date')
-    list_display = ('title', 'starRating', 'date')
+    list_filter = ('title','date', 'courseOfReview')
+    list_display = ('title', 'starRating', 'date', 'courseOfReview')
     #pass
 #admin.site.register(Review)
 

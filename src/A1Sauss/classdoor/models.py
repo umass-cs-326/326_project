@@ -78,7 +78,7 @@ class Review(models.Model):
    #will figure out how to create tags for people to choose instead of entering them
    tags = models.CharField(max_length = 10, help_text = "Describe course difficulty as easy/medium/hard/fun/boring/netural")
    #since we have review as foreignkey in class model I(Zihang) felt we may not need to add ClassDesc here
-   #classDesc = models.ForeignKey('ClassDesc', help_text="Select a class for this description",  on_delete=models.SET_NULL, null=True)
+   courseOfReview = models.ForeignKey('Course', help_text="Select a course for this description",  on_delete=models.SET_NULL, null=True)
    #will figure out the proper way to automatically add author info since every review is not anonymous or written through different accounts
    author = models.ForeignKey('User', help_text="Select a user for this review",  on_delete=models.SET_NULL, null=True)
  
