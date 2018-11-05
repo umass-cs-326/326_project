@@ -77,13 +77,13 @@ class Song(models.Model):
 
 
 class SongInstance(models.Model):
-
     song_id = models.ForeignKey(Song, on_delete=models.SET_NULL, null=True)
     song_instance_id = models.UUIDField(
-                               primary_key=True,
-                               default=uuid.uuid4,
-                               help_text="Unique ID for this particular Song Instance",
-                               )
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+        help_text="Unique ID for this particular Song Instance",
+    )
     playlist_id = models.ForeignKey(Playlist, on_delete=models.SET_NULL, null=True)
     number_yes_votes = models.IntegerField(default=0)
     number_no_votes = models.IntegerField(default=0)

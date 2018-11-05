@@ -82,7 +82,6 @@ for i in range(1, 200):
     contributor.save()
     contributors.append(contributor)
 
-   
 
 # Create SongInstances
 song_instances = []

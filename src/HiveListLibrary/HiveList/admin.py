@@ -18,7 +18,7 @@ class ContributorAdmin(admin.ModelAdmin):
 
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
-    list_display = ("artist_id","artist_name")
+    list_display = ("artist_id", "artist_name")
     
 
 
@@ -35,7 +35,7 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(SongInstance)
 class SongInstanceAdmin(admin.ModelAdmin):
-    list_display = ("song_id","number_yes_votes","number_no_votes")
+    list_display = ("song_instance_id", "song_id", "number_yes_votes", "number_no_votes")
     
 
 """
