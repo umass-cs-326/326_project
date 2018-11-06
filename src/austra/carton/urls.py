@@ -9,4 +9,5 @@ urlpatterns = [
     path('instructors/', views.InstructorListView.as_view(), name="instructors"),
     path('instructor/<int:pk>', views.InstructorDetailView.as_view(), name="instructor-detail"),
     path('course/<int:pk>', views.CourseDetailView.as_view(), name="course-detail"),
+    url(r'^comments/', include('django_comments.urls')),
 ]

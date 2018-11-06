@@ -1,27 +1,31 @@
 {% extends "base.html" %}
 {% block title %} {{ course.name}} {% endblock %}
+
 {% block content %}
   <body>
   	<div class="container">
       <div class="row">
       <div class="col">
         <h1>{{course.name}}</h1>
-        <p>Rating {{course.rating}} </p>
+        <p>Rating:  {{course.rating}} </p>
+        <button type="button" class="btn btn-success">Updoot</button>
+        <button type="button" class="btn btn-danger">Downdoot</button>
         <p>Sessions: </p>
         {% for session in course.session_set.all %}
         <p>{{session.max_seats}}</p>
         {% endfor %}
-        <button type="button" class="btn btn-success">Updoot</button>
-        <button type="button" class="btn btn-danger">Downdoot</button>
+
+
 
 
     <div class="form-group">
     <label for="comment">Enter a comment:</label>
     <textarea class="form-control" rows="5" id="comment"></textarea>
 
-    <h3> Ari Rosenthal </h3>
-    <p>9/27/18 </p>
-    <p> Man I loved this class so much! </p>
+    {% for comment in course.comment_set.all %}
+    <p> <strong>Name:</strong>  {{comment.name}} </p>
+    <p>  <strong>Comment:</strong>  {{comment.comment_text}}
+    {% endfor %}
     </div>
   </div>
   </div>

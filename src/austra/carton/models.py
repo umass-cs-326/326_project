@@ -45,3 +45,9 @@ class Instructor(models.Model) :
 
     def get_absolute_url(self) :
         return reverse("instructor-detail", args=[str(self.id)])
+
+class Comment(models.Model) :
+    course = models.ForeignKey("Course", on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=50)
+    comment_text = models.CharField(max_length = 500)
+    date = models.DateTimeField(auto_now_add=True) #we set the date when we add it to the DB
