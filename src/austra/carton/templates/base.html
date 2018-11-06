@@ -28,20 +28,23 @@
             <a class="nav-link " href="{% url 'index' %}">Austra</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link " href="#" >Log in / Register</a>
+            <a class="nav-link " href="{% url 'login' %}" >Log in / Register</a>
           </li>
           <li class="nav-item ">
               <a class="nav-link " href="{% url 'calendar' %}" >Calendar</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link " href="#" >Tree</a>
+          <a class="nav-link " href="{% url 'tree' %}" >Tree</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/carton/course/1" >Example Detail Page</a>
+            <a class="nav-link " href="/carton/course/1" >Example Class Detail Page</a>
           </li>
             <li class="nav-item">
               <a class="nav-link " href="{% url 'instructors' %}" >Instructors</a>
             </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/carton/instructor/1" >Example Instructor Detail Page</a>
+          </li>
           </ul>
         </div>
       </nav>

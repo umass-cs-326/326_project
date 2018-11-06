@@ -1,19 +1,11 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <!-- Tree formatting -->
-    <link rel="stylesheet" href="css/Treant.css" type="text/css"/>
-    <link rel="stylesheet" href="css/tree_formating.css" type="text/css"/>
-    <title>Tree View</title>
-  </head>
-  <body>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} tree view {% endblock title %}
+{% block custom_css%}
+<link rel="stylesheet" href="{% static "css/Treant.css" %}" type="text/css"/>
+<link rel="stylesheet" href="{% static "css/tree_formating.css" %}" type="text/css"/>
+{% endblock %}
+{% block content %}
   	<div class="container-fluid">
       <!-- Here is where the nav bar would go -->
       <div class="row">
@@ -27,21 +19,71 @@
         <div id="tree-simple" class="col-12"> </div>
 
         <!-- tree scripts -->
-        <script src="js/Treant.js"></script>
-        <script src="js/vendor/raphael.js"></script>
-        <script src="js/simple_tree_config.js"></script>
+        {% block custom_js%}
+        <script src="{% static "js/Treant.js" %}"></script>
+        <script src="{% static "js/raphael.min.js" %}"></script>
+        <script>
+                      simple_chart_config = {
+                  chart: {
+                      container: "#tree-simple",
+                      rootOrientation: 'NORTH',
+                      hideRootNode: true,
+                      siblingSeparation:   40,
+                      subTeeSeparation:    30,
+                      connectors: {
+                          type: 'curve'
+                      },
+                      node: {
+                          HTMLclass: 'class_node'
+                      }
+                  },
+                  
+                  nodeStructure: {
+                      text: {},
+                      children: [
+                          {
+                              text: { name: "CmpSci 121", title:"This is where you start"},
+                              children: [
+                                  {
+                                      text: { name: "CmpSci 187", title:"Learn about data structures"},
+                                      children: [
+                                          {
+                                              text: { name: "CmpSci 220", title: "Functional Programming"}
+                                          },
+                                          {
+                                              text: { name: "CmpSci 230", title: "Low level programming"}
+                                          },
+                                          {
+                                              text: { name: "CmpSci 240", title: "Probability and statistics"}
+                                          },
+                                          {
+                                              text: { name: "CmpSci 250", title: "A logic class"}
+                                          },
+                                      ]
+                                  },
+                              ]
+                          },
+                          {
+                              text: { name: "Math 131", title:"AKA Calc 1" },
+                              children: [
+                                  {
+                                      text: { name: "Math 132", title:"AKA Calc 2" },
+                                      children: [
+                                          {
+                                              text: { name: "Math 233", title:"AKA Calc 3" }
+                                          }
+                                      ]
+                                  }
+                              ]
+                          }
+                      ]
+                  }
+              };/**/
+        </script>
         <script>
           var my_chart = new Treant(simple_chart_config);
         </script>
+        {% endblock %}
   		</div>
   	</div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
-  </body>
-</html>
+      {% endblock %}

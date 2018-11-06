@@ -6,6 +6,7 @@ from django.template.loader import get_template
 from django.http import HttpResponse
 from .models import Session
 from random import choice
+from django.views.generic import TemplateView
 
 # Keeps track of the mapping from letter to number
 letters = {
@@ -60,4 +61,3 @@ class InstructorDetailView(generic.DetailView):
 class CourseDetailView(generic.DetailView):
     model = Course
     template_name = "class_detail.html"
-
