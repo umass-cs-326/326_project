@@ -37,7 +37,7 @@ def calendar(request):
         in Session.objects.all()
     ]
     courses = [
-        [course.name, course.rating, course.session_set.all(), course.id]
+        [course.name, course.rating, course.session_set.all().order_by('start_time'), course.id]
         for (i, course)
         in enumerate(Course.objects.all())
     ]

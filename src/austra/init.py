@@ -47,7 +47,7 @@ class_names = [
 classes = [
     # Keep in mind this is mock data for the ratings
     # dummy courses:
-    Course(name="Introduction to Problem Solving with Computers", code="COMPSCI121", rating=4),
+    Course(name="Introduction to Problem Solving", code="COMPSCI121", rating=4),
     Course(name="Programming with Data Structures", code="COMPSCI187", rating=3),
     Course(name="Programming Methodology", code="COMPSCI220", rating=2),
     Course(name="Reasoning About Uncertainty", code="COMPSCI240", rating=5)
