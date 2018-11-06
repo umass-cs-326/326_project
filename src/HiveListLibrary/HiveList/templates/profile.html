@@ -38,11 +38,10 @@
 				<!---Suggestions-->
 				<div class="card gedf-card your-suggestions">
 					<div class="card-body">
-						<h1>Profile Overview</h1>
+						<h2>Profile Overview</h2>
 						<div class="card gedf-card">
 	 						<div class="card-body">
 	 							{{ profile_overview }}
-
 	 						</div>
 	 					</div>
 					</div>
@@ -50,18 +49,16 @@
 
 				<div class = "card gedf-card user-settings">
 					<div class="card-body">
-						<h1>User Settings</h1>
-							
+						<h2>User Settings</h2>
 							<br>
 							<h4>Email Address:</h4>
 							<table class="table table-striped">
         						<tr><td>{{ user_email }}</td></tr>
-        						
-							<br>
+                                <tr><td>Change Email Address: <input type="text" name="email address" style="width: 200px;"></td></tr>
 							</table>
-							<tr><td>Change email address: <input type="text" name="email address" style="width: 200px;"></tr></td>
-							<button type="button" onclick="alert('Email Changed.')" style="height:30px;width:120px">Add</button>
+                                <button type="button" onclick="alert('Email Changed.')" style="height:30px; width:120px">Change Email</button>
 							<br>
+                            <br>
 							<h4>Change Password:</h4>
 							<br>
 								<tr><td>Current Password: <input type="text" name="current_pass" style="width: 200px;"></tr></td>
@@ -71,18 +68,15 @@
 								<tr><td>Confirm New Password: <input type="text" name="confirm_pass" style="width: 200px;"></tr></td>
 						
 									<br><br>
-									<button type="button" onclick="alert('Password Changed (need to do checking though).')" style="height:30px;width:200px">Change Password</button>
+									<button type="button" onclick="alert('Password Changed.')" style="height:30px;width:200px">Change Password</button>
 							<br>
 							<br>
 							<h4>Default Privacy Settings: </h4>
 								<br>
 								<form>
-								<input type="radio" name="Access" value="public_priv" checked> Public
-								<br>
-								<input type="radio" name="Access" value="private_priv"> Private (only friends)
-								<br>
-								<input type="radio" name="Access" value="anon_priv"> Anonymous for all
-								<br>
+								<input type="radio" name="Access" value="public_priv" checked> Public<br>
+								<input type="radio" name="Access" value="private_priv"> Private (only friends)<br>
+								<input type="radio" name="Access" value="anon_priv"> Private (only you)<br>
 							</form>
 						
 					</div>
@@ -116,7 +110,7 @@
 
 				<div class="card gedf-card your-statistics">
 					<div class="card-body">
-						<h1>Your Statistics</h1>
+						<h2>Your Statistics</h2>
 
 							{{ user_statistics }}
 					</div>

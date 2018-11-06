@@ -6,7 +6,7 @@
 				<div class="col-md-4">
 					<div class="card gedf-card popular playlists">
 						<div class="card-body">
-							<h1>Popular Playlists</h1>
+							<h2>Popular Playlists</h2>
 								<table class="table table-striped">
 									<tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Private or Public</th></tr>
 									{% for playlist in popular_playlists %}
@@ -23,7 +23,7 @@
 		 		<div class="col-md-4">
  					<div class="card gedf-card popular songs">
  						<div class="card-body">
- 							<h1>Popular Songs</h1>
+ 							<h2>Popular Songs</h2>
  								<table class="table table-striped">
 									<tr scope="row"><th>Song Name</th><th>Artist</th><th>Genre</th></tr>
 				 					{% for song in popular_songs %}
@@ -39,9 +39,8 @@
 				<div class="col-md-4">
 		 			<div class="card gedf-card filters">
 		 				<div class="card-body">
-		 					<h1>Filters</h1>
+		 					<h2>Filters</h2>
 								<table class="table table-hover">
-									<tr scope="row"><th>Genre</th></tr>
 									{% for genre in genres %}
 									<tr><td class="genre">{{ genre.genre_name }}</td></tr>
 									{% endfor %}
