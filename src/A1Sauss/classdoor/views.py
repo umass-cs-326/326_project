@@ -1,6 +1,7 @@
 import re
 from django.shortcuts import render
 from classdoor.models import Course, Teacher, Review, University, User, Subject
+from django.db.models.query import EmptyQuerySet
 
 # Create your views here.
 def index(request):
@@ -23,6 +24,10 @@ def classpage(request, id):
 
     # Get all the reviews for the course
     reviews = course.reviews.all()
+    if reviews.exists():
+        reviewClass = '/review/' + str(id)
+    else:
+        reviewClass = '#'
 
     reviewList = []
 
@@ -44,6 +49,7 @@ def classpage(request, id):
     context = {
         "class": courseData,
         "review_list": reviewList,
+        "review_class_url": reviewClass
     }
 
     return render(request, "class.html", context=context)
