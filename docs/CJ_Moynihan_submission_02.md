@@ -1,0 +1,8 @@
+﻿Overall, most of our design decisions were made in a group setting. We each talked about different ideas for both the design of the project, and how we would be go about working on the project as a group. It was my idea that we would try and make a SPIRE-like web app that would focus on the requirements that students have and help students organize what classes they would be taking from semester to semester and as a big picture. It was with this in mind that I worked on the html and javascript for tree.html and simple\_tree\_config.js, using the Treant javascript framework. I also built the framework for the user profile page, which will be extended once user functionality is added.
+
+
+As we started to divy up the work, Harry had the idea of using an online management tool like Trello to better organize our tasks. I suggested that we use a simplified SCRUM methodology, by separating all the tasks, then creating a working board for each user and a completed board. I created the init.py so that we could generate mock data for the database, and troubleshooted the problems that we had with init.sh, settings.py, carton/urls.py and models.py with Sam so that we could get the skeleton website up and running, then running correctly.
+
+
+I then worked on integrating the Session data with the calendar by creating a calendar function in views.py that would lookup the Session data from the database then pass that into the main.html, using Django’s python formatting syntax to fill in the inline javascript. After that, I went back to models.py and init.py to add the ability for Session to abstract start times, end times, and days of the week. After adding that to the model, I remodified views.py and main.html to include those details.
+
