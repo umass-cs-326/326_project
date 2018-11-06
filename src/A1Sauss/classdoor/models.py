@@ -14,7 +14,9 @@ class Course(models.Model):
    description = models.TextField(max_length=500, help_text = "Description of the course")
    #needs a method to calculate average rating
    starRating = models.DecimalField(max_digits=2, decimal_places=1)
-   reviews = models.ManyToManyField('Review', help_text="Select a review for this class")
+   #changed reviews back to manytomany field
+   reviews = models.ManyToManyField('Review', help_text="Select a review for this class", blank=True)
+   #changed grade range
    'Not sure if we need grade for the class since we have grade in review'
    averageGrade = models.DecimalField(max_digits=2, decimal_places=1)
    #needs to be able to choose multiple preReqs
