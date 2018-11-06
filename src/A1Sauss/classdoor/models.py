@@ -2,29 +2,24 @@ from django.db import models
 from django.urls import reverse
 
 #Version 1.4
-#Description: some modifications are added into the model, a new class teacher was created
 #Matt, Zander, Zihang
-#10/26/2018
+#10/26/2018, 11/5/2018
 
 #-------------------part 1------------------------#
 
 class Course(models.Model):
    """Model representing a specific class"""
    name = models.CharField(max_length=200)
-   #change teacher to foreign key
    teacher = models.ForeignKey('Teacher', on_delete=models.SET_NULL, null=True)
-   #change description to text field
    description = models.TextField(max_length=500, help_text = "Description of the course")
-   #chaged rating range
-   #also needs a method to calculate average rating
+   #needs a method to calculate average rating
    starRating = models.DecimalField(max_digits=2, decimal_places=1)
    #changed reviews back to manytomany field
-   reviews = models.ManyToManyField('Review', help_text="Select a review for this class")
+   reviews = models.ManyToManyField('Review', help_text="Select a review for this class", blank=True)
    #changed grade range
    'Not sure if we need grade for the class since we have grade in review'
    averageGrade = models.DecimalField(max_digits=2, decimal_places=1)
-   #changed self to PreReq
-   #also needs to be able to choose multiple preReqs
+   #needs to be able to choose multiple preReqs
    'preReq needs to be fullfilled with other classes, requires more work to implement it'
    #preReq = models.ManyToManyField('PreReq', help_text="Select a preReq for this class", blank=True)
    subject = models.ForeignKey('Subject', on_delete=models.SET_NULL, null=True)
@@ -67,7 +62,6 @@ class Teacher(models.Model):
 class Review(models.Model):
    """Model representing a review."""
    title = models.CharField(max_length=200)
-   #changed charfield to textfield
    text = models.TextField(max_length=500, help_text='Enter your review for this class')
    #will figure out how to put a range on the rating
    #decimal fields do not take a default
@@ -77,7 +71,6 @@ class Review(models.Model):
    date = models.DateField(null=True, blank=True)
    #will figure out how to create tags for people to choose instead of entering them
    tags = models.CharField(max_length = 10, help_text = "Describe course difficulty as easy/medium/hard/fun/boring/netural")
-   #since we have review as foreignkey in class model I(Zihang) felt we may not need to add ClassDesc here
    courseOfReview = models.ForeignKey('Course', help_text="Select a course for this description",  on_delete=models.SET_NULL, null=True)
    #will figure out the proper way to automatically add author info since every review is not anonymous or written through different accounts
    author = models.ForeignKey('User', help_text="Select a user for this review",  on_delete=models.SET_NULL, null=True)

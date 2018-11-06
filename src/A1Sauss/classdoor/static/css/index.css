@@ -1,0 +1,67 @@
+#HomePage_MainContent{
+    padding: 20%;
+}
+
+#HomePage_MainContent{
+    
+/*     The image used */
+     background-image: url("images/sunset_bg1.jpg");
+
+    /* Full height */
+    width: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+html,
+body,
+header,
+.view {
+    height: 100%;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;}
+
+@media (max-width: 100%) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100%;
+  }
+}
+@media (min-width: 100%) and (max-width: 100%) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100%;
+  }
+}
+
+.top-nav-collapse {
+  background-color: #3f51b5 !important;
+}
+
+.rgba-gradient {
+  background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+  /* background: -webkit-gradient(linear, 45deg, from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%))) */
+  background: linear-gradient(to 45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+}
+
+.card {
+  background-color: rgba(126, 123, 215, 0.2);
+}
+
+.md-form label {
+  color: #ffffff;
+}
+
+h6 {
+  line-height: 1.7;
+}
