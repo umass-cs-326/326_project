@@ -41,7 +41,7 @@ for genre in genres:
 # Create Artists
 artists = []
 for i in range(1, 100):
-    a_name = fake.first_name() + fake.last_name()
+    a_name = fake.first_name() +" "+ fake.last_name()
     a_id = fake.uuid4()
     artist = Artist(artist_name = a_name, artist_id = a_id)
     artist.save()
@@ -65,7 +65,7 @@ for i in range(1, 200):
     p_name = fake.text(20)
     p_private = fake.boolean()
     p_creation_date = fake.date()
-    p_description = fake.text(1000)
+    p_description = fake.text(100)
     #p_vote_time = fake.date_time()
     p_ranking = fake.random_int(0, 100000)
     p_voting_threshold = fake.random_int(1, 101)
