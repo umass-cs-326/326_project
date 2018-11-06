@@ -22,12 +22,12 @@ class Session(models.Model) :
     # TODO:
     # Start/End TIMES
     # MTWRF
-    
+
     @property
     def get_rating(self) :
         #TODO check if null! This will fail if course or instructor is null
         return self.course.rating + self.instructor.rating
-    
+
     #TODO: verify this is proper usage of reverse(). Where is self.id declared?
     def get_absolute_url(self) :
         return reverse("session-detail", args=[str(self.id)])
