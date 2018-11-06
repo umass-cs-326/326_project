@@ -22,9 +22,6 @@
             <p>Professor: Tim Richards</p>
             <p>Description: The World Wide Web was proposed originally as a collection of static documents inter-connected by hyperlinks. Today, the web has grown into a rich platform, built on a variety of protocols, standards, and programming languages, that aims to replace many of the services traditionally provided by a desktop operating system. Topics will include: producing dynamic content using a server-based language, content serving databases and XML documents, session state management, multi-tier web-based architectures, web security, and core technologies including HTTP, HTML5, CSS, JavaScript, and SQL will be emphasized. This course will also study concepts and technologies including AJAX, social networking, mashups, JavaScript libraries (e.g., jQuery), and web security. This course is hands-on and project-based; students will construct a substantial dynamic web application based on the concepts, technologies, and techniques presented during lecture. This course satisfies the IE Requirement. Prerequisites: COMPSCI 220 or COMPSCI 230. 3 credits.
             </p>
-
-
-
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -46,20 +43,20 @@
           <input class="form-control search-box" type="text" placeholder="3.. | 4.."  disabled aria-label="Search">
         </div>
         <div class="accordion" id="accordianSearch">
-
+          {% for course in courses %}
           <div class="card">
             <div class="card-header" id="headingTwo">
               <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  CS326
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#aa{{course.3}}" aria-expanded="false" aria-controls="aa{{course.3}}">
+                    {{ course.0 }}
                 </button>
               </h5>
             </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordianSearch">
+            <div id="aa{{course.3}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordianSearch">
               <div class="card-body">
-                <p>Rating: 3.8</p>
-                <p>Instructor: Timmy Richards</p>
-                <p>Prerequisites: 250</p>
+                <p>Rating: {{course.1}}</p>
+                <p>Instructor(s):</p>
+                {% for session in course.2 %} <p>{{session.instructor}}</p> {% endfor %}
                 <div class="sessionList">
                   <button type="button" class="btn btn-outline-primary">2:30</button>
                   <button type="button" class="btn btn-outline-primary">3:30</button>
@@ -67,6 +64,7 @@
               </div>
             </div>
           </div>
+          {% endfor %}
           </div>
           </div>
 
