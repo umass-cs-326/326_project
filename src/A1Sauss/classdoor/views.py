@@ -24,10 +24,7 @@ def classpage(request, id):
 
     # Get all the reviews for the course
     reviews = course.reviews.all()
-    if reviews.exists():
-        reviewClass = '/review/' + str(id)
-    else:
-        reviewClass = '#'
+    reviewClass = '/review/' + str(id)
 
     reviewList = []
 
