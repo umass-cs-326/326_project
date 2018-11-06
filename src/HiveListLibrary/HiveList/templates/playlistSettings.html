@@ -13,24 +13,35 @@
 					<div class="card-body">
 						<!-- General Settings -->
 						<div class="ps-general">
-							<h1>General Settings</h1>
+							<h2>General Settings</h2>
 							
 							<table class="table table-striped">
-							<form>
-								<tr><td>Playlist Name: {{ playlist_name }} <input type="text" name="playlistname" style="width: 200px;">
-							</form>
-							</tr></td>
-							<tr><td><p>Song Count: {{ song_count }}</P>
-							<form>
-							<textarea name="playlist-description" rows="4" cols="40">{{ playlist.playlist_description }}</textarea>
-							</form>
-							</tr></td>
-							<tr><td><p>Playlist Access:</p>
-							<form>
-								<input type="radio" name="Access" value="public" checked> Public
-								<input type="radio" name="Access" value="private"> Private
-							</form>
-							</tr></td>
+                                <tr>
+							        <form>
+								        <td>Playlist Name: {{ playlist_name }} <input type="text" name="playlistname" style="width: 250px;"></td>
+							        </form>
+							    </tr>
+							    <tr>
+                                    <td><p>Song Count: {{ song_count }}</P></td>
+
+                                <tr>
+                                    <form>
+							            <td>
+                                            <p>Playlist Description:</p>
+                                            <textarea name="playlist-description" rows="14" cols="150">{{ playlist.playlist_description }}</textarea>
+                                        </td>
+                                    </form>
+                                </tr>
+
+							<tr>
+                                <td>
+                                    <p>Playlist Access:</p>
+							        <form>
+								        <input type="radio" name="Access" value="public" checked> Public <br>
+								        <input type="radio" name="Access" value="private"> Private
+							        </form>
+                                </td>
+							</tr>
 							</table>
 							
 						</div>
@@ -47,7 +58,7 @@
 				<!-- Voting Settings -->
 				<div class="card gedf-card voting-settings">
 					<div class="card-body">
-						<h1>Voting Settings</h1>
+						<h2>Voting Settings</h2>
 						
 						<table class="table table-striped">
 							<form>
@@ -65,14 +76,18 @@
 
 				<div class="card gedf-card voting-settings">
 					<div class="card-body">
-						<h1>Contributor Settings</h1>
+						<h2>Contributor Settings</h2>
 						
 						<table class="table table-striped">
 							<form>
-							<tr><td>Add Contributor: <input type="text" name="votingperiod" style="width: 50px;"></td></tr>
-							<tr><td>Search Contributors: <input type="text" name="votingthreshold" style="width: 50px;"></td></tr>
+							<tr>
+                                <td>Add Contributor: <input type="text" name="votingperiod" style="width: 200px;"></td>
+                                <td><button type="button" onclick="alert('Contributor Added.')" style="height:30px;width:180px">Add Contributor</button></td>
+                            </tr>
+							<tr>
+                                <td>Search Contributors: <input type="text" name="searchcontrubutor" style="width: 300px;"></td>
+                            </tr>
 							</form>
-							
 						</table>
 					</div>
 				</div>

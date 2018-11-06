@@ -8,29 +8,25 @@
 	 		<div class="col-md-4 gedf-main">
 	 			<div class="card gedf-card ">
 	 				<div class="card-body">
-	 					<h1>IP Playlists</h1>
+	 					<h2>IP Playlists</h2>
 		 					<table class="table table-hover">
+                                <tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Private or Public</th></tr>
 		 						{% for playlist in IP_playlists %}
-		 						<tr scope="row"><th>{{ playlist.playlist_name }}</th><th>{{ playlist.playlist_creator_id }}</th><th>{{ playlist.playlist_vote_time }}</th></tr>
+		 						<tr scope="row"><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creator_id }}</td><td>{{ playlist.playlist_vote_time }}</td></tr>
 		 						{% endfor %}
 							</table>
-
-
-
 	 				</div>
 	 			</div>
 
 	 			<div class="card gedf-card">
 	 				<div class="card-body">
-	 					<h1>Top 10 Playlists</h1>
+	 					<h2>Top 10 Playlists</h2>
 		 					<table class="table table-striped">
+                            <tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Description</th></tr>
 		 						{% for playlist in top_10 %}
-			 					<tr scope="row"><th>{{ playlist.playlist_name }}</th><th>{{ playlist.playlist_creation_date }}</th><th>{{ playlist.playlist_description }}</th></tr>
+			 					<tr scope="row"><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creation_date }}</td><td>{{ playlist.playlist_description }}</td></tr>
 			 					{% endfor %} <!-- todo: add 'view all' button and page-->
 		 					</table>
-
-
-
 	 				</div>
 	 			</div>
 	 			
@@ -39,10 +35,11 @@
 	 		<div class="col-md-4">
 	 			<div class="card gedf-card public-playlists">
 	 				<div class="card-body">
-	 					<h1>Public Playlists</h1>
+	 					<h2>Public Playlists</h2>
 	 						<table class="table table-striped">
+                                <tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Description</th></tr>
 	 							{% for playlist in public_playlists %}
-			 					<tr scope="row"><th>{{ playlist.playlist_name }}</th><th>{{ playlist.playlist_creation_date }}</th><th>{{ playlist.playlist_description }}</th></tr>
+			 					<tr scope="row"><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creation_date }}</td><td>{{ playlist.playlist_description }}</td></tr>
 			 					<!-- todo: add 'view all' button and page-->
 			 					{% endfor %}
 		 					</table>
@@ -56,7 +53,7 @@
 	 		<div class="col-md-4">
 	 			<div class="card gedf-card">
 	 				<div class="card-body">
-	 					<h1>Profile</h1>
+	 					<h2>Profile</h2>
 	 						{{ profile_information }}
 	 				</div>
 	 			</div>
