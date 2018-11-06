@@ -5,6 +5,7 @@
 from django.contrib.auth.models import User
 from faker import Faker
 import random
+import datetime
 
 from carton.models import Course, Instructor, Session
 
@@ -74,11 +75,21 @@ for _ in range(10):
 
 # Create the class Sessions
 mock_sessions = []
+print("pree session test")
 for c in classes:
     # Add up to 3 sessions of the same class
     for _ in range(random.randint(1, 3)):
-        mock_sessions.append(Session(course=c, instructor=random.choice(mock_instructors), max_seats=fake.random_int(10, 50)))
+        # Choose a random hour for an arbitrary date
+        start_time = datetime.datetime.combine(datetime.date(1, 1, 1), datetime.time(random.randint(8, 20)))
+        mock_sessions.append(Session(
+            course=c, instructor=random.choice(mock_instructors), max_seats=fake.random_int(10, 50),
+            start_time=start_time, end_time=start_time+datetime.timedelta(hours=1),
+            dow=random.choice(['mwf','tr'])
+        ))
+        print("Built but not saved mock_session")
         mock_sessions[-1].save()
+        print("Saved mock_session")
+print('post session test')
 
 print("Classes:")
 for c in Course.objects.all():

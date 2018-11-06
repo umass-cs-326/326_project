@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+import datetime
 
 class Course(models.Model) :
     """Model representing a UMass class"""
@@ -14,15 +15,23 @@ class Course(models.Model) :
     def display_prereqs(self) :
         return ", ".join(prereqs.code for prereqs in self.prereqs.all())
 
+def get_future(start_time=None, n_hours=1):
+    """A function that returns a datetime object n_hours from now, or a passed datetime object"""
+    if start_time is None:
+        start_time = datetime.datetime.now()
+    return start_time + datetime.timedelta(hours=n_hours)
+
 class Session(models.Model) :
     """Model representing a session"""
     course = models.ForeignKey("Course", on_delete=models.CASCADE, null=True)
     instructor = models.ForeignKey("Instructor", on_delete=models.SET_NULL, null=True)
     max_seats = models.IntegerField()
-    # TODO:
-    # Start/End TIMES
-    # MTWRF
-    
+    start_time = models.DateTimeField(default=datetime.datetime.now, help_text="Enter when the class starts", null=False)
+    end_time = models.DateTimeField(default=get_future, help_text="Enter when the class ends", null=False)
+    # days of the week
+    # represent as a string to day thing mtwrf
+    dow = models.CharField('', max_length=5, help_text="Enter days of the week", null=True)
+
     @property
     def get_rating(self) :
         #TODO check if null! This will fail if course or instructor is null
