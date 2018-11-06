@@ -12,11 +12,10 @@ class PetUser(models.Model):
     location = models.CharField(max_length = 100, blank = True, null = True, help_text = "Your area of residence")
     description = models.CharField(max_length = 3000, blank = True, null = True)
     image = models.ImageField(upload_to = "user_images", null = True)
-
     hosting =  models.ManyToManyField("Event")
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return self.username
 
 class Pet(models.Model):
     name = models.CharField(max_length=30)
@@ -27,7 +26,7 @@ class Pet(models.Model):
     owner = models.ForeignKey(PetUser, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.name
+        return self.name + " " + self.owner.username
 
 
 class Event(models.Model):
