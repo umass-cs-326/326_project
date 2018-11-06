@@ -20,7 +20,7 @@ def classpage(request, id):
     courseData["reviews"] = course.reviews
     courseData["average_grade"] = course.averageGrade
     courseData["subject"] = course.subject
-    courseData["universityName"] = course.university_name
+    courseData["university_name"] = course.university_name
 
     # Get all the reviews for the course
     reviews = course.reviews.all()
