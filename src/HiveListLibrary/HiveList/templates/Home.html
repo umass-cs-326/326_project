@@ -22,9 +22,9 @@
 
 	 			<div class="card gedf-card">
 	 				<div class="card-body">
-	 					<h1>Top 100</h1>
+	 					<h1>Top 10 Playlists</h1>
 		 					<table class="table table-striped">
-		 						{% for playlist in top_100 %}
+		 						{% for playlist in top_10 %}
 			 					<tr scope="row"><th>{{ playlist.playlist_name }}</th><th>{{ playlist.playlist_creation_date }}</th><th>{{ playlist.playlist_description }}</th></tr>
 			 					{% endfor %} <!-- todo: add 'view all' button and page-->
 		 					</table>
