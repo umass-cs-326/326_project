@@ -21,7 +21,7 @@
 <body>
     {% block navbar %}
 	<nav class="navbar navbar-light ">
-        <a href="home" class="navbar-brand"><h1><img src="{% static 'images/Logo.png' %}" width=" 50" height="50" class="logo">HiveList</h1></a>
+        <a href={% url 'home' %} class="navbar-brand"><h1><img src="{% static 'images/Logo.png' %}" width=" 50" height="50" class="logo">HiveList</h1></a>
         <ul class="nav justify-content-center">
   			<li class="nav-item">
 				<a class="nav-link nav-item" href={% url 'home' %}>Home</a>
