@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from faker import Faker
 import random
 
-from carton.models import Course, Instructor, Session
+from carton.models import Course, Instructor, Session, Comment
 
 
 fake = Faker()
@@ -72,6 +72,13 @@ for _ in range(10):
     # Add the last created instructor
     mock_instructors[-1].save()
 
+#create mock comments
+mock_comments = []
+for c in classes :
+    #add 1 to 10 comments
+    for _ in range(random.randint(1, 6)):
+        mock_comments.append(Comment(course=c, name=fake.name(), comment_text=fake.text(),date=fake.date_time))
+        mock_comments[-1].save()
 # Create the class Sessions
 mock_sessions = []
 for c in classes:
@@ -91,6 +98,9 @@ for instructor in Instructor.objects.all():
 print("\nSessions:")
 for session in Session.objects.all():
     print(session)
+print("Comments:")
+for c in Comment.objects.all():
+    print(c)
 
 # Retrieve a random session from our model and print it.
 num_sessions = Session.objects.count()

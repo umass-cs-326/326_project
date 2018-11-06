@@ -22,12 +22,12 @@ class Session(models.Model) :
     # TODO:
     # Start/End TIMES
     # MTWRF
-    
+
     @property
     def get_rating(self) :
         #TODO check if null! This will fail if course or instructor is null
         return self.course.rating + self.instructor.rating
-    
+
     #TODO: verify this is proper usage of reverse(). Where is self.id declared?
     def get_absolute_url(self) :
         return reverse("session-detail", args=[str(self.id)])
@@ -45,3 +45,9 @@ class Instructor(models.Model) :
 
     def get_absolute_url(self) :
         return reverse("instructor-detail", args=[str(self.id)])
+
+class Comment(models.Model) :
+    course = models.ForeignKey("Course", on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=50)
+    comment_text = models.CharField(max_length = 500)
+    date = models.DateTimeField(auto_now_add=True) #we set the date when we add it to the DB

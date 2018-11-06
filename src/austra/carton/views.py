@@ -25,7 +25,7 @@ def calendar(request):
     return render(request, 'main.html', {"sessions": sessions, "courses": courses})
 
 def index(request):
-    
+
     template = get_template('index.html')
     context = {
     }
@@ -39,3 +39,6 @@ class InstructorDetailView(generic.DetailView):
     model = Instructor
     template_name = "instructor_detail.html"
 
+class CourseDetailView(generic.DetailView):
+    model = Course
+    template_name = "class_detail.html"
