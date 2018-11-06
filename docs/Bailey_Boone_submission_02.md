@@ -1,0 +1,5 @@
+I honestly did not do very much to contribute to our Project 2 submission. I missed a bunch of lectures and therefore wasn't able to aid in the configuration of the Django application or the mock data, and was not a part of the templates and views development.
+
+The contributions I did make were mostly abstract: I helped design the data model back in Project 1 and reiterated the same design to my group members during development, and aided designing of the users and actions. I also fixed little bugs such as a redirect error found after posting a new event to the application.
+
+I'm hoping to be able to provide much better support to my team when it comes time for queries and working directly with the database in our application, as I have practical experience working in that area from internships.
