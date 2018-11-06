@@ -35,10 +35,15 @@ def calendar(request):
         for session
         in Session.objects.all()
     ]
-    return render(request, 'main.html', {"sessions": sessions})
+    courses = [
+        [course.name, course.rating, course.session_set.all(), course.id]
+        for (i, course)
+        in enumerate(Course.objects.all())
+    ]
+    return render(request, 'main.html', {"sessions": sessions, "courses": courses})
 
 def index(request):
-    
+
     template = get_template('index.html')
     context = {
     }
@@ -51,3 +56,8 @@ class InstructorListView(generic.ListView):
 class InstructorDetailView(generic.DetailView):
     model = Instructor
     template_name = "instructor_detail.html"
+
+class CourseDetailView(generic.DetailView):
+    model = Course
+    template_name = "class_detail.html"
+

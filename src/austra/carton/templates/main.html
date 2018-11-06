@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
-
 {% load static %}
 {% block title %} main / calendar {% endblock title %}
     {% block custom_css %}
 	  <link rel="stylesheet" href="{% static "css/fullcalendar.min.css" %}">
-	  <link rel="stylesheet" href="{% static "css/fullcalendar.print.css" %}">    
+	  <link rel="stylesheet" href="{% static "css/fullcalendar.print.css" %}">
     <!--Our CSS -->
     <link rel="stylesheet" href="{% static "css/main.css" %}">
     {% endblock custom_css %}
-   
-
-
     {% block content %}
     <!-- Modal -->
     <div class="modal fade" id="classModal" tabindex="-1" role="dialog" aria-labelledby="classModalLabel" aria-hidden="true">
@@ -26,9 +22,6 @@
             <p>Professor: Tim Richards</p>
             <p>Description: The World Wide Web was proposed originally as a collection of static documents inter-connected by hyperlinks. Today, the web has grown into a rich platform, built on a variety of protocols, standards, and programming languages, that aims to replace many of the services traditionally provided by a desktop operating system. Topics will include: producing dynamic content using a server-based language, content serving databases and XML documents, session state management, multi-tier web-based architectures, web security, and core technologies including HTTP, HTML5, CSS, JavaScript, and SQL will be emphasized. This course will also study concepts and technologies including AJAX, social networking, mashups, JavaScript libraries (e.g., jQuery), and web security. This course is hands-on and project-based; students will construct a substantial dynamic web application based on the concepts, technologies, and techniques presented during lecture. This course satisfies the IE Requirement. Prerequisites: COMPSCI 220 or COMPSCI 230. 3 credits.
             </p>
-
-
-
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -50,96 +43,35 @@
           <input class="form-control search-box" type="text" placeholder="3.. | 4.."  disabled aria-label="Search">
         </div>
         <div class="accordion" id="accordianSearch">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  CS311
-                </button>
-              </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordianSearch">
-              <div class="card-body">
-                <p>Rating: 4.7</p>
-                <p>Instructor: Marius</p>
-                <p>Prerequisites: 250</p>
-              </div>
-            </div>
-          </div>
+          {% for course in courses %}
           <div class="card">
             <div class="card-header" id="headingTwo">
               <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  CS326
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#aa{{course.3}}" aria-expanded="false" aria-controls="aa{{course.3}}">
+                    {{ course.0 }}
                 </button>
               </h5>
             </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordianSearch">
+            <div id="aa{{course.3}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordianSearch">
               <div class="card-body">
-                <p>Rating: 3.8</p>
-                <p>Instructor: Timmy Richards</p>
-                <p>Prerequisites: 250</p>
+                <p>Rating: {{course.1}}</p>
+                <p>Instructor(s):</p>
+                {% for session in course.2 %} <p>{{session.instructor}}</p> {% endfor %}
+                <div class="sessionList">
+                  <button type="button" class="btn btn-outline-primary">2:30</button>
+                  <button type="button" class="btn btn-outline-primary">3:30</button>
+                </div>
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-header" id="headingThree">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  CS377
-                </button>
-              </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordianSearch">
-              <div class="card-body">
-                <p>Rating: 5.0</p>
-                <p>Instructor: Timmy Richards</p>
-                <p>Prerequisites: 250</p>
-              </div>
-            </div>
+          {% endfor %}
           </div>
-          <div class="card">
-            <div class="card-header" id="headingFour">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                  CS383
-                </button>
-              </h5>
-            </div>
+          </div>
 
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordianSearch">
-              <div class="card-body">
-              <p>Rating: 2.3</p>
-              <p>Instructor: Akshay Krishnamurthy</p>
-              <p>Prerequisites: 250</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header " id="headingFive">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                  CS410
-                </button>
-              </h5>
-            </div>
-
-            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordianSearch">
-              <div class="card-body">
-              <p>Rating: 2.3</p>
-              <p>Instructor: Elliot Moss (Tim Wishes Elliot would let him teach it though)</p>
-              <p>Prerequisites: 377</p>
-              </div>
-            </div>
-          </div>
-        </div>
-  			</div>
   			<div class="col-9">
 				<div id='calendar'></div>
   			</div>
   		</div>
-  	</div>
     {% endblock content %}
     {% block custom_js %}
     <script src="{% static "js/moment.min.js" %}"></script>
@@ -158,7 +90,7 @@
   			columnFormat: 'ddd',
         allDaySlot: false,
   			defaultView: 'agendaWeek',
-		
+
 		events: [
         {% for session in sessions %}
             {
@@ -199,5 +131,6 @@
   		  })
 
   		});
-  	</script>
+    </script>
+  </div>
   {% endblock custom_js %}

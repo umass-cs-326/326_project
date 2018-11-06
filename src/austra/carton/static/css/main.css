@@ -21,3 +21,7 @@
   background-position:97%;
   background-repeat: no-repeat;
 }
+
+.sessionList{
+      display: inline-block;
+}
