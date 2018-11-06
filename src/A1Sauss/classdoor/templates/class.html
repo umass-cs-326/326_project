@@ -5,17 +5,6 @@
     <link rel="stylesheet" href="{% static 'css/class.css' %}">
 {% endblock %}
 
-{% block Bootstrap %}
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/js/mdb.min.js"></script> 
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-{% endblock %}
-
 {% block content %}
     <!--Jumbotron-->
     <div class="jumbotron text-center mdb-color lighten-2 white-text z-depth-2">
@@ -47,7 +36,7 @@
                             <i class="material-icons">star</i>
                         </button>
         </div>
-        <button type="button" class="btn btn-outline-white"> <a href="{{review.review.get_absolute_url }}">Review Class</a> <i class="fa fa-diamond ml-1"></i></button>
+        <button type="button" class="btn btn-outline-white"> <a href="{{review_class_url}}">Review Class</a> <i class="fa fa-diamond ml-1"></i></button>
     </div>
     <!--Jumbotron-->
 
@@ -57,6 +46,7 @@
                 <div class="col-xs-2 col-sm-2 col-md-2 user-profile-comment">
                     <img class="user-profile-img" src="https://image.flaticon.com/icons/svg/163/163801.svg">
                     <div class="user-profile-year">{{review.review}}</div>
+                    <div class="user-profile-year">{{review.review.get_absolute_url}}</div>
                 </div>
                 <div class="col-md-10">
                     <div class="review">{{review.text}}</div>
@@ -71,7 +61,7 @@
         <div class="row">
             <div class="col d-flex justify-content-center">
                 <!-- Indicates a successful or positive action -->
-                <button type="button" class="btn btn-success"><a href="{{review.review.get_absolute_url }}">Review this class!</a></button>
+                <button type="button" class="btn btn-success"><a href="{{review_class_url}}">Review this class!</a></button>
             </div>
         </div>
     </div>
@@ -79,9 +69,5 @@
     {% endblock %}
 
     {% block JS %}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/js/mdb.min.js"></script>
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     {% endblock %}
