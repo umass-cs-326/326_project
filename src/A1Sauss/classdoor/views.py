@@ -24,14 +24,10 @@ def classpage(request, id):
 
     # Get all the reviews for the course
     reviews = course.reviews.all()
-    print(reviews)
-    print(reviews.exists())
     if reviews.exists():
-        reviewClass = reviews[0]
+        reviewClass = '/review/' + str(id)
     else:
-        reviewClass = None
-    # if isinstance(reviews, EmptyQuerySet):
-    #     reviewClass = reviews[2]
+        reviewClass = '#'
 
     reviewList = []
 
@@ -53,7 +49,7 @@ def classpage(request, id):
     context = {
         "class": courseData,
         "review_list": reviewList,
-        "review_class": reviewClass
+        "review_class_url": reviewClass
     }
 
     return render(request, "class.html", context=context)
