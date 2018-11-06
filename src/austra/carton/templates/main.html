@@ -54,12 +54,17 @@
             </div>
             <div id="aa{{course.3}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordianSearch">
               <div class="card-body">
+                <a href="/carton/course/{{course.3}}" target="_blank">Details</a>
                 <p>Rating: {{course.1}}</p>
-                <p>Instructor(s):</p>
-                {% for session in course.2 %} <p>{{session.instructor}}</p> {% endfor %}
+                <p><strong>Sessions </strong></p>
+                {% for session in course.2 %}
+                <p>
+                  <button type="button" class="btn btn-outline-primary">{{session.start_time.time}}-{{session.end_time.time}}</button>
+                  {{session.instructor}} 
+                </p> 
+                {% endfor %}
                 <div class="sessionList">
-                  <button type="button" class="btn btn-outline-primary">2:30</button>
-                  <button type="button" class="btn btn-outline-primary">3:30</button>
+                  
                 </div>
               </div>
             </div>
