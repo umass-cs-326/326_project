@@ -19,7 +19,7 @@ class Course(models.Model):
    #also needs a method to calculate average rating
    starRating = models.DecimalField(max_digits=2, decimal_places=1)
    #changed reviews back to manytomany field
-   reviews = models.ManyToManyField('Review', help_text="Select a review for this class")
+   reviews = models.ManyToManyField('Review', help_text="Select a review for this class", blank=True)
    #changed grade range
    'Not sure if we need grade for the class since we have grade in review'
    averageGrade = models.DecimalField(max_digits=2, decimal_places=1)
