@@ -1,4 +1,4 @@
-Part 3: Team Write Up
+#Part 3: Team Write Up
 
 
 Overview: A brief overview of your application. Please highlight any changes from your project proposal since the Project 1 submission.
@@ -28,7 +28,7 @@ As a design overview of our data model, as it is implemented in Django: the impo
    path("matchbox/", views.matchbox, name="matchbox"),
 
 
-]
+
 Problems/Successes: A brief overview of the problems and successes your team encountered. This includes team communication problems/successes, what worked and what didn’t, implementation problems/successes, what worked and what didn’t, and what your team can do to improve collaboration and implementation for the next Project submission.
 
 Problems:
