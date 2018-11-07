@@ -1,0 +1,51 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="movie-container">
+  <h2 class="movie-title">Black Panther</h2>
+  <div class="row">
+    <div class="col-lg-8">
+      <img src='http://www.ecollegetimes.com/wp-content/uploads/2018/03/black_panther_-_website_image.jpg' alt="Black Panther">
+    </div>
+    <div class="col-lg-4">
+      <p><strong>Directed By:</strong>Ryan Coogler</br></br>
+        <strong>Release Date:</strong> February 16, 2018</br></br>
+        <strong>Duration:</strong> 2h 18</br></br>
+        <strong>Summary:</strong> After the death of his father, T'Challa returns home to the African nation of Wakanda to take his rightful place as king. When a powerful enemy suddenly reappears, T'Challa's mettle as king -- and as Black Panther -- gets tested when he's drawn into a conflict that puts the fate of Wakanda and the entire world at risk. Faced with treachery and danger, the young king must rally his allies and release the full power of Black Panther to defeat his foes and secure the safety of his people.
+      </p>
+    </div>
+
+    <table class="request-match container-fluid row">
+      <tr><th class="col-lg-6">REQUEST</th><th class="col-lg-6">MATCH</th></tr>
+      <tr>
+        <td>
+          <form>
+            <div class="form-group">
+              <label>Max Co-Watcher Limit</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="date">Date</label>
+                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/> 
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="time">Time</label>
+                <input class="form-control" type="time" name="usr_time">
+            </div>
+            <div class="form-group">
+              <label>Location</label>
+              <textarea class="form-control" id="formControlTextarea1" rows="1"></textarea>
+            </div>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+{% endblock %}
