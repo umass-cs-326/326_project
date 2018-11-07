@@ -16,7 +16,7 @@ Austra is designed to fulfill the main goal of SPIRE, for students to determine 
 * Sam Kochanski, bakerdonkey
 
 # Video Link
-
+https://youtu.be/gfGWXZ7Td3g
 # Design Overview
 ## Models
 We were able to preserve most aspects of our original set of data models, while extending their features and attributes. Austra currently has three interconnected data structures -- instructors, courses, and sessions. Instructors have a name field and a rating field assigned by users. Courses have a name, a code for quick reference (eg. COMPSCI 220), and a rating determined by users. Furthermore, course has a many-to-many relationship with itself to define a list of prerequisites. Sessions are instances of course, and as such they reference a course and an instructor. Also, they have local start and end time, days of the week they are active, and a rating based on that of the instructor and course. Comments were added to our model directly instead of an external framework because we wanted more control of them. It has a one-to-many relationship with courses not sessions because only courses can have comments. 
