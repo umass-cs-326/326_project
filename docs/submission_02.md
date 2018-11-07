@@ -12,7 +12,7 @@ Team Members<br>
 
 Video Link
 
-[Insert link here]
+https://youtu.be/GQ1_xSug4ls
 
 Design Overview<br><br>
 	Models<br>
