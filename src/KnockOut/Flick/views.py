@@ -44,7 +44,6 @@ def user(request, userid=None):
     context={
             "username" : user_object.username,
             "bio" : user_object.bio,
-            "pic" : user_object.pic,
             }
     return render(
             request,
