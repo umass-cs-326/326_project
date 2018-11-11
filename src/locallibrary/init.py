@@ -2,10 +2,10 @@ import textwrap
 from datetime import timedelta
 
 # Create a super user to use the admin site.
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User as adminUser
 from faker import Faker
 
-from catalog.models import Movie, Request, User, Match
+from catalog.models import Genre, Movie, Request, User, Match
 
 fake = Faker()
 
@@ -26,7 +26,7 @@ for genre in genres:
 
 # Create Movies
 movies = []
-for i in range(1, 10):
+for i in range(0, 10):
     m_title = fake.job()
     m_cast = fake.name()
     m_director = fake.name()
@@ -43,8 +43,9 @@ for i in range(1, 10):
 
 
 # Create Users
+
 users = []
-for i in range(1, 10):
+for i in range(0, 10):
     u_fname = fake.first_name()
     u_lname = fake.last_name()
     u_username = u_fname + u_lname
@@ -60,29 +61,31 @@ print("Genre:")
 for g in Genre.objects.all():
     print(g)
 
-print("\nMovie:")
-for a in Movie.objects.all():
-    print(a)
 
+#    print(a)
+#
 print("\nUser:")
 for b in User.objects.all():
     print(b)
-
+#
 # Retrieve a random book from model and print it.
-movies_count = Movie.objects.count()
-movie = Movie.objects.all()[fake.random_int(0, books_count - 1)]
 
-print("\nExample Movie:")
-print(f"Title: {movie.title}")
-print(f"Cast: {movie.cast}")
-print(f"Director: {movie.director}")
-print(f"Summary:\n{movie.summary}")
+# Get all movie:
+
+print('------------------')
+print('All movies:')
+for movie in Movie.objects.all():
+    print("\nExample Movie:")
+    print(f"Title: {movie.title}")
+    print(f"Cast: {movie.cast}")
+    print(f"Director: {movie.director}")
+    print(f"Summary:\n{movie.summary}")
 
 
 username = "admin"
 password = "admin"
 email = "admin@326.edu"
-adminuser = User.objects.create_user(username, email, password)
+adminuser = adminUser.objects.create_user(username, email, password)
 adminuser.save()
 adminuser.is_superuser = True
 adminuser.is_staff = True
