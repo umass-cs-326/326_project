@@ -18,14 +18,14 @@ def movie(request, title, director):
 	request_objects = Request.objects.filter(movie=movie_object)
 	match_objects = Match.objects.filter(movie=movie_object)
 	context = {
-		"title" = movie_object.title,
-		"director" = movie_object.director,
-		"cast" = movie_object.cast,
-		"date" = movie_object.date,
-		"duration" = movie_object.duration,
-		"summary" = movie_object.summary,
-		"request_list" = request_objects,
-		"match_list" = match_objects,
+		"title" : movie_object.title,
+		"director" : movie_object.director,
+		"cast" : movie_object.cast,
+		"date" : movie_object.date,
+		"duration" : movie_object.duration,
+		"summary" : movie_object.summary,
+		"request_list" : request_objects,
+		"match_list" : match_objects,
 	}
 	return render(request, "movie.html", context=context)
 
@@ -33,9 +33,9 @@ def user(request, userid):
 	user_objects = User.objects.filter(id=userid)
 	user_object = user_objects.first()
 	context = {
-		"username" = user_object.username,
-		"bio" = user_object.bio,
-		"pic" = user_object.pic,
+		"username" : user_object.username,
+		"bio" : user_object.bio,
+		"pic" : user_object.pic,
 	}
 	return render(request, "user.html", context=context)
 
