@@ -15,6 +15,8 @@ def index(request):
 def movie(request, title, director):
 	movie_objects = Movie.objects.filter(title=title, director=director)
 	movie_object = movie_objects.first()
+	request_objects = Request.objects.filter(movie=movie_object)
+	match_objects = Match.objects.filter(movie=movie_object)
 	context = {
 		"title" = movie_object.title,
 		"director" = movie_object.director,
@@ -22,6 +24,8 @@ def movie(request, title, director):
 		"date" = movie_object.date,
 		"duration" = movie_object.duration,
 		"summary" = movie_object.summary,
+		"request_list" = request_objects,
+		"match_list" = match_objects,
 	}
 	return render(request, "movie.html", context=context)
 
