@@ -6,23 +6,33 @@ from django.views import generic
 ##picture of movie; urls for movie and username and index; using function instead of class
 ##what does match need; what primary key of movie; hard for users to remember id
 def index(request):
-    return render(request, "index.html")
+	movie_list = Movie.objects.all().order_by('-date')[:25]
+	context = {
+		"movie_list": movie_list,
+	}
+    return render(request, "index.html", context=context)
 
-def movie(request):
-	return render(request, "movie.html")
+def movie(request, title, director):
+	movie_objects = Movie.objects.filter(title=title, director=director)
+	movie_object = movie_objects.first()
+	context = {
+		"title" = movie_object.title,
+		"director" = movie_object.director,
+		"cast" = movie_object.cast,
+		"date" = movie_object.date,
+		"duration" = movie_object.duration,
+		"summary" = movie_object.summary,
+	}
+	return render(request, "movie.html", context=context)
 
-def user(request):
-	return render(request, "user.html")
+def user(request, userid):
+	user_objects = User.objects.filter(id=userid)
+	user_object = user_objects.first()
+	context = {
+		"username" = user_object.username,
+		"bio" = user_object.bio,
+		"pic" = user_object.pic,
+	}
+	return render(request, "user.html", context=context)
 
-# class UserDetailView(generic.DetailView):
-# 	model = User
-# 	template_name = "user.html"
-
-# class Movie(generic.ListView):
-# 	model = Movie
-# 	template_name = "movie.html"
-
-# class MovieDetailView(generic.DetailView):
-# 	model = Movie
-# 	template_name = "movie_detail.html"	
 		
