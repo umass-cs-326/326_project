@@ -24,6 +24,7 @@ class Movie(models.Model):
     duration = models.CharField(max_length=200)
     date = models.DateField(null=True, blank=True)
     genre = models.ManyToManyField(Genre, help_text="Select a genre for this movie")
+    picture_url = models.CharField(max_length=300,default="https://test.jpg")
     def __str__(self):
         """String for representing the Model object."""
         return self.title
@@ -51,7 +52,7 @@ class User(models.Model):
     gender = models.CharField(max_length=300)
     password = models.CharField(max_length=300)
     bio = models.CharField(max_length=300)
-    # pic = models.ImageField(upload_to='picpath/', default = 'pic_folder/None/no-img.jpg', blank=True, null=True)
+    picture_url = models.CharField(max_length=300,default="https://test.jpg")
 
     def __str__(self):
         return self.username
