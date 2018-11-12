@@ -3,4 +3,6 @@
 
 To run:
 
-go to src/locallibrary, run init.sh then python manage.py runserver 8080
+download the latest copy of the repo
+
+go to src/locallibrary, run init.sh then run python manage.py runserver 8080
