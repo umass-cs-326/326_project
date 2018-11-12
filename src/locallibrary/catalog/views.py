@@ -27,6 +27,7 @@ def movie(request, movie_id):
 		"request_list" : request_objects,
 		"match_list" : match_objects,
 		"movie_id": movie_object.movie_id,
+		"picture_url": movie_object.picture_url
 	}
 	return render(request, "movie.html", context=context)
 
