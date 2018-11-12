@@ -24,6 +24,7 @@ class Movie(models.Model):
     duration = models.CharField(max_length=200)
     date = models.DateField(null=True, blank=True)
     genre = models.ManyToManyField(Genre, help_text="Select a genre for this movie")
+    picture_url = models.CharField(max_length=300)
     def __str__(self):
         """String for representing the Model object."""
         return self.title
