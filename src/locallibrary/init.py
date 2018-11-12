@@ -33,6 +33,7 @@ for i in range(0, 10):
     m_summary = fake.sentence()
     m_duration = fake.random_int(120, 200)
     m_date = fake.past_date(start_date="-30d", tzinfo=None)
+    m_picture_url = "https://res.cloudinary.com/dbgclcola/image/upload/v1541981429/deadpool.jpg"
     movie = Movie(
         title=m_title, cast=m_cast, director=m_director, summary=m_summary, duration=m_duration, date=m_date
     )
