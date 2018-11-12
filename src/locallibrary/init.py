@@ -33,6 +33,7 @@ for i in range(0, 10):
     m_summary = fake.sentence()
     m_duration = fake.random_int(120, 200)
     m_date = fake.past_date(start_date="-30d", tzinfo=None)
+    m_picture_url = "https://res.cloudinary.com/dbgclcola/image/upload/v1541981429/deadpool.jpg"
     movie = Movie(
         title=m_title, cast=m_cast, director=m_director, summary=m_summary, duration=m_duration, date=m_date
     )
@@ -51,6 +52,7 @@ for i in range(0, 10):
     u_username = u_fname + u_lname
     u_password = fake.itin()
     u_bio = fake.text(50)
+    u_picture_url = "https://res.cloudinary.com/dbgclcola/image/upload/v1541982429/profilepic.jpg"
     user = User(
         username=u_username, password=u_password, bio=u_bio
         )
