@@ -14,7 +14,7 @@ class Genre(models.Model):
 
 class Movie(models.Model):
     """Model representing a movie (but not a specific copy of a movie)."""
-
+    movie_id = models.BigIntegerField(default=111111)
     title = models.CharField(max_length=200)
     cast = models.CharField(max_length=200)
     director = models.CharField(max_length=200)
