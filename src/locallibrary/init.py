@@ -52,6 +52,7 @@ for i in range(0, 10):
     u_username = u_fname + u_lname
     u_password = fake.itin()
     u_bio = fake.text(50)
+    u_picture_url = "https://res.cloudinary.com/dbgclcola/image/upload/v1541982429/profilepic.jpg"
     user = User(
         username=u_username, password=u_password, bio=u_bio
         )

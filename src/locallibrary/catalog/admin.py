@@ -22,7 +22,7 @@ class MatchAdmin(admin.ModelAdmin):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display=("username","gender","password","bio")
+    list_display=("username","gender","password","bio","picture_url")
 
 
 
