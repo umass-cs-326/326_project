@@ -38,25 +38,35 @@
       </div>
 
       <div class="col-lg-8">
+        {% if movie_list %}
         <div class="movielist">
           <div class="list-group">
             <a href="{% url 'movies' %}" class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="row">
-                <div class="col-md-3">
-                  <img class="poster" src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/3/36/Black_Panther_Poster.jpg/revision/latest?cb=20171207153752&format=original" />
-                </div>
-                <div class="col-md-9">
-                  <h5 class="mb-1">Black Panther (2018)</h5>
-                  <small>33 people want to watch</small>
-                  <p class="mb-1">T'Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future and must confront a challenger from his country's past.</p>
-                  <small>Director: Ryan Coogler</small><br />
-                  <small>Stars: Chadwick Boseman, Michael B. Jordan, Lupita Nyong'o </small>
-                </div>
-
-              </div>
+              {% for movie in movie_list %}
+              	<div class="col-md-3">
+              		<img class="poster" src="#">
+              	</div>
+              	<div class="col-md-9">
+              		<h5 class="mb-1">{{movie.title}}</h5>
+              		<p class="mb-1">{{movie.summary}}</p>
+              		<small>Director: {{movie.director}}</small>
+              		<small>Cast: {{movie.cast}}</small>
+              	</div>
+              {% endfor %}
             </a>
+          </div>
+        </div>
+        {% else %}
+        	<p>There are no movies in the library</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
 
-            <a href="{% url 'movies' %}" class="list-group-item list-group-item-action flex-column align-items-start">
+
+<!-- <a href="{% url 'movies' %}" class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="row">
                 <div class="col-md-3">
                   <img class="poster" src="http://cdn.collider.com/wp-content/uploads/2018/05/mission-impossible-6-poster.jpg" />
@@ -144,10 +154,4 @@
                   <small>Stars: Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss</small>
                 </div>
               </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-{% endblock %}
+            </a> -->
