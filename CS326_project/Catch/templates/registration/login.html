@@ -1,5 +1,4 @@
-{% extends "base_generic.html" %}
-{% block content %}
+
 {% if forms.errors %}
 <p>Your username and password did not match. Please try again.</p>
 {% endif %}
@@ -27,11 +26,3 @@
     <input type="submit" value="login" />
     <input type="hidden" name="next" value="{{ next }}" />
 </div>
-
-<!--
-TODO:
-<p><a href="{%url "password_reset" %}">Forgot password?</a></p>
-</form>
-
--->
-{% endblock %}
