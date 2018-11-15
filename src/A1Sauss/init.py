@@ -65,6 +65,25 @@ for i in range(1, 10):
     c.save()
     courses.append(c)
 
+users = []
+print("Generated users:")
+for i in range(1,20):
+    firstName = fake.first_name()
+    lastName = fake.last_name()
+    username = firstName.lower()[0] + lastName.lower()
+    email = f"{username}@326.edu"
+    password = lastName
+    user = User.objects.create_user(username, email, password)
+    user.first_name = firstName
+    user.last_name = lastName
+    user.save()
+    users.append(user)
+    print(f"  username: {username}, password: {password}")
+
+#USE THIS TO INSERT DATA FOR EACH USER
+#cdoorusers = ClassdoorUser.objects.all()
+
+
 
 # Create Reviews
 reviews = []

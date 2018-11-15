@@ -1,6 +1,6 @@
 import re
 from django.shortcuts import render
-from classdoor.models import Course, Teacher, Review, University, User, Subject
+from classdoor.models import Course, Teacher, Review, University, ClassdoorUser, Subject
 from django.db.models.query import EmptyQuerySet
 
 # Create your views here.
@@ -87,7 +87,7 @@ def profile(request):
 	courses = Course.objects.all()[2:5]
 	reviews = Review.objects.all()[2:5]
 	
-	context = {"reviews": reviews, "courses": courses}
+	context = {"reviews": reviews, "courses": courses, "user": request.user}
 	return render(request, "profile.html", context=context)
 
 def review(request, id):
