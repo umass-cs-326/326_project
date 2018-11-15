@@ -6,7 +6,7 @@ from django.dispatch import receiver
 
 #Version 1.4
 #Matt, Zander, Zihang
-#10/26/2018, 11/5/2018
+#10/26/2018, 11/15/2018
 
 #-------------------part 1------------------------#
 
