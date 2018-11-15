@@ -122,4 +122,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # Redirect to calendar URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/calendar'
+LOGIN_REDIRECT_URL = '/carton/calendar'
