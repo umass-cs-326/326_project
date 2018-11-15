@@ -88,6 +88,7 @@ def profile(request):
 	reviews = Review.objects.all()[2:5]
 	
 	context = {"reviews": reviews, "courses": courses, "user": request.user}
+	
 	return render(request, "profile.html", context=context)
 
 def review(request, id):

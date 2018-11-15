@@ -1,4 +1,4 @@
-from classdoor.models import Subject, Course, University, Review, Teacher
+from classdoor.models import Subject, Course, University, Review, Teacher, ClassdoorUser
 from faker import Faker
 from django.contrib.auth.models import User
 from datetime import timedelta
@@ -24,7 +24,7 @@ for subj in subjects:
 # Create Universities
 unis = []
 
-for i in range(1, 3):
+for i in range(1, 5):
     uName = "University of " + fake.city()
     uAddress = fake.address()
 
@@ -70,7 +70,7 @@ print("Generated users:")
 for i in range(1,20):
     firstName = fake.first_name()
     lastName = fake.last_name()
-    username = firstName.lower()[0] + lastName.lower()
+    username = firstName.lower()[0] + lastName.lower() + str(fake.random_int(0,999))
     email = f"{username}@326.edu"
     password = lastName
     user = User.objects.create_user(username, email, password)
@@ -81,8 +81,12 @@ for i in range(1,20):
     print(f"  username: {username}, password: {password}")
 
 #USE THIS TO INSERT DATA FOR EACH USER
-#cdoorusers = ClassdoorUser.objects.all()
-
+cdoorusers = ClassdoorUser.objects.all()
+for cUser in cdoorusers:
+    cUser.school = unis[fake.random_int(0, len(unis)-1)]
+    cUser.major = subjects[fake.random_int(0, len(subjects)-1)]
+    cUser.profileImage = "profile-" + str(fake.random_int(1,16)) + ".gif"
+    cUser.save()
 
 
 # Create Reviews

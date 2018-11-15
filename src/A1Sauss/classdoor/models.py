@@ -117,6 +117,7 @@ class ClassdoorUser(models.Model):
    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
    school = models.ForeignKey('University',  on_delete=models.SET_NULL, null=True, related_name='+')
    major = models.ForeignKey('Subject', on_delete=models.SET_NULL, null=True)
+   profileImage = models.CharField(max_length=15, default='profile-1.gif')
    
    class Meta:
        ordering = ['user']
