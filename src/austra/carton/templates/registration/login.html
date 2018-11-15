@@ -11,13 +11,15 @@
           <form>
             <div class="form-group">
 
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+              {{ form.username }}
             </div>
             <div class="form-group">
 
-              <input type="password" class="form-control " id="exampleInputPassword1" placeholder="Password">
+              {{ form.password }}
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <input type="submit" value="login" />
+			<input type="hidden" name="next" value="{{ next }}" />
+			<!--<button type="submit" class="btn btn-primary">Login</button>-->
             <button class="btn btn-secondary">Register </button>
           </form>
           <a href="#"> Forgot password? </a>
