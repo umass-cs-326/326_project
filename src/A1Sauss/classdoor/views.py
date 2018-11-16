@@ -2,6 +2,7 @@ import re
 from django.shortcuts import render
 from classdoor.models import Course, Teacher, Review, University, ClassdoorUser, Subject
 from django.db.models.query import EmptyQuerySet
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -83,9 +84,11 @@ def feed(request):
 def login(request):
     return render(request, "login.html")
 
+@login_required
 def profile(request):
 	courses = Course.objects.all()[2:5]
-	reviews = Review.objects.all()[2:5]
+	cdoorUser = ClassdoorUser.objects.get(user=request.user)
+	reviews = Review.objects.filter(author=cdoorUser)
 	
 	context = {"reviews": reviews, "courses": courses, "user": request.user}
 	
