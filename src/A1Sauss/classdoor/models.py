@@ -118,6 +118,7 @@ class ClassdoorUser(models.Model):
    school = models.ForeignKey('University',  on_delete=models.SET_NULL, null=True, related_name='+')
    major = models.ForeignKey('Subject', on_delete=models.SET_NULL, null=True)
    profileImage = models.CharField(max_length=15, default='profile-1.gif')
+   reviewsWritten = models.ManyToManyField('Review')
    
    class Meta:
        ordering = ['user']

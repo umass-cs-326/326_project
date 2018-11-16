@@ -95,6 +95,7 @@ for i in range(0, len(courses) - 1):
     currClass = courses[i]
     rGrade = Decimal(1)
     rStarRating = Decimal(fake.random_int(0, 500)) / 100
+    rAuthor = cdoorusers[fake.random_int(0, len(cdoorusers)-1)]
 
     for j in range(1, fake.random_int(3, 20)):
         rTitle = fake.text(25)
@@ -104,13 +105,20 @@ for i in range(0, len(courses) - 1):
                         text=rText,
                         gradeReceived=rGrade,
                         starRating=rStarRating,
-                        courseOfReview=currClass)
+                        courseOfReview=currClass,
+                        author=rAuthor)
 
         review.save()
         reviews.append(review)
 
         currClass.reviews.add(review)
         currClass.save()
+
+for eachUser in cdoorusers:
+    toAdd =[]
+    for eachReview in reviews:
+        if(eachReview.author == eachUser):
+            eachUser.reviewsWritten.add(eachReview)
 
 print('Subjects:')
 for s in Subject.objects.all():
