@@ -83,3 +83,7 @@ def about(request):
 #             'book_instance': pet_user,
 #         }
 #     return render(request, 'change_profile.html', context)
+
+
+# When I opened up http://localhost:8000/Catch/profile/edit, filled out the new email, and hit sumbit, nothing happened. The new email was not saved. 
+# I fiddled around and found out the it never got inside the first if because request.method!=POST. 
