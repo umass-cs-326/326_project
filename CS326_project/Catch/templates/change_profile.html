@@ -1,0 +1,25 @@
+<!-- {% extends 'navbar.html' %}
+
+{% block content %}
+    {% if forms.errors %}
+    <p>Your changes were not saved.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+        {% else %}
+        <p>PLease login to see this page.</p>
+        {% endif %}
+    {% endif %}
+
+    <form method="post" action="{% url 'eventsPage' %}">
+    {% csrf_token %}
+    {{ form }}
+    <div>
+        <input type="submit" value="Change my email" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </div>
+{% endblock %} -->
+
+    

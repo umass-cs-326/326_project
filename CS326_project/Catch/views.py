@@ -2,6 +2,12 @@ from django.shortcuts import render
 from Catch.models import Pet, PetUser, Event
 from django.views.generic.edit import CreateView
 from django.http import HttpResponse
+
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from .forms import ChangeProfileForm
+from django.contrib.auth.forms import UserChangeForm
 # Create your views here.
 
 class EventCreate(CreateView):
@@ -50,3 +56,30 @@ def about(request):
 
 # def navbar(request):
 #     return render(request, 'events.html')
+
+# def edit_profile(request):
+#     pet_user = request.user
+
+#     # If this is a POST request then process the Form data
+#     if request.method == 'POST':
+#         # Create a form instance and populate it with data from the request (binding):
+#         form = ChangeProfileForm(request.POST, instance=pet_user)
+
+#         # Check if the form is valid:
+#         if form.is_valid():
+#                 # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
+#             pet_user.email = form.cleaned_data['email']
+#             pet_user.save()
+#             form.save()
+#                 # redirect to a new URL:
+#             return HttpResponseRedirect(reverse('aboutPage') )
+
+#     # If this is a GET (or any other method) create the default form.
+#     else:
+#         form = ChangeProfileForm()
+
+#         context = {
+#             'form': form,
+#             'book_instance': pet_user,
+#         }
+#     return render(request, 'change_profile.html', context)
