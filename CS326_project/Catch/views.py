@@ -28,24 +28,19 @@ class UserSignUpView(CreateView):
     template_name = 'sign_up.html'
     success_url = reverse_lazy('homePage')
 
-class BlogCreationView(generic.TemplateView):
-    template_name =  'create_blog.html'
+class UserEditProfileView(generic.UpdateView):
+    model = PetUser
+    fields = ('username', 'first_name', 'last_name','email','location','description')
+    template_name = 'sign_up.html'
+    success_url = reverse_lazy('homePage')
 
-    def get(self, request):
-        form = BlogCreationForm()
-        return render(request, self.template_name, {'form': form})
+    def get_object(self):
+	    return get_object_or_404(PetUser, pk=self.request.user.id)
 
-    def post(self, request):
-        form = BlogCreationForm(request.POST)
-        if form.is_valid():
-            new_blog = form.save(commit=False)
-            new_blog.author = request.user
-            new_blog.save()
-            data = form.cleaned_data
-            form = BlogCreationForm()
-            return redirect('success')
-        args = { 'form': form, 'text': data }
-        return render(request, self.template_name, args)
+class UserViewProfileView(generic.ListView):
+    model = PetUser
+    fields = ('username', 'first_name', 'last_name','password','email','location','description')
+    template_name = 'view_profile.html'
 
 def home(request):
     events = Event.objects.all()

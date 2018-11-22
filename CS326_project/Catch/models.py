@@ -1,10 +1,11 @@
 from django.db import models
 from django.urls import reverse
 from datetime import timedelta
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
-class PetUser(models.Model):
-    username = models.CharField(max_length = 30)
+class PetUser(AbstractUser):
+    username = models.CharField(max_length = 30, unique=True)
     first_name = models.CharField(max_length = 30)
     last_name = models.CharField(max_length = 30)
     password = models.CharField(max_length = 30)

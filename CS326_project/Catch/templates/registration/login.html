@@ -13,7 +13,7 @@
         {% endif %}
     {% endif %}
 
-    <form method="post" action="{% url 'login' %}">
+    <!-- <form method="post" action="{% url 'homePage' %}">
     {% csrf_token %}
     <div>
         <td>{{ form.username.label_tag }}</td>
@@ -26,6 +26,14 @@
 
     <div>
         <input type="submit" value="login" />
-        <input type="hidden" name="next" value="{{ next }}" />
-    </div>
+        <!-- <input type="hidden" name="next" value="{{ next }}" /> 
+    </div> -->
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+
 {% endblock %}
+

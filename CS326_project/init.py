@@ -2,7 +2,7 @@ import textwrap
 import random
 from datetime import datetime, timedelta, timezone
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model 
 from faker import Faker
 from Catch.models import PetUser, Pet, Event
 fake = Faker()
@@ -97,7 +97,7 @@ for petUser in PetUsers:
 
 
 print("\nUser:")
-for u in User.objects.all():
+for u in get_user_model().objects.all():
     print(u)
 print()
 
@@ -114,7 +114,7 @@ print()
 username = "compsci326"
 password = "compsci326"
 email = "admin@326.edu"
-adminuser = User.objects.create_user(username, email, password)
+adminuser = get_user_model().objects.create_user(username, email, password)
 adminuser.save()
 adminuser.is_superuser = True
 adminuser.is_staff = True

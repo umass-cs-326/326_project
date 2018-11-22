@@ -9,10 +9,15 @@
   <li><a href="contact.asp">Interested</a></li>
   <li><a href="about.asp">Following</a></li>
 </ul>
-
-<button><a href="{% url 'user-sign-up' %}">Sign Up Here!</a></button>
-
 <a href="{% url 'Event-add' %}">Create Event</a>
+
+<!-- buttons for login/log out/profile --> 
+<br> <br> <br>
+<button><a href="{% url 'user-sign-up' %}">Sign Up Here!</a></button>
+<button><a href="{% url 'login' %}">Login Here!</a></button>
+<button><a href="{% url 'user-edit-profile' %}">Edit Your Profile</a></button>
+<button><a href="{% url 'user-view-profile' %}">View My Profile</a></button>
+
 {% if events %}
   {% for event in events %}
 

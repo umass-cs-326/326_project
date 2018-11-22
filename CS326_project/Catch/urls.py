@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls import include
+from django.contrib.auth.decorators import login_required
 
 
 urlpatterns = [
@@ -19,6 +20,8 @@ urlpatterns = [
     # path('navbar', views.navbar, name = "navbar"),
 
     path('accounts/signup', views.UserSignUpView.as_view(), name='user-sign-up'),
+    path('account/edit', views.UserEditProfileView.as_view(), name='user-edit-profile'),
+    path('account/view', views.UserViewProfileView.as_view(), name='user-view-profile'),
     #path('profile/edit', views.edit_profile, name='edit_profile')
 ]
 
