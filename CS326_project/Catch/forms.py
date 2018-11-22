@@ -1,4 +1,5 @@
-# from django import forms
+ from django import forms
+ from .models import PetUser
 # from django.core.exceptions import ValidationError
 # from django.utils.translation import ugettext_lazy as _
 
@@ -18,3 +19,15 @@
 #         return data
 
 
+class SignUpForm(forms.ModelForm):
+    username = forms.CharField(max_length = 30)
+    first_name = forms.CharField(max_length = 30)
+    last_name = forms.CharField(max_length = 30)
+    password = forms.CharField(max_length = 30)
+    email = forms.EmailField(max_length = 30)
+    location = forms.CharField(max_length = 100)
+    description = forms.CharField(widget=forms.Textarea)
+
+    class Meta:
+        model = PetUser
+        fields = ('username', 'first_name', 'last_name','password','email','location','description')

@@ -18,6 +18,7 @@ urlpatterns = [
     # path('add/$', views.EventCreate.as_view(success_url='homePage.html'), name='Event-add'),
     # path('navbar', views.navbar, name = "navbar"),
 
+    path('accounts/signup', views.UserSignUpView.as_view(), name='user-sign-up'),
     #path('profile/edit', views.edit_profile, name='edit_profile')
 ]
 

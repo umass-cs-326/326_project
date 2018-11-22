@@ -2,12 +2,14 @@ from django.shortcuts import render
 from Catch.models import Pet, PetUser, Event
 from django.views.generic.edit import CreateView
 from django.http import HttpResponse
+from django.views import generic
 
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .forms import ChangeProfileForm
-from django.contrib.auth.forms import UserChangeForm
+from django.urls import reverse_lazy
+#from .forms import ChangeProfileForm
+#from django.contrib.auth.forms import UserChangeForm
 # Create your views here.
 
 class EventCreate(CreateView):
@@ -20,6 +22,30 @@ class PetCreate(CreateView):
     model = Pet
     fields = ['name', 'pet_type', 'breed', 'description', 'image', 'owner']
 
+class UserSignUpView(CreateView):
+    model = PetUser
+    fields = ('username', 'first_name', 'last_name','password','email','location','description')
+    template_name = 'sign_up.html'
+    success_url = reverse_lazy('homePage')
+
+class BlogCreationView(generic.TemplateView):
+    template_name =  'create_blog.html'
+
+    def get(self, request):
+        form = BlogCreationForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = BlogCreationForm(request.POST)
+        if form.is_valid():
+            new_blog = form.save(commit=False)
+            new_blog.author = request.user
+            new_blog.save()
+            data = form.cleaned_data
+            form = BlogCreationForm()
+            return redirect('success')
+        args = { 'form': form, 'text': data }
+        return render(request, self.template_name, args)
 
 def home(request):
     events = Event.objects.all()

@@ -10,6 +10,8 @@
   <li><a href="about.asp">Following</a></li>
 </ul>
 
+<button><a href="{% url 'user-sign-up' %}">Sign Up Here!</a></button>
+
 <a href="{% url 'Event-add' %}">Create Event</a>
 {% if events %}
   {% for event in events %}
