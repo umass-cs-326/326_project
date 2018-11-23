@@ -44,24 +44,29 @@ class_names = [
 #     for name in
 #     class_names
 # ]
-classes = [
-    # Keep in mind this is mock data for the ratings
-    # dummy courses:
-    Course(name="Introduction to Problem Solving", code="COMPSCI121", rating=4),
-    Course(name="Programming with Data Structures", code="COMPSCI187", rating=3),
-    Course(name="Programming Methodology", code="COMPSCI220", rating=2),
-    Course(name="Reasoning About Uncertainty", code="COMPSCI240", rating=5)
+# classes = [
+#     # Keep in mind this is mock data for the ratings
+#     # dummy courses:
+#     Course(name="Introduction to Problem Solving", code="COMPSCI121", rating=4),
+#     Course(name="Programming with Data Structures", code="COMPSCI187", rating=3),
+#     Course(name="Programming Methodology", code="COMPSCI220", rating=2),
+#     Course(name="Reasoning About Uncertainty", code="COMPSCI240", rating=5)
+#
+# #    Course(name=name, code=next(word for word in name.split(" ")), rating=random.uniform(1, 5)) for name in class_names
+#     ]
+classes=list()
+for course in class_names:
+    code, _, name = course.partition(' ')
+    rating = random.randint(1, 5)
+    classes.append(Course(name=name, code=code, rating=rating))
+    classes[-1].save()
 
-#    Course(name=name, code=next(word for word in name.split(" ")), rating=random.uniform(1, 5)) for name in class_names
-    ]
-for course in classes :
+max_prereqs = 2
+for (index, course) in enumerate(classes):
+    # Adds between 0 and max_prereqs, up to index, different random classes as prereqs
+    for prereq_index in random.sample(range(index), random.randint(0, min(index, max_prereqs))):
+        course.prereqs.add(classes[prereq_index])
     course.save()
-
-for course in classes :
-    candidate_prereq = classes[fake.random_int(0, len(classes)) - 1]
-    if candidate_prereq != course :
-        course.prereqs.add(candidate_prereq)
-        course.save()
 
 # Create Instructors
 mock_instructors = []

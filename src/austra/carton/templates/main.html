@@ -38,10 +38,20 @@
           Class Detail Dialog
         </button>
 
-
-        <div class="md-form pb-3">
-          <input class="form-control search-box" type="text" placeholder="3.. | 4.."  disabled aria-label="Search">
-        </div>
+        <!--Bootstrap nav bar-->
+        <!--my-lg-# describes amount of margin-->
+        <form class="form-inline my-2 my-lg-1">
+            <!--form will be referenced using the name attribute-->
+            <!--Keeps search text between calls using psuedo-python-->
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                 name="search" value="{{request.GET.search}}">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+                <!--If the search is empty, show all sessions-->
+                <!--The search should do a check for:-->
+                    <!--class name-->
+                    <!--professor name-->
+                    <!--number-->
         <div class="accordion" id="accordianSearch">
           {% for course in courses %}
           <div class="card">
