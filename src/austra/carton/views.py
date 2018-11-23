@@ -71,6 +71,7 @@ def calendar(request):
         matching_courses = [
             merge_course_queries(
                 all_courses.filter(name__icontains=term), all_courses.filter(session__instructor__name__icontains=term),
+                all_courses.filter(code__icontains=term)
             )[0]
             for term in search_terms
         ]
