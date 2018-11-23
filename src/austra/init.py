@@ -140,6 +140,8 @@ adminuser.save()
 adminuser.is_superuser = True
 adminuser.is_staff = True
 adminuser.save()
+user2 = User.objects.create_user('user', 'user@user.com', 'user')
+user2.save()
 message = f"""
 ====================================================================
 The database has been setup with the following credentials:
