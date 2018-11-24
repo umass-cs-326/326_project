@@ -48,7 +48,7 @@ def calendar(request):
     # [course name, start time, end time, days of the week] for each session
 
     all_courses = Course.objects.all()
-    all_sessions = Session.objects.all()
+    all_sessions = all_sessions = request.user.profile.sessions_current.all()
 
     sessions = [
         [session.course.name, session.start_time.strftime('%H:%M'), session.end_time.strftime('%H:%M'),

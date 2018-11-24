@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 import datetime
+from django.contrib.auth.models import User
 
 class Course(models.Model) :
     """Model representing a UMass class"""
@@ -62,3 +63,16 @@ class Comment(models.Model) :
     name = models.CharField(max_length=50)
     comment_text = models.CharField(max_length = 500)
     date = models.DateTimeField(auto_now_add=True) #we set the date when we add it to the DB
+
+#class DootRecord(models.Model):
+#    is_updoot = models.BooleanField
+#    course = models.ForeignKey("Course", on_delete=models.CASCADE, null=True)
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    #This is basically a list of classes that the user is looking to take
+    sessions_current = models.ManyToManyField(Session)
+    #This is basically a list of classes that the user has taken in the past
+    courses_past = models.ManyToManyField(Course)
+    #This will be a list of courses that this user has updooted or downdooted
+    #courses_dooted = models.ManyToManyField(Course)

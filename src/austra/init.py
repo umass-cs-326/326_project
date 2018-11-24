@@ -7,7 +7,7 @@ from faker import Faker
 import random
 import datetime
 
-from carton.models import Course, Instructor, Session, Comment
+from carton.models import Course, Instructor, Session, Comment, Profile
 
 
 fake = Faker()
@@ -141,7 +141,10 @@ adminuser.is_superuser = True
 adminuser.is_staff = True
 adminuser.save()
 user2 = User.objects.create_user('user', 'user@user.com', 'user')
+user2.profile.sessions_current.add(random_session) #adds a random session that the user wants to take to user2
 user2.save()
+print("user2 and profile2 created")
+#users don't have dootrecords yet
 message = f"""
 ====================================================================
 The database has been setup with the following credentials:
