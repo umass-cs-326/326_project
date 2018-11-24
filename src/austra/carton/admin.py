@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from carton.models import Course, Instructor, Session, Comment
+from carton.models import Course, Instructor, Session, Comment, Profile
 
 
 class CourseAdmin(admin.ModelAdmin) :
@@ -22,3 +22,12 @@ admin.site.register(Session, SessionAdmin)
 class CommentAdmin(admin.ModelAdmin) :
 	list_display = ("course", "name", "comment_text", "date")
 admin.site.register(Comment, CommentAdmin)
+
+#class SessionsCurrentInline(admin.TabularInline):
+#    model = Profile.sessions_current.through
+
+class ProfileAdmin(admin.ModelAdmin) :
+	list_display = ("user",)
+	#inlines = [ SessionsCurrentInline ]
+	#exclude = ('sessions_current',)
+admin.site.register(Profile, ProfileAdmin)
