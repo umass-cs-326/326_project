@@ -8,6 +8,8 @@ from .models import Session
 from django.views.generic import TemplateView
 from collections import Counter
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Keeps track of the mapping from letter to number
 letters = {
@@ -97,6 +99,10 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
+class CourseDetailView(generic.DetailView):
+    model = Course
+    template_name = "class_detail.html"
+
 class InstructorListView(generic.ListView):
     model = Instructor
     template_name = "instructor_list.html"
@@ -105,6 +111,11 @@ class InstructorDetailView(generic.DetailView):
     model = Instructor
     template_name = "instructor_detail.html"
 
-class CourseDetailView(generic.DetailView):
-    model = Course
-    template_name = "class_detail.html"
+class InstructorCreate(CreateView):
+    model = Instructor
+    fields = '__all__'
+    template_name = "instructor_new.html"
+
+#class InstructorDelete(UpdateView):
+#    model = Instructor
+#    success_url = reverse_lazy('instructors')

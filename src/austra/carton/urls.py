@@ -14,6 +14,10 @@ urlpatterns = [
     path('instructor/<int:pk>', views.InstructorDetailView.as_view(), name="instructor-detail"),
     path('course/<int:pk>', views.CourseDetailView.as_view(), name="course-detail"),
 ]
+#Form pages
+urlpatterns += [
+    path('instructor/create/', views.InstructorCreate.as_view(), name='instructor-new')
+]
 #Add Django site authentication urls (for login, logout, password management)
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
