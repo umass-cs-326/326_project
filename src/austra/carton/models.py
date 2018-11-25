@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 import datetime
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 
 class Course(models.Model) :
     """Model representing a UMass class"""
@@ -58,6 +58,9 @@ class Instructor(models.Model) :
     def get_absolute_url(self) :
         return reverse("instructor-detail", args=[str(self.id)])
 
+    class Meta:
+        permissions = (("can_create_instructor", "Can Create Instructor"),)
+
 class Comment(models.Model) :
     course = models.ForeignKey("Course", on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=50)
@@ -76,3 +79,4 @@ class Profile(models.Model):
     courses_past = models.ManyToManyField(Course)
     #This will be a list of courses that this user has updooted or downdooted
     #courses_dooted = models.ManyToManyField(Course)
+

@@ -7,6 +7,10 @@ from django.http import HttpResponse
 from .models import Session
 from django.views.generic import TemplateView
 from collections import Counter
+from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 # Keeps track of the mapping from letter to number
 letters = {
@@ -41,7 +45,8 @@ def merge_course_queries(*queries):
             seen[course.name] += 1
     return final_query, seen
 
-
+#FIXME: implement redirect_field_name in decorator once authorization is restructured to be project-wide
+@login_required(login_url='/carton/accounts/login')
 def calendar(request):
     # sessions describes all of the class sessions that will be displayed by the calendar
     # Expected to store the items as a list with the format:
@@ -95,6 +100,10 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
+class CourseDetailView(generic.DetailView):
+    model = Course
+    template_name = "class_detail.html"
+
 class InstructorListView(generic.ListView):
     model = Instructor
     template_name = "instructor_list.html"
@@ -103,6 +112,12 @@ class InstructorDetailView(generic.DetailView):
     model = Instructor
     template_name = "instructor_detail.html"
 
-class CourseDetailView(generic.DetailView):
-    model = Course
-    template_name = "class_detail.html"
+class InstructorCreate(PermissionRequiredMixin, CreateView):
+    permission_required = 'carton.can_create_instructor'
+    model = Instructor
+    fields = '__all__'
+    template_name = "instructor_new.html"
+
+#class InstructorDelete(UpdateView):
+#    model = Instructor
+#    success_url = reverse_lazy('instructors')
