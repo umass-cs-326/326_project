@@ -131,11 +131,11 @@ print(f"Session class rating: {random_session.course.rating}")
 
 print(f"Session instructor rating: {random_session.instructor.rating}")
 
+#superuser = Group.objects.get_or_create(name ='superuser')
+#ct = ContentType.objects.get_for_model(User)
+#perm = Permission.objects.create(codename='can_create_instructor', name="Can Create Instructor", content_type=ct)
+#superuser.permissions.add(perm)
 
-students = Group.objects.get_or_create(name ='students')
-ct = ContentType.objects.get_for_model(User)
-perm = Permission.objects.create(codename='can_create_instructor', name="Can Create Instructor" content_type=ct)
-students.permissions.add(perm)
 
 adminuser = User.objects.create_user("admin", "admin@326.edu", "admin")
 adminuser.save()
@@ -147,6 +147,10 @@ user2 = User.objects.create_user('user', 'user@user.com', 'user')
 user2.profile.sessions_current.add(random_session) #adds a random session that the user wants to take to user2
 user2.save()
 
+#user3 = User.objects.create_user('su', 'updog@sup.com', 'su')
+#user3.profile.sessions_current.add(random_session)
+
+
 print("user2 and profile2 created")
 #users don't have dootrecords yet
 
@@ -156,11 +160,11 @@ message = f"""
 ====================================================================
 The database has been setup with the following credentials:
 
-  username: {username}
-  password: {password}
-  email: {email}
+  username: admin
+  password: admin
+  email: admin@326.edu
 
-You will need to use the username {username} and password {password}
+You will need to use the username "admin" and password "admin"
 to login to the administrative webapp in Django.
 
 Please visit http://localhost:8080/admin to login to the admin app.
