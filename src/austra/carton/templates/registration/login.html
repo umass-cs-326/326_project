@@ -2,45 +2,44 @@
 {% load static %}
 {% block title %} login {% endblock title %}
 {% block content %}
-  	<div class="container-fluid pt-5 text-center" style="max-width:400px">
-  		<div class="row  ">
+<div class="container-fluid pt-5 text-center" style="max-width:400px">
+  <div class="row  ">
 
-        <div class="col ">
-          <h1 class="display-1">Austra</h1>
-          <img class="img-fluid " src="{% static "img/chicken.png"%}"></img>
-          {% if form.errors %}
-            <p>Your username and password didn't match. Please try again.</p>
-          {% endif %}
+    <div class="col ">
+      <h1 class="display-1">Austra</h1>
+      <img class="img-fluid " src="{% static "img/chicken.png"%}"></img>
+      {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
 
-          {% if next %}
-            {% if user.is_authenticated %}
-              <p>Your account doesn't have access to this page. To proceed,
-              please login with an account that has access.</p>
-            {% else %}
-              <p>Please login to see this page.</p>
-            {% endif %}
-          {% endif %}
+      {% if next %}
+        {% if user.is_authenticated %}
+          <p>Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.</p>
+        {% else %}
+          <p>Please login to see this page.</p>
+        {% endif %}
+      {% endif %}
 
-          <form method="post" action="{% url 'login' %}">
-          {% csrf_token %}
-          <table>
-
-          <form>
-            <div class="form-group">
-
-              {{ form.username }}
-            </div>
-            <div class="form-group">
-
-              {{ form.password }}
-            </div>
-            <input type="submit" value="login" />
-			<input type="hidden" name="next" value="{{ next }}" />
-			<!--<button type="submit" class="btn btn-primary">Login</button>-->
-            <button class="btn btn-secondary">Register </button>
-          </form>
-          <a href="#"> Forgot password? </a>
+      <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <table>
+      <form>
+        <div class="form-group">
+          {{ form.username }}
         </div>
-      </div>
-  	</div>
+        <div class="form-group">
+          {{ form.password }}
+        </div>
+        <input type="submit" value="login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+
+        <!--<button type="submit" class="btn btn-primary">Login</button>-->
+
+        <button class="btn btn-secondary">Register </button>
+      </form>
+      <a href="#"> Forgot password? </a>
+    </div>
+  </div>
+</div>
 {% endblock content %}
