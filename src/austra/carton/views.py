@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from .models import Session
 from django.views.generic import TemplateView
 from collections import Counter
+from django.contrib.auth.decorators import login_required
 
 # Keeps track of the mapping from letter to number
 letters = {
@@ -41,7 +42,8 @@ def merge_course_queries(*queries):
             seen[course.name] += 1
     return final_query, seen
 
-
+#FIXME: implement redirect_field_name in decorator once authorization is restructured to be project-wide
+@login_required(login_url='/carton/accounts/login')
 def calendar(request):
     # sessions describes all of the class sessions that will be displayed by the calendar
     # Expected to store the items as a list with the format:
