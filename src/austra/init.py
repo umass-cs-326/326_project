@@ -2,7 +2,7 @@
 # from datetime import timedelta
 
 # Create a super user to use the admin site.
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group, Permission
 from faker import Faker
 import random
 import datetime
@@ -132,19 +132,26 @@ print(f"Session class rating: {random_session.course.rating}")
 print(f"Session instructor rating: {random_session.instructor.rating}")
 
 
-username = "admin"
-password = "admin"
-email = "admin@326.edu"
-adminuser = User.objects.create_user(username, email, password)
+students = Group.objects.get_or_create(name ='students')
+ct = ContentType.objects.get_for_model(User)
+perm = Permission.objects.create(codename='can_create_instructor', name="Can Create Instructor" content_type=ct)
+students.permissions.add(perm)
+
+adminuser = User.objects.create_user("admin", "admin@326.edu", "admin")
 adminuser.save()
 adminuser.is_superuser = True
 adminuser.is_staff = True
 adminuser.save()
+
 user2 = User.objects.create_user('user', 'user@user.com', 'user')
 user2.profile.sessions_current.add(random_session) #adds a random session that the user wants to take to user2
 user2.save()
+
 print("user2 and profile2 created")
 #users don't have dootrecords yet
+
+
+
 message = f"""
 ====================================================================
 The database has been setup with the following credentials:

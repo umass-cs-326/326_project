@@ -33,7 +33,9 @@
       <div class="row">
   			<div class="col-3">
           <!-- Button trigger modal -->
-        <a class="btn btn-secondary" href="../instructor/create" role="button">Instructor</a>
+          {% if perm.carton.can_create_instructor %}
+          <a class="btn btn-secondary" href="../instructor/create" role="button">New Instructor</a>
+          {% endif %}
 
         <!--Bootstrap nav bar-->
         <!--my-lg-# describes amount of margin-->
