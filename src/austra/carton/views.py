@@ -55,6 +55,14 @@ def merge_course_queries(*queries):
 #FIXME: implement redirect_field_name in decorator once authorization is restructured to be project-wide
 @login_required(login_url='/carton/accounts/login')
 def calendar(request):
+    #FIXME: no verification at all lol
+    if(request.method == "POST"): #user tried to add a session to fullCalendar
+        if request.POST.get('added_session'):
+            id = request.POST.get("added_session", "")
+            request.user.profile.sessions_current.add(Session.objects.get(pk=id))
+
+
+
     # sessions describes all of the class sessions that will be displayed by the calendar
     # Expected to store the items as a list with the format:
     # [course name, start time, end time, days of the week] for each session
@@ -144,7 +152,7 @@ class CourseDetailView(View):
         if('comment_form_post' in request.POST):
             view = CourseComment.as_view()
             return view(request, *args, **kwargs)
-        
+
 
 class CourseCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'add_Course'
