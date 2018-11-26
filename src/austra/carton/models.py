@@ -72,7 +72,7 @@ class Profile(models.Model):
     #This is basically a list of classes that the user is looking to take
     sessions_current = models.ManyToManyField(Session)
     #This is basically a list of classes that the user has taken in the past
-    courses_past = models.ManyToManyField(Course)
+    courses_past = models.ManyToManyField(Course, related_name="past")
     #This will be a list of courses that this user has updooted or downdooted
-    #courses_dooted = models.ManyToManyField(Course)
+    courses_dooted = models.ManyToManyField(Course, related_name="dooted")
 
