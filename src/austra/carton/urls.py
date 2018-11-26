@@ -5,8 +5,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('', views.index, name = "index"),
-#    path('registration/login/', TemplateView.as_view(template_name="registration/login.html"), name = "login"),
-#    path('registration/logout/', TemplateView.as_view(template_name="registration/logout.html"), name = "logout"),
     path('tree/', TemplateView.as_view(template_name="tree.html"), name = "tree"),
     path('accounts/profile/', TemplateView.as_view(template_name="accounts/profile.html"), name = "profile"),
     path('calendar/', views.calendar, name = "calendar"),

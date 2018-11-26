@@ -113,7 +113,7 @@ class InstructorDetailView(generic.DetailView):
     template_name = "instructor_detail.html"
 
 class InstructorCreate(PermissionRequiredMixin, CreateView):
-    permission_required = 'carton.can_create_instructor'
+    permission_required = 'add_Instructor'
     model = Instructor
     fields = '__all__'
     template_name = "instructor_new.html"

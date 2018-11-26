@@ -58,8 +58,6 @@ class Instructor(models.Model) :
     def get_absolute_url(self) :
         return reverse("instructor-detail", args=[str(self.id)])
 
-    class Meta:
-        permissions = (("can_create_instructor", "Can Create Instructor"),)
 
 class Comment(models.Model) :
     course = models.ForeignKey("Course", on_delete=models.CASCADE, null=True)
