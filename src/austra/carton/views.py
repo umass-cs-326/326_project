@@ -57,11 +57,13 @@ def merge_course_queries(*queries):
 def calendar(request):
     #FIXME: no verification at all lol
     if(request.method == "POST"): #user tried to add a session to fullCalendar
-        if request.POST.get('added_session'):
-            id = request.POST.get("added_session", "")
-            request.user.profile.sessions_current.add(Session.objects.get(pk=id))
-
-
+        added_pk = request.POST.get('added_session')
+        removed_pk = request.POST.get('removed_session')
+        if added_pk:
+            request.user.profile.sessions_current.add(Session.objects.get(pk=added_pk))
+        elif removed_pk:
+            request.user.profile.sessions_current.remove(Session.objects.get(pk=removed_pk))
+        request.user.profile.save()
 
     # sessions describes all of the class sessions that will be displayed by the calendar
     # Expected to store the items as a list with the format:
