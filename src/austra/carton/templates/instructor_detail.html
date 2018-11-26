@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block title %} {{ instructor.name}} {% endblock %}
 {% block content %}
+    {% if perms.carton.add_Instructor %}
+    <a class="btn btn-secondary" href="../instructor/create" role="button">New Instructor</a>
+    {% endif %}
     <div style="margin-left:30px">
         <h1>{{instructor.name}}</h1>
         <p>Rating: {{instructor.rating}}</p>

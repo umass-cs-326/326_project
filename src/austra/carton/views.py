@@ -104,6 +104,12 @@ class CourseDetailView(generic.DetailView):
     model = Course
     template_name = "class_detail.html"
 
+class CourseCreate(PermissionRequiredMixin, CreateView):
+    permission_required = 'add_Course'
+    model = Course
+    fields = '__all__'
+    template_name = 'course_new.html'
+
 class InstructorListView(generic.ListView):
     model = Instructor
     template_name = "instructor_list.html"
@@ -116,7 +122,9 @@ class InstructorCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'add_Instructor'
     model = Instructor
     fields = '__all__'
-    template_name = "instructor_new.html"
+    template_name = 'instructor_new.html'
+
+
 
 #class InstructorDelete(UpdateView):
 #    model = Instructor

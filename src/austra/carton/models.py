@@ -33,8 +33,6 @@ class Session(models.Model) :
     # represent as a string to day thing mtwrf
     dow = models.CharField('', max_length=5, help_text="Enter days of the week", null=True)
 
-
-
     @property
     def get_rating(self) :
         #TODO check if null! This will fail if course or instructor is null

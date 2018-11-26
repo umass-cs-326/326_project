@@ -36,6 +36,9 @@
           {% if perms.carton.add_Instructor %}
           <a class="btn btn-secondary" href="../instructor/create" role="button">New Instructor</a>
           {% endif %}
+          {% if perms.carton.add_Course %}
+          <a class="btn btn-secondary" href="../course/create" role="button">New Course</a>
+          {% endif %}
 
         <!--Bootstrap nav bar-->
         <!--my-lg-# describes amount of margin-->
