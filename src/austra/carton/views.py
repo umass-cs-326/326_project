@@ -141,9 +141,10 @@ class CourseDetailView(View):
         return view(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        if(comment_form_post in request.POST):
+        if('comment_form_post' in request.POST):
             view = CourseComment.as_view()
             return view(request, *args, **kwargs)
+        
 
 class CourseCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'add_Course'
