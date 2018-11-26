@@ -73,7 +73,15 @@
                 <p>
                   <form action="" method="post">
                       {% csrf_token %}
-                    <button type="submit button" name = "added_session" value = "{{session.id}}" class="btn btn-outline-primary" {% if session in user.profile.sessions_current.all %} disabled {% endif %} >{{session.start_time.time}}-{{session.end_time.time}}</button>
+                        <button type="submit button" value = "{{session.id}}"
+                          {% if session in user.profile.sessions_current.all %}
+                            name = "removed_session" class="btn btn-danger"
+                          {% else %}
+                            name = "added_session" class="btn btn-outline-primary"
+                          {% endif %}
+                        >{{session.start_time.time}}-{{session.end_time.time}}</button>
+
+                    <!--<button type="submit button" name = "added_session" value = "{{session.id}}" class="btn btn-outline-primary" {% if session in user.profile.sessions_current.all %} disabled {% endif %} >{{session.start_time.time}}-{{session.end_time.time}}</button>-->
                   </form>
                   {{session.instructor}}
                 </p>
