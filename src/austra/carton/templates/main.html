@@ -33,8 +33,10 @@
       <div class="row">
   			<div class="col-3">
           <!-- Button trigger modal -->
-          {% if perm.carton.can_create_instructor %}
+          {% if perms.carton.add_Instructor %}
           <a class="btn btn-secondary" href="../instructor/create" role="button">New Instructor</a>
+          {% else %}
+          <p>DUMB</p>
           {% endif %}
 
         <!--Bootstrap nav bar-->
