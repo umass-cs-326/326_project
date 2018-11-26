@@ -2,25 +2,44 @@
 {% load static %}
 {% block title %} profile {% endblock title %}
 {% block content%}
-  	<div class="container-fluid">
-      <!-- Here is where the nav bar would go -->
-      <!-- <br/> -->
-  		<div class="row">
+<div class="container-fluid">
+    <!-- Here is where the nav bar would go -->
+    <!-- <br/> -->
+    <div class="row">
         <div class="col-12">
-          <img src="{% static "img/profile_picture.png"%}" class="profile">
-          <h2 class="profile">{{ user.first_name }} {{user.last_name }}</h2>
+            <img src="{% static "img/profile_picture.png"%}" class="profile">
+            <h2 class="profile">{{ user.username }}</h2>
         </div>
-  		</div>
-      <div class="row">
+    </div>
+    <div class="row">
         <div class="col-1"></div>
         <div class="col-6 shaded">
-          <!-- Will be filled out with js or python -->
-          <span class="block">Email: example@umass.edu</span>
-          <span class="block">Credits taken: n_credits</span>
-          <span class="block">Credits left: 90 + 30*(number of majors) - n_credits</span>
-          <button type="button">Manage classes taken</button>
-          <button type="button">Manage Friends</button>
+            <!-- Will be filled out with js or python -->
+            <span class="block">{{ user.profile.email }}</span>
+            <span class="block">Credits taken: {{ total_credits }}</span>
+            <span class="block">Credits left: {{ remaining_credits }}</span>
+            <!--<button type="button">Manage classes taken</button>-->
+            <!--<button type="button">Manage Friends</button>-->
+            <h4 class="block my-lg-2">Add or remove previously taken courses:</h4>
+            <form class="form-inline my-2 my-lg-1">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                       name="search" value="{{request.GET.search}}">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <!--This is the form for adding/removing a class-->
+            <form method="post">
+                {% csrf_token %}
+                {% for course in courses %}
+                        <button type="submit button" value="{{course.pk}}"
+                        {% if course in user.profile.courses_past.all %}
+                            name="removed_course" class="btn btn-danger my-lg-1"
+                        {% else %}
+                            name="added_course" class="btn btn-outline-primary my-lg-1"
+                        {% endif %}
+                        >{{ course.name }}</button>
+                {% endfor %}
+            </form>
         </div>
-      </div>
-  	</div>
-    {% endblock %}
+    </div>
+</div>
+{% endblock %}

@@ -10,6 +10,7 @@ class Course(models.Model) :
     code = models.CharField(max_length=15, help_text="Enter alphanumeric class code")
     rating = models.IntegerField()
     prereqs = models.ManyToManyField("self", blank=True)
+    credits = models.IntegerField(default=4, null=False)
     def __str__(self) :
         return f"{self.code} {self.name}"
 
@@ -75,4 +76,8 @@ class Profile(models.Model):
     courses_past = models.ManyToManyField(Course, related_name="past")
     #This will be a list of courses that this user has updooted or downdooted
     courses_dooted = models.ManyToManyField(Course, related_name="dooted")
+    # Email of user
+    user_email = models.CharField(max_length=100, help_text="Enter your email", default="example@gmail.com")
+    first_name = models.CharField(max_length=50, help_text="Your first name", default="user_first_name")
+    last_name = models.CharField(max_length=50, help_text="Your last name", default="user_last_name")
 

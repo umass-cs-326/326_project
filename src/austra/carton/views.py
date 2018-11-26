@@ -18,6 +18,7 @@ from django.views import View
 from django.urls import reverse
 from carton.models import Comment
 from datetime import datetime
+from django.db.models import Sum
 
 # Keeps track of the mapping from letter to number
 letters = {
@@ -52,6 +53,35 @@ def merge_course_queries(*queries):
             seen[course.name] += 1
     return final_query, seen
 
+def search_courses(search_text):
+    all_courses = Course.objects.all()
+    if search_text:
+        """
+        In case search functionality is extended in the future, types of searching functionality listed here:
+            https://docs.djangoproject.com/en/2.0/ref/models/querysets/
+        Basic functionality is .filter(field__method="searchterm")
+        """
+        # Get all non-empty space-seperated search terms
+        search_terms = filter(None, search_text.split())
+        print("Search terms: {}".format(search_terms))
+        # For each search term, get all courses that contain the search term or a professor's name contains the term
+        matching_courses = [
+            merge_course_queries(
+                all_courses.filter(name__icontains=term), all_courses.filter(session__instructor__name__icontains=term),
+                all_courses.filter(code__icontains=term)
+            )[0]
+            for term in search_terms
+            ]
+        courses, frequency = merge_course_queries(*matching_courses)
+        # First sort by class type, then number (lowest to highest)
+        courses.sort(key=lambda course: course.code)
+        # Then sort by highest to lowest frequency
+        courses.sort(key=lambda course: frequency[course.name], reverse=True)
+    else:
+        courses = all_courses
+    return courses
+
+
 #FIXME: implement redirect_field_name in decorator once authorization is restructured to be project-wide
 @login_required(login_url='/carton/accounts/login')
 def calendar(request):
@@ -69,8 +99,7 @@ def calendar(request):
     # Expected to store the items as a list with the format:
     # [course name, start time, end time, days of the week] for each session
 
-    all_courses = Course.objects.all()
-    all_sessions = all_sessions = request.user.profile.sessions_current.all()
+    all_sessions = request.user.profile.sessions_current.all()
 
     sessions = [
         [session.course.name, session.start_time.strftime('%H:%M'), session.end_time.strftime('%H:%M'),
@@ -79,28 +108,8 @@ def calendar(request):
         in all_sessions
     ]
     # If there was a non-empty search, do logic on accordion courses
-    search_term = request.GET.get('search', '')
-    if search_term:
-        """
-        In case search functionality is extended in the future, types of searching functionality listed here:
-            https://docs.djangoproject.com/en/2.0/ref/models/querysets/
-        Basic functionality is .filter(field__method="searchterm")
-        """
-        # Get all non-empty space-seperated search terms
-        search_terms = filter(None, search_term.split())
-        print("Search terms: {}".format(search_terms))
-        # For each search term, get all courses that contain the search term or a professor's name contains the term
-        matching_courses = [
-            merge_course_queries(
-                all_courses.filter(name__icontains=term), all_courses.filter(session__instructor__name__icontains=term),
-                all_courses.filter(code__icontains=term)
-            )[0]
-            for term in search_terms
-        ]
-        accordion_courses, frequency = merge_course_queries(*matching_courses)
-        accordion_courses.sort(key=lambda course: frequency[course.name], reverse=True)
-    else:
-        accordion_courses = all_courses
+    search_text = request.GET.get('search', '')
+    accordion_courses = search_courses(search_text)
     print("Post search courses: {}".format(accordion_courses))
     accordion_courses = [
         [course.name, course.rating, course.session_set.all().order_by('start_time'), course.id]
@@ -116,6 +125,27 @@ def index(request):
     context = {
     }
     return HttpResponse(template.render(context, request))
+
+@login_required(login_url='/carton/accounts/login')
+def profile_page(request):
+    if(request.method == "POST"):
+        all_courses = Course.objects.all()
+        added_pk = request.POST.get('added_course')
+        removed_pk = request.POST.get('removed_course')
+        if added_pk:
+            request.user.profile.courses_past.add(all_courses.get(pk=added_pk))
+        else:
+            request.user.profile.courses_past.remove(all_courses.get(pk=removed_pk))
+        request.user.profile.save()
+    total_credits = request.user.profile.courses_past.aggregate(Sum('credits'))['credits__sum']
+    # Coerce to 0 if false
+    total_credits = total_credits or 0
+    search_text = request.GET.get('search', '')
+    return render(request, 'accounts/profile.html', {
+        'total_credits': total_credits,
+        'remaining_credits': 120-total_credits,
+        'courses': search_courses(search_text)
+    })
 
 class CommentForm(forms.Form):
     message = forms.CharField()
@@ -175,7 +205,6 @@ class InstructorCreate(PermissionRequiredMixin, CreateView):
     model = Instructor
     fields = '__all__'
     template_name = 'instructor_new.html'
-
 
 
 #class InstructorDelete(UpdateView):
