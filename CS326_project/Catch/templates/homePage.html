@@ -11,13 +11,15 @@
 </ul>
 <a href="{% url 'Event-add' %}">Create Event</a>
 
-<!-- buttons for login/log out/profile --> 
-<br> <br> 
+<!-- buttons for login/log out/profile -->
+<br> <br>
 {% if user.is_authenticated %}
   <button><a href="{% url 'user-edit-profile' %}">Edit Your Profile</a></button>
   <button><a href="{% url 'user-view-profile' %}">View My Profile</a></button>
+  <button><a href="{% url 'logout' %}">Log Out</a></button>
+
 {% else %}
-  <button><a href="{% url 'user-sign-up' %}">Sign Up Here!</a></button>
+  
   <button><a href="{% url 'login' %}">Login Here!</a></button>
 {% endif %}
 

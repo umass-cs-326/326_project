@@ -22,12 +22,12 @@ urlpatterns = [
     path('accounts/signup', views.UserSignUpView.as_view(), name='user-sign-up'),
     path('account/edit', views.UserEditProfileView.as_view(), name='user-edit-profile'),
     path('account/view', views.UserViewProfileView.as_view(), name='user-view-profile'),
+    path('account/login', views.UserViewProfileView.as_view(), name='user-view-profile'),
     #path('profile/edit', views.edit_profile, name='edit_profile')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += [path(r'accounts/', include('django.contrib.auth.urls')),
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
-
-
