@@ -6,7 +6,8 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('', views.index, name = "index"),
     path('tree/', TemplateView.as_view(template_name="tree.html"), name = "tree"),
-    path('accounts/profile/', TemplateView.as_view(template_name="accounts/profile.html"), name = "profile"),
+    # path('accounts/profile/', TemplateView.as_view(template_name="accounts/profile.html"), name = "profile"),
+    path('accounts/profile/', views.profile_page, name = "profile"),
     path('calendar/', views.calendar, name = "calendar"),
     path('instructors/', views.InstructorListView.as_view(), name="instructors"),
     path('instructor/<int:pk>', views.InstructorDetailView.as_view(), name="instructor-detail"),
