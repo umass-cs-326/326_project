@@ -71,12 +71,15 @@
                 <p><strong>Sessions </strong></p>
                 {% for session in course.2 %}
                 <p>
-                  <button type="button" class="btn btn-outline-primary">{{session.start_time.time}}-{{session.end_time.time}}</button>
-                  {{session.instructor}} 
-                </p> 
+                  <form action="" method="post">
+                      {% csrf_token %}
+                    <button type="submit button" name = "added_session" value = "{{session.id}}" class="btn btn-outline-primary" {% if session in user.profile.sessions_current.all %} disabled {% endif %} >{{session.start_time.time}}-{{session.end_time.time}}</button>
+                  </form>
+                  {{session.instructor}}
+                </p>
                 {% endfor %}
                 <div class="sessionList">
-                  
+
                 </div>
               </div>
             </div>
