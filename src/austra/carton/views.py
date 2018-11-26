@@ -11,6 +11,13 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django import forms
+from django.views.generic.detail import SingleObjectMixin
+from django.views.generic import FormView
+from django.views import View
+from django.urls import reverse
+from carton.models import Comment
+from datetime import datetime
 
 # Keeps track of the mapping from letter to number
 letters = {
@@ -100,9 +107,43 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
-class CourseDetailView(generic.DetailView):
+class CommentForm(forms.Form):
+    message = forms.CharField()
+
+class CourseDisplay(generic.DetailView):
     model = Course
     template_name = "class_detail.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CommentForm()
+        return context
+
+class CourseComment(SingleObjectMixin, FormView):
+    template_name = "class_detail.html"
+    form_class = CommentForm
+    model = Course
+
+    def post(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        self.object = self.get_object()
+        comment = Comment(course = self.object, name = request.user, comment_text=request.POST.get("message", ""),date=datetime.now)
+        comment.save()
+        return super().post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('course-detail', kwargs={'pk': self.object.pk})
+
+class CourseDetailView(View):
+
+    def get(self, request, *args, **kwargs):
+        view = CourseDisplay.as_view()
+        return view(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        if(comment_form_post in request.POST):
+            view = CourseComment.as_view()
+            return view(request, *args, **kwargs)
 
 class CourseCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'add_Course'

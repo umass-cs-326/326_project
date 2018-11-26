@@ -14,13 +14,15 @@
           {% for session in course.session_set.all %}
           <p>{{session.start_time.time}}</p>
           {% endfor %}
-          <div class="form-group">
-            <label for="comment">Enter a comment:</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
-
+          <form action="" name = "comment_form_post" method="post">
+              {% csrf_token %}
+              {{ form }}
+              <input type="submit" value="Submit">
+          </form>
             {% for comment in course.comment_set.all %}
-            <p> <strong>Name:</strong>  {{comment.name}} </p>
+            <p> <strong>Name:</strong>  {{comment.name}}  <strong> Posted: </strong> {{comment.date}}</p>
             <p>  <strong>Comment:</strong>  {{comment.comment_text}}
+
             {% endfor %}
           </div>
         </div>
