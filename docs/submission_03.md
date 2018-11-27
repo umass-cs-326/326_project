@@ -28,22 +28,20 @@
 # Design Overview:
 Users can now only view the page when logged in. Being logged in displays the events that the user is hosting under the Events tab. Being logged in displays the pets that the user owns under the Pets tab. Being logged in allows the user to edit their profile information.
 
-* Part 1 Authentication, Authorization, and Session Support (35%)
-   * Your application must support authentication and authorization/permissions.
-   * Your application must include login/logout functionality.
-   * Your application must include at least one user in your database.
-   * Your application must include at least one group.
-   * Your application must tailor the rendered view in the browser according to a user that is logged in.
-           * If the user is not loggeed in they see a form to either login or sign up, Event tab displays all the events that the User is Hosting and Pet tab displays all the Pets that the user is the owner of. compsci326 does not have Events or Pets, login to another account to check this.
-
-
-* Part 2 User Interaction with Forms (35%)
-   * Your application must include a login form.
-   * Your application must include at least one form that allows new data to be created in your application. For example, a Facebook-like app can create a new “post” - this new post is new data on your server which contains what was posted and who posted it.
-         * Under the Profile Tab, user can create a Pet which will appear under the Pet Tab
-   * Your application must include at least one form that allows data in your application to be modified from a logged in user. (i.e., a user modifies their favorite movie in profile data).
-         * Under the Profile Tab, user can edit their Profile information
-
+1. Part 1 Authentication, Authorization, and Session Support (35%)
+     * Your application must support authentication and authorization/permissions.
+     * Your application must include login/logout functionality.
+     * Your application must include at least one user in your database.
+     * Your application must include at least one group.
+     * Your application must tailor the rendered view in the browser according to a user that is logged in.
+        * If the user is not loggeed in they see a form to either login or sign up, Event tab displays all the events that the User is Hosting and Pet tab displays all the Pets that the user is the owner of. compsci326 does not have Events or Pets, login to another account to check this.
+        
+2. Part 2 User Interaction with Forms (35%)
+    * Your application must include a login form.
+    * Your application must include at least one form that allows new data to be created in your application. For example, a Facebook-like app can create a new “post” - this new post is new data on your server which contains what was posted and who posted it.
+      * Under the Profile Tab, user can create a Pet which will appear under the Pet Tab
+    * Your application must include at least one form that allows data in your application to be modified from a logged in user. (i.e., a user modifies their favorite movie in profile data).
+       * Under the Profile Tab, user can edit their Profile information
 
 # Problems/Successes:
 
