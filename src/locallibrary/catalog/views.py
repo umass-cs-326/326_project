@@ -2,7 +2,9 @@ from django.shortcuts import render
 #the urls here will change based on the names we give the templates and where we put the templates
 from catalog.models import Movie, User, Request, Match
 from django.views import generic
-
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.shortcuts import render, redirect
 ##picture of movie; urls for movie and username and index; using function instead of class
 ##what does match need; what primary key of movie; hard for users to remember id
 def index(request):
@@ -41,4 +43,26 @@ def user(request, username):
 	}
 	return render(request, "user.html", context=context)
 
+
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request.POST)
+        return redirect('index')
+    else:
+        form = AuthenticationForm()
+    return render(request, "login.html", {'form': form})
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('index')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
 		
