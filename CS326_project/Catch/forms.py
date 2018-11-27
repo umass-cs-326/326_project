@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import PetUser
+from .models import PetUser, Pet
+
 
 class PetUserCreationForm(UserCreationForm):
     username = forms.CharField(max_length = 30)
@@ -27,3 +28,15 @@ class PetUserChangeForm(UserChangeForm):
     class Meta(UserCreationForm):
         model = PetUser
         fields = ('username', 'first_name', 'last_name','email','location','description', 'image')
+
+
+class PetCreationForm(forms.ModelForm):
+    name = forms.CharField()
+    pet_type = forms.CharField()
+    breed = forms.CharField()
+    description = forms.CharField()
+    #image = forms.ImageField()
+
+    class Meta:
+        model = Pet
+        fields = ('name', 'pet_type', 'breed','description',) # 'image')

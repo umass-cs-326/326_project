@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Catch.models import Pet, PetUser, Event
 from django.views.generic.edit import CreateView
 from django.http import HttpResponse
@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-#from .forms import ChangeProfileForm
+from .forms import PetCreationForm
 #from django.contrib.auth.forms import UserChangeForm
 # Create your views here.
 
@@ -21,13 +21,25 @@ class EventCreate(CreateView):
     #datetime needs to be inputted in this format:
     #1997-04-24 04:41:58
 
-class PetCreate(CreateView):
-    model = Pet
-    fields = ['name', 'pet_type', 'breed', 'description', 'image']
-    # model.createOwner = (PetUser)
-    # model.save()
-    # def get_object(self):
-    #     model.owner = get_object_or_404(PetUser, pk=self.request.user.id)
+class PetCreate(generic.TemplateView):
+    template_name =  'Catch/pet_form.html'
+
+    def get(self, request):
+        form = PetCreationForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = PetCreationForm(request.POST)
+        if form.is_valid():
+            new_pet = form.save(commit=False)
+            new_pet.owner = request.user
+            new_pet.image = 'dog.jpg'
+            new_pet.save()
+            data = form.cleaned_data
+            form = PetCreationForm()
+            return redirect('petPage')
+        args = { 'form': form, 'text': data }
+        return render(request, self.template_name, args)
 
 class UserSignUpView(CreateView):
     model = PetUser

@@ -19,7 +19,7 @@ urlpatterns = [
     path('petPage', views.UserViewPets.as_view(), name = "petPage"),
 
     path('addEvent', views.EventCreate.as_view(success_url='homePage'), name='Event-add'),
-    path('addPet', views.PetCreate.as_view(success_url='profilePage'), name='Pet-add'),
+    path('addPet', views.PetCreate.as_view(), name='Pet-add'),
     # path('add/$', views.EventCreate.as_view(success_url='homePage.html'), name='Event-add'),
     # path('navbar', views.navbar, name = "navbar"),
 
