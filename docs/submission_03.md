@@ -14,7 +14,7 @@ Team Members: A list of your team members:
 
 Video Link: A link to your YouTube video regarding this submission. See below: 
 
-Design Overview: A brief design overview of your login/logout and interaction functionality of your application.
+Design Overview: 
 We as a team implemented the login functionality in our web application, and enabled the ability for authentication, authorization, and session support. We created the login page from Django itself from its token based authentication. Then, in the views classes we implemented can provide a direct instance given a request from the database.
 
 
