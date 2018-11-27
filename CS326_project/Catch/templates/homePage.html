@@ -3,53 +3,48 @@
 
 {% block content %}
 {% load staticfiles %}
-<ul>
-  <li><a href="default.asp">Hosting</a></li>
-  <li><a href="news.asp">Going</a></li>
-  <li><a href="contact.asp">Interested</a></li>
-  <li><a href="about.asp">Following</a></li>
-</ul>
-<a href="{% url 'Event-add' %}">Create Event</a>
 
-<!-- buttons for login/log out/profile -->
-<br> <br>
 {% if user.is_authenticated %}
-  <button><a href="{% url 'user-edit-profile' %}">Edit Your Profile</a></button>
-  <button><a href="{% url 'user-view-profile' %}">View My Profile</a></button>
+  <ul>
+    <li><a href="default.asp">Hosting</a></li>
+    <li><a href="news.asp">Going</a></li>
+    <li><a href="contact.asp">Interested</a></li>
+    <li><a href="about.asp">Following</a></li>
+  </ul>
+  <a href="{% url 'Event-add' %}">Create Event</a>
+  <br>
+  <br>
   <button><a href="{% url 'logout' %}">Log Out</a></button>
 
-{% else %}
-  
-  <button><a href="{% url 'login' %}">Login Here!</a></button>
-{% endif %}
-
-<br>
-
-{% if events %}
-  {% for event in events %}
-
-<div class="container py-3">
-<div class="card">
-<div class="row ">
-  <div class="col-md-4">
-      <img src="{{ event.image.url }}" class="w-100">
-    </div>
-    <div class="col-md-8 px-3">
-      <div class="card-block px-3">
-        <h4 class="card-title">Name: {{ event.name}}</h4>
-        <p class="card-text">Host: {{ event.host }}</p>
-        <p class="card-text">Location: {{ event.location }}</p>
-        <p class="card-text">Date and Time: {{ event.datetime}}</p>
-        <p class="card-text">Capacity: {{ event.capacity}}</p>
-        <p class="card-text">Duration: {{ event.duration}}</p>
+  {% if events %}
+    {% for event in events %}
+      <div class="container py-3">
+      <div class="card">
+      <div class="row ">
+        <div class="col-md-4">
+            <img src="{{ event.image.url }}" class="w-100">
+          </div>
+          <div class="col-md-8 px-3">
+            <div class="card-block px-3">
+              <h4 class="card-title">Name: {{ event.name}}</h4>
+              <p class="card-text">Host: {{ event.host }}</p>
+              <p class="card-text">Location: {{ event.location }}</p>
+              <p class="card-text">Date and Time: {{ event.datetime}}</p>
+              <p class="card-text">Capacity: {{ event.capacity}}</p>
+              <p class="card-text">Duration: {{ event.duration}}</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-</div>
-{% endfor %}
+      </div>
+    {% endfor %}
+  {% else %}
+  <p>There are no events available.</p>
+  {% endif %}
 {% else %}
-<p>There are no events available.</p>
+  <h4>Please <button><a href="{% url 'login' %}">sign in</a></button> to view active events.</h4>
+  <br>
+  <h4>If you don't have an account, <button><a href="{% url 'user-sign-up' %}">sign up here!</a></button></h4>
 {% endif %}
 
 {% endblock %}

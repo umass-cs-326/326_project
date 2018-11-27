@@ -61,3 +61,8 @@ li a:hover {
 .active {
     background-color: #4CAF50; /* Add an active/current color */
 }
+
+h4{
+    text-align: center;
+    float: center;
+}
