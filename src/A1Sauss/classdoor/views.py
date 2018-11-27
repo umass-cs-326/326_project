@@ -1,12 +1,26 @@
 import re
+#import operator
 from django.shortcuts import render
 from classdoor.models import Course, Teacher, Review, University, ClassdoorUser, Subject
 from django.db.models.query import EmptyQuerySet
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+#from django.db.models import Q
 
 # Create your views here.
 def index(request):
     return render(request, "index.html")
+
+def search(request):
+    error = False
+    if 'q' in request.GET:
+        q = request.GET['q']
+        if not q:
+            error = True
+        else:
+            courses = Course.objects.filter(name=q)
+            return render(request, 'search_result.html', {'courses': courses, 'query':q})
+    return render(request, 'search_result.html', {'error':error})
 
 def classpage(request, id):
     # Get the individual course by id from url
@@ -104,3 +118,11 @@ def review(request, id):
         "this_course": course_object,
     }
     return render(request, "WriteReviewTemplate.html", context = context)
+
+#def search(request):
+    #return render(request, 'search.html')
+    #if 'q' in request.GET:
+#        message = 'You searched for: %r' % request.GET['q']
+#    else:
+#        message = 'You submitted an empty form.'
+#    return HttpResponse(message)
