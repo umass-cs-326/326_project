@@ -1,0 +1,6 @@
+I created the search method from the ground up and integrated it with the calendar application. This way, when something is searched in the search bar, each term is compared to the courses by name, code, and instructor. The results are organized by frequency (most matches coming up first). Harry implemented the ability to add classes to the user by clicking the time button, and I implemented that once classes are added, they instead appear as red buttons that remove instead of add the course (from the user and thus from the calendar).
+
+I flushed out the init.py so that the demo data is more thorough. It pulls the list of classes from a list and separates them into class number and name. Then adds fake prerequisites by choosing a semi-random number of earlier classes in the list as prereqs (with 0 being an option).
+
+I redesigned the Profile page so that it shows the users data. It now generates, stores and shows the number of credits the user has taken, as well as the classes they have or haven’t taken. I abstracted the search function for courses, so that it could be used for the profile page and potentially other pages. By clicking the buttons, past classes can be added or removed so that the number of credits are 
+
