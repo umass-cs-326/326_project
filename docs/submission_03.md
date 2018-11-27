@@ -5,12 +5,12 @@ Our team is creating an application where an individual can schedule a time, req
 *The changes that occurred during this project were user authentication and interaction through forms involved with our web application that includes the login functionality and authentication.*
 
 Team Members: A list of your team members
-Apoorva Karpurapu
-Kuhu Wadhwa
-Damin Zhang
-Long To
-Frick Shao
-Kurtis Chau
+- Apoorva Karpurapu
+- Kuhu Wadhwa
+- Damin Zhang
+- Long To
+- Frick Shao
+- Kurtis Chau
 
 Video Link: A link to your YouTube video regarding this submission. See below: 
 
