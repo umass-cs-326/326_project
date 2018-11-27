@@ -4,49 +4,8 @@
 
 {% load staticfiles %}
 
-{% if user.is_authenticated %}
-  <ul class='profile'>
-    <li>Username: {{user.username}}</li>
-    <li>First name: {{user.first_name}}</li>
-    <li>Last name: {{user.last_name}}</li>
-    <li>Email: {{user.email}}</li>
-    <li>Location: {{user.location}}</li>
-    <li>Description: {{user.description}}</li>
-  </ul>
-
-  <a href="{% url 'Pet-add' %}">Add Pet</a>
-  <br>
-  <br>
 
   <div class="container">
-    {% if pets %}
-      {% for pet in pets %}
-        {% if pet.owner.username == user.username %}
-          <div class="row">
-            <div class="col-sm-4" style="background-color:white;">
-              <img src="{{ pet.image.url }}" alt="pet image">
-            </div>
-
-
-            <div class = "col-sm-8" style = "background-color:white;">
-              <p>Pet Name: {{ pet.name}}</p>
-              <p>Breed: {{ pet.breed}}</p>
-              <p>Description: {{ pet.description}}</p>
-              <p>Owner: {{ pet.owner}}</p>
-            </div>
-        {% endif %}
-        </div>
-        {% endfor %}
-    {% endif %}
-  </div>
-
-{% else %}
-  <h4>Please <button><a href="{% url 'login' %}">sign in</a></button> to view your profile.</h4>
-  <br>
-  <h4>If you don't have an account, <button><a href="{% url 'user-sign-up' %}">sign up here!</a></button></h4>
-{% endif %}
-
-  <!-- <div class="container">
     {% if owner %}
       {% for user in owner %}
     <div class="row">
@@ -86,9 +45,6 @@
   {% else %}
   <p>There are no pets available.</p>
   {% endif %}
-</div> -->
-
-
-
+</div>
 
 {% endblock %}

@@ -1,6 +1,6 @@
 {% load static %}
 
-
+{% if user.is_authenticated %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,4 +26,7 @@
     {% endblock %}
   </body>
 </html>
-
+   {% else %}
+     <button><a href="{% url 'login' %}">Login Here!</a></button>
+     <button><a href="{% url 'user-sign-up' %}">Sign Up Here!</a></button>
+   {% endif %}
