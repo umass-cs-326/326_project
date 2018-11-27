@@ -203,7 +203,6 @@ class DumbDoot(SingleObjectMixin, FormView):
         if('upd' in request.POST):
             request.user.profile.updooted.add(self.object)
         if('downd' in request.POST):
-            print("inside downd")
             request.user.profile.downdooted.add(self.object)
         return super().post(request, *args, **kwargs)
 
@@ -233,7 +232,6 @@ class CourseDetailView(View):
             view = CourseComment.as_view()
             return view(request, *args, **kwargs)
         elif('upd' in request.POST):
-            print("py sux")
             view = DumbDoot.as_view()
             return view(request, *args, **kwargs)
         elif('downd' in request.POST):

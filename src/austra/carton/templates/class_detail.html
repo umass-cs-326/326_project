@@ -9,8 +9,6 @@
           <h1>{{course.name}}</h1>
           <p>Rating:  {{course.rating}} </p>
           <form method="post">
-              <p>Updooted:  {{user.profile.updooted.all}} </p>
-              <p>Downdooted:  {{user.profile.downdooted.all}} </p>
               {%if course not in user.profile.updooted.all %}
                 {%if course not in user.profile.downdooted.all %}
                   {% csrf_token %}
