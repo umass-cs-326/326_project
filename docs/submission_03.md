@@ -23,7 +23,7 @@
 * Justin Hui, jhui04
 * Parth Nagraj, pdnagraj
 
-# Video Link:
+# Video Link: https://www.youtube.com/watch?v=1o2OCPbLbUQ
 
 # Design Overview:
 Users can now only view the page when logged in. Being logged in displays the events that the user is hosting under the Events tab. Being logged in displays the pets that the user owns under the Pets tab. Being logged in allows the user to edit their profile information.
