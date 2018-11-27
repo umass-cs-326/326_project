@@ -147,9 +147,21 @@ def profile_page(request):
         'courses': search_courses(search_text)
     })
 
+# def doot(request):
+#     #template = get_template('course_detail.html')
+#     if(request.method == "POST"):
+#         if('upd' in request.POST):
+#             updooted = request.user.profile.updooted.all()
+#         if('downd' in request.POST):
+#             downdooted = request.user.profile.downdooted.all()
+
+
+
 class CommentForm(forms.Form):
     message = forms.CharField()
 
+class DumbForm(forms.Form):
+    pass
 class CourseDisplay(generic.DetailView):
     model = Course
     template_name = "class_detail.html"
@@ -158,17 +170,52 @@ class CourseDisplay(generic.DetailView):
         context['form'] = CommentForm()
         return context
 
+
 class CourseComment(SingleObjectMixin, FormView):
     template_name = "class_detail.html"
     form_class = CommentForm
     model = Course
 
     def post(self, request, *args, **kwargs):
+        print(request, args, kwargs)
         if not request.user.is_authenticated:
             return HttpResponseForbidden()
         self.object = self.get_object()
         comment = Comment(course = self.object, name = request.user, comment_text=request.POST.get("message", ""),date=datetime.now)
         comment.save()
+        return super().post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('course-detail', kwargs={'pk': self.object.pk})
+
+
+class DumbDoot(SingleObjectMixin, FormView):
+    template_name = "class_detail.html"
+    form_class = DumbForm
+    model = Course
+
+    def post(self, request, *args, **kwargs):
+        print(request, args, kwargs)
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        self.object = self.get_object()
+        print(self.object.name)
+        if('upd' in request.POST):
+            request.user.profile.updooted.add(self.object)
+        if('downd' in request.POST):
+            print("inside downd")
+            request.user.profile.downdooted.add(self.object)
+        return super().post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('course-detail', kwargs={'pk': self.object.pk})
+class Doot(SingleObjectMixin, FormView):
+    template_name = "class_detail.html"
+  
+    
+    model = Course
+    def post(self, request, *args, **kwargs):
+        print(request, args, kwargs)
         return super().post(request, *args, **kwargs)
 
     def get_success_url(self):
@@ -181,10 +228,17 @@ class CourseDetailView(View):
         return view(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
+        print(request.POST)
         if('comment_form_post' in request.POST):
             view = CourseComment.as_view()
             return view(request, *args, **kwargs)
-
+        elif('upd' in request.POST):
+            print("py sux")
+            view = DumbDoot.as_view()
+            return view(request, *args, **kwargs)
+        elif('downd' in request.POST):
+            view = DumbDoot.as_view()
+            return view(request, *args, **kwargs)
 
 class CourseCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'add_Course'
