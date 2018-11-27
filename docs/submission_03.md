@@ -5,7 +5,7 @@ Our team is creating an application where an individual can schedule a time, req
 *The changes that occurred during this project were user authentication and interaction through forms involved with our web application that includes the login functionality and authentication.*
 
 Team Members: A list of your team members:
-- Apoorva Karpurapu
+- Apoorva Karpurapu 
 - Kuhu Wadhwa
 - Damin Zhang
 - Long To
@@ -15,7 +15,8 @@ Team Members: A list of your team members:
 Video Link: A link to your YouTube video regarding this submission. See below: 
 
 Design Overview: A brief design overview of your login/logout and interaction functionality of your application.
-We as a team implemented the login functionality in our web application, and enabled the ability to login.
+We as a team implemented the login functionality in our web application, and enabled the ability for authentication, authorization, and session support. We created the login page from Django itself from its token based authentication. Then, in the views classes we implemented can provide a direct instance given a request from the database.
+
 
 Problems/Successes: A brief overview of the problems and successes your team encountered. This includes team communication problems/successes, what worked and what didn’t, implementation problems/successes, what worked and what didn’t, and what your team can do to improve collaboration and implementation for the next Project submission.
 
