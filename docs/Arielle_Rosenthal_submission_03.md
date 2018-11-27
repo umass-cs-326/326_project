@@ -1,0 +1,1 @@
+I worked on updooting and downdooting. Each user has a list of updooted and downdooted classes. These lists are incremented when the user presses the updoot or downdoot button, which submit post requests associating the respected buttons. The buttons are hidden if the user has already dooted. 
