@@ -6,45 +6,25 @@
 
 
   <div class="container">
-    {% if owner %}
-      {% for user in owner %}
     <div class="row">
       <div class="col-sm-4">
         <img src="{{ user.image.url }}" class="img-square" alt="profilepicture">
       </div>
       <div class="col-sm-8">
-        <p>Name: {{ user.first_name}}</p>
-        <p>Description: {{ user.description }}</p>
-        <p>Location: {{ user.location}}</p>
-
+        <p>Username: {{user.username}}</p>
+        <p>First name: {{user.first_name}}</p>
+        <p>Last name: {{user.last_name}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Location: {{user.location}}</p>
+        <p>Description: {{user.description}}</p>
       </div>
     </div>
-    {% endfor %}
-{% else %}
-<p>There are no profiles available.</p>
-{% endif %}
   </div>
 
-<a href="{% url 'Pet-add' %}">Add Pet</a>
+<button><a href="{% url 'user-edit-profile' %}">Edit Your Profile</a></button>
+<!-- <button><a href="{% url 'user-view-profile' %}">View My Profile</a></button> -->
+<button><a href="{% url 'Pet-add' %}">Add Pet</a></button>
 
-<div class="container">
-  {% if pets %}
-    {% for pet in pets %}
-      <div class="row">
-        <div class="col-sm-4" style="background-color:white;">
-          <img src="{{ pet.image.url }}" alt="black lab">
-        </div>
-        <div class = "col-sm-8" style = "background-color:white;">
-          <p>Name: {{ pet.name}}</p>
-          <p>Breed: {{ pet.breed}}</p>
-          <p>Description: {{ pet.description}}</p>
-          <p>Owner: {{ pet.owner}}</p>
-        </div>
-      </div>
-      {% endfor %}
-  {% else %}
-  <p>There are no pets available.</p>
-  {% endif %}
-</div>
+
 
 {% endblock %}

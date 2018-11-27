@@ -8,7 +8,7 @@ from .models import PetUser
 
 
 # Register your models here.
-#admin.site.register(PetUser)
+# admin.site.register(PetUser)
 admin.site.register(Pet)
 admin.site.register(Event)
 

@@ -19,9 +19,10 @@
       <a href="{% url 'eventsPage' %}">Events</a>
       <a href="{% url 'mapPage' %}">Map</a>
       <a href="{% url 'profilePage' %}">Profile</a>
-      <a href="{% url 'aboutPage' %}">About</a>
+      <a href="{% url 'petPage' %}">Pets</a>
     </div>
   <body>
+    <button><a href="{% url 'logout' %}">Log Out</a></button>
     {% block content %}
     {% endblock %}
   </body>

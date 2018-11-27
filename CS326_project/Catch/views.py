@@ -8,6 +8,9 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.urls import reverse_lazy
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 #from .forms import ChangeProfileForm
 #from django.contrib.auth.forms import UserChangeForm
 # Create your views here.
@@ -20,7 +23,10 @@ class EventCreate(CreateView):
 
 class PetCreate(CreateView):
     model = Pet
-    fields = ['name', 'pet_type', 'breed', 'description', 'image', 'owner']
+    fields = ['name', 'pet_type', 'breed', 'description', 'image']
+    # Pet =
+    # def get_object(self):
+    #     model.owner = get_object_or_404(PetUser, pk=self.request.user.id)
 
 class UserSignUpView(CreateView):
     model = PetUser
@@ -30,17 +36,33 @@ class UserSignUpView(CreateView):
 
 class UserEditProfileView(generic.UpdateView):
     model = PetUser
-    fields = ('username', 'first_name', 'last_name','email','location','description')
-    template_name = 'sign_up.html'
-    success_url = reverse_lazy('homePage')
+    fields = ('username', 'first_name', 'last_name','email','location','description', 'image')
+    template_name = 'change_profile.html'
+    success_url = reverse_lazy('profilePage')
 
     def get_object(self):
 	    return get_object_or_404(PetUser, pk=self.request.user.id)
 
 class UserViewProfileView(generic.ListView):
     model = PetUser
-    fields = ('username', 'first_name', 'last_name','password','email','location','description')
-    template_name = 'view_profile.html'
+    fields = ('username', 'first_name', 'last_name','password','email','location','description', 'hosting', 'image')
+    template_name = 'profilePage.html'
+    def get_object(self):
+        return get_object_or_404(PetUser, pk=self.request.user.id)
+
+class UserViewPets(LoginRequiredMixin, generic.ListView):
+    model = Pet
+    template_name ='petPage.html'
+
+    def get_queryset(self):
+        return Pet.objects.filter(owner=self.request.user)
+
+class UserViewEvents(LoginRequiredMixin, generic.ListView):
+    model = Event
+    template_name ='eventsPage.html'
+
+    def get_queryset(self):
+        return Event.objects.filter(host=self.request.user)
 
 def home(request):
     events = Event.objects.all()
@@ -73,7 +95,12 @@ def profile(request):
     return render(request, 'profilePage.html', context = context)
 
 def about(request):
-    return render(request, 'aboutPage.html')
+    model = PetUser
+    # pets = Pet.objects.filter(owner = model.username)
+    context = {
+        "owner" : PetUser,
+    }
+    return render(request, 'aboutPage.html', context = context)
 
 # def navbar(request):
 #     return render(request, 'events.html')
@@ -106,5 +133,5 @@ def about(request):
 #     return render(request, 'change_profile.html', context)
 
 
-# When I opened up http://localhost:8000/Catch/profile/edit, filled out the new email, and hit sumbit, nothing happened. The new email was not saved. 
-# I fiddled around and found out the it never got inside the first if because request.method!=POST. 
+# When I opened up http://localhost:8000/Catch/profile/edit, filled out the new email, and hit sumbit, nothing happened. The new email was not saved.
+# I fiddled around and found out the it never got inside the first if because request.method!=POST.
