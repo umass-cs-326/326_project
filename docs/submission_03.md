@@ -4,7 +4,7 @@ Overview: A brief overview of your application. Please highlight any changes fro
 Our team is creating an application where an individual can schedule a time, request a party of up to 5 people, and match with those people to watch a movie of their choice. It is called “Flick”. The whole idea of this application is so that no one has to watch a movie alone if they don’t want to, and can use this application to make friends around the UMass or Five College campuses. This application consists of 5 web pages, a homepage where all the movies are listed, a page where an individual can request to watch a specific movie at a certain time of their choice, and a location of their preference with people they want to watch it with. 
 *The changes that occurred during this project were user authentication and interaction through forms involved with our web application that includes the login functionality and authentication.*
 
-Team Members: A list of your team members
+Team Members: A list of your team members:
 - Apoorva Karpurapu
 - Kuhu Wadhwa
 - Damin Zhang
