@@ -24,7 +24,8 @@ class EventCreate(CreateView):
 class PetCreate(CreateView):
     model = Pet
     fields = ['name', 'pet_type', 'breed', 'description', 'image']
-    # Pet =
+    # model.createOwner = (PetUser)
+    # model.save()
     # def get_object(self):
     #     model.owner = get_object_or_404(PetUser, pk=self.request.user.id)
 
@@ -36,7 +37,7 @@ class UserSignUpView(CreateView):
 
 class UserEditProfileView(generic.UpdateView):
     model = PetUser
-    fields = ('username', 'first_name', 'last_name','email','location','description', 'image')
+    fields = ('username', 'first_name', 'last_name','email','location','description',)# 'image')
     template_name = 'change_profile.html'
     success_url = reverse_lazy('profilePage')
 
@@ -94,13 +95,13 @@ def profile(request):
     }
     return render(request, 'profilePage.html', context = context)
 
-def about(request):
-    model = PetUser
-    # pets = Pet.objects.filter(owner = model.username)
-    context = {
-        "owner" : PetUser,
-    }
-    return render(request, 'aboutPage.html', context = context)
+# def about(request):
+#     model = PetUser
+#     # pets = Pet.objects.filter(owner = model.username)
+#     context = {
+#         "owner" : PetUser,
+#     }
+#     return render(request, 'aboutPage.html', context = context)
 
 # def navbar(request):
 #     return render(request, 'events.html')
