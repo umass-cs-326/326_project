@@ -1,3 +1,4 @@
+#ARI
 from django.contrib.auth.models import User, Group, Permission
 from faker import Faker
 import random
@@ -117,6 +118,7 @@ for c in Comment.objects.all():
 # Retrieve a random session from our model and print it.
 num_sessions = Session.objects.count()
 random_session = random.choice(Session.objects.all())
+random_course = random.choice(Course.objects.all())
 
 print("\nExample Session:")
 print(f"Session class name: {random_session.course}")
@@ -136,6 +138,10 @@ adminuser.save()
 
 user2 = User.objects.create_user('user', 'user@user.com', 'user')
 user2.profile.sessions_current.add(random_session) #adds a random session that the user wants to take to user2
+r = random_course
+user2.profile.updooted.add(r) 
+print(f"User updooted: {r.name}")
+user2.profile.courses_past.add(r)
 user2.save()
 
 user3 = User.objects.create_user('su', 'updog@sup.com', 'su')

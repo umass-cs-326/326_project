@@ -75,7 +75,8 @@ class Profile(models.Model):
     #This is basically a list of classes that the user has taken in the past
     courses_past = models.ManyToManyField(Course, related_name="past")
     #This will be a list of courses that this user has updooted or downdooted
-    courses_dooted = models.ManyToManyField(Course, related_name="dooted")
+    updooted = models.ManyToManyField(Course, related_name="updooted")
+    downdooted = models.ManyToManyField(Course, related_name="downdooted")
     # Email of user
     user_email = models.CharField(max_length=100, help_text="Enter your email", default="example@gmail.com")
     first_name = models.CharField(max_length=50, help_text="Your first name", default="user_first_name")

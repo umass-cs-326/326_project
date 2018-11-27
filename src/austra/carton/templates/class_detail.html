@@ -8,8 +8,17 @@
         <div class="col">
           <h1>{{course.name}}</h1>
           <p>Rating:  {{course.rating}} </p>
-          <button type="button" class="btn btn-success">Updoot</button>
-          <button type="button" class="btn btn-danger">Downdoot</button>
+          <form method="post">
+              <p>Updooted:  {{user.profile.updooted.all}} </p>
+              <p>Downdooted:  {{user.profile.downdooted.all}} </p>
+              {%if course not in user.profile.updooted.all %}
+                {%if course not in user.profile.downdooted.all %}
+                  {% csrf_token %}
+                  <button type="submit button" class="btn btn-success" name="upd">Updoot</button>
+                  <button type="submit button" class="btn btn-danger" name="downd">Downdoot</button>
+                {% endif %}
+              {% endif %}
+          </form>
           <p>Sessions: </p>
           {% for session in course.session_set.all %}
           <p>{{session.start_time.time}}</p>
