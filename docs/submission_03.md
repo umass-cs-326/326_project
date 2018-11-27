@@ -42,5 +42,5 @@ Success:
 * Forms that allow user to create pets and events
 * Form that allows user to edit their profile
 
-#Team Choice:
+# Team Choice:
 Using the Google maps API to embed a realtime map with a marker where the user currently is and markers of nearby events currently going on.
