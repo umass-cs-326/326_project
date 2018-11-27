@@ -124,8 +124,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Log in Redirect
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/Catch/homePage'
+LOGOUT_REDIRECT_URL = '/Catch/homePage'
 
 
 AUTH_USER_MODEL = 'Catch.PetUser'

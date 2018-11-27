@@ -8,7 +8,7 @@ class PetUser(AbstractUser):
     username = models.CharField(max_length = 30, unique=True)
     first_name = models.CharField(max_length = 30)
     last_name = models.CharField(max_length = 30)
-    password = models.CharField(max_length = 30)
+    password = models.CharField(max_length = 100)
     email = models.EmailField(max_length = 30)
     location = models.CharField(max_length = 100, blank = True, null = True, help_text = "Your area of residence")
     description = models.CharField(max_length = 3000, blank = True, null = True)

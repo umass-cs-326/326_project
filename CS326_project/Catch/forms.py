@@ -22,7 +22,8 @@ class PetUserChangeForm(UserChangeForm):
     email = forms.EmailField(max_length = 30)
     location = forms.CharField(max_length = 100)
     description = forms.CharField(widget=forms.Textarea)
+    # image = forms.ImageField(upload_to = "user_images", null = True)
 
     class Meta(UserCreationForm):
         model = PetUser
-        fields = ('username', 'first_name', 'last_name','email','location','description')
+        fields = ('username', 'first_name', 'last_name','email','location','description', 'image')

@@ -8,7 +8,7 @@ from .models import PetUser
 
 
 # Register your models here.
-#admin.site.register(PetUser)
+# admin.site.register(PetUser)
 admin.site.register(Pet)
 admin.site.register(Event)
 
@@ -17,6 +17,6 @@ class PetUserAdmin(UserAdmin):
     add_form = PetUserCreationForm
     form = PetUserChangeForm
     model = PetUser
-    list_display = ['email', 'username',]
+    list_display = ['email', 'username', 'image']
 
 admin.site.register(PetUser, PetUserAdmin)

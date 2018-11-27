@@ -2,10 +2,33 @@ import textwrap
 import random
 from datetime import datetime, timedelta, timezone
 from django.db import models
-from django.contrib.auth import get_user_model 
+from django.contrib.auth import get_user_model
 from faker import Faker
 from Catch.models import PetUser, Pet, Event
+from django.contrib.auth.models import Group, Permission, User
+from django.contrib.contenttypes.models import ContentType
+
 fake = Faker()
+
+
+PetOwners, created = Group.objects.get_or_create(name ='PetOwners')
+
+PetUser_content = ContentType.objects.get_for_model(PetUser)
+Pet_content = ContentType.objects.get_for_model(Pet)
+Event_content = ContentType.objects.get_for_model(Event)
+
+PetUser_perms = Permission.objects.filter(content_type=PetUser_content)
+Pet_perms  = Permission.objects.filter(content_type=Pet_content)
+Event_perms = Permission.objects.filter(content_type=Event_content)
+
+g = Group.objects.get(name='PetOwners')
+
+for p in PetUser_perms:
+    g.permissions.add(p)
+for p in Pet_perms:
+    g.permissions.add(p)
+for p in Event_perms:
+    g.permissions.add(p)
 
 
 #Create PetUsers
@@ -14,7 +37,9 @@ for i in range(10):
     u_uname = fake.profile()['username']
     u_fname = fake.first_name()
     u_lname = fake.last_name()
+
     u_password = fake.password()
+
     u_email = fake.free_email()
     u_location = fake.address()
     u_description = fake.sentence(nb_words=20, variable_nb_words=True, ext_word_list=None)
@@ -37,6 +62,10 @@ for i in range(10):
 
     petUser.save()
     PetUsers.append(petUser)
+
+g = Group.objects.get(name='PetOwners')
+for u in PetUsers:
+    g.user_set.add(u)
 
 #Create Pets
 Pets = []
@@ -111,6 +140,31 @@ for e in Event.objects.all():
     print(e)
 print()
 
+
+# admins, created = Group.objects.get_or_create(name = "admin")
+# perms = Permission.objects.all()
+#
+# a = Group.objects.get(name="admin")
+# for p in perms:
+#     a.permissions.add(p)
+#
+# admin = PetUser(
+#     username = "compsci326",
+#     first_name = "compsci326",
+#     last_name = "compsci326",
+#     password = "compsci326",
+#     email = "admin@326.edu",
+#     location = fake.address(),
+#     description = fake.sentence(nb_words=20, variable_nb_words=True, ext_word_list=None),
+#     image = "user_images/1.jpg"
+# )
+# admin.save()
+# a.user_set.add(admin)
+#
+# admin.is_superuser = True
+# admin.is_staff = True
+# admin.save()
+
 username = "compsci326"
 password = "compsci326"
 email = "admin@326.edu"
@@ -119,6 +173,9 @@ adminuser.save()
 adminuser.is_superuser = True
 adminuser.is_staff = True
 adminuser.save()
+
+
+
 message = f"""
 ====================================================================
 The database has been setup with the following credentials:

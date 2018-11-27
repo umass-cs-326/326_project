@@ -9,21 +9,8 @@
   <li><a href="contact.asp">Interested</a></li>
   <li><a href="about.asp">Following</a></li>
 </ul>
-<a href="{% url 'Event-add' %}">Create Event</a>
+<button><a href="{% url 'Event-add' %}">Create Event</a></button>
 
-<!-- buttons for login/log out/profile -->
-<br> <br>
-{% if user.is_authenticated %}
-  <button><a href="{% url 'user-edit-profile' %}">Edit Your Profile</a></button>
-  <button><a href="{% url 'user-view-profile' %}">View My Profile</a></button>
-  <button><a href="{% url 'logout' %}">Log Out</a></button>
-
-{% else %}
-  
-  <button><a href="{% url 'login' %}">Login Here!</a></button>
-{% endif %}
-
-<br>
 
 {% if events %}
   {% for event in events %}
