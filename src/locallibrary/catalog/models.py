@@ -1,5 +1,8 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Genre(models.Model):
@@ -31,7 +34,7 @@ class Movie(models.Model):
 
 class Request(models.Model):
     """Model representing a request."""
-    username = models.ForeignKey("User", on_delete=models.SET_NULL, null=True)
+    username = models.ForeignKey("Profile", on_delete=models.SET_NULL, null=True)
     # A character field for the first name.
     first_name = models.CharField(max_length=100)
 
@@ -47,19 +50,25 @@ class Request(models.Model):
         """String for representing the Model object."""
         return f"{self.last_name}, {self.first_name}"
 
-class User(models.Model):
-    username = models.CharField(max_length=300)
+class Profile(models.Model):
+    profileUsername = models.CharField(max_length=300)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     gender = models.CharField(max_length=300)
-    password = models.CharField(max_length=300)
     bio = models.CharField(max_length=300)
     picture_url = models.CharField(max_length=300,default="https://test.jpg")
 
     def __str__(self):
-        return self.username
+        return self.profileUsername
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
     
 
 class Match(models.Model):
-    username = models.ForeignKey("User", on_delete=models.SET_NULL, null=True)
+    username = models.ForeignKey("Profile", on_delete=models.SET_NULL, null=True)
     request = models.ForeignKey("Request", on_delete=models.SET_NULL, null=True)
     movie = models.ForeignKey("Movie", on_delete=models.SET_NULL, null=True)
     def __str__(self):
