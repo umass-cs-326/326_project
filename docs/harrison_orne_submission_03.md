@@ -3,3 +3,5 @@ The first thing that I worked on was user authentication in general. I set up th
 The next big component I worked on was comments. I wanted users to have the ability to post comments to each course page to give other students tips about the course. This was overly difficult because it was my first time working with Django forms. It was made especially difficult because this page is generic, so adding a form to it was a special procedure. In the end, I set it up so 1337bird could add dooting. (2-3 more forms!)
 
 Next came implementing the main functionality of the application - adding sessions the user wants to take to their calendar. This proved to be easier than I expected because I already had experience doing the comment forms. I exploited a key-value pair of the POST request to check which form was pressed. 
+
+Like last time, I also edited the video for the project. 
