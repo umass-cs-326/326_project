@@ -1,6 +1,6 @@
 from django.shortcuts import render
 #the urls here will change based on the names we give the templates and where we put the templates
-from catalog.models import Movie, User, Request, Match
+from catalog.models import Movie, Profile, Request, Match
 from django.views import generic
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
@@ -8,6 +8,20 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 ##picture of movie; urls for movie and username and index; using function instead of class
 ##what does match need; what primary key of movie; hard for users to remember id
+
+from django.contrib.auth.decorators import login_required
+from django.views.generic.detail import SingleObjectMixin
+from django.views.generic import UpdateView
+from django.utils.decorators import method_decorator
+from catalog.models import User
+from django.shortcuts import render, redirect
+from catalog.forms import SignUpForm # custom sign up form
+
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+
+
 def index(request):
 	movie_list = Movie.objects.all().order_by('-date')[:25]
 	context = {
@@ -34,11 +48,11 @@ def movie(request, movie_id):
 	}
 	return render(request, "movie.html", context=context)
 
-def user(request, username):
-	user_objects = User.objects.filter(username=username)
+def profile(request, profileUsername):
+	user_objects = Profile.objects.filter(profileUsername=profileUsername)
 	user_object = user_objects.first()
 	context = {
-		"username" : user_object.username,
+		"profileUsername" : user_object.profileUsername,
 		"bio" : user_object.bio,
 		"pic" : user_object.picture_url,
 	}
@@ -53,17 +67,28 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, "login.html", {'form': form})
 
+
+		
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
+            user = form.save()
+            user.refresh_from_db()  # load the profile instance created by the signal
+            user.profile.bio = form.cleaned_data.get('bio')
+            user.profile.gender = form.cleaned_data.get('gender')
+            user.profile.picture_url = form.cleaned_data.get('picture_url')
+            user.profile.profileUsername = user.username
+            user.save()
             raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
+            user = authenticate(username=user.username, password=raw_password)
             django_login(request, user)
             return redirect('index')
     else:
-        form = UserCreationForm()
+        form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
-		
+
+def loginRedirect(request):
+    return HttpResponseRedirect(
+               reverse(profile, 
+                       args=[request.user.username]))

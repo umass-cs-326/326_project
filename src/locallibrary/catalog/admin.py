@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from catalog.models import Genre, Movie, User, Request, Match
+from catalog.models import Genre, Movie, Profile, Request, Match
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
@@ -20,9 +20,9 @@ class RequestAdmin(admin.ModelAdmin):
 class MatchAdmin(admin.ModelAdmin):
     list_display = ("username","request")
 
-@admin.register(User)
+@admin.register(Profile)
 class UserAdmin(admin.ModelAdmin):
-    list_display=("username","gender","password","bio","picture_url")
+    list_display=("profileUsername","gender","bio","picture_url")
 
 
 

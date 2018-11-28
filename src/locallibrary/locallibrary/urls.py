@@ -32,5 +32,9 @@ urlpatterns += [
     path('', RedirectView.as_view(url='index/')),
 ]
 
+urlpatterns += [
+    path('loginRedirect', RedirectView.as_view(url='index/loginRedirect')),
+]
+
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

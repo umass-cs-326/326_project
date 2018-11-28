@@ -5,7 +5,7 @@ from datetime import timedelta
 from django.contrib.auth.models import User as adminUser
 from faker import Faker
 
-from catalog.models import Genre, Movie, Request, User, Match
+from catalog.models import Genre, Movie, Request, Profile, Match
 
 fake = Faker()
 
@@ -46,19 +46,19 @@ for i in range(0, 10):
 
 # Create Users
 
-users = []
-for i in range(0, 10):
-    u_fname = fake.first_name()
-    u_lname = fake.last_name()
-    u_username = u_fname + u_lname
-    u_password = fake.itin()
-    u_bio = fake.text(50)
-    u_picture_url = "https://res.cloudinary.com/dbgclcola/image/upload/v1541982429/profilepic.jpg"
-    user = User(
-        username=u_username, password=u_password, bio=u_bio
-        )
-    user.save()
-    users.append(user)
+# users = []
+# for i in range(0, 10):
+#     u_fname = fake.first_name()
+#     u_lname = fake.last_name()
+#     u_username = u_fname + u_lname
+#     u_password = fake.itin()
+#     u_bio = fake.text(50)
+#     u_picture_url = "https://res.cloudinary.com/dbgclcola/image/upload/v1541982429/profilepic.jpg"
+#     user = User(
+#         username=u_username, password=u_password, bio=u_bio
+#         )
+#     user.save()
+#     users.append(user)
 
 print("Genre:")
 for g in Genre.objects.all():
@@ -67,9 +67,9 @@ for g in Genre.objects.all():
 
 #    print(a)
 #
-print("\nUser:")
-for b in User.objects.all():
-    print(b)
+# print("\nUser:")
+# for b in User.objects.all():
+#     print(b)
 #
 # Retrieve a random book from model and print it.
 
