@@ -1,21 +1,23 @@
 {% extends 'base_generic.html' %}
 <link rel="stylesheet" href="css/auth.css">
 {% block content %}
-  <h2 class="signup-form">Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p class="signup-form">
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: white">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
-  </form>
+  <div class="form-content">
+    <h2 class="form-title">Sign up</h2>
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <p class="form-tag">
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% if field.help_text %}
+            <small style="color: white">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        </p>
+      {% endfor %}
+      <button class="signup-btn" type="submit">Sign up</button>
+    </form>
+  </div>
 {% endblock %}

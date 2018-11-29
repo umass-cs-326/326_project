@@ -1,3 +1,16 @@
-.signup-form{
-    color:white
+.form-content {
+	margin-left: 50px;
+	margin-top: 50px;
+}
+.form-title{
+    color: orange;
+}
+.form-tag {
+	color: orange;
+}
+.signup-btn{
+	background-color: orange;
+}
+.login-btn {
+	background-color: orange;
 }
