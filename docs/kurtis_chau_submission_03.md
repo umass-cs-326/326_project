@@ -1,4 +1,5 @@
-I 
+I: 
+
 1. implemented the custom form for signup
 2. modified our orignal user class: renamed to Profile, set up 1-to-1 connection to a user
 3. Implemented redirecting to profile page after log in
