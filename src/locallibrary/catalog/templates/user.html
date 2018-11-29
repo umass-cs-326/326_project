@@ -1,14 +1,33 @@
 {% extends "base_generic.html" %}
-
+<link rel="stylesheet" href="css/user.css">
 {% block content %}
 <div class="user-name">
-	<img id="user-pic" src={{pic}} alt="Avatar">
+	<img id="user-pic" src={{pic}}>
 	<h1>{{profileUsername}}</h1>
 </div>
 
 <div class="user-bio">
+	<p>{{gender}}</p>
 	<p>{{bio}}</p>
+	
 </div>
+{% if request.user.profile.profileUsername == profileUsername %}
+<div class="fav-movie">
+	<form method="post">
+	{% csrf_token %}	
+	{% for field in form %}
+        <p class="form-tag">
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% if field.help_text %}
+            <small style="color: white">{{ field.help_text }}</small>
+          {% endif %}
+        </p>
+	{% endfor %}
+	<button class="signup-btn" type="submit">Edit Profile</button>
+    </form>
+</div>
+{% endif %}
 
 <div class="fav-movie">
 	<h4>FAVORITE MOVIES:</h4>

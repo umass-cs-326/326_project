@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from catalog.models import Profile
 
 
 class SignUpForm(UserCreationForm):
@@ -12,4 +13,13 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User   #'first_name', 'last_name'
         fields = ('username', 'bio','picture_url','gender', 'password1', 'password2', )
+
+class EditProfileForm(forms.Form):
     
+    bio = forms.CharField(max_length=300)
+    picture_url = forms.CharField(max_length=300,required=False)
+    gender = forms.CharField(max_length=300)
+    class Meta:
+        model = Profile
+        fields = ('bio','picture_url','gender')
+

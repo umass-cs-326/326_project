@@ -13,9 +13,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
-from catalog.models import User
+# from catalog.models import Profile
 from django.shortcuts import render, redirect
-from catalog.forms import SignUpForm # custom sign up form
+from catalog.forms import SignUpForm, EditProfileForm # custom sign up form
 
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -49,14 +49,32 @@ def movie(request, movie_id):
 	return render(request, "movie.html", context=context)
 
 def profile(request, profileUsername):
-	user_objects = Profile.objects.filter(profileUsername=profileUsername)
-	user_object = user_objects.first()
-	context = {
-		"profileUsername" : user_object.profileUsername,
-		"bio" : user_object.bio,
-		"pic" : user_object.picture_url,
-	}
-	return render(request, "user.html", context=context)
+    if request.method == 'POST':
+        user = request.user
+        form = EditProfileForm(request.POST or None)
+        if form.is_valid():
+            user.profile.bio = form.cleaned_data['bio']
+            user.profile.gender = form.cleaned_data['gender']
+            user.profile.picture_url = form.cleaned_data['picture_url']
+            user.save()
+    user_objects = Profile.objects.filter(profileUsername=profileUsername)
+    user_object = user_objects.first()
+    if request.user.username==user_object.profileUsername:
+        context = {
+            "profileUsername" : user_object.profileUsername,
+            "bio" : user_object.bio,
+            "pic" : user_object.picture_url,
+            "gender" : user_object.gender,
+            "form" : EditProfileForm,
+        }
+    else:   
+        context = {
+            "profileUsername" : user_object.profileUsername,
+            "bio" : user_object.bio,
+            "pic" : user_object.picture_url,
+            "gender" : user_object.gender,
+        }
+    return render(request, "user.html", context = context)
 
 
 def login_view(request):
