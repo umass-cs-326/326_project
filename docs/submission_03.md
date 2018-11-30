@@ -12,7 +12,7 @@ Team Members: A list of your team members:
 - Frick Shao
 - Kurtis Chau
 
-Video Link: A link to your YouTube video regarding this submission. See below: 
+Video Link: https://youtu.be/YKdFxHfRitg
 
 Design Overview: 
 We as a team implemented the login functionality in our web application, and enabled the ability for authentication, authorization, and session support, as well as user interaction with database. We created the login page from Django itself from its token based authentication. Then, in the views classes we implemented can provide a direct instance given a request from the database.  For user interaction we implemented sign up with custom form, as well as profile editing.  User can create a new user profile, which would add a new profile containing the input bio/profile picture url/gender to our database.  Once they are logged in, user could edit their own profile, which would update/modify their user profile in the database.  
