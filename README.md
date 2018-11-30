@@ -1,5 +1,11 @@
 # COMPSCI 326 Web Programming
 
+Team Knock_Out 
+
+Members: Kurtis Chau, Apoorva Karpurapu, Frick Shao, Long To, Kuhu Wadhwa, Damin Zhang
+
+
+
 This is the project repository template that your COMPSCI 326 team
 will `fork` and use to begin your semester project work. Please follow
 the instructions carefully in each of the project submission
