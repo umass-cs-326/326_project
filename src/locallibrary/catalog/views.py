@@ -1,6 +1,6 @@
 from django.shortcuts import render
 #the urls here will change based on the names we give the templates and where we put the templates
-from catalog.models import Movie, Profile, Request, Match
+from catalog.models import Movie, Profile, Request, Match, Genre
 from django.views import generic
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
@@ -15,19 +15,40 @@ from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
 # from catalog.models import Profile
 from django.shortcuts import render, redirect
-from catalog.forms import SignUpForm, EditProfileForm # custom sign up form
+from catalog.forms import SignUpForm, EditProfileForm, GenreFilterForm
 
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 
 
 def index(request):
-	movie_list = Movie.objects.all().order_by('-date')[:25]
-	context = {
-		"movie_list": movie_list,
-	}
-	return render(request, "index.html", context=context)
+    if request.method == 'POST':
+        if(len(request.POST.getlist('genres'))==0):
+            movie_list = Movie.objects.all().order_by('-date')[:25]
+        else:
+            selected_list = request.POST.getlist('genres')
+            display_text = "".join(selected_list)
+            selected_genre = []
+            for g in Genre.objects.all():
+                if(g.name in selected_list):
+                    selected_genre.append(g)
+            movie_list=Movie.objects.all().filter(genre__in=selected_genre).order_by('-date')[:25]
+    else:
+        movie_list = Movie.objects.all().order_by('-date')[:25]
+    genre_list = Genre.objects.all()
+    genreFilterForm = GenreFilterForm()
+    genreFilterForm.fields['genres'].choices=[(g,g) for g in Genre.objects.all()]
+    # movie_list = Movie.objects.all().order_by('-date')[:25]
+    
+    context = {
+        "movie_list": movie_list,
+        "genre_list":genre_list,
+        "genreFilterForm":genreFilterForm,
+        
+    }
+    return render(request, "index.html", context=context)
 
 def movie(request, movie_id):
 	movie_objects = Movie.objects.filter(movie_id=movie_id)
@@ -39,12 +60,14 @@ def movie(request, movie_id):
 		"director" : movie_object.director,
 		"cast" : movie_object.cast,
 		"date" : movie_object.date,
+        "day_of_week" : movie_object.date.weekday(),
 		"duration" : movie_object.duration,
 		"summary" : movie_object.summary,
 		"request_list" : request_objects,
 		"match_list" : match_objects,
 		"movie_id": movie_object.movie_id,
-		"picture_url": movie_object.picture_url
+		"picture_url": movie_object.picture_url,
+        "genre" : movie_object.get_genres(),
 	}
 	return render(request, "movie.html", context=context)
 
