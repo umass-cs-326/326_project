@@ -17,6 +17,7 @@ genres = [
     Genre(name="Adventure"),
     Genre(name="Romance"),
     Genre(name="Mystery"),
+    Genre(name="Action"),
 ]
 
 # Save the genres to the database
@@ -26,7 +27,7 @@ for genre in genres:
 
 # Create Movies
 movies = []
-for i in range(0, 10):
+for i in range(0, 15):
     m_id = fake.random_int(100000,200000)
     m_title = fake.job()
     m_cast = fake.name()
@@ -35,8 +36,11 @@ for i in range(0, 10):
     m_duration = fake.random_int(120, 200)
     m_date = fake.past_date(start_date="-30d", tzinfo=None)
     m_picture_url = "https://res.cloudinary.com/dbgclcola/image/upload/v1541981429/deadpool.jpg"
+    #m_genre = Genre("Science Fiction")
     movie = Movie(
-        title=m_title, cast=m_cast, director=m_director, summary=m_summary, duration=m_duration, date=m_date, movie_id=m_id, picture_url = m_picture_url
+        title=m_title, cast=m_cast, director=m_director, summary=m_summary, 
+        duration=m_duration, date=m_date, movie_id=m_id, 
+        picture_url = m_picture_url
     )
     movie.save()
     movie.genre.add(genres[fake.random_int(0, len(genres)) - 1])

@@ -1,5 +1,5 @@
 {% extends "base_generic.html" %}
-<link rel="stylesheet" href="css/index.css">
+<!-- <link rel="stylesheet" href="css/index.css"> -->
 
 {% block content %}
   <div class="title">
@@ -10,30 +10,30 @@
     <div class="row">
       <div class="col-lg-4">
         <input id="searchbar" type="text" name="search" placeholder="Tell me what you're looking for.." />
-        <div class="filter">
+        <div class="filter" >
+          
+          {{display_text}}
+          <div class = "filterFormBox">
+              
+            <form method="post">
+              {% csrf_token %}	
+              {{genreFilterForm}}
+              <button  type="submit">Apply</button>
+            </form>
+          </div>
+          <!-- <form method="POST">
           <h4>Filters</h4>
 
           <div class="option">
             <ul>
-              <input type="checkbox" name="" value="mon"/> Monday<br/>
-              <input type="checkbox" name="" value="tue"/> Tuesday<br/>
-              <input type="checkbox" name="" value="wed"/> Wednesday<br/>
-              <input type="checkbox" name="" value="thu"/> Thursday<br/>
-              <input type="checkbox" name="" value="fri"/> Friday<br/>
-              <input type="checkbox" name="" value="sat"/> Saturday<br/>
-              <input type="checkbox" name="" value="sun"/> Sunday<br/>
-              <hr class="my-4">
+              
               <input type="checkbox" name="" value="action" /> Action<br />
-              <input type="checkbox" name="" value="action" /> Drama<br />
-              <input type="checkbox" name="" value="action" /> Horror<br />
-              <input type="checkbox" name="" value="action" /> Comedy<br />
-              <input type="checkbox" name="" value="action" /> Animation<br />
-              <input type="checkbox" name="" value="action" /> Documentary<br />
-              <input type="checkbox" name="" value="action" /> Fiction<br />
+              
             </ul>
           </div>
 
           <a class="search-btn" href="#">Search</a>
+        </form> -->
         </div>
       </div>
 
@@ -50,7 +50,8 @@
                 	</div>
                 	<div class="col-md-9">
                 		<h5 class="mb-1">{{movie.title}}</h5>
-                		<p class="mb-1">{{movie.summary}}</p>
+                    <p class="mb-1">{{movie.summary}}</p>
+                    <small>Genre: {{movie.get_genres}}</small>
                 		<small>Director: {{movie.director}}</small>
                 		<small>Cast: {{movie.cast}}</small>
                   </div>

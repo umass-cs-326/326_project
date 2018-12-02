@@ -2,6 +2,8 @@ body {
   width: 100%;
   height: auto;
   background: black;
+  color:white;
+  
 }
 /* 
 index css
@@ -34,7 +36,21 @@ index css
   padding: 20px 0px;
   text-align: center;
   position: relative;
+  color:white !important;
 }
+
+
+.filterForm li {
+  
+  text-align: left;
+}
+.filterForm{
+
+  overflow: hidden;
+}
+
+
+
 .filter h4 {
   color: white;
 }
@@ -65,5 +81,6 @@ index css
   margin-left: 20px;
 }
 
-
-
+.small-label {
+  color:orange;
+}

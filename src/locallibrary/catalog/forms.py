@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from catalog.models import Profile
+from catalog.models import Profile,Genre
 
 
 class SignUpForm(UserCreationForm):
@@ -22,4 +22,20 @@ class EditProfileForm(forms.Form):
     class Meta:
         model = Profile
         fields = ('bio','picture_url','gender')
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+# class FancyMultiSelectWidget(forms.CheckboxSelectMultiple):
+#     class Media:
+#         css={
+#             'all':('static/css/form.css')
+#         }
+
+class GenreFilterForm(forms.Form):
+    genres = forms.MultipleChoiceField(
+        widget = forms.CheckboxSelectMultiple(attrs={'class':'filterForm'}),
+        
+    )
+
 
