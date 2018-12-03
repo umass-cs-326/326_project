@@ -8,11 +8,18 @@ class Course(models.Model) :
 
     name = models.CharField(max_length=100, help_text="Enter class name")
     code = models.CharField(max_length=15, help_text="Enter alphanumeric class code")
-    rating = models.IntegerField()
     prereqs = models.ManyToManyField("self", blank=True)
     credits = models.IntegerField(default=4, null=False)
-    def __str__(self) :
-        return f"{self.code} {self.name}"
+    updoots = models.IntegerField(default=1)
+    doots = models.IntegerField(default=1)
+    rating = models.IntegerField(default=4)
+    #def __str__(self) :
+    #    return f"{self.code} {self.name}"
+    
+    @property
+    def get_rating(self) :
+        #TODO check if null! This will fail if course or instructor is null
+        return (self.updoots/self.doots) * 5.0
 
     def display_prereqs(self) :
         return ", ".join(prereqs.code for prereqs in self.prereqs.all())

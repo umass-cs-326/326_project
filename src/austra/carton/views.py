@@ -202,8 +202,13 @@ class DumbDoot(SingleObjectMixin, FormView):
         print(self.object.name)
         if('upd' in request.POST):
             request.user.profile.updooted.add(self.object)
+            self.object.updoots += 1
+            self.object.doots += 1
+            self.object.save()
         if('downd' in request.POST):
             request.user.profile.downdooted.add(self.object)
+            self.object.doots += 1
+            self.object.save()
         return super().post(request, *args, **kwargs)
 
     def get_success_url(self):
