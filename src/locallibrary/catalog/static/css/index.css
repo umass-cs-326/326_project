@@ -1,0 +1,91 @@
+body {
+  width: 100%;
+  height: auto;
+  background: black;
+  color:white;
+  
+}
+/* 
+index css
+*/
+.title {
+  text-align: center;
+}
+.title a {
+  text-decoration: none;
+}
+.title a::after {
+  color: black;
+}
+.title a:hover {
+  color: black;
+}
+.title h1 {
+  color: red;
+  font-size: 120px;
+  padding: 30px 0px;
+}
+#searchbar {
+  width: 100%;
+  margin-bottom: 20px;
+  height: auto;
+}
+.filter {
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 20px 0px;
+  text-align: center;
+  position: relative;
+  color:white !important;
+}
+
+
+.filterForm li {
+  
+  text-align: left;
+}
+.filterForm{
+
+  overflow: hidden;
+}
+
+
+
+.filter h4 {
+  color: white;
+}
+.option {
+  text-align: left;
+  color: white;
+}
+.search-btn {
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  text-decoration: none !important;
+}
+.search-btn:hover {
+  color: black;
+}
+.search-btn::after {
+  color: black;
+}
+.list-group-item {
+  background-color: #E5E7E9;
+}
+.poster {
+  width: 115.5px;
+  height: 165px;
+  margin-left: 20px;
+}
+
+.small-label {
+  color:orange;
+}
+
+.search-box{
+  display: inline-block;
+  margin-bottom: 20px;
+}
