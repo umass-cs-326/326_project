@@ -12,20 +12,28 @@
     <meta name="author" content="COMPSCI 326">
   </head>
 
-    <div id = "navbar" class="icon-bar">
-      <img class="logo" src="{% static 'Logo.png' %}" alt="Logo"> 
-      <a href="{% url 'homePage' %}">Home</a>
-      <a href="{% url 'eventsPage' %}">Events</a>
-      <a href="{% url 'mapPage' %}">Map</a>
-      <a href="{% url 'profilePage' %}">Profile</a>
-      <a href="{% url 'petPage' %}">Pets</a>
-    </div>
   <body>
     {% if user.is_authenticated %}
+    <div id = "navbar" class="icon-bar">
+        <img class="logo" src="{% static 'Logo.png' %}" alt="Logo"> 
+        <a href="{% url 'homePage' %}">Home</a>
+        <a href="{% url 'eventsPage' %}">Events</a>
+        <a href="{% url 'mapPage' %}">Map</a>
+        <a href="{% url 'profilePage' %}">Profile</a>
+        <a href="{% url 'petPage' %}">Pets</a>
+      </div>
       <button><a href="{% url 'logout' %}">Log Out</a></button>
       {% block content %}
       {% endblock %}
     {% else %}
+    <div id = "navbar" class="icon-bar">
+        <img class="logo" src="{% static 'Logo.png' %}" alt="Logo"> 
+        <a href="{% url 'homePage' %}">Home</a>
+        <a href="{% url 'homePage' %}">Events</a>
+        <a href="{% url 'homePage' %}">Map</a>
+        <a href="{% url 'homePage' %}">Profile</a>
+        <a href="{% url 'homePage' %}">Pets</a>
+      </div>
       <h4>Please <button><a href="{% url 'login' %}">login</a></button> to see more details.</h4>
       <h4>If you don't have an account, <button><a href="{% url 'user-sign-up' %}">click here to sign up!</a></button> </h4>
     {% endif %}
