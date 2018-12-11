@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.urls import reverse_lazy
+import random
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -33,7 +34,7 @@ class PetCreate(generic.TemplateView):
         if form.is_valid():
             new_pet = form.save(commit=False)
             new_pet.owner = request.user
-            new_pet.image = 'dog.jpg'
+            new_pet.image = '/pet_images/' + str(random.randint(0,9)) + ".jpg"
             new_pet.save()
             data = form.cleaned_data
             form = PetCreationForm()
@@ -72,17 +73,10 @@ class UserViewPets(LoginRequiredMixin, generic.ListView):
 
 class UserViewEvents(LoginRequiredMixin, generic.ListView):
     model = Event
-    template_name ='eventsPage.html'
+    template_name ='homePage.html'
 
     def get_queryset(self):
         return Event.objects.filter(host=self.request.user)
-
-def home(request):
-    events = Event.objects.all()
-    context = {
-        "events": events,
-    }
-    return render(request, 'homePage.html', context = context)
 
 def events(request):
     events = Event.objects.all()
@@ -90,6 +84,13 @@ def events(request):
         "events": events,
     }
     return render(request, 'eventsPage.html', context = context)
+
+# def events(request):
+#     events = Event.objects.all()
+#     context = {
+#         "events": events,
+#     }
+#     return render(request, 'eventsPage.html', context = context)
 
 def map(request):
     events = Event.objects.all()

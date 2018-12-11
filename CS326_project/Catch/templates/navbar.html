@@ -15,7 +15,7 @@
   <body>
     {% if user.is_authenticated %}
     <div id = "navbar" class="icon-bar">
-        <img class="logo" src="{% static 'Logo.png' %}" alt="Logo"> 
+        <img class="logo" src="{% static 'Logo.png' %}" alt="Logo">
         <a href="{% url 'homePage' %}">Home</a>
         <a href="{% url 'eventsPage' %}">Events</a>
         <a href="{% url 'mapPage' %}">Map</a>
@@ -27,7 +27,7 @@
       {% endblock %}
     {% else %}
     <div id = "navbar" class="icon-bar">
-        <img class="logo" src="{% static 'Logo.png' %}" alt="Logo"> 
+        <img class="logo" src="{% static 'Logo.png' %}" alt="Logo">
         <a href="{% url 'homePage' %}">Home</a>
         <a href="{% url 'homePage' %}">Events</a>
         <a href="{% url 'homePage' %}">Map</a>
@@ -39,6 +39,3 @@
     {% endif %}
   </body>
 </html>
-
-     
-
