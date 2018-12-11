@@ -72,17 +72,10 @@ class UserViewPets(LoginRequiredMixin, generic.ListView):
 
 class UserViewEvents(LoginRequiredMixin, generic.ListView):
     model = Event
-    template_name ='eventsPage.html'
+    template_name ='homePage.html'
 
     def get_queryset(self):
         return Event.objects.filter(host=self.request.user)
-
-def home(request):
-    events = Event.objects.all()
-    context = {
-        "events": events,
-    }
-    return render(request, 'homePage.html', context = context)
 
 def events(request):
     events = Event.objects.all()
@@ -90,6 +83,13 @@ def events(request):
         "events": events,
     }
     return render(request, 'eventsPage.html', context = context)
+
+# def events(request):
+#     events = Event.objects.all()
+#     context = {
+#         "events": events,
+#     }
+#     return render(request, 'eventsPage.html', context = context)
 
 def map(request):
     events = Event.objects.all()
