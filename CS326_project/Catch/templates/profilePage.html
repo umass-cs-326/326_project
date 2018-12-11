@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-sm-4">
         {% if user.image %}
-          <img src="{{ user.image.url }}" class="img-square" alt="profilepicture">
+          <img src="{{ user.image.url }}" class="img-square" alt="profilepicture"> 
         {% endif %}
       </div>
       <div class="col-sm-8">
@@ -23,11 +23,11 @@
     </div>
   </div>
 
-<button onclick="window.location.href='{% url 'user-edit-profile' %}'">Edit Your Profile</button>
-<button onclick="window.location.href='{% url 'Pet-add' %}'">Add Pet</button>
+<button><a href="{% url 'user-edit-profile' %}">Edit Your Profile</a></button>
+<button><a href="{% url 'Pet-add' %}">Add Pet</a></button>
 
 <!-- <div class="container">
-    {% if pets %}
+    {% if pets %} 
       {% for pet in pets %}
         {% if pet.owner.username == user.username %}
           <div class="row">
@@ -45,7 +45,7 @@
         {% endif %}
         </div>
         {% endfor %}
-    {% endif %}
+    {% endif %} 
   </div> -->
 
 

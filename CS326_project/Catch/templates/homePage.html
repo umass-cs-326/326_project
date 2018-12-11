@@ -3,40 +3,32 @@
 
 {% block content %}
 {% load staticfiles %}
-<ul>
-  <li><a href="default.asp">Hosting</a></li>
-  <li><a href="news.asp">Going</a></li>
-  <li><a href="contact.asp">Interested</a></li>
-  <li><a href="about.asp">Following</a></li>
-</ul>
-<button onclick="window.location.href='{% url 'Event-add' %}'">Create Event</button>
+<button><a href="{% url 'Event-add' %}">Create Event</a></button>
 
+{% if event_list %}
+  {% for event in event_list %}
 
-{% if events %}
-  {% for event in events %}
-
-<div class="container py-3">
-<div class="card">
-<div class="row ">
-  <div class="col-md-4">
-      <img src="{{ event.image.url }}" class="w-100">
-    </div>
-    <div class="col-md-8 px-3">
-      <div class="card-block px-3">
-        <h4 class="card-title">Name: {{ event.name}}</h4>
-        <p class="card-text">Host: {{ event.host }}</p>
-        <p class="card-text">Location: {{ event.location }}</p>
-        <p class="card-text">Date and Time: {{ event.datetime}}</p>
-        <p class="card-text">Capacity: {{ event.capacity}}</p>
-        <p class="card-text">Duration: {{ event.duration}}</p>
+  <div class="container py-3">
+    <div class="card">
+      <div class="row ">
+        <div class="col-md-4">
+            <img src="{{ event.image.url }}" class="w-100">
+          </div>
+          <div class="col-md-8 px-3">
+            <div class="card-block px-3">
+              <h4 class="card-title">Name: {{ event.name}}</h4>
+              <p class="card-text">Host: {{ event.host }}</p>
+              <p class="card-text">Location: {{ event.location }}</p>
+              <p class="card-text">Date and Time: {{ event.datetime}}</p>
+              <p class="card-text">Capacity: {{ event.capacity}}</p>
+              <p class="card-text">Duration: {{ event.duration}}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
-{% endfor %}
-{% else %}
-<p>There are no events available.</p>
-{% endif %}
-
+    {% endfor %}
+    {% else %}
+    <p>There are no events available.</p>
+    {% endif %}
 {% endblock %}
