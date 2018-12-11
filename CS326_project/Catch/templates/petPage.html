@@ -3,7 +3,7 @@
 
 {% load staticfiles %}
 
-
+<button><a href="{% url 'Pet-add' %}">Add Pet</a></button>
 
   <div class="container">
     {% if pet_list %}
@@ -24,6 +24,7 @@
     <p>There are no pets available.</p>
     {% endif %}
   </div>
+
   
 
 {% endblock %}
