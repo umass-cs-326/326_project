@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('homePage', views.UserViewEvents.as_view(), name = "homePage"),
+
     path('eventsPage', views.events, name = "eventsPage"),
 
     path('mapPage', views.map, name = "mapPage"),
