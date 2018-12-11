@@ -94,8 +94,8 @@ for i in range(10):
     e_name = fake.sentence(nb_words=10, variable_nb_words=True, ext_word_list=None)
     e_host = PetUsers[fake.random_int(0, len(PetUsers)) - 1]
     e_location = fake.address()
-    e_latitude = random.uniform(-180, 180)
-    e_longitude = random.uniform(-180, 180)
+    e_latitude = random.uniform(42.371915, 42.412205)
+    e_longitude = random.uniform(-72.549531, -72.496386)
     e_datetime = fake.date_time(tzinfo = timezone(timedelta(hours = -5)))
     e_capacity = random.randint(10,100)
     e_description = fake.sentence(nb_words=20, variable_nb_words=True, ext_word_list=None)

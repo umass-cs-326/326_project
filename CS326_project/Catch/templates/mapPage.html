@@ -1,87 +1,135 @@
 {% extends "navbar.html" %}
 
 {% block content %}
+<head>
+  <style type="text/css">
+    html { height: 100% }
+    body { height: 100%; margin: 0; padding: 0 }
+    #map_canvas { height: 100% }
+  </style>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPxh-hR4V5-IoD3DMT5ivxqG6UfFy3FTI&callback=initialize"></script>
+<script type="text/javascript">
+  var locations = []
+  {% if events %}
+    {% for event in events %}
+    locations.push([
+      {{ event.latitude }},
+      {{ event.longitude}},
+      "{{ event.image.url }}",
+      "{{ event.name }}",
+      "{{ event.host }}",
+      "{{ event.datetime }}",
+      "{{ event.capacity }}",
+      "{{ event.description }}"
+      ])
+    {% endfor %}
+  {% endif %}
 
-{% load staticfiles %}
-<style>
-#map {
-  height: 95%;
-}
-html, body {
-  height: 95%;
-  margin: 0;
-  padding: 0;
-}
-</style>
+  function initialize(){
+    var myOptions = {
+      center: new google.maps.LatLng(42.391126, -72.526707),
+      zoom: 15,
+    };
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+    setMarkers(map,locations)
 
-<div id="map"></div>
-<script>
-  var map, infoWindow, infoWindow1;
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 42.408387, lng: -72.539822},
-      zoom: 6
-    });
-    infoWindow = new google.maps.InfoWindow;
-    infoWindow1 = new google.maps.InfoWindow;
+
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-      infoWindow.setPosition({lat: 44.934695, lng: -69.958306});
-      infoWindow.setContent("<div style='float:left'><img src='dog.jpg'><div style='float:right; padding: 10px;'><b>Dave's Dog Party!</b><br/>123 Street<br/> City, 01010</div>");
-      infoWindow1.setPosition({lat: 43.357197, lng: -74.959811});
-      infoWindow1.setContent("<div style='float:left'><img src='cat.jpg'><div style='float:right; padding: 10px;'><b>Cathy's Cat Compendium!</b><br/>100 Street<br/> City, 02090</div>");
-      var marker = new google.maps.Marker({position: pos, map: map});
-      infoWindow.open(map);
-      infoWindow1.open(map);
-      map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var marker = new google.maps.Marker({
+        map: map,
+        position: pos,
       });
-    } else {
-      handleLocationError(false, infoWindow, map.getCenter());
+
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
+  }
+
+  function setMarkers(map,locations){
+      var marker, i
+      for (i = 0; i < locations.length; i++)
+      {
+        var lat = locations[i][0]
+        var long = locations[i][1]
+        var image =  locations[i][2]
+        var name = locations[i][3]
+        var host = locations[i][4]
+        var datetime = locations[i][5]
+        var capacity = locations[i][6]
+        var description = locations[i][7]
+        pos = new google.maps.LatLng(lat, long);
+
+        var marker = new google.maps.Marker({
+          map: map,
+          position: pos,
+          icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+          }
+        });
+        var content = "<div class='card'><img src=" + image +" style='width:100%'><div class='container'><b>Description: " + name + "</b><p>Host: " + host + "</p><p>Date: " + datetime + "</p><p>Capacity: " + capacity + "</p><p>Description: " + description + "</p></div></div>"
+        var infowindow = new google.maps.InfoWindow()
+
+        google.maps.event.addListener(marker,'click', (function(marker, content, infowindow){
+        return function() {
+           infowindow.setContent(content);
+           infowindow.open(map,marker);
+        };
+    })(marker,content,infowindow));
     }
-  }
-  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.open(map);
-  }
-</script>
+}
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY_HERE&callback=initMap"></script>
 
-<div class="container">
-  <table class ="table">
-    <thead>
-      <tr>
-        <th>Event Name</th>
-        <th>Host</th>
-        <th>Location</th>
-        <th>Date Time</th>
-        <th>Capacity</th>
-        <th>Duration</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% if events %}
-        {% for event in events %}
-          <tr>
-          <td>{{ event.name}}</td>
-          <td>{{ event.host }}</td>
-          <td>{{ event.location }}</td>
-          <td>{{ event.datetime }}</td>
-          <td>{{ event.capacity }}</td>
-          <td>{{ event.duration }}</td>
-          </tr>
-        {% endfor %}
-      {% else %}
-      <p>There are no events available.</p>
-      {% endif %}
-    </tbody>
-  </table>
-</div>
 
-{% endblock %}
+  </script>
+ </head>
+ <body onload="initialize()">
+  <div id="map" style="width:100%; height:100%"></div>
+  <div class="container">
+    <table class ="table">
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Host</th>
+          <th>Location</th>
+          <th>Date Time</th>
+          <th>Capacity</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if events %}
+          {% for event in events %}
+            <tr>
+            <td>{{ event.name}}</td>
+            <td>{{ event.host }}</td>
+            <td>{{ event.location }}</td>
+            <td>{{ event.datetime }}</td>
+            <td>{{ event.capacity }}</td>
+            <td>{{ event.duration }}</td>
+            </tr>
+          {% endfor %}
+        {% else %}
+        <p>There are no events available.</p>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+ </body>
+  {% endblock %}
