@@ -63,7 +63,7 @@ class UserViewProfileView(generic.ListView):
     def get_object(self):
         return get_object_or_404(PetUser, pk=self.request.user.id)
 
-class UserViewPets(LoginRequiredMixin, generic.ListView):
+class UserViewPets(generic.ListView):
     model = Pet
     template_name ='petPage.html'
 
