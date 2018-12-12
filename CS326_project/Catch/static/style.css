@@ -2,10 +2,45 @@
     margin:0px;
 }
 
+#home-page-content{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#home-page-tabs{
+  float: left;
+  width: 10%;
+}
+
+#home-page-events{
+  float: left;
+  width: 90%;
+}
+
+#events-feed{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: rgb(253, 254, 254);
+}
+
+#user-profile{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: rgb(253, 254, 254);
+}
+
+#pets-container{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.pet-row{
+  margin: 10px;
+}
+
 body{
     margin:0;
     background-color:  burlywood;
-
 }
 
 ul {
@@ -54,7 +89,7 @@ li a:hover {
 }
 
 .icon-bar a:hover {
-    background-color: #000; /* Add a hover color */
+    background-color: rgba(171, 178, 185, 1.0);
 }
 
 
