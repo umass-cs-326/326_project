@@ -12,6 +12,8 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import PetCreationForm
+
+import random
 #from django.contrib.auth.forms import UserChangeForm
 # Create your views here.
 
@@ -33,7 +35,7 @@ class PetCreate(generic.TemplateView):
         if form.is_valid():
             new_pet = form.save(commit=False)
             new_pet.owner = request.user
-            new_pet.image = 'dog.jpg'
+            new_pet.image = '/pet_images/' + str(random.randint(0,9)) + ".jpg"
             new_pet.save()
             data = form.cleaned_data
             form = PetCreationForm()

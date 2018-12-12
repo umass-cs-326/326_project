@@ -6,87 +6,7 @@
 <button onclick="window.location.href='{% url 'Event-add' %}'">Create Event</button>
 
 {% load staticfiles %}
-
-
-  <div class="container">
-    <table class ="table">
-      <thead>
-        <tr>
-          <th>Event Name</th>
-          <th>Host</th>
-          <th>Location</th>
-          <th>Date Time</th>
-          <th>Capacity</th>
-          <th>Duration</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% if events %}
-          {% for event in events %}
-            <tr>
-            <td>{{ event.name}}</td>
-            <td>{{ event.host }}</td>
-            <td>{{ event.location }}</td>
-            <td>{{ event.datetime }}</td>
-            <td>{{ event.capacity }}</td>
-            <td>{{ event.duration }}</td>
-            </tr>
-          {% endfor %}
-        {% else %}
-        <p>There are no events available.</p>
-        {% endif %}
-      </tbody>
-    </table>
-  </div>
-
-    <!-- <div class = "row">
-      <div class="col-sm-4" style="background-color: #FCEDFF;">
-      <form target="_self" method="POST">
-        <h4>Event Type</h4>
-        <label class="container">Past Events
-          <input type="checkbox">
-          <span class="checkmark"> </span>
-        </label>
-        <label class="container">Live Events
-          <input type="checkbox">
-          <span class="checkmark"> </span>
-        </label>
-        <label class="container">Upcoming Events
-          <input type="checkbox">
-          <span class="checkmark"> </span>
-        </label>
-        <h3>Type of Pets</h3>
-        <label class="container">Dogs
-          <input type="checkbox">
-          <span class="checkmark"> </span>
-        </label>
-        <label class="container">Cats
-          <input type="checkbox">
-          <span class="checkmark"> </span>
-        </label>
-        <label class="container">Hamsters
-          <input type="checkbox">
-          <span class=checkbox> </span>
-        </label>
-        <label class="container">Other
-          <input type="checkbox">
-          <span class="checkmark"> </span>
-        </label>
-	  <h3>Distance From Me</h3>
-	    <input type="radio" name="distance" value="1-mile">Within 1 mile from my current location<br>
-	    <input type="radio" name="distance" value="5-mile">Within 5 miles from my current location<br>
-	    <input type="radio" name="distance" value="5-mile">Within 10 miles from my current location<br>
-	    <input type="radio" name="distance" value="5-mile">Within 15 miles from my current location<br>
-	    <input type="radio" name="distance" value="5-mile">Within 20 miles from my current location<br>
-	    <input type="radio" name="distance" value="5-mile">Within 50 miles from my current location<br>
-	    <input type="radio" name="distance" value="any-distance">Any distance<br>
-	  <h3>Event Posted By</h3>
-	    <input type="radio" name="event-poster" value="all-users">All users<br>
-	    <input type="radio" name="event-poster" value="users-im-following">Users I am following<br>
-	  <br>
-	  <center><input type="submit" value="Find Events"></center>
-	</form>
-      </div>
+<button onclick="window.location.href='{% url 'Event-add' %}'">Create Event</button>
 
 
 {% if event_list %}
@@ -113,5 +33,5 @@
     {% endfor %}
     {% else %}
     <p>There are no events available.</p>
-    {% endif %} -->
+    {% endif %}
 {% endblock %}
