@@ -83,7 +83,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
           }
         });
-        var content = "<div class='card'><img src=" + image +" style='width:100%'><div class='container'><b>Description: " + name + "</b><p>Host: " + host + "</p><p>Date: " + datetime + "</p><p>Capacity: " + capacity + "</p><p>Description: " + description + "</p></div></div>"
+
+        var content = "<div class='card' style = 'width:200px'><img src=" + image +" style='width:100%'><div class='container'><b>" + name + "</b><p>Host: " + host + "</p><p>Date: " + datetime + "</p></div></div>"
+        // var content = "<div class='card'><img src=" + image +" style='width:100%'><div class='container'><b>Description: " + name + "</b><p>Host: " + host + "</p><p>Date: " + datetime + "</p><p>Capacity: " + capacity + "</p><p>Description: " + description + "</p></div></div>"
         var infowindow = new google.maps.InfoWindow()
 
         google.maps.event.addListener(marker,'click', (function(marker, content, infowindow){
