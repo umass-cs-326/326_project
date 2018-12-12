@@ -22,7 +22,7 @@
         <a href="{% url 'profilePage' %}">Profile</a>
         <a href="{% url 'petPage' %}">Pets</a>
       </div>
-      <button><a href="{% url 'logout' %}">Log Out</a></button>
+      <button onclick="window.location.href='{% url 'logout' %}'">Log Out</button>
       {% block content %}
       {% endblock %}
     {% else %}
@@ -34,8 +34,8 @@
         <a href="{% url 'homePage' %}">Profile</a>
         <a href="{% url 'homePage' %}">Pets</a>
       </div>
-      <h4>Please <button><a href="{% url 'login' %}">login</a></button> to see more details.</h4>
-      <h4>If you don't have an account, <button><a href="{% url 'user-sign-up' %}">click here to sign up!</a></button> </h4>
+      <h4>Please <button onclick="window.location.href='{% url 'login' %}'">login</button> to see more details.</h4>
+      <h4>If you don't have an account, <button onclick="window.location.href='{% url 'user-sign-up' %}'">click here to sign up!</button> </h4>
     {% endif %}
   </body>
 </html>
