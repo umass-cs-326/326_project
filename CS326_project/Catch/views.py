@@ -75,12 +75,15 @@ class UserViewPets(generic.ListView):
         else:
             return Pet.objects.filter(owner=self.request.user)
 
-class UserViewEvents(LoginRequiredMixin, generic.ListView):
+class UserViewEvents(generic.ListView):
     model = Event
     template_name ='eventsPage.html'
 
     def get_queryset(self):
-        return Event.objects.filter(host=self.request.user)
+        if(self.request.user.get_username() == ""):
+            return Pet.objects.all()
+        else:
+            return Event.objects.filter(host=self.request.user)
 
 def home(request):
     events = Event.objects.all()

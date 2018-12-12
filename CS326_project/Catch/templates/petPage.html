@@ -5,10 +5,10 @@
 
 <button onclick="window.location.href='{% url 'Pet-add' %}'">Add Pet</button>
 
-  <div class="container">
+  <div id="pet-container" class="container">
     {% if pet_list %}
       {% for pet in pet_list %}
-        <div class="row">
+        <div class="row pet-row">
           <div class="col-sm-4" style="background-color:white;">
             <img src="{{ pet.image.url }}" alt="black lab">
           </div>
